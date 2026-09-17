@@ -1,0 +1,452 @@
+{
+ "G1_facts_vs_source": {
+  "agree": 56,
+  "n": 70,
+  "disagreements": [
+   {
+    "type": "AMMDeposit",
+    "facts": [
+     "LPTokenOut",
+     "TradingFee"
+    ],
+    "source": [
+     "TradingFee"
+    ]
+   },
+   {
+    "type": "OfferCancel",
+    "facts": [
+     "OfferSequence"
+    ],
+    "source": []
+   },
+   {
+    "type": "OfferCreate",
+    "facts": [
+     "Expiration",
+     "OfferSequence"
+    ],
+    "source": [
+     "OfferSequence"
+    ]
+   },
+   {
+    "type": "OracleDelete",
+    "facts": [
+     "OracleDocumentID"
+    ],
+    "source": []
+   },
+   {
+    "type": "OracleSet",
+    "facts": [
+     "AssetClass",
+     "LastUpdateTime",
+     "OracleDocumentID",
+     "URI"
+    ],
+    "source": [
+     "AssetClass",
+     "LastUpdateTime",
+     "URI"
+    ]
+   },
+   {
+    "type": "PaymentChannelCreate",
+    "facts": [
+     "Amount",
+     "CancelAfter",
+     "DestinationTag",
+     "SettleDelay"
+    ],
+    "source": [
+     "CancelAfter",
+     "DestinationTag",
+     "SettleDelay"
+    ]
+   },
+   {
+    "type": "PaymentChannelFund",
+    "facts": [
+     "Amount",
+     "Channel"
+    ],
+    "source": [
+     "Amount"
+    ]
+   },
+   {
+    "type": "PermissionedDomainSet",
+    "facts": [
+     "DomainID"
+    ],
+    "source": []
+   },
+   {
+    "type": "XChainAccountCreateCommit",
+    "facts": [
+     "XChainBridge"
+    ],
+    "source": []
+   },
+   {
+    "type": "XChainAddAccountCreateAttestation",
+    "facts": [
+     "XChainBridge"
+    ],
+    "source": []
+   },
+   {
+    "type": "XChainAddClaimAttestation",
+    "facts": [
+     "XChainBridge"
+    ],
+    "source": []
+   },
+   {
+    "type": "XChainCreateBridge",
+    "facts": [
+     "XChainBridge"
+    ],
+    "source": []
+   },
+   {
+    "type": "XChainCreateClaimID",
+    "facts": [
+     "XChainBridge"
+    ],
+    "source": []
+   },
+   {
+    "type": "XChainModifyBridge",
+    "facts": [
+     "XChainBridge"
+    ],
+    "source": []
+   }
+  ]
+ },
+ "G2_choice_over_helpers": {
+  "fields": 273,
+  "agree_with_truth": 262,
+  "sample": {
+   "CheckCreate": {
+    "Destination": [
+     "addresscodec.IsValidAddress",
+     1.0
+    ],
+    "SendMax": [
+     "IsAmount",
+     1.0
+    ],
+    "DestinationTag": [
+     "not validated",
+     0.99
+    ],
+    "Expiration": [
+     "not validated",
+     0.98
+    ],
+    "InvoiceID": [
+     "not validated",
+     0.99
+    ]
+   },
+   "Payment": {
+    "Amount": [
+     "IsAmount",
+     1.0
+    ],
+    "CredentialIDs": [
+     "IsValid()",
+     1.0
+    ],
+    "DeliverMax": [
+     "IsAmount",
+     1.0
+    ],
+    "DeliverMin": [
+     "IsAmount",
+     1.0
+    ],
+    "Destination": [
+     "addresscodec.IsValidAddress",
+     1.0
+    ],
+    "DestinationTag": [
+     "not validated",
+     0.94
+    ],
+    "InvoiceID": [
+     "not validated",
+     0.98
+    ],
+    "Paths": [
+     "IsPaths",
+     1.0
+    ],
+    "SendMax": [
+     "IsAmount",
+     1.0
+    ],
+    "DomainID": [
+     "IsDomainID",
+     1.0
+    ]
+   },
+   "TrustSet": {
+    "LimitAmount": [
+     "IsAmount",
+     1.0
+    ],
+    "QualityIn": [
+     "not validated",
+     0.99
+    ],
+    "QualityOut": [
+     "not validated",
+     0.99
+    ]
+   }
+  }
+ },
+ "G3_question_count": {
+  "n": 18,
+  "flips": 0,
+  "worst_delta": 0.07000000000000006,
+  "mean_max_delta": 0.012
+ },
+ "G4_structured_levels": {
+  "plain": {
+   "mean_original": 2.5,
+   "mean_panic": 0.48,
+   "mean_inline": 1.81,
+   "mean_conf": 0.63
+  },
+  "structured": {
+   "mean_original": 2.77,
+   "mean_panic": 0.51,
+   "mean_inline": 1.95,
+   "mean_conf": 0.7
+  }
+ },
+ "G5_diff_framing": {
+  "n": 21,
+  "detected_diff_only": 21,
+  "detected_pair": 21,
+  "detected_after_only": 21,
+  "rows": [
+   {
+    "type": "AMMBid",
+    "removed": "if a.Asset.Currency == \"XRP\" && a.Asset2.Currency == \"XRP\" {",
+    "diff_only": 0.96,
+    "pair": 0.98,
+    "after_only": 0.74,
+    "diff_tokens_vs_pair": null
+   },
+   {
+    "type": "AMMClawback",
+    "removed": "if a.Asset != (types.IssuedCurrency{}) && a.Asset.Issuer != a.Account {",
+    "diff_only": 0.97,
+    "pair": 0.98,
+    "after_only": 0.71,
+    "diff_tokens_vs_pair": null
+   },
+   {
+    "type": "AMMCreate",
+    "removed": "if ok, err := IsAmount(a.Amount2, \"Amount2\", true); !ok {",
+    "diff_only": 0.95,
+    "pair": 0.98,
+    "after_only": 0.73,
+    "diff_tokens_vs_pair": null
+   },
+   {
+    "type": "AMMDelete",
+    "removed": "if ok, err := IsAsset(a.Asset); !ok {",
+    "diff_only": 0.94,
+    "pair": 0.97,
+    "after_only": 0.77,
+    "diff_tokens_vs_pair": null
+   },
+   {
+    "type": "AMMDeposit",
+    "removed": "if ok, err := IsAmount(a.Amount, \"Amount\", false); !ok {",
+    "diff_only": 0.95,
+    "pair": 0.93,
+    "after_only": 0.79,
+    "diff_tokens_vs_pair": null
+   },
+   {
+    "type": "AMMVote",
+    "removed": "if ok, err := IsAsset(a.Asset2); !ok {",
+    "diff_only": 0.94,
+    "pair": 0.98,
+    "after_only": 0.74,
+    "diff_tokens_vs_pair": null
+   }
+  ]
+ },
+ "G6_rank_in_one_call": {
+  "least_choice": "OfferCancel",
+  "least_conf": 0.46,
+  "least_top5": [
+   [
+    "OfferCancel",
+    0.47,
+    1.0
+   ],
+   [
+    "DIDDelete",
+    0.41,
+    1
+   ],
+   [
+    "PaymentChannelFund",
+    0.04,
+    0.67
+   ],
+   [
+    "TicketCreate",
+    0.03,
+    1.0
+   ],
+   [
+    "OracleDelete",
+    0.02,
+    1.0
+   ]
+  ],
+  "truth_lowest_ratio": [
+   [
+    "TrustSet",
+    0.3333333333333333
+   ],
+   [
+    "CheckCreate",
+    0.4
+   ],
+   [
+    "OracleSet",
+    0.5
+   ],
+   [
+    "PaymentChannelCreate",
+    0.5
+   ],
+   [
+    "AccountDelete",
+    0.6666666666666666
+   ]
+  ],
+  "most_choice": "Payment",
+  "most_conf": 0.23,
+  "tokens": 248017
+ },
+ "G7_line_anchoring": {
+  "n": 71,
+  "correct": 71,
+  "sample": [
+   {
+    "type": "AMMBid",
+    "answers": [
+     [
+      "Asset",
+      "7",
+      1.0,
+      true
+     ],
+     [
+      "Asset2",
+      "11",
+      0.99,
+      true
+     ],
+     [
+      "BidMin",
+      "19",
+      1.0,
+      true
+     ]
+    ]
+   },
+   {
+    "type": "AMMClawback",
+    "answers": [
+     [
+      "Holder",
+      "7",
+      1.0,
+      true
+     ],
+     [
+      "Asset",
+      "12",
+      1.0,
+      true
+     ],
+     [
+      "Amount",
+      "17",
+      0.73,
+      true
+     ]
+    ]
+   },
+   {
+    "type": "AMMCreate",
+    "answers": [
+     [
+      "Amount",
+      "7",
+      1.0,
+      true
+     ],
+     [
+      "Amount2",
+      "11",
+      0.99,
+      true
+     ],
+     [
+      "TradingFee",
+      "15",
+      1.0,
+      true
+     ]
+    ]
+   },
+   {
+    "type": "AMMDelete",
+    "answers": [
+     [
+      "Asset",
+      "7",
+      1.0,
+      true
+     ],
+     [
+      "Asset2",
+      "11",
+      1.0,
+      true
+     ]
+    ]
+   }
+  ]
+ },
+ "G8_screening": {
+  "n": 70,
+  "tp": 15,
+  "fp": 3,
+  "fn": 2,
+  "tn": 50,
+  "missed": [
+   "CredentialCreate",
+   "VaultCreate"
+  ]
+ },
+ "usage": {
+  "requests": 375,
+  "input_tokens": 326986
+ }
+}

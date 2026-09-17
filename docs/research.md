@@ -708,6 +708,37 @@ question where the answer is always yes.
 3. Before/after Choice in both orders is the PR regression gate.
 4. Flatten completeness is a cheap always-on rule with no noise.
 
+## 14. How to ask: eight framing techniques, tested
+
+Slicing was the first framing idea. `experiments/run_ideas3.py` tests eight
+more, each against the hand-verified per-field ground truth from sections
+11 and 12. 375 requests, 327k tokens (about 1.4 cents).
+
+| # | Technique | Result | Keep? |
+|---|---|---|---|
+| G1 | Send pre-parsed facts (field list, call list, conditions) instead of source | Agrees with the source-based answers on 56 of 70 types. Every disagreement is the facts version missing an indirect check (a method call on the field, a nested call my extractor dropped). | **No.** Send the source slice; our summary loses information the model reads fine. |
+| G2 | One Choice per field over the helper names plus "not validated", instead of a Noul | 262 of 273 agree with truth, and each answer names the helper (`IsAmount`, `addresscodec.IsValidAddress`, `IsValid()`) at confidence 0.94 to 1.0. | **Yes.** Same accuracy as the Noul and the fix hint comes for free. |
+| G3 | Pack many questions into one request | 18 types, 3 to 10 field questions alone vs the same plus 40 filler questions: 0 flips, worst delta 0.07, mean 0.01. | **Yes.** Fan-out is free; one request per slice carrying every rule. |
+| G4 | Score levels as `{description, example}` objects instead of plain strings | Confidence 0.70 vs 0.63; separation original/inline/panic 2.77/1.95/0.51 vs 2.50/1.81/0.48. | **Yes, small win.** Add a one-line code example to each level. |
+| G5 | Ask about the change: `diff` hunk, or `{before, after}`, vs the after-state alone | 21 removed checks: all three framings detect all 21, but diff and pair answer at 0.93 to 0.98 while after-only sits at 0.71 to 0.79. The hunk is also the smallest state. | **Yes.** In PR mode send the hunk and ask "does this change remove or weaken a check?". |
+| G6 | One Choice over all 71 Validate bodies: "which validates the smallest share of its fields?" | Wrong. Picked OfferCancel (fully validated) at 0.46; truth is TrustSet. "Most complete" picked Payment at 0.23. 248k-token state. | **No.** Rank in code from atomic answers; never ask the model to compare 71 things in one state. |
+| G7 | Numbered lines as state, Choice over line ids: "which line validates field X?" | 71 of 71 correct, confidence mostly 0.99 to 1.0. | **Yes.** Findings get an exact line without any positioning heuristics. |
+| G8 | Cheap screening Noul per function ("is any field never validated?") before per-field questions | 15 true positives, 3 false positives, 2 misses (CredentialCreate Expiration, VaultCreate WithdrawalPolicy), 50 true negatives. Would skip 53 of 70 per-field requests. | **Not by default.** Per-field is already cheap; the cascade trades 2 of 17 real findings for a 75% request cut. Keep as an opt-in for very large repos. |
+
+### Consolidated asking rules
+
+1. State is the smallest source slice that contains the evidence, plus only
+   the sibling slices a question names. Never a summary of it, never a
+   whole package.
+2. Decompose with the AST and ask one question per item. Prefer a Choice
+   over the known helpers (fix hint included) to a bare Noul.
+3. Put every rule's questions for a slice in one request.
+4. Give Score levels a description and a one-line example; give Nouls
+   `criteria`.
+5. In diff mode, send the hunk and ask about the change.
+6. For location, send numbered lines and ask for the line id.
+7. Do all ranking, aggregation and thresholds in code from atomic answers.
+
 ## 9. Suggested next steps
 
 1. Scaffold the Go module (`cmd/gorev`, `internal/{scan,rules,static,typesafe,score,report}`).
