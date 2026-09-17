@@ -370,6 +370,69 @@ edits cannot silently regress.
 - **Precision first.** Default `min_confidence` high (0.7) and surface
   uncertain answers as a separate list, never as failures.
 
+## 10. Further improvements (with two more experiments)
+
+### 10.1 Error-path test coverage, semantically
+
+Question per sentinel a function can return: "does the test table contain a
+case expecting `ErrX`, or one that exercises the condition that returns it?"
+
+- `Payment.Validate` returns 4 sentinels; all 4 answered 0.99; grep agrees.
+- `Clawback.Validate` returns 3 sentinels; **grep finds none of them in the
+  test file**, but TypeSafe answered 0.96 / 0.98 / 0.98. TypeSafe is right:
+  the test has "fail - missing Amount", "fail - invalid Amount", "fail -
+  Account same as issuer" cases. They just assert `ok == false` without
+  naming the error. A grep-based rule would have produced three false
+  positives here, and the same grep flags 40+ files across the package.
+- Side finding: those tests should assert the sentinel (`require.ErrorIs`),
+  which is rule TEST-04. The two rules compose: coverage is fine, precision
+  of the assertion is not.
+
+### 10.2 Ideas ranked by expected value
+
+1. **Generate questions from the AST, not from the rule author.** Every
+   decomposable rule becomes "for each X in an AST list, one Noul". Lists we
+   get for free: struct fields, sentinels returned, `tf` constants (does a
+   `SetXxxFlag` exist), exported methods (does a test exist), `errors.go`
+   entries (is it used anywhere). The single biggest lever: vague rubrics
+   become per-item facts with a line and a fix hint.
+2. **Relative scoring against an anchor.** Ask a Choice: "which of A (the
+   unit) and B (the package's best-in-class sibling) follows the convention
+   better, or are they equivalent?" Relative judgements are easier and drift
+   less across model versions. Anchors live in `testdata/anchors/`.
+3. **Convention mining.** Run candidate-convention Nouls across every unit in
+   a package. 80%+ yes means convention and the rest are violations; 50/50
+   means an inconsistency to raise as a decision, not a finding. Builds the
+   catalogue automatically; the 25-vs-32 `TransactionType` split would have
+   surfaced this way.
+4. **Self-consistency ensembles.** Ask each Noul twice with paraphrased
+   wording in the same request. Agreement raises confidence; disagreement
+   routes to the human list. Documented in TypeSafe's cookbook.
+5. **Mutation-based calibration.** Mechanically mutate known-good units (drop
+   a field check, inline an error, remove a doc comment) and assert in
+   `go test` that the affected rule's score drops by a margin. Measures
+   rubric sensitivity per rule and catches wording that stopped
+   discriminating after a model bump.
+6. **Cascade to a reasoning model only on low confidence.** Static, then
+   TypeSafe, then only sub-floor units go to Claude for an explanation and a
+   proposed patch. Cost stays near zero.
+7. **Cross-package duplicate detection.** For each websocket sentinel, a
+   Choice over the rpc sentinel names plus "none". The re-ranking cookbook
+   applied to errors; would have found the ~20 duplicates.
+8. **Fix loop with an agent.** Findings as JSONL with fix hints, an agent
+   applies them, re-score only changed slices from cache. shadcn/lint's
+   benchmark shows this converges in one round when messages name the fix.
+9. **Doc-comment accuracy against xrpl.org.** Put the reference text for a
+   field into the state; ask whether the Go comment agrees. Catches stale
+   copies when the protocol changes.
+10. **Use the distribution, not just the score.** A bimodal Score has the
+    same mean as a solid middle level. Flag bimodal answers as "ambiguous"
+    instead of averaging them into health.
+11. **Trend and ownership views.** Health per package over commits, and the
+    ten units that moved most in a PR.
+12. **Pin and log.** Put the versioned `model` from each response into the
+    cache key so a model bump invalidates only what it should.
+
 ## 9. Suggested next steps
 
 1. Scaffold the Go module (`cmd/gorev`, `internal/{scan,rules,static,typesafe,score,report}`).
