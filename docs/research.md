@@ -827,6 +827,87 @@ The rule set this becomes:
    when a spec has no rippled implementation yet: split the spec into its
    MUST sentences and ask per sentence.
 
+## 16. Are all of rippled's errors handled?
+
+rippled has two error families, both defined in machine-readable tables:
+
+- **Transaction result codes** (`tes`, `tec`, `tem`, `tef`, `tel`, `ter`) in
+  `include/xrpl/protocol/TER.h`, with a human message per code in
+  `src/libxrpl/protocol/TER.cpp` (`MAKE_ERROR(code, "message")`).
+- **RPC error tokens** (`actNotFound`, `invalidParams`, ...) in
+  `src/libxrpl/protocol/ErrorCodes.cpp`, a table of enum, token string,
+  message and HTTP status.
+
+Both checks are deterministic. TypeSafe is used only for one thing: whether
+the Go doc comment for a code still describes the same failure as rippled's
+message.
+
+### 16.1 Transaction result codes (against rippled `develop`, 2026-09-17)
+
+| | Count |
+|---|---|
+| Codes in rippled | 203 |
+| Codes in `xrpl/transaction/results.go` | 144 |
+| **Missing in Go** | **64** (35 `tec`, 19 `tem`, 5 `tef`, 4 `ter`, 1 `tel`) |
+| In Go but no longer in rippled | 5: `tecAMM_UNFUNDED`, `tecMASTER_DISABLED`, `temBAD_AUTH_MASTER`, `temREDUNDANT_SEND_MAX`, `terSUBMITTED` |
+
+The missing set is mostly whole amendments: all 20 `tecXCHAIN_*` and 6
+`temXCHAIN_*` codes (the Go SDK has the XChain transaction types but not
+their results), the credentials and delegation codes
+(`tecBAD_CREDENTIALS`, `tecNO_DELEGATE_PERMISSION`,
+`terNO_DELEGATE_PERMISSION`), MPT (`temBAD_MPT`, `tecPRECISION_LOSS`),
+smart-contract codes (`tecOUT_OF_GAS`, `tecBYTECODE_REJECTED`,
+`temINVALID_BYTECODE`, `tefNO_BYTECODE`), batch (`temINVALID_INNER_BATCH`,
+`temARRAY_EMPTY`, `temARRAY_TOO_LARGE`), sponsorship
+(`tecNO_SPONSOR_PERMISSION`), and generic ones a client hits today:
+`temSEQ_AND_TICKET`, `temBAD_TICK_SIZE`, `temBAD_TRANSFER_FEE`,
+`temBAD_REGKEY`, `temINVALID_ACCOUNT_ID`, `tefNO_DST_PARTIAL`,
+`terNO_PERMISSION`, `tecLOCKED`, `tecLIMIT_EXCEEDED`.
+
+Because `TxResult` is a string type and the SDK compares
+`Meta.TransactionResult` as a string, an unknown code does not crash; it
+just cannot be matched against a constant. The fix is to generate
+`results.go` from `TER.h` and `TER.cpp` at a pinned rippled tag and diff it
+in CI.
+
+**Doc accuracy (TypeSafe).** For the 139 Go codes that have both a doc
+comment and a rippled message, one Noul per code: "do the Go comment and
+the rippled message describe the same failure?" 132 agree. The 7 flagged:
+five are Go comments that say only "DEPRECATED" or "used internally, never
+returned" where rippled carries a real message (`tefCREATED`,
+`tefBAD_ADD_AUTH`, `terLAST`, `terNO_LINE`, `temUNKNOWN`), one is
+`terPRE_SEQ` where Go says "sequence number is higher than the sender's"
+and rippled says "missing/inapplicable prior transaction" (same condition,
+different angle), and one is a false alarm on `tesSUCCESS` (0.21) where
+the two texts plainly agree. So: useful as a review list, not as a gate.
+
+### 16.2 RPC error tokens
+
+rippled defines 71 RPC error tokens. In `xrpl-go/xrpl` the tokens that
+appear anywhere are five: `actNotFound`, `invalidParams`, `noNetwork`,
+`txnNotFound`, `unknownCmd`. RPC errors surface as
+`rpc.ClientError{ErrorString: "<token>"}` (and its websocket twin), so a
+caller who wants to branch on, say, `dstActNotFound`, `highFee`,
+`amendmentBlocked`, `lgrNotFound` or `noPermission` has to compare raw
+strings against tokens the SDK does not export.
+
+The fix mirrors 16.1: generate a `rpcerrors` package from
+`ErrorCodes.cpp` (token constants, message, HTTP status), have
+`ClientError` carry a typed `Code`, and provide `errors.Is`-style helpers
+for the common ones, as `IsAccountNotFound` already does for one token.
+
+### 16.3 What this adds to the tool
+
+- `gorev spec results --rippled <tag>`: parse `TER.h`/`TER.cpp`, diff
+  against `results.go`, report missing and stale codes. Deterministic, CI
+  gate.
+- `gorev spec rpc-errors --rippled <tag>`: same for `ErrorCodes.cpp`.
+- Optional TypeSafe pass: per code, "does the Go doc comment match the
+  rippled message?", reported as a review list with confidence.
+- Together with sections 15.1 and 15.2 this covers the three things an
+  amendment changes for a client SDK: fields, client-side rejections, and
+  result codes.
+
 ## 9. Suggested next steps
 
 1. Scaffold the Go module (`cmd/gorev`, `internal/{scan,rules,static,typesafe,score,report}`).

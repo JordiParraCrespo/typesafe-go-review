@@ -1,0 +1,1273 @@
+{
+ "rpc_tokens": [
+  {
+   "enum": "ActMalformed",
+   "token": "actMalformed",
+   "message": "Account malformed.",
+   "http": ""
+  },
+  {
+   "enum": "ActNotFound",
+   "token": "actNotFound",
+   "message": "Account not found.",
+   "http": ""
+  },
+  {
+   "enum": "AlreadyMultisig",
+   "token": "alreadyMultisig",
+   "message": "Already multisigned.",
+   "http": ""
+  },
+  {
+   "enum": "AlreadySingleSig",
+   "token": "alreadySingleSig",
+   "message": "Already single-signed.",
+   "http": ""
+  },
+  {
+   "enum": "AmendmentBlocked",
+   "token": "amendmentBlocked",
+   "message": "Amendment blocked, need upgrade.",
+   "http": "503"
+  },
+  {
+   "enum": "ExpiredValidatorList",
+   "token": "unlBlocked",
+   "message": "Validator list expired.",
+   "http": "503"
+  },
+  {
+   "enum": "AtxDeprecated",
+   "token": "deprecated",
+   "message": "Use the new API or specify a ledger range.",
+   "http": "400"
+  },
+  {
+   "enum": "BadKeyType",
+   "token": "badKeyType",
+   "message": "Bad key type.",
+   "http": "400"
+  },
+  {
+   "enum": "BadFeature",
+   "token": "badFeature",
+   "message": "Feature unknown or invalid.",
+   "http": "500"
+  },
+  {
+   "enum": "BadIssuer",
+   "token": "badIssuer",
+   "message": "Issuer account malformed.",
+   "http": "400"
+  },
+  {
+   "enum": "BadMarket",
+   "token": "badMarket",
+   "message": "No such market.",
+   "http": "404"
+  },
+  {
+   "enum": "BadSecret",
+   "token": "badSecret",
+   "message": "Secret does not match account.",
+   "http": "403"
+  },
+  {
+   "enum": "BadSeed",
+   "token": "badSeed",
+   "message": "Disallowed seed.",
+   "http": "403"
+  },
+  {
+   "enum": "BadSyntax",
+   "token": "badSyntax",
+   "message": "Syntax error.",
+   "http": "400"
+  },
+  {
+   "enum": "ChannelMalformed",
+   "token": "channelMalformed",
+   "message": "Payment channel is malformed.",
+   "http": "400"
+  },
+  {
+   "enum": "ChannelAmtMalformed",
+   "token": "channelAmtMalformed",
+   "message": "Payment channel amount is malformed.",
+   "http": "400"
+  },
+  {
+   "enum": "CommandMissing",
+   "token": "commandMissing",
+   "message": "Missing command entry.",
+   "http": "400"
+  },
+  {
+   "enum": "DbDeserialization",
+   "token": "dbDeserialization",
+   "message": "Database deserialization error.",
+   "http": "502"
+  },
+  {
+   "enum": "DstActMalformed",
+   "token": "dstActMalformed",
+   "message": "Destination account is malformed.",
+   "http": "400"
+  },
+  {
+   "enum": "DstActMissing",
+   "token": "dstActMissing",
+   "message": "Destination account not provided.",
+   "http": "400"
+  },
+  {
+   "enum": "DstActNotFound",
+   "token": "dstActNotFound",
+   "message": "Destination account not found.",
+   "http": "404"
+  },
+  {
+   "enum": "DstAmtMalformed",
+   "token": "dstAmtMalformed",
+   "message": "Destination amount/currency/issuer is malformed.",
+   "http": "400"
+  },
+  {
+   "enum": "DstAmtMissing",
+   "token": "dstAmtMissing",
+   "message": "Destination amount/currency/issuer is missing.",
+   "http": "400"
+  },
+  {
+   "enum": "DstIsrMalformed",
+   "token": "dstIsrMalformed",
+   "message": "Destination issuer is malformed.",
+   "http": "400"
+  },
+  {
+   "enum": "ExcessiveLgrRange",
+   "token": "excessiveLgrRange",
+   "message": "Ledger range exceeds 1000.",
+   "http": "400"
+  },
+  {
+   "enum": "Forbidden",
+   "token": "forbidden",
+   "message": "Bad credentials.",
+   "http": "403"
+  },
+  {
+   "enum": "HighFee",
+   "token": "highFee",
+   "message": "Current transaction fee exceeds your limit.",
+   "http": "402"
+  },
+  {
+   "enum": "Internal",
+   "token": "internal",
+   "message": "Internal error.",
+   "http": "500"
+  },
+  {
+   "enum": "InvalidLgrRange",
+   "token": "invalidLgrRange",
+   "message": "Ledger range is invalid.",
+   "http": "400"
+  },
+  {
+   "enum": "InvalidParams",
+   "token": "invalidParams",
+   "message": "Invalid parameters.",
+   "http": "400"
+  },
+  {
+   "enum": "InvalidHotwallet",
+   "token": "invalidHotWallet",
+   "message": "Invalid hotwallet.",
+   "http": "400"
+  },
+  {
+   "enum": "IssueMalformed",
+   "token": "issueMalformed",
+   "message": "Issue is malformed.",
+   "http": "400"
+  },
+  {
+   "enum": "JsonRpc",
+   "token": "json_rpc",
+   "message": "JSON-RPC transport error.",
+   "http": "500"
+  },
+  {
+   "enum": "LgrIdxsInvalid",
+   "token": "lgrIdxsInvalid",
+   "message": "Ledger indexes invalid.",
+   "http": "400"
+  },
+  {
+   "enum": "LgrIdxMalformed",
+   "token": "lgrIdxMalformed",
+   "message": "Ledger index malformed.",
+   "http": "400"
+  },
+  {
+   "enum": "LgrNotFound",
+   "token": "lgrNotFound",
+   "message": "Ledger not found.",
+   "http": "404"
+  },
+  {
+   "enum": "LgrNotValidated",
+   "token": "lgrNotValidated",
+   "message": "Ledger not validated.",
+   "http": "202"
+  },
+  {
+   "enum": "MasterDisabled",
+   "token": "masterDisabled",
+   "message": "Master key is disabled.",
+   "http": "403"
+  },
+  {
+   "enum": "NotEnabled",
+   "token": "notEnabled",
+   "message": "Not enabled in configuration.",
+   "http": "501"
+  },
+  {
+   "enum": "NotImpl",
+   "token": "notImpl",
+   "message": "Not implemented.",
+   "http": "501"
+  },
+  {
+   "enum": "NotReady",
+   "token": "notReady",
+   "message": "Not ready to handle this request.",
+   "http": "503"
+  },
+  {
+   "enum": "NotSupported",
+   "token": "notSupported",
+   "message": "Operation not supported.",
+   "http": "501"
+  },
+  {
+   "enum": "NoClosed",
+   "token": "noClosed",
+   "message": "Closed ledger is unavailable.",
+   "http": "503"
+  },
+  {
+   "enum": "NoCurrent",
+   "token": "noCurrent",
+   "message": "Current ledger is unavailable.",
+   "http": "503"
+  },
+  {
+   "enum": "NotSynced",
+   "token": "notSynced",
+   "message": "Not synced to the network.",
+   "http": "503"
+  },
+  {
+   "enum": "NoEvents",
+   "token": "noEvents",
+   "message": "Current transport does not support events.",
+   "http": "405"
+  },
+  {
+   "enum": "NoNetwork",
+   "token": "noNetwork",
+   "message": "Not synced to the network.",
+   "http": "503"
+  },
+  {
+   "enum": "WrongNetwork",
+   "token": "wrongNetwork",
+   "message": "Wrong network.",
+   "http": "503"
+  },
+  {
+   "enum": "NoPermission",
+   "token": "noPermission",
+   "message": "You don't have permission for this command.",
+   "http": "401"
+  },
+  {
+   "enum": "NoPfRequest",
+   "token": "noPathRequest",
+   "message": "No pathfinding request in progress.",
+   "http": "404"
+  },
+  {
+   "enum": "ObjectNotFound",
+   "token": "objectNotFound",
+   "message": "The requested object was not found.",
+   "http": "404"
+  },
+  {
+   "enum": "PublicMalformed",
+   "token": "publicMalformed",
+   "message": "Public key is malformed.",
+   "http": "400"
+  },
+  {
+   "enum": "SendmaxMalformed",
+   "token": "sendMaxMalformed",
+   "message": "SendMax amount malformed.",
+   "http": "400"
+  },
+  {
+   "enum": "SigningMalformed",
+   "token": "signingMalformed",
+   "message": "Signing of transaction is malformed.",
+   "http": "400"
+  },
+  {
+   "enum": "SlowDown",
+   "token": "slowDown",
+   "message": "You are placing too much load on the server.",
+   "http": "429"
+  },
+  {
+   "enum": "SrcActMalformed",
+   "token": "srcActMalformed",
+   "message": "Source account is malformed.",
+   "http": "400"
+  },
+  {
+   "enum": "SrcActMissing",
+   "token": "srcActMissing",
+   "message": "Source account not provided.",
+   "http": "400"
+  },
+  {
+   "enum": "SrcActNotFound",
+   "token": "srcActNotFound",
+   "message": "Source account not found.",
+   "http": "404"
+  },
+  {
+   "enum": "DelegateActNotFound",
+   "token": "delegateActNotFound",
+   "message": "Delegate account not found.",
+   "http": "404"
+  },
+  {
+   "enum": "SrcCurMalformed",
+   "token": "srcCurMalformed",
+   "message": "Source currency is malformed.",
+   "http": "400"
+  },
+  {
+   "enum": "SrcIsrMalformed",
+   "token": "srcIsrMalformed",
+   "message": "Source issuer is malformed.",
+   "http": "400"
+  },
+  {
+   "enum": "StreamMalformed",
+   "token": "malformedStream",
+   "message": "Stream malformed.",
+   "http": "400"
+  },
+  {
+   "enum": "TooBusy",
+   "token": "tooBusy",
+   "message": "The server is too busy to help you now.",
+   "http": "503"
+  },
+  {
+   "enum": "TxnNotFound",
+   "token": "txnNotFound",
+   "message": "Transaction not found.",
+   "http": "404"
+  },
+  {
+   "enum": "UnknownCommand",
+   "token": "unknownCmd",
+   "message": "Unknown method.",
+   "http": "405"
+  },
+  {
+   "enum": "OracleMalformed",
+   "token": "oracleMalformed",
+   "message": "Oracle request is malformed.",
+   "http": "400"
+  },
+  {
+   "enum": "BadCredentials",
+   "token": "badCredentials",
+   "message": "Credentials do not exist, are not accepted, or have expired.",
+   "http": "400"
+  },
+  {
+   "enum": "TxSigned",
+   "token": "transactionSigned",
+   "message": "Transaction should not be signed.",
+   "http": "400"
+  },
+  {
+   "enum": "DomainMalformed",
+   "token": "domainMalformed",
+   "message": "Domain is malformed.",
+   "http": "400"
+  },
+  {
+   "enum": "EntryNotFound",
+   "token": "entryNotFound",
+   "message": "Entry not found.",
+   "http": "400"
+  },
+  {
+   "enum": "UnexpectedLedgerType",
+   "token": "unexpectedLedgerType",
+   "message": "Unexpected ledger type.",
+   "http": "400"
+  }
+ ],
+ "rpc_known_in_go": [
+  "actNotFound",
+  "invalidParams",
+  "noNetwork",
+  "txnNotFound",
+  "unknownCmd"
+ ],
+ "doc_agreement": [
+  {
+   "code": "tecAMM_ACCOUNT",
+   "noul": 0.97,
+   "go": "The transaction failed because the operation is not allowed on Automated Market Maker (AMM) accounts. (Added by the AMM amendment)",
+   "rippled": "This operation is not allowed on an AMM Account."
+  },
+  {
+   "code": "tecAMM_BALANCE",
+   "noul": 0.91,
+   "go": "The AMMDeposit or AMMWithdraw transaction failed because either the AMM or the user does not hold enough of one of the specified assets. (Added by the AMM amendment)",
+   "rippled": "AMM has invalid balance."
+  },
+  {
+   "code": "tecAMM_EMPTY",
+   "noul": 0.97,
+   "go": "The AMM-related transaction failed because the AMM has no assets in its pool. In this state, you can only delete the AMM or fund it with a new deposit. (Added by the AMM amendment)",
+   "rippled": "AMM is in empty state."
+  },
+  {
+   "code": "tecAMM_FAILED",
+   "noul": 0.93,
+   "go": "The AMM-related transaction failed due to asset availability or pricing constraints. (Added by the AMM amendment)",
+   "rippled": "AMM transaction failed."
+  },
+  {
+   "code": "tecAMM_INVALID_TOKENS",
+   "noul": 0.93,
+   "go": "The AMM-related transaction failed due to insufficient LP Tokens or problems with rounding. (Added by the AMM amendment)",
+   "rippled": "AMM invalid LP tokens."
+  },
+  {
+   "code": "tecAMM_NOT_EMPTY",
+   "noul": 0.96,
+   "go": "The transaction was meant to operate on an AMM with empty asset pools, but the specified AMM currently holds assets. (Added by the AMM amendment)",
+   "rippled": "AMM is not in empty state."
+  },
+  {
+   "code": "tecCANT_ACCEPT_OWN_NFTOKEN_OFFER",
+   "noul": 0.96,
+   "go": "The transaction tried to accept an offer placed by the same account to buy or sell an NFToken. (Added by the NonFungibleTokensV1_1 amendment)",
+   "rippled": "An NFToken offer cannot be claimed by its owner."
+  },
+  {
+   "code": "tecCLAIM",
+   "noul": 0.64,
+   "go": "Unspecified failure, with transaction cost destroyed.",
+   "rippled": "Fee claimed. Sequence used. No action."
+  },
+  {
+   "code": "tecCRYPTOCONDITION_ERROR",
+   "noul": 0.96,
+   "go": "This EscrowCreate or EscrowFinish transaction contained a malformed or mismatched crypto-condition.",
+   "rippled": "Malformed, invalid, or mismatched conditional or fulfillment."
+  },
+  {
+   "code": "tecDIR_FULL",
+   "noul": 0.97,
+   "go": "The transaction tried to add an object to an account's owner directory, but the directory is full.",
+   "rippled": "Can not add entry to full directory."
+  },
+  {
+   "code": "tecDUPLICATE",
+   "noul": 0.97,
+   "go": "The transaction tried to create an object that already exists.",
+   "rippled": "Ledger object already exists."
+  },
+  {
+   "code": "tecDST_TAG_NEEDED",
+   "noul": 0.97,
+   "go": "The Payment transaction omitted a destination tag, but the destination account requires one.",
+   "rippled": "A destination tag is required."
+  },
+  {
+   "code": "tecEMPTY_DID",
+   "noul": 0.91,
+   "go": "The transaction tried to create a DID entry with no contents. (Added by the DID amendment)",
+   "rippled": "The DID object did not have a URI or DIDDocument field."
+  },
+  {
+   "code": "tecEXPIRED",
+   "noul": 0.97,
+   "go": "The transaction tried to create an object whose provided Expiration time has already passed.",
+   "rippled": "Expiration time is passed."
+  },
+  {
+   "code": "tecFAILED_PROCESSING",
+   "noul": 0.95,
+   "go": "An unspecified error occurred when processing the transaction.",
+   "rippled": "Failed to correctly process transaction."
+  },
+  {
+   "code": "tecFROZEN",
+   "noul": 0.92,
+   "go": "The OfferCreate transaction failed because one or both of the assets involved are subject to a global freeze.",
+   "rippled": "Asset is frozen."
+  },
+  {
+   "code": "tecHAS_OBLIGATIONS",
+   "noul": 0.93,
+   "go": "The AccountDelete transaction failed because the account owns objects that cannot be deleted.",
+   "rippled": "The account cannot be deleted since it has obligations."
+  },
+  {
+   "code": "tecINSUF_RESERVE_LINE",
+   "noul": 0.96,
+   "go": "The transaction failed due to insufficient XRP to create a new trust line.",
+   "rippled": "Insufficient reserve to add trust line."
+  },
+  {
+   "code": "tecINSUF_RESERVE_OFFER",
+   "noul": 0.98,
+   "go": "The transaction failed due to insufficient XRP to create a new Offer.",
+   "rippled": "Insufficient reserve to create offer."
+  },
+  {
+   "code": "tecINSUFF_FEE",
+   "noul": 0.97,
+   "go": "The transaction failed because the sending account does not have enough XRP to pay the transaction cost specified.",
+   "rippled": "Insufficient balance to pay fee."
+  },
+  {
+   "code": "tecINSUFFICIENT_FUNDS",
+   "noul": 0.92,
+   "go": "One of the accounts involved does not hold enough of a necessary asset. (Added by the NonFungibleTokensV1_1 amendment)",
+   "rippled": "Not enough funds available to complete requested transaction."
+  },
+  {
+   "code": "tecINSUFFICIENT_PAYMENT",
+   "noul": 0.94,
+   "go": "The amount specified is not enough to pay all fees involved in the transaction. (Added by the NonFungibleTokensV1_1 amendment)",
+   "rippled": "The payment is not sufficient."
+  },
+  {
+   "code": "tecINSUFFICIENT_RESERVE",
+   "noul": 0.95,
+   "go": "The transaction would increase the reserve requirement higher than the sending account's balance.",
+   "rippled": "Insufficient reserve to complete requested operation."
+  },
+  {
+   "code": "tecINTERNAL",
+   "noul": 0.96,
+   "go": "Unspecified internal error, with transaction cost applied. Should not normally be returned.",
+   "rippled": "An internal error has occurred during processing."
+  },
+  {
+   "code": "tecINVARIANT_FAILED",
+   "noul": 0.97,
+   "go": "An invariant check failed when executing this transaction. (EnforceInvariants amendment)",
+   "rippled": "One or more invariants for the transaction were not satisfied."
+  },
+  {
+   "code": "tecKILLED",
+   "noul": 0.89,
+   "go": "The OfferCreate transaction specified TfFillOrKill and could not be filled.",
+   "rippled": "No funds transferred and no offer created."
+  },
+  {
+   "code": "tecMAX_SEQUENCE_REACHED",
+   "noul": 0.97,
+   "go": "A sequence number field is already at its maximum. (Added by NonFungibleTokensV1_1 amendment)",
+   "rippled": "The maximum sequence number was reached."
+  },
+  {
+   "code": "tecNEED_MASTER_KEY",
+   "noul": 0.97,
+   "go": "Transaction tried to cause changes requiring the master key.",
+   "rippled": "The operation requires the use of the Master Key."
+  },
+  {
+   "code": "tecNFTOKEN_BUY_SELL_MISMATCH",
+   "noul": 0.97,
+   "go": "NFTokenAcceptOffer attempted to match incompatible buy/sell offers.",
+   "rippled": "The 'Buy' and 'Sell' NFToken offers are mismatched."
+  },
+  {
+   "code": "tecNFTOKEN_OFFER_TYPE_MISMATCH",
+   "noul": 0.96,
+   "go": "Offer type mismatch in NFTokenAcceptOffer transaction.",
+   "rippled": "The type of NFToken offer is incorrect."
+  },
+  {
+   "code": "tecNO_ALTERNATIVE_KEY",
+   "noul": 0.94,
+   "go": "The transaction tried to remove the only available method of authorizing transactions. (Prior to rippled 0.30.0, this was called tecMASTER_DISABLED.)",
+   "rippled": "The operation would remove the ability to sign transactions with the account."
+  },
+  {
+   "code": "tecNO_AUTH",
+   "noul": 0.93,
+   "go": "The transaction failed because it needs to add a balance on a trust line to an account with the LsfRequireAuth flag enabled, and that trust line has not been authorized.",
+   "rippled": "Not authorized to hold asset."
+  },
+  {
+   "code": "tecNO_DST",
+   "noul": 0.95,
+   "go": "The account on the receiving end of the transaction does not exist.",
+   "rippled": "Destination does not exist. Send XRP to create it."
+  },
+  {
+   "code": "tecNO_DST_INSUF_XRP",
+   "noul": 0.97,
+   "go": "The account on the receiving end does not exist, and the transaction does not send enough XRP to create it.",
+   "rippled": "Destination does not exist. Too little XRP sent to create it."
+  },
+  {
+   "code": "tecNO_ENTRY",
+   "noul": 0.96,
+   "go": "The transaction tried to modify a ledger object, but the specified object does not exist.",
+   "rippled": "No matching entry found."
+  },
+  {
+   "code": "tecNO_ISSUER",
+   "noul": 0.97,
+   "go": "The account specified as issuer of a currency does not exist.",
+   "rippled": "Issuer account does not exist."
+  },
+  {
+   "code": "tecNO_LINE",
+   "noul": 0.84,
+   "go": "The TakerPays field specifies an asset requiring authorization, but the account lacks a trust line.",
+   "rippled": "No such line."
+  },
+  {
+   "code": "tecNO_LINE_INSUF_RESERVE",
+   "noul": 0.92,
+   "go": "Insufficient XRP reserve to create a new trust line; the counterparty has no trust line.",
+   "rippled": "No such line. Too little reserve to create it."
+  },
+  {
+   "code": "tecNO_LINE_REDUNDANT",
+   "noul": 0.96,
+   "go": "The transaction attempted to set a trust line to its default state, but it didn't exist.",
+   "rippled": "Can't set non-existent line to default."
+  },
+  {
+   "code": "tecNO_PERMISSION",
+   "noul": 0.97,
+   "go": "The sender lacks permission to execute the requested operation.",
+   "rippled": "No permission to perform requested operation."
+  },
+  {
+   "code": "tecNO_REGULAR_KEY",
+   "noul": 0.71,
+   "go": "Attempted to disable the master key, but no alternative method exists.",
+   "rippled": "Regular key is not set."
+  },
+  {
+   "code": "tecNO_SUITABLE_NFTOKEN_PAGE",
+   "noul": 0.97,
+   "go": "No available directory page to hold the minted/acquired NFToken. (Added by the NonFungibleTokensV1_1 amendment)",
+   "rippled": "A suitable NFToken page could not be located."
+  },
+  {
+   "code": "tecNO_TARGET",
+   "noul": 0.51,
+   "go": "The referenced Escrow or PayChannel ledger object doesn't exist or has already been deleted.",
+   "rippled": "Target account does not exist."
+  },
+  {
+   "code": "tecOBJECT_NOT_FOUND",
+   "noul": 0.96,
+   "go": "An object specified in this transaction did not exist in the ledger. (Added by NonFungibleTokensV1_1 amendment)",
+   "rippled": "A requested object could not be located."
+  },
+  {
+   "code": "tecOVERSIZE",
+   "noul": 0.88,
+   "go": "The transaction created excessively large metadata.",
+   "rippled": "Object exceeded serialization limits."
+  },
+  {
+   "code": "tecOWNERS",
+   "noul": 0.85,
+   "go": "The transaction cannot succeed because the sender already owns ledger objects.",
+   "rippled": "Non-zero owner count."
+  },
+  {
+   "code": "tecPATH_DRY",
+   "noul": 0.86,
+   "go": "Provided paths lack enough liquidity to send any amount at all.",
+   "rippled": "Path could not send partial amount."
+  },
+  {
+   "code": "tecPATH_PARTIAL",
+   "noul": 0.95,
+   "go": "Provided paths lack enough liquidity to send the full requested amount.",
+   "rippled": "Path could not send full amount."
+  },
+  {
+   "code": "tecTOO_SOON",
+   "noul": 0.76,
+   "go": "Account deletion failed due to a sequence number being too recent.",
+   "rippled": "It is too early to attempt the requested operation. Please wait."
+  },
+  {
+   "code": "tecUNFUNDED",
+   "noul": 0.79,
+   "go": "Insufficient XRP to cover the transaction amount plus reserve requirements.",
+   "rippled": "Not enough XRP to satisfy the reserve requirement."
+  },
+  {
+   "code": "tecUNFUNDED_ADD",
+   "noul": 0.73,
+   "go": "DEPRECATED.",
+   "rippled": "DEPRECATED."
+  },
+  {
+   "code": "tecUNFUNDED_PAYMENT",
+   "noul": 0.95,
+   "go": "Attempted payment exceeds the sender\u2019s XRP holdings.",
+   "rippled": "Insufficient XRP balance to send."
+  },
+  {
+   "code": "tecUNFUNDED_OFFER",
+   "noul": 0.84,
+   "go": "Offer creation failed due to lack of the TakerGets currency.",
+   "rippled": "Insufficient balance to fund created offer."
+  },
+  {
+   "code": "tefALREADY",
+   "noul": 0.6,
+   "go": "The sequence number of the transaction is lower than the current sequence number of the account sending the transaction. revive:disable-next-line:var-naming The same exact transaction has already been applied.",
+   "rippled": "The exact transaction was already in this ledger."
+  },
+  {
+   "code": "tefBAD_ADD_AUTH",
+   "noul": 0.45,
+   "go": "DEPRECATED.",
+   "rippled": "Not authorized to add account."
+  },
+  {
+   "code": "tefBAD_AUTH",
+   "noul": 0.95,
+   "go": "The key used to sign this account is not authorized to modify this account.",
+   "rippled": "Transaction's public key is not authorized."
+  },
+  {
+   "code": "tefBAD_AUTH_MASTER",
+   "noul": 0.91,
+   "go": "The single signature provided to authorize this transaction does not match the master key, but no regular key is associated with this address.",
+   "rippled": "Auth for unclaimed account needs correct master key."
+  },
+  {
+   "code": "tefBAD_LEDGER",
+   "noul": 0.96,
+   "go": "The ledger was discovered in an unexpected state while processing the transaction.",
+   "rippled": "Ledger in unexpected state."
+  },
+  {
+   "code": "tefBAD_QUORUM",
+   "noul": 0.97,
+   "go": "The transaction was multi-signed, but signatures did not meet quorum.",
+   "rippled": "Signatures provided do not meet the quorum."
+  },
+  {
+   "code": "tefBAD_SIGNATURE",
+   "noul": 0.92,
+   "go": "The transaction was multi-signed but included a signature not part of the SignerList.",
+   "rippled": "A signature is provided for a non-signer."
+  },
+  {
+   "code": "tefCREATED",
+   "noul": 0.31,
+   "go": "DEPRECATED.",
+   "rippled": "Can't add an already created account."
+  },
+  {
+   "code": "tefEXCEPTION",
+   "noul": 0.93,
+   "go": "The server entered an unexpected state processing the transaction.",
+   "rippled": "Unexpected program state."
+  },
+  {
+   "code": "tefFAILURE",
+   "noul": 0.95,
+   "go": "Unspecified failure in applying the transaction.",
+   "rippled": "Failed to apply."
+  },
+  {
+   "code": "tefINTERNAL",
+   "noul": 0.95,
+   "go": "The server entered an unexpected internal state when applying the transaction.",
+   "rippled": "Internal error."
+  },
+  {
+   "code": "tefINVARIANT_FAILED",
+   "noul": 0.95,
+   "go": "An invariant check failed when claiming the transaction cost.",
+   "rippled": "Fee claim violated invariants for the transaction."
+  },
+  {
+   "code": "tefMASTER_DISABLED",
+   "noul": 0.96,
+   "go": "The transaction was signed with the master key, but the account has master key disabled.",
+   "rippled": "Master key is disabled."
+  },
+  {
+   "code": "tefMAX_LEDGER",
+   "noul": 0.96,
+   "go": "Transaction included LastLedgerSequence, but the current ledger sequence number exceeds it.",
+   "rippled": "Ledger sequence too high."
+  },
+  {
+   "code": "tefNFTOKEN_IS_NOT_TRANSFERABLE",
+   "noul": 0.97,
+   "go": "Attempted transfer of non-transferable NFToken.",
+   "rippled": "The specified NFToken is not transferable."
+  },
+  {
+   "code": "tefNO_AUTH_REQUIRED",
+   "noul": 0.91,
+   "go": "TrustSet transaction tried to authorize a trust line unnecessarily.",
+   "rippled": "Auth is not required."
+  },
+  {
+   "code": "tefNO_TICKET",
+   "noul": 0.9,
+   "go": "The transaction attempted to use a Ticket that cannot exist.",
+   "rippled": "Ticket is not in ledger."
+  },
+  {
+   "code": "tefNOT_MULTI_SIGNING",
+   "noul": 0.91,
+   "go": "The transaction was multi-signed, but the sending account has no SignerList.",
+   "rippled": "Account has no appropriate list of multi-signers."
+  },
+  {
+   "code": "tefPAST_SEQ",
+   "noul": 0.95,
+   "go": "The transaction's sequence number is lower than the account's current sequence number.",
+   "rippled": "This sequence number has already passed."
+  },
+  {
+   "code": "tefTOO_BIG",
+   "noul": 0.97,
+   "go": "The transaction would affect too many objects in the ledger.",
+   "rippled": "Transaction affects too many items."
+  },
+  {
+   "code": "tefWRONG_PRIOR",
+   "noul": 0.95,
+   "go": "AccountTxnID does not match the account's previous transaction.",
+   "rippled": "This previous transaction does not match."
+  },
+  {
+   "code": "telBAD_DOMAIN",
+   "noul": 0.86,
+   "go": "The domain value specified by the transaction is invalid or too long.",
+   "rippled": "Domain too long."
+  },
+  {
+   "code": "telBAD_PATH_COUNT",
+   "noul": 0.94,
+   "go": "Transaction contains too many paths to process.",
+   "rippled": "Malformed: Too many paths."
+  },
+  {
+   "code": "telBAD_PUBLIC_KEY",
+   "noul": 0.95,
+   "go": "The public key value specified by the transaction is invalid or incorrect in length.",
+   "rippled": "Public key is not valid."
+  },
+  {
+   "code": "telCAN_NOT_QUEUE",
+   "noul": 0.94,
+   "go": "Transaction not queued due to queuing restrictions.",
+   "rippled": "Can not queue at this time."
+  },
+  {
+   "code": "telCAN_NOT_QUEUE_BALANCE",
+   "noul": 0.94,
+   "go": "Transaction not queued because potential costs exceed account balance.",
+   "rippled": "Can not queue at this time: insufficient balance to pay all queued fees."
+  },
+  {
+   "code": "telCAN_NOT_QUEUE_BLOCKS",
+   "noul": 0.95,
+   "go": "Transaction not queued because it would block existing queued transactions.",
+   "rippled": "Can not queue at this time: would block later queued transaction(s)."
+  },
+  {
+   "code": "telCAN_NOT_QUEUE_BLOCKED",
+   "noul": 0.97,
+   "go": "Transaction not queued because it is blocked by transactions ahead of it.",
+   "rippled": "Can not queue at this time: blocking transaction in queue."
+  },
+  {
+   "code": "telCAN_NOT_QUEUE_FEE",
+   "noul": 0.92,
+   "go": "Transaction not queued due to insufficient fee increase.",
+   "rippled": "Can not queue at this time: fee insufficient to replace queued transaction."
+  },
+  {
+   "code": "telCAN_NOT_QUEUE_FULL",
+   "noul": 0.98,
+   "go": "Transaction not queued because the transaction queue is full.",
+   "rippled": "Can not queue at this time: queue is full."
+  },
+  {
+   "code": "telFAILED_PROCESSING",
+   "noul": 0.95,
+   "go": "An unspecified error occurred processing the transaction.",
+   "rippled": "Failed to correctly process transaction."
+  },
+  {
+   "code": "telINSUF_FEE_P",
+   "noul": 0.93,
+   "go": "Fee insufficient based on current server load.",
+   "rippled": "Fee insufficient."
+  },
+  {
+   "code": "telLOCAL_ERROR",
+   "noul": 0.93,
+   "go": "Unspecified local error occurred.",
+   "rippled": "Local failure."
+  },
+  {
+   "code": "telNETWORK_ID_MAKES_TX_NON_CANONICAL",
+   "noul": 0.91,
+   "go": "NetworkID field specified incorrectly based on current network rules.",
+   "rippled": "Transactions submitted to this node/network must NOT include a NetworkID field."
+  },
+  {
+   "code": "telNO_DST_PARTIAL",
+   "noul": 0.95,
+   "go": "TfPartialPayment improperly used in an XRP payment funding a new account.",
+   "rippled": "Partial payment to create account not allowed."
+  },
+  {
+   "code": "telREQUIRES_NETWORK_ID",
+   "noul": 0.86,
+   "go": "Transaction missing required NetworkID field.",
+   "rippled": "Transactions submitted to this node/network must include a correct NetworkID field."
+  },
+  {
+   "code": "telWRONG_NETWORK",
+   "noul": 0.96,
+   "go": "Transaction specifies incorrect NetworkID value for the current network.",
+   "rippled": "Transaction specifies a Network ID that differs from that of the local node."
+  },
+  {
+   "code": "temBAD_AMM_TOKENS",
+   "noul": 0.74,
+   "go": "The transaction incorrectly specified one or more assets. (Added by the AMM amendment)",
+   "rippled": "Malformed: Invalid LPTokens."
+  },
+  {
+   "code": "temBAD_AMOUNT",
+   "noul": 0.94,
+   "go": "An amount specified by the transaction was invalid, possibly negative.",
+   "rippled": "Malformed: Bad amount."
+  },
+  {
+   "code": "temBAD_CURRENCY",
+   "noul": 0.95,
+   "go": "Currency field improperly specified.",
+   "rippled": "Malformed: Bad currency."
+  },
+  {
+   "code": "temBAD_EXPIRATION",
+   "noul": 0.94,
+   "go": "Expiration value improperly specified or missing.",
+   "rippled": "Malformed: Bad expiration."
+  },
+  {
+   "code": "temBAD_FEE",
+   "noul": 0.8,
+   "go": "Fee value improperly specified.",
+   "rippled": "Invalid fee, negative or not XRP."
+  },
+  {
+   "code": "temBAD_ISSUER",
+   "noul": 0.95,
+   "go": "Issuer field improperly specified.",
+   "rippled": "Malformed: Bad issuer."
+  },
+  {
+   "code": "temBAD_LIMIT",
+   "noul": 0.84,
+   "go": "LimitAmount value improperly specified.",
+   "rippled": "Limits must be non-negative."
+  },
+  {
+   "code": "temBAD_NFTOKEN_TRANSFER_FEE",
+   "noul": 0.93,
+   "go": "NFTokenMint TransferFee improperly specified. (Added by NonFungibleTokensV1_1 amendment)",
+   "rippled": "Malformed: The NFToken transfer fee must be between 1 and 5000, inclusive."
+  },
+  {
+   "code": "temBAD_OFFER",
+   "noul": 0.94,
+   "go": "Invalid offer specified in OfferCreate.",
+   "rippled": "Malformed: Bad offer."
+  },
+  {
+   "code": "temBAD_PATH",
+   "noul": 0.93,
+   "go": "Payment Paths improperly specified.",
+   "rippled": "Malformed: Bad path."
+  },
+  {
+   "code": "temBAD_PATH_LOOP",
+   "noul": 0.97,
+   "go": "Payment Paths flagged as a loop.",
+   "rippled": "Malformed: Loop in path."
+  },
+  {
+   "code": "temBAD_SEND_XRP_LIMIT",
+   "noul": 0.95,
+   "go": "TfLimitQuality improperly used in direct XRP-to-XRP payment.",
+   "rippled": "Malformed: Limit quality is not allowed for XRP to XRP."
+  },
+  {
+   "code": "temBAD_SEND_XRP_MAX",
+   "noul": 0.97,
+   "go": "SendMax improperly included in direct XRP-to-XRP payment.",
+   "rippled": "Malformed: Send max is not allowed for XRP to XRP."
+  },
+  {
+   "code": "temBAD_SEND_XRP_NO_DIRECT",
+   "noul": 0.95,
+   "go": "TfRippleNotDirect improperly used in direct XRP-to-XRP payment.",
+   "rippled": "Malformed: No Ripple direct is not allowed for XRP to XRP."
+  },
+  {
+   "code": "temBAD_SEND_XRP_PARTIAL",
+   "noul": 0.96,
+   "go": "TfPartialPayment improperly used in direct XRP-to-XRP payment.",
+   "rippled": "Malformed: Partial payment is not allowed for XRP to XRP."
+  },
+  {
+   "code": "temBAD_SEND_XRP_PATHS",
+   "noul": 0.95,
+   "go": "Paths improperly included in direct XRP-to-XRP payment.",
+   "rippled": "Malformed: Paths are not allowed for XRP to XRP."
+  },
+  {
+   "code": "temBAD_SEQUENCE",
+   "noul": 0.73,
+   "go": "Sequence number references a future transaction.",
+   "rippled": "Malformed: Sequence is not in the past."
+  },
+  {
+   "code": "temBAD_SIGNATURE",
+   "noul": 0.94,
+   "go": "Signature missing or improperly formed.",
+   "rippled": "Malformed: Bad signature."
+  },
+  {
+   "code": "temBAD_SRC_ACCOUNT",
+   "noul": 0.96,
+   "go": "Source account address improperly formed.",
+   "rippled": "Malformed: Bad source account."
+  },
+  {
+   "code": "temBAD_TRANSFER_RATE",
+   "noul": 0.91,
+   "go": "TransferRate field improperly formatted.",
+   "rippled": "Malformed: Transfer rate must be >= 1.0 and <= 2.0"
+  },
+  {
+   "code": "temCANNOT_PREAUTH_SELF",
+   "noul": 0.97,
+   "go": "DepositPreauth transaction attempted to preauthorize self.",
+   "rippled": "Malformed: An account may not preauthorize itself."
+  },
+  {
+   "code": "temDST_IS_SRC",
+   "noul": 0.97,
+   "go": "Destination address matches sending account.",
+   "rippled": "Destination may not be source."
+  },
+  {
+   "code": "temDST_NEEDED",
+   "noul": 0.97,
+   "go": "Transaction improperly omitted destination.",
+   "rippled": "Destination not specified."
+  },
+  {
+   "code": "temINVALID",
+   "noul": 0.94,
+   "go": "Transaction is otherwise invalid.",
+   "rippled": "The transaction is ill-formed."
+  },
+  {
+   "code": "temINVALID_COUNT",
+   "noul": 0.95,
+   "go": "TicketCount field specifies invalid number of tickets.",
+   "rippled": "Malformed: Count field outside valid range."
+  },
+  {
+   "code": "temINVALID_FLAG",
+   "noul": 0.95,
+   "go": "Transaction includes invalid or contradictory Flag.",
+   "rippled": "The transaction has an invalid flag."
+  },
+  {
+   "code": "temMALFORMED",
+   "noul": 0.95,
+   "go": "Unspecified problem with transaction format.",
+   "rippled": "Malformed transaction."
+  },
+  {
+   "code": "temREDUNDANT",
+   "noul": 0.95,
+   "go": "Transaction would accomplish nothing.",
+   "rippled": "The transaction is redundant."
+  },
+  {
+   "code": "temRIPPLE_EMPTY",
+   "noul": 0.95,
+   "go": "Payment transaction includes empty Paths.",
+   "rippled": "PathSet with no paths."
+  },
+  {
+   "code": "temBAD_WEIGHT",
+   "noul": 0.94,
+   "go": "Invalid SignerWeight in SignerListSet.",
+   "rippled": "Malformed: Weight must be a positive value."
+  },
+  {
+   "code": "temBAD_SIGNER",
+   "noul": 0.86,
+   "go": "Invalid signer in SignerListSet.",
+   "rippled": "Malformed: No signer may duplicate account or other signers."
+  },
+  {
+   "code": "temBAD_QUORUM",
+   "noul": 0.82,
+   "go": "Invalid SignerQuorum value in SignerListSet.",
+   "rippled": "Malformed: Quorum is unreachable."
+  },
+  {
+   "code": "temUNCERTAIN",
+   "noul": 0.81,
+   "go": "Used internally only, never returned.",
+   "rippled": "In process of determining result. Never returned."
+  },
+  {
+   "code": "temUNKNOWN",
+   "noul": 0.44,
+   "go": "Used internally only, never returned.",
+   "rippled": "The transaction requires logic that is not implemented yet."
+  },
+  {
+   "code": "temDISABLED",
+   "noul": 0.84,
+   "go": "Transaction requires disabled logic or amendment.",
+   "rippled": "The transaction requires logic that is currently disabled."
+  },
+  {
+   "code": "terFUNDS_SPENT",
+   "noul": 0.64,
+   "go": "DEPRECATED.",
+   "rippled": "DEPRECATED."
+  },
+  {
+   "code": "terINSUF_FEE_B",
+   "noul": 0.95,
+   "go": "Sending account has insufficient XRP to pay the specified fee.",
+   "rippled": "Account balance can't pay fee."
+  },
+  {
+   "code": "terLAST",
+   "noul": 0.31,
+   "go": "Used internally only, never returned.",
+   "rippled": "DEPRECATED."
+  },
+  {
+   "code": "terNO_ACCOUNT",
+   "noul": 0.93,
+   "go": "Sending address is not yet funded in the ledger.",
+   "rippled": "The source account does not exist."
+  },
+  {
+   "code": "terNO_AMM",
+   "noul": 0.96,
+   "go": "Asset pair specified does not have an existing AMM instance. (Added by AMM amendment)",
+   "rippled": "AMM doesn't exist for the asset pair."
+  },
+  {
+   "code": "terNO_AUTH",
+   "noul": 0.9,
+   "go": "Attempted to add unauthorized currency to trust line.",
+   "rippled": "Not authorized to hold IOUs."
+  },
+  {
+   "code": "terNO_LINE",
+   "noul": 0.31,
+   "go": "Used internally only, never returned.",
+   "rippled": "No such line."
+  },
+  {
+   "code": "terNO_RIPPLE",
+   "noul": 0.86,
+   "go": "Transaction cannot succeed due to rippling settings.",
+   "rippled": "Path does not permit rippling."
+  },
+  {
+   "code": "terOWNERS",
+   "noul": 0.79,
+   "go": "Transaction requires sender to have nonzero owners count.",
+   "rippled": "Non-zero owner count."
+  },
+  {
+   "code": "terPRE_SEQ",
+   "noul": 0.49,
+   "go": "Sequence number is higher than the sender's current sequence number.",
+   "rippled": "Missing/inapplicable prior transaction."
+  },
+  {
+   "code": "terPRE_TICKET",
+   "noul": 0.77,
+   "go": "Attempted to use Ticket not yet existing in the ledger, though it could still be created.",
+   "rippled": "Ticket is not yet in ledger."
+  },
+  {
+   "code": "terQUEUED",
+   "noul": 0.9,
+   "go": "Transaction met load-scaled cost but queued for future ledger due to open ledger cost.",
+   "rippled": "Held until escalated fee drops."
+  },
+  {
+   "code": "terRETRY",
+   "noul": 0.73,
+   "go": "Unspecified retriable error.",
+   "rippled": "Retry transaction."
+  },
+  {
+   "code": "tesSUCCESS",
+   "noul": 0.21,
+   "go": "The transaction was applied and forwarded to other servers. If this appears in a validated ledger, then the transaction's success is final.",
+   "rippled": "The transaction was applied. Only final in a validated ledger."
+  }
+ ]
+}
