@@ -1,0 +1,3677 @@
+{
+ "E1_per_field_validation": [
+  {
+   "type": "AMMBid",
+   "fields": {
+    "Asset": 0.98,
+    "Asset2": 0.99,
+    "BidMin": 0.98,
+    "BidMax": 0.99,
+    "AuthAccounts": 0.99
+   },
+   "static_mentions": {
+    "Asset": true,
+    "Asset2": true,
+    "BidMin": true,
+    "BidMax": true,
+    "AuthAccounts": true
+   }
+  },
+  {
+   "type": "AMMClawback",
+   "fields": {
+    "Holder": 0.99,
+    "Asset": 0.94,
+    "Asset2": 0.03,
+    "Amount": 0.96
+   },
+   "static_mentions": {
+    "Holder": true,
+    "Asset": true,
+    "Asset2": false,
+    "Amount": true
+   }
+  },
+  {
+   "type": "AMMCreate",
+   "fields": {
+    "Amount": 0.99,
+    "Amount2": 0.99,
+    "TradingFee": 0.96
+   },
+   "static_mentions": {
+    "Amount": true,
+    "Amount2": true,
+    "TradingFee": true
+   }
+  },
+  {
+   "type": "AMMDelete",
+   "fields": {
+    "Asset": 0.98,
+    "Asset2": 0.98
+   },
+   "static_mentions": {
+    "Asset": true,
+    "Asset2": true
+   }
+  },
+  {
+   "type": "AMMDeposit",
+   "fields": {
+    "Asset": 0.98,
+    "Asset2": 0.98,
+    "Amount": 0.96,
+    "Amount2": 0.96,
+    "EPrice": 0.97,
+    "LPTokenOut": 0.37,
+    "TradingFee": 0.03
+   },
+   "static_mentions": {
+    "Asset": true,
+    "Asset2": true,
+    "Amount": true,
+    "Amount2": true,
+    "EPrice": true,
+    "LPTokenOut": true,
+    "TradingFee": false
+   }
+  },
+  {
+   "type": "AMMVote",
+   "fields": {
+    "Asset": 0.98,
+    "Asset2": 0.98,
+    "TradingFee": 0.97
+   },
+   "static_mentions": {
+    "Asset": true,
+    "Asset2": true,
+    "TradingFee": true
+   }
+  },
+  {
+   "type": "AMMWithdraw",
+   "fields": {
+    "Asset": 0.98,
+    "Asset2": 0.98,
+    "Amount": 0.98,
+    "Amount2": 0.97,
+    "EPrice": 0.97,
+    "LPTokenIn": 0.98
+   },
+   "static_mentions": {
+    "Asset": true,
+    "Asset2": true,
+    "Amount": true,
+    "Amount2": true,
+    "EPrice": true,
+    "LPTokenIn": true
+   }
+  },
+  {
+   "type": "AccountDelete",
+   "fields": {
+    "CredentialIDs": 0.98,
+    "Destination": 0.97,
+    "DestinationTag": 0.03
+   },
+   "static_mentions": {
+    "CredentialIDs": true,
+    "Destination": true,
+    "DestinationTag": false
+   }
+  },
+  {
+   "type": "AccountSet",
+   "fields": {
+    "ClearFlag": 0.97,
+    "Domain": 0.97,
+    "EmailHash": 0.97,
+    "MessageKey": 0.98,
+    "NFTokenMinter": 0.97,
+    "SetFlag": 0.99,
+    "TransferRate": 0.97,
+    "TickSize": 0.99,
+    "WalletLocator": 0.97,
+    "WalletSize": 0.97
+   },
+   "static_mentions": {
+    "ClearFlag": true,
+    "Domain": true,
+    "EmailHash": true,
+    "MessageKey": true,
+    "NFTokenMinter": true,
+    "SetFlag": true,
+    "TransferRate": true,
+    "TickSize": true,
+    "WalletLocator": true,
+    "WalletSize": true
+   }
+  },
+  {
+   "type": "Batch",
+   "fields": {
+    "RawTransactions": 0.98,
+    "BatchSigners": 0.96
+   },
+   "static_mentions": {
+    "RawTransactions": true,
+    "BatchSigners": true
+   }
+  },
+  {
+   "type": "CheckCancel",
+   "fields": {
+    "CheckID": 0.97
+   },
+   "static_mentions": {
+    "CheckID": true
+   }
+  },
+  {
+   "type": "CheckCash",
+   "fields": {
+    "CheckID": 0.97,
+    "Amount": 0.94,
+    "DeliverMin": 0.89
+   },
+   "static_mentions": {
+    "CheckID": true,
+    "Amount": true,
+    "DeliverMin": true
+   }
+  },
+  {
+   "type": "CheckCreate",
+   "fields": {
+    "Destination": 0.97,
+    "SendMax": 0.98,
+    "DestinationTag": 0.05,
+    "Expiration": 0.16,
+    "InvoiceID": 0.04
+   },
+   "static_mentions": {
+    "Destination": true,
+    "SendMax": true,
+    "DestinationTag": false,
+    "Expiration": false,
+    "InvoiceID": false
+   }
+  },
+  {
+   "type": "Clawback",
+   "fields": {
+    "Amount": 0.98
+   },
+   "static_mentions": {
+    "Amount": true
+   }
+  },
+  {
+   "type": "CredentialAccept",
+   "fields": {
+    "Issuer": 0.98,
+    "CredentialType": 0.99
+   },
+   "static_mentions": {
+    "Issuer": true,
+    "CredentialType": true
+   }
+  },
+  {
+   "type": "CredentialCreate",
+   "fields": {
+    "Subject": 0.98,
+    "CredentialType": 0.99,
+    "Expiration": 0.04,
+    "URI": 0.97
+   },
+   "static_mentions": {
+    "Subject": true,
+    "CredentialType": true,
+    "Expiration": false,
+    "URI": true
+   }
+  },
+  {
+   "type": "CredentialDelete",
+   "fields": {
+    "CredentialType": 0.99,
+    "Subject": 0.98,
+    "Issuer": 0.98
+   },
+   "static_mentions": {
+    "CredentialType": true,
+    "Subject": true,
+    "Issuer": true
+   }
+  },
+  {
+   "type": "DIDSet",
+   "fields": {
+    "Data": 0.74,
+    "DIDDocument": 0.78,
+    "URI": 0.61
+   },
+   "static_mentions": {
+    "Data": true,
+    "DIDDocument": true,
+    "URI": true
+   }
+  },
+  {
+   "type": "DelegateSet",
+   "fields": {
+    "Authorize": 0.97,
+    "Permissions": 0.98
+   },
+   "static_mentions": {
+    "Authorize": true,
+    "Permissions": true
+   }
+  },
+  {
+   "type": "DepositPreauth",
+   "fields": {
+    "Authorize": 0.97,
+    "AuthorizeCredentials": 0.98,
+    "Unauthorize": 0.97,
+    "UnauthorizeCredentials": 0.98
+   },
+   "static_mentions": {
+    "Authorize": true,
+    "AuthorizeCredentials": true,
+    "Unauthorize": true,
+    "UnauthorizeCredentials": true
+   }
+  },
+  {
+   "type": "EscrowCancel",
+   "fields": {
+    "Owner": 0.98,
+    "OfferSequence": 0.98
+   },
+   "static_mentions": {
+    "Owner": true,
+    "OfferSequence": true
+   }
+  },
+  {
+   "type": "EscrowCreate",
+   "fields": {
+    "Amount": 0.44,
+    "Destination": 0.98,
+    "CancelAfter": 0.89,
+    "FinishAfter": 0.95,
+    "Condition": 0.91,
+    "DestinationTag": 0.03
+   },
+   "static_mentions": {
+    "Amount": false,
+    "Destination": true,
+    "CancelAfter": true,
+    "FinishAfter": true,
+    "Condition": true,
+    "DestinationTag": false
+   }
+  },
+  {
+   "type": "EscrowFinish",
+   "fields": {
+    "CredentialIDs": 0.98,
+    "Owner": 0.98,
+    "OfferSequence": 0.98,
+    "Condition": 0.03,
+    "Fulfillment": 0.04
+   },
+   "static_mentions": {
+    "CredentialIDs": true,
+    "Owner": true,
+    "OfferSequence": true,
+    "Condition": false,
+    "Fulfillment": false
+   }
+  },
+  {
+   "type": "MPTokenAuthorize",
+   "fields": {
+    "MPTokenIssuanceID": 0.24,
+    "Holder": 0.97
+   },
+   "static_mentions": {
+    "MPTokenIssuanceID": false,
+    "Holder": true
+   }
+  },
+  {
+   "type": "MPTokenIssuanceCreate",
+   "fields": {
+    "AssetScale": 0.11,
+    "TransferFee": 0.98,
+    "MaximumAmount": 0.98,
+    "MPTokenMetadata": 0.98
+   },
+   "static_mentions": {
+    "AssetScale": false,
+    "TransferFee": true,
+    "MaximumAmount": true,
+    "MPTokenMetadata": true
+   }
+  },
+  {
+   "type": "MPTokenIssuanceDestroy",
+   "fields": {
+    "MPTokenIssuanceID": 0.98
+   },
+   "static_mentions": {
+    "MPTokenIssuanceID": true
+   }
+  },
+  {
+   "type": "MPTokenIssuanceSet",
+   "fields": {
+    "MPTokenIssuanceID": 0.33,
+    "Holder": 0.97
+   },
+   "static_mentions": {
+    "MPTokenIssuanceID": false,
+    "Holder": true
+   }
+  },
+  {
+   "type": "NFTokenAcceptOffer",
+   "fields": {
+    "NFTokenSellOffer": 0.94,
+    "NFTokenBuyOffer": 0.95,
+    "NFTokenBrokerFee": 0.97
+   },
+   "static_mentions": {
+    "NFTokenSellOffer": true,
+    "NFTokenBuyOffer": true,
+    "NFTokenBrokerFee": true
+   }
+  },
+  {
+   "type": "NFTokenBurn",
+   "fields": {
+    "NFTokenID": 0.98,
+    "Owner": 0.98
+   },
+   "static_mentions": {
+    "NFTokenID": true,
+    "Owner": true
+   }
+  },
+  {
+   "type": "NFTokenCancelOffer",
+   "fields": {
+    "NFTokenOffers": 0.96
+   },
+   "static_mentions": {
+    "NFTokenOffers": true
+   }
+  },
+  {
+   "type": "NFTokenCreateOffer",
+   "fields": {
+    "Owner": 0.97,
+    "NFTokenID": 0.04,
+    "Amount": 0.03,
+    "Expiration": 0.03,
+    "Destination": 0.97
+   },
+   "static_mentions": {
+    "Owner": true,
+    "NFTokenID": false,
+    "Amount": false,
+    "Expiration": false,
+    "Destination": true
+   }
+  },
+  {
+   "type": "NFTokenMint",
+   "fields": {
+    "NFTokenTaxon": 0.03,
+    "Issuer": 0.98,
+    "TransferFee": 0.98,
+    "URI": 0.98,
+    "Amount": 0.98,
+    "Expiration": 0.57,
+    "Destination": 0.97
+   },
+   "static_mentions": {
+    "NFTokenTaxon": false,
+    "Issuer": true,
+    "TransferFee": true,
+    "URI": true,
+    "Amount": true,
+    "Expiration": true,
+    "Destination": true
+   }
+  },
+  {
+   "type": "NFTokenModify",
+   "fields": {
+    "Owner": 0.97,
+    "NFTokenID": 0.05,
+    "URI": 0.98
+   },
+   "static_mentions": {
+    "Owner": true,
+    "NFTokenID": false,
+    "URI": true
+   }
+  },
+  {
+   "type": "OfferCancel",
+   "fields": {
+    "OfferSequence": 0.37
+   },
+   "static_mentions": {
+    "OfferSequence": false
+   }
+  },
+  {
+   "type": "OfferCreate",
+   "fields": {
+    "Expiration": 0.51,
+    "OfferSequence": 0.3,
+    "TakerGets": 0.98,
+    "TakerPays": 0.99,
+    "DomainID": 0.96
+   },
+   "static_mentions": {
+    "Expiration": false,
+    "OfferSequence": false,
+    "TakerGets": true,
+    "TakerPays": true,
+    "DomainID": true
+   }
+  },
+  {
+   "type": "OracleDelete",
+   "fields": {
+    "OracleDocumentID": 0.3
+   },
+   "static_mentions": {
+    "OracleDocumentID": false
+   }
+  },
+  {
+   "type": "OracleSet",
+   "fields": {
+    "OracleDocumentID": 0.38,
+    "LastUpdatedTime": 0.15,
+    "Provider": 0.94,
+    "URI": 0.03,
+    "AssetClass": 0.04,
+    "PriceDataSeries": 0.96
+   },
+   "static_mentions": {
+    "OracleDocumentID": false,
+    "LastUpdatedTime": false,
+    "Provider": true,
+    "URI": false,
+    "AssetClass": false,
+    "PriceDataSeries": true
+   }
+  },
+  {
+   "type": "Payment",
+   "fields": {
+    "Amount": 0.99,
+    "CredentialIDs": 0.99,
+    "DeliverMax": 0.99,
+    "DeliverMin": 0.99,
+    "Destination": 0.98,
+    "DestinationTag": 0.04,
+    "InvoiceID": 0.05,
+    "Paths": 0.98,
+    "SendMax": 0.99,
+    "DomainID": 0.98
+   },
+   "static_mentions": {
+    "Amount": true,
+    "CredentialIDs": true,
+    "DeliverMax": true,
+    "DeliverMin": true,
+    "Destination": true,
+    "DestinationTag": false,
+    "InvoiceID": false,
+    "Paths": true,
+    "SendMax": true,
+    "DomainID": true
+   }
+  },
+  {
+   "type": "PaymentChannelClaim",
+   "fields": {
+    "Channel": 0.97,
+    "CredentialIDs": 0.98,
+    "Balance": 0.05,
+    "Amount": 0.13,
+    "Signature": 0.98,
+    "PublicKey": 0.98
+   },
+   "static_mentions": {
+    "Channel": true,
+    "CredentialIDs": true,
+    "Balance": false,
+    "Amount": false,
+    "Signature": true,
+    "PublicKey": true
+   }
+  },
+  {
+   "type": "PaymentChannelCreate",
+   "fields": {
+    "Amount": 0.44,
+    "Destination": 0.99,
+    "SettleDelay": 0.09,
+    "PublicKey": 0.98,
+    "CancelAfter": 0.15,
+    "DestinationTag": 0.03
+   },
+   "static_mentions": {
+    "Amount": false,
+    "Destination": true,
+    "SettleDelay": false,
+    "PublicKey": true,
+    "CancelAfter": false,
+    "DestinationTag": false
+   }
+  },
+  {
+   "type": "PaymentChannelFund",
+   "fields": {
+    "Channel": 0.38,
+    "Amount": 0.3,
+    "Expiration": 0.98
+   },
+   "static_mentions": {
+    "Channel": false,
+    "Amount": false,
+    "Expiration": true
+   }
+  },
+  {
+   "type": "PermissionedDomainDelete",
+   "fields": {
+    "DomainID": 0.98
+   },
+   "static_mentions": {
+    "DomainID": true
+   }
+  },
+  {
+   "type": "PermissionedDomainSet",
+   "fields": {
+    "DomainID": 0.4,
+    "AcceptedCredentials": 0.96
+   },
+   "static_mentions": {
+    "DomainID": false,
+    "AcceptedCredentials": true
+   }
+  },
+  {
+   "type": "SetRegularKey",
+   "fields": {
+    "RegularKey": 0.98
+   },
+   "static_mentions": {
+    "RegularKey": true
+   }
+  },
+  {
+   "type": "SignerListSet",
+   "fields": {
+    "SignerQuorum": 0.96,
+    "SignerEntries": 0.97
+   },
+   "static_mentions": {
+    "SignerQuorum": true,
+    "SignerEntries": true
+   }
+  },
+  {
+   "type": "TicketCreate",
+   "fields": {
+    "TicketCount": 0.99
+   },
+   "static_mentions": {
+    "TicketCount": true
+   }
+  },
+  {
+   "type": "TrustSet",
+   "fields": {
+    "LimitAmount": 0.98,
+    "QualityIn": 0.03,
+    "QualityOut": 0.03
+   },
+   "static_mentions": {
+    "LimitAmount": true,
+    "QualityIn": false,
+    "QualityOut": false
+   }
+  },
+  {
+   "type": "XChainAccountCreateCommit",
+   "fields": {
+    "Amount": 0.98,
+    "Destination": 0.98,
+    "SignatureReward": 0.99,
+    "XChainBridge": 0.97
+   },
+   "static_mentions": {
+    "Amount": true,
+    "Destination": true,
+    "SignatureReward": true,
+    "XChainBridge": true
+   }
+  },
+  {
+   "type": "XChainAddAccountCreateAttestation",
+   "fields": {
+    "Amount": 0.99,
+    "AttestationRewardAccount": 0.99,
+    "AttestationSignerAccount": 0.99,
+    "Destination": 0.99,
+    "OtherChainSource": 0.98,
+    "PublicKey": 0.98,
+    "Signature": 0.98,
+    "SignatureReward": 0.99,
+    "WasLockingChainSend": 0.98,
+    "XChainAccountCreateCount": 0.96,
+    "XChainBridge": 0.98
+   },
+   "static_mentions": {
+    "Amount": true,
+    "AttestationRewardAccount": true,
+    "AttestationSignerAccount": true,
+    "Destination": true,
+    "OtherChainSource": true,
+    "PublicKey": true,
+    "Signature": true,
+    "SignatureReward": true,
+    "WasLockingChainSend": true,
+    "XChainAccountCreateCount": true,
+    "XChainBridge": true
+   }
+  },
+  {
+   "type": "XChainAddClaimAttestation",
+   "fields": {
+    "Amount": 0.99,
+    "AttestationRewardAccount": 0.99,
+    "AttestationSignerAccount": 0.99,
+    "Destination": 0.97,
+    "OtherChainSource": 0.98,
+    "PublicKey": 0.98,
+    "Signature": 0.98,
+    "WasLockingChainSend": 0.98,
+    "XChainBridge": 0.98,
+    "XChainClaimID": 0.99
+   },
+   "static_mentions": {
+    "Amount": true,
+    "AttestationRewardAccount": true,
+    "AttestationSignerAccount": true,
+    "Destination": true,
+    "OtherChainSource": true,
+    "PublicKey": true,
+    "Signature": true,
+    "WasLockingChainSend": true,
+    "XChainBridge": true,
+    "XChainClaimID": true
+   }
+  },
+  {
+   "type": "XChainClaim",
+   "fields": {
+    "Amount": 0.99,
+    "Destination": 0.98,
+    "DestinationTag": 0.04,
+    "XChainBridge": 0.98,
+    "XChainClaimID": 0.98
+   },
+   "static_mentions": {
+    "Amount": true,
+    "Destination": true,
+    "DestinationTag": false,
+    "XChainBridge": true,
+    "XChainClaimID": true
+   }
+  },
+  {
+   "type": "XChainCommit",
+   "fields": {
+    "Amount": 0.98,
+    "OtherChainDestination": 0.04,
+    "XChainBridge": 0.98,
+    "XChainClaimID": 0.98
+   },
+   "static_mentions": {
+    "Amount": true,
+    "OtherChainDestination": false,
+    "XChainBridge": true,
+    "XChainClaimID": true
+   }
+  },
+  {
+   "type": "XChainCreateBridge",
+   "fields": {
+    "MinAccountCreateAmount": 0.98,
+    "SignatureReward": 0.98,
+    "XChainBridge": 0.95
+   },
+   "static_mentions": {
+    "MinAccountCreateAmount": true,
+    "SignatureReward": true,
+    "XChainBridge": true
+   }
+  },
+  {
+   "type": "XChainCreateClaimID",
+   "fields": {
+    "OtherChainSource": 0.98,
+    "SignatureReward": 0.98,
+    "XChainBridge": 0.97
+   },
+   "static_mentions": {
+    "OtherChainSource": true,
+    "SignatureReward": true,
+    "XChainBridge": true
+   }
+  },
+  {
+   "type": "XChainModifyBridge",
+   "fields": {
+    "Flags": 0.96,
+    "MinAccountCreateAmount": 0.98,
+    "SignatureReward": 0.98,
+    "XChainBridge": 0.96
+   },
+   "static_mentions": {
+    "Flags": true,
+    "MinAccountCreateAmount": true,
+    "SignatureReward": true,
+    "XChainBridge": true
+   }
+  }
+ ],
+ "E2_convention_mining_flatten": [
+  {
+   "type": "AMMBid",
+   "uses_constant_noul": 0.97,
+   "truth_uses_constant": true
+  },
+  {
+   "type": "AMMClawback",
+   "uses_constant_noul": 0.29,
+   "truth_uses_constant": true
+  },
+  {
+   "type": "AMMCreate",
+   "uses_constant_noul": 0.97,
+   "truth_uses_constant": true
+  },
+  {
+   "type": "AMMDelete",
+   "uses_constant_noul": 0.02,
+   "truth_uses_constant": false
+  },
+  {
+   "type": "AMMDeposit",
+   "uses_constant_noul": 0.98,
+   "truth_uses_constant": true
+  },
+  {
+   "type": "AMMVote",
+   "uses_constant_noul": 0.02,
+   "truth_uses_constant": false
+  },
+  {
+   "type": "AMMWithdraw",
+   "uses_constant_noul": 0.02,
+   "truth_uses_constant": false
+  },
+  {
+   "type": "AccountDelete",
+   "uses_constant_noul": 0.89,
+   "truth_uses_constant": true
+  },
+  {
+   "type": "AccountSet",
+   "uses_constant_noul": 0.03,
+   "truth_uses_constant": false
+  },
+  {
+   "type": "Batch",
+   "uses_constant_noul": 0.91,
+   "truth_uses_constant": true
+  },
+  {
+   "type": "CheckCancel",
+   "uses_constant_noul": 0.91,
+   "truth_uses_constant": true
+  },
+  {
+   "type": "CheckCash",
+   "uses_constant_noul": 0.86,
+   "truth_uses_constant": true
+  },
+  {
+   "type": "CheckCreate",
+   "uses_constant_noul": 0.86,
+   "truth_uses_constant": true
+  },
+  {
+   "type": "Clawback",
+   "uses_constant_noul": 0.02,
+   "truth_uses_constant": false
+  },
+  {
+   "type": "CredentialAccept",
+   "uses_constant_noul": 0.77,
+   "truth_uses_constant": true
+  },
+  {
+   "type": "CredentialCreate",
+   "uses_constant_noul": 0.8,
+   "truth_uses_constant": true
+  },
+  {
+   "type": "CredentialDelete",
+   "uses_constant_noul": 0.81,
+   "truth_uses_constant": true
+  },
+  {
+   "type": "DIDDelete",
+   "uses_constant_noul": 0.8,
+   "truth_uses_constant": true
+  },
+  {
+   "type": "DIDSet",
+   "uses_constant_noul": 0.81,
+   "truth_uses_constant": true
+  },
+  {
+   "type": "DelegateSet",
+   "uses_constant_noul": 0.03,
+   "truth_uses_constant": false
+  },
+  {
+   "type": "DepositPreauth",
+   "uses_constant_noul": 0.95,
+   "truth_uses_constant": true
+  },
+  {
+   "type": "EscrowCancel",
+   "uses_constant_noul": 0.02,
+   "truth_uses_constant": false
+  },
+  {
+   "type": "EscrowCreate",
+   "uses_constant_noul": 0.02,
+   "truth_uses_constant": false
+  },
+  {
+   "type": "EscrowFinish",
+   "uses_constant_noul": 0.02,
+   "truth_uses_constant": false
+  },
+  {
+   "type": "MPTokenAuthorize",
+   "uses_constant_noul": 0.02,
+   "truth_uses_constant": false
+  },
+  {
+   "type": "MPTokenIssuanceCreate",
+   "uses_constant_noul": 0.03,
+   "truth_uses_constant": false
+  },
+  {
+   "type": "MPTokenIssuanceDestroy",
+   "uses_constant_noul": 0.03,
+   "truth_uses_constant": false
+  },
+  {
+   "type": "MPTokenIssuanceSet",
+   "uses_constant_noul": 0.03,
+   "truth_uses_constant": false
+  },
+  {
+   "type": "NFTokenAcceptOffer",
+   "uses_constant_noul": 0.03,
+   "truth_uses_constant": false
+  },
+  {
+   "type": "NFTokenBurn",
+   "uses_constant_noul": 0.03,
+   "truth_uses_constant": false
+  },
+  {
+   "type": "NFTokenCancelOffer",
+   "uses_constant_noul": 0.04,
+   "truth_uses_constant": false
+  },
+  {
+   "type": "NFTokenCreateOffer",
+   "uses_constant_noul": 0.04,
+   "truth_uses_constant": false
+  },
+  {
+   "type": "NFTokenMint",
+   "uses_constant_noul": 0.04,
+   "truth_uses_constant": false
+  },
+  {
+   "type": "NFTokenModify",
+   "uses_constant_noul": 0.05,
+   "truth_uses_constant": false
+  },
+  {
+   "type": "OfferCancel",
+   "uses_constant_noul": 0.9,
+   "truth_uses_constant": true
+  },
+  {
+   "type": "OfferCreate",
+   "uses_constant_noul": 0.89,
+   "truth_uses_constant": true
+  },
+  {
+   "type": "OracleDelete",
+   "uses_constant_noul": 0.89,
+   "truth_uses_constant": true
+  },
+  {
+   "type": "OracleSet",
+   "uses_constant_noul": 0.9,
+   "truth_uses_constant": true
+  },
+  {
+   "type": "Payment",
+   "uses_constant_noul": 0.02,
+   "truth_uses_constant": false
+  },
+  {
+   "type": "PaymentChannelClaim",
+   "uses_constant_noul": 0.03,
+   "truth_uses_constant": false
+  },
+  {
+   "type": "PaymentChannelCreate",
+   "uses_constant_noul": 0.07,
+   "truth_uses_constant": true
+  },
+  {
+   "type": "PaymentChannelFund",
+   "uses_constant_noul": 0.27,
+   "truth_uses_constant": true
+  },
+  {
+   "type": "PermissionedDomainDelete",
+   "uses_constant_noul": 0.9,
+   "truth_uses_constant": true
+  },
+  {
+   "type": "PermissionedDomainSet",
+   "uses_constant_noul": 0.9,
+   "truth_uses_constant": true
+  },
+  {
+   "type": "SetRegularKey",
+   "uses_constant_noul": 0.02,
+   "truth_uses_constant": false
+  },
+  {
+   "type": "SignerListSet",
+   "uses_constant_noul": 0.03,
+   "truth_uses_constant": false
+  },
+  {
+   "type": "TicketCreate",
+   "uses_constant_noul": 0.03,
+   "truth_uses_constant": false
+  },
+  {
+   "type": "TrustSet",
+   "uses_constant_noul": 0.04,
+   "truth_uses_constant": false
+  },
+  {
+   "type": "XChainAccountCreateCommit",
+   "uses_constant_noul": 0.92,
+   "truth_uses_constant": true
+  },
+  {
+   "type": "XChainAddAccountCreateAttestation",
+   "uses_constant_noul": 0.87,
+   "truth_uses_constant": true
+  },
+  {
+   "type": "XChainAddClaimAttestation",
+   "uses_constant_noul": 0.87,
+   "truth_uses_constant": true
+  },
+  {
+   "type": "XChainClaim",
+   "uses_constant_noul": 0.37,
+   "truth_uses_constant": true
+  },
+  {
+   "type": "XChainCommit",
+   "uses_constant_noul": 0.86,
+   "truth_uses_constant": true
+  },
+  {
+   "type": "XChainCreateBridge",
+   "uses_constant_noul": 0.89,
+   "truth_uses_constant": true
+  },
+  {
+   "type": "XChainCreateClaimID",
+   "uses_constant_noul": 0.89,
+   "truth_uses_constant": true
+  },
+  {
+   "type": "XChainModifyBridge",
+   "uses_constant_noul": 0.89,
+   "truth_uses_constant": true
+  }
+ ],
+ "E3_error_path_coverage": [
+  {
+   "type": "AMMBid",
+   "errors": {
+    "ErrAMMAtLeastOneAssetMustBeNonXRP": {
+     "noul": 0.95,
+     "grep": false
+    }
+   }
+  },
+  {
+   "type": "AMMDeposit",
+   "errors": {
+    "ErrAMMMustSetAmountWithAmount2": {
+     "noul": 0.97,
+     "grep": false
+    },
+    "ErrAMMMustSetAmountWithEPrice": {
+     "noul": 0.97,
+     "grep": false
+    },
+    "ErrAMMAtLeastOneAssetMustBeSet": {
+     "noul": 0.94,
+     "grep": false
+    }
+   }
+  },
+  {
+   "type": "AMMVote",
+   "errors": {
+    "ErrAMMTradingFeeTooHigh": {
+     "noul": 0.94,
+     "grep": false
+    }
+   }
+  },
+  {
+   "type": "AMMWithdraw",
+   "errors": {
+    "ErrAMMMustSetAmountWithAmount2": {
+     "noul": 0.96,
+     "grep": false
+    },
+    "ErrAMMMustSetAmountWithEPrice": {
+     "noul": 0.96,
+     "grep": false
+    }
+   }
+  },
+  {
+   "type": "AccountDelete",
+   "errors": {
+    "ErrInvalidCredentialIDs": {
+     "noul": 0.98,
+     "grep": true
+    },
+    "ErrInvalidDestinationAddress": {
+     "noul": 0.99,
+     "grep": true
+    }
+   }
+  },
+  {
+   "type": "AccountSet",
+   "errors": {
+    "ErrAccountSetInvalidSetFlag": {
+     "noul": 0.94,
+     "grep": false
+    },
+    "ErrAccountSetInvalidTickSize": {
+     "noul": 0.94,
+     "grep": false
+    }
+   }
+  },
+  {
+   "type": "Batch",
+   "errors": {
+    "ErrBatchRawTransactionsEmpty": {
+     "noul": 0.98,
+     "grep": false
+    }
+   }
+  },
+  {
+   "type": "CheckCancel",
+   "errors": {
+    "ErrInvalidCheckID": {
+     "noul": 0.99,
+     "grep": true
+    }
+   }
+  },
+  {
+   "type": "CheckCash",
+   "errors": {
+    "ErrInvalidCheckID": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrAmountOrDeliverMinNotProvided": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrMutuallyExclusiveAmountDeliverMin": {
+     "noul": 0.98,
+     "grep": true
+    }
+   }
+  },
+  {
+   "type": "CheckCreate",
+   "errors": {
+    "ErrInvalidDestination": {
+     "noul": 0.99,
+     "grep": true
+    }
+   }
+  },
+  {
+   "type": "Clawback",
+   "errors": {
+    "ErrClawbackMissingAmount": {
+     "noul": 0.97,
+     "grep": false
+    },
+    "ErrClawbackInvalidAmount": {
+     "noul": 0.95,
+     "grep": false
+    },
+    "ErrClawbackSameAccount": {
+     "noul": 0.98,
+     "grep": false
+    }
+   }
+  },
+  {
+   "type": "CredentialAccept",
+   "errors": {
+    "ErrInvalidIssuer": {
+     "noul": 0.97,
+     "grep": false
+    },
+    "ErrInvalidCredentialType": {
+     "noul": 0.95,
+     "grep": false
+    }
+   }
+  },
+  {
+   "type": "CredentialCreate",
+   "errors": {
+    "ErrInvalidSubject": {
+     "noul": 0.97,
+     "grep": false
+    },
+    "ErrInvalidCredentialType": {
+     "noul": 0.97,
+     "grep": false
+    },
+    "ErrInvalidCredentialURI": {
+     "noul": 0.95,
+     "grep": false
+    }
+   }
+  },
+  {
+   "type": "CredentialDelete",
+   "errors": {
+    "ErrInvalidCredentialType": {
+     "noul": 0.95,
+     "grep": false
+    },
+    "ErrInvalidSubject": {
+     "noul": 0.94,
+     "grep": false
+    },
+    "ErrInvalidIssuer": {
+     "noul": 0.95,
+     "grep": false
+    }
+   }
+  },
+  {
+   "type": "DIDSet",
+   "errors": {
+    "ErrDIDSetMustSetEitherDataOrDIDDocumentOrURI": {
+     "noul": 0.99,
+     "grep": true
+    }
+   }
+  },
+  {
+   "type": "DelegateSet",
+   "errors": {
+    "ErrInvalidDestination": {
+     "noul": 0.96,
+     "grep": false
+    },
+    "ErrDelegateSetAuthorizeAccountConflict": {
+     "noul": 0.98,
+     "grep": false
+    },
+    "ErrDelegateSetPermissionMalformed": {
+     "noul": 0.97,
+     "grep": false
+    },
+    "ErrDelegateSetPermissionsMaxLength": {
+     "noul": 0.96,
+     "grep": false
+    },
+    "ErrDelegateSetEmptyPermissionValue": {
+     "noul": 0.96,
+     "grep": false
+    },
+    "ErrDelegateSetNonDelegatableTransaction": {
+     "noul": 0.95,
+     "grep": false
+    },
+    "ErrDelegateSetDuplicatePermissions": {
+     "noul": 0.98,
+     "grep": false
+    }
+   }
+  },
+  {
+   "type": "DepositPreauth",
+   "errors": {
+    "ErrDepositPreauthMustSetOnlyOneField": {
+     "noul": 0.97,
+     "grep": true
+    },
+    "ErrDepositPreauthAuthorizeCannotBeSender": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrDepositPreauthUnauthorizeCannotBeSender": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrDepositPreauthInvalidAuthorize": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrDepositPreauthInvalidUnauthorize": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrDepositPreauthInvalidAuthorizeCredentials": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrDepositPreauthInvalidUnauthorizeCredentials": {
+     "noul": 0.99,
+     "grep": true
+    }
+   }
+  },
+  {
+   "type": "EscrowCancel",
+   "errors": {
+    "ErrEscrowCancelMissingOwner": {
+     "noul": 0.94,
+     "grep": false
+    },
+    "ErrEscrowCancelMissingOfferSequence": {
+     "noul": 0.95,
+     "grep": false
+    }
+   }
+  },
+  {
+   "type": "EscrowCreate",
+   "errors": {
+    "ErrEscrowCreateInvalidDestinationAddress": {
+     "noul": 0.96,
+     "grep": false
+    },
+    "ErrEscrowCreateNoConditionOrFinishAfterSet": {
+     "noul": 0.8,
+     "grep": false
+    }
+   }
+  },
+  {
+   "type": "EscrowFinish",
+   "errors": {
+    "ErrEscrowFinishMissingOwner": {
+     "noul": 0.94,
+     "grep": false
+    },
+    "ErrEscrowFinishMissingOfferSequence": {
+     "noul": 0.96,
+     "grep": false
+    },
+    "ErrInvalidCredentialIDs": {
+     "noul": 0.94,
+     "grep": false
+    }
+   }
+  },
+  {
+   "type": "MPTokenAuthorize",
+   "errors": {
+    "ErrInvalidAccount": {
+     "noul": 0.05,
+     "grep": false
+    },
+    "ErrHolderAccountConflict": {
+     "noul": 0.99,
+     "grep": true
+    }
+   }
+  },
+  {
+   "type": "MPTokenIssuanceCreate",
+   "errors": {
+    "ErrInvalidTransferFee": {
+     "noul": 0.04,
+     "grep": false
+    },
+    "ErrTransferFeeRequiresCanTransfer": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrInvalidMPTokenMetadata": {
+     "noul": 0.04,
+     "grep": false
+    }
+   }
+  },
+  {
+   "type": "MPTokenIssuanceDestroy",
+   "errors": {
+    "ErrInvalidMPTokenIssuanceID": {
+     "noul": 0.99,
+     "grep": true
+    }
+   }
+  },
+  {
+   "type": "MPTokenIssuanceSet",
+   "errors": {
+    "ErrInvalidAccount": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrMPTokenIssuanceSetFlags": {
+     "noul": 0.99,
+     "grep": true
+    }
+   }
+  },
+  {
+   "type": "NFTokenAcceptOffer",
+   "errors": {
+    "ErrNFTokenBrokerFeeZero": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrMissingBothOffers": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrMissingOffer": {
+     "noul": 0.99,
+     "grep": true
+    }
+   }
+  },
+  {
+   "type": "NFTokenBurn",
+   "errors": {
+    "ErrInvalidOwner": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrInvalidNFTokenID": {
+     "noul": 0.99,
+     "grep": true
+    }
+   }
+  },
+  {
+   "type": "NFTokenCancelOffer",
+   "errors": {
+    "ErrEmptyNFTokenOffers": {
+     "noul": 0.99,
+     "grep": true
+    }
+   }
+  },
+  {
+   "type": "NFTokenCreateOffer",
+   "errors": {
+    "ErrOwnerAccountConflict": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrDestinationAccountConflict": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrInvalidOwner": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrInvalidDestination": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrOwnerPresentForSellOffer": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrOwnerNotPresentForBuyOffer": {
+     "noul": 0.99,
+     "grep": true
+    }
+   }
+  },
+  {
+   "type": "NFTokenMint",
+   "errors": {
+    "ErrInvalidTransferFee": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrIssuerAccountConflict": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrInvalidIssuer": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrInvalidURI": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrTransferFeeRequiresTransferableFlag": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrAmountRequiredWithExpirationOrDestination": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrInvalidDestination": {
+     "noul": 0.99,
+     "grep": true
+    }
+   }
+  },
+  {
+   "type": "NFTokenModify",
+   "errors": {
+    "ErrOwnerAccountConflict": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrInvalidOwner": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrInvalidURI": {
+     "noul": 0.99,
+     "grep": true
+    }
+   }
+  },
+  {
+   "type": "OfferCreate",
+   "errors": {
+    "ErrTfHybridCannotBeSetWithoutDomainID": {
+     "noul": 0.97,
+     "grep": false
+    },
+    "ErrInvalidDomainID": {
+     "noul": 0.96,
+     "grep": false
+    }
+   }
+  },
+  {
+   "type": "OracleSet",
+   "errors": {
+    "ErrOracleProviderLength": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrOraclePriceDataSeriesItems": {
+     "noul": 0.99,
+     "grep": true
+    }
+   }
+  },
+  {
+   "type": "Payment",
+   "errors": {
+    "ErrInvalidDestination": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrInvalidCredentialIDs": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrInvalidDomainID": {
+     "noul": 0.99,
+     "grep": true
+    }
+   }
+  },
+  {
+   "type": "PaymentChannelClaim",
+   "errors": {
+    "ErrInvalidChannel": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrInvalidSignature": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrInvalidHexPublicKey": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrInvalidCredentialIDs": {
+     "noul": 0.99,
+     "grep": true
+    }
+   }
+  },
+  {
+   "type": "PaymentChannelCreate",
+   "errors": {
+    "ErrInvalidDestination": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrInvalidHexPublicKey": {
+     "noul": 0.99,
+     "grep": true
+    }
+   }
+  },
+  {
+   "type": "PaymentChannelFund",
+   "errors": {
+    "ErrInvalidExpiration": {
+     "noul": 0.98,
+     "grep": true
+    }
+   }
+  },
+  {
+   "type": "PermissionedDomainDelete",
+   "errors": {
+    "ErrMissingDomainID": {
+     "noul": 0.66,
+     "grep": false
+    }
+   }
+  },
+  {
+   "type": "SetRegularKey",
+   "errors": {
+    "ErrRegularKeyMatchesAccount": {
+     "noul": 0.96,
+     "grep": false
+    },
+    "ErrInvalidRegularKey": {
+     "noul": 0.94,
+     "grep": false
+    }
+   }
+  },
+  {
+   "type": "SignerListSet",
+   "errors": {
+    "ErrInvalidQuorumAndEntries": {
+     "noul": 0.95,
+     "grep": false
+    },
+    "Errorf": {
+     "noul": 0.93,
+     "grep": true
+    },
+    "ErrInvalidSignerEntries": {
+     "noul": 0.95,
+     "grep": false
+    },
+    "ErrInvalidWalletLocator": {
+     "noul": 0.95,
+     "grep": false
+    },
+    "ErrInvalidAccount": {
+     "noul": 0.96,
+     "grep": false
+    },
+    "ErrSignerQuorumGreaterThanSumOfSignerWeights": {
+     "noul": 0.96,
+     "grep": false
+    }
+   }
+  },
+  {
+   "type": "TicketCreate",
+   "errors": {
+    "ErrTicketCreateInvalidTicketCount": {
+     "noul": 0.96,
+     "grep": false
+    }
+   }
+  },
+  {
+   "type": "XChainAccountCreateCommit",
+   "errors": {
+    "ErrInvalidAccount": {
+     "noul": 0.99,
+     "grep": true
+    }
+   }
+  },
+  {
+   "type": "XChainAddAccountCreateAttestation",
+   "errors": {
+    "ErrInvalidAttestationRewardAccount": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrInvalidAttestationSignerAccount": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrInvalidDestination": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrInvalidOtherChainSource": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrInvalidPublicKey": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrInvalidSignature": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrInvalidWasLockingChainSend": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrInvalidXChainAccountCreateCount": {
+     "noul": 0.99,
+     "grep": true
+    }
+   }
+  },
+  {
+   "type": "XChainAddClaimAttestation",
+   "errors": {
+    "ErrInvalidAttestationRewardAccount": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrInvalidAttestationSignerAccount": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrInvalidDestination": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrInvalidOtherChainSource": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrInvalidPublicKey": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrInvalidSignature": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrInvalidWasLockingChainSend": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrInvalidXChainClaimID": {
+     "noul": 0.99,
+     "grep": true
+    }
+   }
+  },
+  {
+   "type": "XChainClaim",
+   "errors": {
+    "ErrInvalidDestinationAddress": {
+     "noul": 0.99,
+     "grep": true
+    },
+    "ErrMissingXChainClaimID": {
+     "noul": 0.99,
+     "grep": true
+    }
+   }
+  },
+  {
+   "type": "XChainCommit",
+   "errors": {
+    "ErrInvalidXChainClaimID": {
+     "noul": 0.99,
+     "grep": true
+    }
+   }
+  },
+  {
+   "type": "XChainCreateClaimID",
+   "errors": {
+    "ErrInvalidAccount": {
+     "noul": 0.99,
+     "grep": true
+    }
+   }
+  },
+  {
+   "type": "XChainModifyBridge",
+   "errors": {
+    "ErrInvalidFlags": {
+     "noul": 0.99,
+     "grep": true
+    }
+   }
+  }
+ ],
+ "E4_paraphrase": [
+  {
+   "type": "AMMBid",
+   "fields": {
+    "Asset": [
+     0.95,
+     0.98
+    ],
+    "Asset2": [
+     0.97,
+     0.98
+    ],
+    "BidMin": [
+     0.94,
+     0.98
+    ],
+    "BidMax": [
+     0.97,
+     0.98
+    ],
+    "AuthAccounts": [
+     0.95,
+     0.97
+    ]
+   }
+  },
+  {
+   "type": "AMMClawback",
+   "fields": {
+    "Holder": [
+     0.93,
+     0.98
+    ],
+    "Asset": [
+     0.94,
+     0.89
+    ],
+    "Asset2": [
+     0.04,
+     0.08
+    ],
+    "Amount": [
+     0.94,
+     0.92
+    ]
+   }
+  },
+  {
+   "type": "AMMCreate",
+   "fields": {
+    "Amount": [
+     0.97,
+     0.98
+    ],
+    "Amount2": [
+     0.98,
+     0.98
+    ],
+    "TradingFee": [
+     0.98,
+     0.92
+    ]
+   }
+  },
+  {
+   "type": "AMMDelete",
+   "fields": {
+    "Asset": [
+     0.95,
+     0.98
+    ],
+    "Asset2": [
+     0.96,
+     0.98
+    ]
+   }
+  },
+  {
+   "type": "AMMDeposit",
+   "fields": {
+    "Asset": [
+     0.92,
+     0.98
+    ],
+    "Asset2": [
+     0.94,
+     0.98
+    ],
+    "Amount": [
+     0.92,
+     0.96
+    ],
+    "Amount2": [
+     0.86,
+     0.95
+    ],
+    "EPrice": [
+     0.93,
+     0.94
+    ],
+    "LPTokenOut": [
+     0.56,
+     0.16
+    ],
+    "TradingFee": [
+     0.03,
+     0.11
+    ]
+   }
+  },
+  {
+   "type": "AMMVote",
+   "fields": {
+    "Asset": [
+     0.96,
+     0.98
+    ],
+    "Asset2": [
+     0.97,
+     0.98
+    ],
+    "TradingFee": [
+     0.98,
+     0.94
+    ]
+   }
+  },
+  {
+   "type": "AMMWithdraw",
+   "fields": {
+    "Asset": [
+     0.95,
+     0.98
+    ],
+    "Asset2": [
+     0.95,
+     0.98
+    ],
+    "Amount": [
+     0.89,
+     0.97
+    ],
+    "Amount2": [
+     0.84,
+     0.96
+    ],
+    "EPrice": [
+     0.87,
+     0.96
+    ],
+    "LPTokenIn": [
+     0.97,
+     0.98
+    ]
+   }
+  },
+  {
+   "type": "AccountDelete",
+   "fields": {
+    "CredentialIDs": [
+     0.95,
+     0.96
+    ],
+    "Destination": [
+     0.95,
+     0.97
+    ],
+    "DestinationTag": [
+     0.04,
+     0.11
+    ]
+   }
+  },
+  {
+   "type": "AccountSet",
+   "fields": {
+    "ClearFlag": [
+     0.22,
+     0.94
+    ],
+    "Domain": [
+     0.4,
+     0.94
+    ],
+    "EmailHash": [
+     0.5,
+     0.94
+    ],
+    "MessageKey": [
+     0.42,
+     0.93
+    ],
+    "NFTokenMinter": [
+     0.47,
+     0.91
+    ],
+    "SetFlag": [
+     0.98,
+     0.96
+    ],
+    "TransferRate": [
+     0.29,
+     0.94
+    ],
+    "TickSize": [
+     0.98,
+     0.97
+    ],
+    "WalletLocator": [
+     0.43,
+     0.93
+    ],
+    "WalletSize": [
+     0.35,
+     0.94
+    ]
+   }
+  },
+  {
+   "type": "Batch",
+   "fields": {
+    "RawTransactions": [
+     0.94,
+     0.98
+    ],
+    "BatchSigners": [
+     0.78,
+     0.97
+    ]
+   }
+  },
+  {
+   "type": "CheckCancel",
+   "fields": {
+    "CheckID": [
+     0.97,
+     0.97
+    ]
+   }
+  },
+  {
+   "type": "CheckCash",
+   "fields": {
+    "CheckID": [
+     0.96,
+     0.98
+    ],
+    "Amount": [
+     0.92,
+     0.91
+    ],
+    "DeliverMin": [
+     0.9,
+     0.83
+    ]
+   }
+  },
+  {
+   "type": "CheckCreate",
+   "fields": {
+    "Destination": [
+     0.96,
+     0.97
+    ],
+    "SendMax": [
+     0.98,
+     0.97
+    ],
+    "DestinationTag": [
+     0.04,
+     0.1
+    ],
+    "Expiration": [
+     0.04,
+     0.44
+    ],
+    "InvoiceID": [
+     0.03,
+     0.1
+    ]
+   }
+  },
+  {
+   "type": "Clawback",
+   "fields": {
+    "Amount": [
+     0.96,
+     0.97
+    ]
+   }
+  },
+  {
+   "type": "CredentialAccept",
+   "fields": {
+    "Issuer": [
+     0.96,
+     0.97
+    ],
+    "CredentialType": [
+     0.98,
+     0.98
+    ]
+   }
+  },
+  {
+   "type": "CredentialCreate",
+   "fields": {
+    "Subject": [
+     0.96,
+     0.98
+    ],
+    "CredentialType": [
+     0.98,
+     0.98
+    ],
+    "Expiration": [
+     0.04,
+     0.24
+    ],
+    "URI": [
+     0.97,
+     0.97
+    ]
+   }
+  },
+  {
+   "type": "CredentialDelete",
+   "fields": {
+    "CredentialType": [
+     0.98,
+     0.98
+    ],
+    "Subject": [
+     0.96,
+     0.96
+    ],
+    "Issuer": [
+     0.97,
+     0.97
+    ]
+   }
+  },
+  {
+   "type": "DIDSet",
+   "fields": {
+    "Data": [
+     0.92,
+     0.24
+    ],
+    "DIDDocument": [
+     0.93,
+     0.13
+    ],
+    "URI": [
+     0.92,
+     0.13
+    ]
+   }
+  },
+  {
+   "type": "DelegateSet",
+   "fields": {
+    "Authorize": [
+     0.94,
+     0.98
+    ],
+    "Permissions": [
+     0.96,
+     0.97
+    ]
+   }
+  },
+  {
+   "type": "DepositPreauth",
+   "fields": {
+    "Authorize": [
+     0.96,
+     0.96
+    ],
+    "AuthorizeCredentials": [
+     0.96,
+     0.97
+    ],
+    "Unauthorize": [
+     0.97,
+     0.97
+    ],
+    "UnauthorizeCredentials": [
+     0.96,
+     0.96
+    ]
+   }
+  },
+  {
+   "type": "EscrowCancel",
+   "fields": {
+    "Owner": [
+     0.94,
+     0.98
+    ],
+    "OfferSequence": [
+     0.99,
+     0.8
+    ]
+   }
+  },
+  {
+   "type": "EscrowCreate",
+   "fields": {
+    "Amount": [
+     0.05,
+     0.58
+    ],
+    "Destination": [
+     0.96,
+     0.98
+    ],
+    "CancelAfter": [
+     0.94,
+     0.48
+    ],
+    "FinishAfter": [
+     0.97,
+     0.71
+    ],
+    "Condition": [
+     0.95,
+     0.67
+    ],
+    "DestinationTag": [
+     0.04,
+     0.1
+    ]
+   }
+  },
+  {
+   "type": "EscrowFinish",
+   "fields": {
+    "CredentialIDs": [
+     0.96,
+     0.97
+    ],
+    "Owner": [
+     0.93,
+     0.98
+    ],
+    "OfferSequence": [
+     0.98,
+     0.85
+    ],
+    "Condition": [
+     0.04,
+     0.11
+    ],
+    "Fulfillment": [
+     0.04,
+     0.1
+    ]
+   }
+  },
+  {
+   "type": "MPTokenAuthorize",
+   "fields": {
+    "MPTokenIssuanceID": [
+     0.04,
+     0.3
+    ],
+    "Holder": [
+     0.96,
+     0.95
+    ]
+   }
+  },
+  {
+   "type": "MPTokenIssuanceCreate",
+   "fields": {
+    "AssetScale": [
+     0.04,
+     0.36
+    ],
+    "TransferFee": [
+     0.97,
+     0.97
+    ],
+    "MaximumAmount": [
+     0.93,
+     0.97
+    ],
+    "MPTokenMetadata": [
+     0.96,
+     0.96
+    ]
+   }
+  },
+  {
+   "type": "MPTokenIssuanceDestroy",
+   "fields": {
+    "MPTokenIssuanceID": [
+     0.98,
+     0.91
+    ]
+   }
+  },
+  {
+   "type": "MPTokenIssuanceSet",
+   "fields": {
+    "MPTokenIssuanceID": [
+     0.05,
+     0.38
+    ],
+    "Holder": [
+     0.92,
+     0.97
+    ]
+   }
+  },
+  {
+   "type": "NFTokenAcceptOffer",
+   "fields": {
+    "NFTokenSellOffer": [
+     0.97,
+     0.72
+    ],
+    "NFTokenBuyOffer": [
+     0.96,
+     0.66
+    ],
+    "NFTokenBrokerFee": [
+     0.96,
+     0.95
+    ]
+   }
+  },
+  {
+   "type": "NFTokenBurn",
+   "fields": {
+    "NFTokenID": [
+     0.98,
+     0.98
+    ],
+    "Owner": [
+     0.96,
+     0.96
+    ]
+   }
+  },
+  {
+   "type": "NFTokenCancelOffer",
+   "fields": {
+    "NFTokenOffers": [
+     0.97,
+     0.83
+    ]
+   }
+  },
+  {
+   "type": "NFTokenCreateOffer",
+   "fields": {
+    "Owner": [
+     0.97,
+     0.95
+    ],
+    "NFTokenID": [
+     0.05,
+     0.15
+    ],
+    "Amount": [
+     0.04,
+     0.22
+    ],
+    "Expiration": [
+     0.04,
+     0.22
+    ],
+    "Destination": [
+     0.95,
+     0.97
+    ]
+   }
+  },
+  {
+   "type": "NFTokenMint",
+   "fields": {
+    "NFTokenTaxon": [
+     0.04,
+     0.13
+    ],
+    "Issuer": [
+     0.96,
+     0.96
+    ],
+    "TransferFee": [
+     0.96,
+     0.96
+    ],
+    "URI": [
+     0.97,
+     0.97
+    ],
+    "Amount": [
+     0.94,
+     0.96
+    ],
+    "Expiration": [
+     0.82,
+     0.38
+    ],
+    "Destination": [
+     0.96,
+     0.97
+    ]
+   }
+  },
+  {
+   "type": "NFTokenModify",
+   "fields": {
+    "Owner": [
+     0.94,
+     0.95
+    ],
+    "NFTokenID": [
+     0.05,
+     0.13
+    ],
+    "URI": [
+     0.98,
+     0.96
+    ]
+   }
+  },
+  {
+   "type": "OfferCancel",
+   "fields": {
+    "OfferSequence": [
+     0.06,
+     0.44
+    ]
+   }
+  },
+  {
+   "type": "OfferCreate",
+   "fields": {
+    "Expiration": [
+     0.13,
+     0.85
+    ],
+    "OfferSequence": [
+     0.11,
+     0.68
+    ],
+    "TakerGets": [
+     0.97,
+     0.98
+    ],
+    "TakerPays": [
+     0.98,
+     0.98
+    ],
+    "DomainID": [
+     0.97,
+     0.97
+    ]
+   }
+  },
+  {
+   "type": "OracleDelete",
+   "fields": {
+    "OracleDocumentID": [
+     0.06,
+     0.35
+    ]
+   }
+  },
+  {
+   "type": "OracleSet",
+   "fields": {
+    "OracleDocumentID": [
+     0.07,
+     0.39
+    ],
+    "LastUpdatedTime": [
+     0.04,
+     0.29
+    ],
+    "Provider": [
+     0.88,
+     0.93
+    ],
+    "URI": [
+     0.04,
+     0.12
+    ],
+    "AssetClass": [
+     0.03,
+     0.1
+    ],
+    "PriceDataSeries": [
+     0.94,
+     0.97
+    ]
+   }
+  },
+  {
+   "type": "Payment",
+   "fields": {
+    "Amount": [
+     0.97,
+     0.98
+    ],
+    "CredentialIDs": [
+     0.97,
+     0.97
+    ],
+    "DeliverMax": [
+     0.98,
+     0.98
+    ],
+    "DeliverMin": [
+     0.98,
+     0.98
+    ],
+    "Destination": [
+     0.97,
+     0.98
+    ],
+    "DestinationTag": [
+     0.04,
+     0.16
+    ],
+    "InvoiceID": [
+     0.04,
+     0.15
+    ],
+    "Paths": [
+     0.93,
+     0.97
+    ],
+    "SendMax": [
+     0.98,
+     0.97
+    ],
+    "DomainID": [
+     0.97,
+     0.97
+    ]
+   }
+  },
+  {
+   "type": "PaymentChannelClaim",
+   "fields": {
+    "Channel": [
+     0.97,
+     0.94
+    ],
+    "CredentialIDs": [
+     0.96,
+     0.97
+    ],
+    "Balance": [
+     0.04,
+     0.32
+    ],
+    "Amount": [
+     0.04,
+     0.48
+    ],
+    "Signature": [
+     0.96,
+     0.96
+    ],
+    "PublicKey": [
+     0.96,
+     0.96
+    ]
+   }
+  },
+  {
+   "type": "PaymentChannelCreate",
+   "fields": {
+    "Amount": [
+     0.05,
+     0.7
+    ],
+    "Destination": [
+     0.97,
+     0.98
+    ],
+    "SettleDelay": [
+     0.04,
+     0.39
+    ],
+    "PublicKey": [
+     0.98,
+     0.98
+    ],
+    "CancelAfter": [
+     0.04,
+     0.43
+    ],
+    "DestinationTag": [
+     0.04,
+     0.1
+    ]
+   }
+  },
+  {
+   "type": "PaymentChannelFund",
+   "fields": {
+    "Channel": [
+     0.04,
+     0.58
+    ],
+    "Amount": [
+     0.04,
+     0.37
+    ],
+    "Expiration": [
+     0.98,
+     0.95
+    ]
+   }
+  },
+  {
+   "type": "PermissionedDomainDelete",
+   "fields": {
+    "DomainID": [
+     0.98,
+     0.6
+    ]
+   }
+  },
+  {
+   "type": "PermissionedDomainSet",
+   "fields": {
+    "DomainID": [
+     0.1,
+     0.64
+    ],
+    "AcceptedCredentials": [
+     0.88,
+     0.98
+    ]
+   }
+  },
+  {
+   "type": "SetRegularKey",
+   "fields": {
+    "RegularKey": [
+     0.97,
+     0.96
+    ]
+   }
+  },
+  {
+   "type": "SignerListSet",
+   "fields": {
+    "SignerQuorum": [
+     0.9,
+     0.87
+    ],
+    "SignerEntries": [
+     0.95,
+     0.97
+    ]
+   }
+  },
+  {
+   "type": "TicketCreate",
+   "fields": {
+    "TicketCount": [
+     0.98,
+     0.98
+    ]
+   }
+  },
+  {
+   "type": "TrustSet",
+   "fields": {
+    "LimitAmount": [
+     0.94,
+     0.97
+    ],
+    "QualityIn": [
+     0.03,
+     0.07
+    ],
+    "QualityOut": [
+     0.03,
+     0.07
+    ]
+   }
+  },
+  {
+   "type": "XChainAccountCreateCommit",
+   "fields": {
+    "Amount": [
+     0.93,
+     0.98
+    ],
+    "Destination": [
+     0.92,
+     0.98
+    ],
+    "SignatureReward": [
+     0.95,
+     0.97
+    ],
+    "XChainBridge": [
+     0.85,
+     0.96
+    ]
+   }
+  },
+  {
+   "type": "XChainAddAccountCreateAttestation",
+   "fields": {
+    "Amount": [
+     0.94,
+     0.98
+    ],
+    "AttestationRewardAccount": [
+     0.93,
+     0.98
+    ],
+    "AttestationSignerAccount": [
+     0.95,
+     0.98
+    ],
+    "Destination": [
+     0.92,
+     0.98
+    ],
+    "OtherChainSource": [
+     0.92,
+     0.98
+    ],
+    "PublicKey": [
+     0.95,
+     0.86
+    ],
+    "Signature": [
+     0.96,
+     0.89
+    ],
+    "SignatureReward": [
+     0.95,
+     0.98
+    ],
+    "WasLockingChainSend": [
+     0.93,
+     0.97
+    ],
+    "XChainAccountCreateCount": [
+     0.94,
+     0.98
+    ],
+    "XChainBridge": [
+     0.9,
+     0.97
+    ]
+   }
+  },
+  {
+   "type": "XChainAddClaimAttestation",
+   "fields": {
+    "Amount": [
+     0.93,
+     0.98
+    ],
+    "AttestationRewardAccount": [
+     0.93,
+     0.98
+    ],
+    "AttestationSignerAccount": [
+     0.92,
+     0.98
+    ],
+    "Destination": [
+     0.81,
+     0.94
+    ],
+    "OtherChainSource": [
+     0.92,
+     0.98
+    ],
+    "PublicKey": [
+     0.95,
+     0.87
+    ],
+    "Signature": [
+     0.96,
+     0.92
+    ],
+    "WasLockingChainSend": [
+     0.92,
+     0.97
+    ],
+    "XChainBridge": [
+     0.93,
+     0.96
+    ],
+    "XChainClaimID": [
+     0.96,
+     0.98
+    ]
+   }
+  },
+  {
+   "type": "XChainClaim",
+   "fields": {
+    "Amount": [
+     0.97,
+     0.97
+    ],
+    "Destination": [
+     0.95,
+     0.97
+    ],
+    "DestinationTag": [
+     0.04,
+     0.11
+    ],
+    "XChainBridge": [
+     0.96,
+     0.98
+    ],
+    "XChainClaimID": [
+     0.98,
+     0.97
+    ]
+   }
+  },
+  {
+   "type": "XChainCommit",
+   "fields": {
+    "Amount": [
+     0.97,
+     0.97
+    ],
+    "OtherChainDestination": [
+     0.04,
+     0.1
+    ],
+    "XChainBridge": [
+     0.95,
+     0.98
+    ],
+    "XChainClaimID": [
+     0.98,
+     0.98
+    ]
+   }
+  },
+  {
+   "type": "XChainCreateBridge",
+   "fields": {
+    "MinAccountCreateAmount": [
+     0.95,
+     0.98
+    ],
+    "SignatureReward": [
+     0.95,
+     0.96
+    ],
+    "XChainBridge": [
+     0.84,
+     0.96
+    ]
+   }
+  },
+  {
+   "type": "XChainCreateClaimID",
+   "fields": {
+    "OtherChainSource": [
+     0.92,
+     0.97
+    ],
+    "SignatureReward": [
+     0.95,
+     0.97
+    ],
+    "XChainBridge": [
+     0.86,
+     0.96
+    ]
+   }
+  },
+  {
+   "type": "XChainModifyBridge",
+   "fields": {
+    "Flags": [
+     0.92,
+     0.96
+    ],
+    "MinAccountCreateAmount": [
+     0.95,
+     0.94
+    ],
+    "SignatureReward": [
+     0.96,
+     0.97
+    ],
+    "XChainBridge": [
+     0.9,
+     0.96
+    ]
+   }
+  }
+ ],
+ "E5_anchor_relative": [
+  {
+   "type": "AMMBid",
+   "choice": "A_better",
+   "confidence": 0.84,
+   "p": {
+    "equivalent": 0.05,
+    "B_better": 0.06,
+    "A_better": 0.89
+   }
+  },
+  {
+   "type": "AMMClawback",
+   "choice": "A_better",
+   "confidence": 0.98,
+   "p": {
+    "A_better": 0.99,
+    "equivalent": 0.0,
+    "B_better": 0.01
+   }
+  },
+  {
+   "type": "AMMCreate",
+   "choice": "A_better",
+   "confidence": 0.89,
+   "p": {
+    "B_better": 0.06,
+    "equivalent": 0.02,
+    "A_better": 0.92
+   }
+  },
+  {
+   "type": "AMMDelete",
+   "choice": "A_better",
+   "confidence": 0.78,
+   "p": {
+    "equivalent": 0.04,
+    "A_better": 0.85,
+    "B_better": 0.11
+   }
+  },
+  {
+   "type": "AMMDeposit",
+   "choice": "A_better",
+   "confidence": 0.9,
+   "p": {
+    "B_better": 0.04,
+    "equivalent": 0.03,
+    "A_better": 0.93
+   }
+  },
+  {
+   "type": "AMMVote",
+   "choice": "A_better",
+   "confidence": 0.86,
+   "p": {
+    "equivalent": 0.02,
+    "A_better": 0.91,
+    "B_better": 0.07
+   }
+  },
+  {
+   "type": "AMMWithdraw",
+   "choice": "A_better",
+   "confidence": 0.87,
+   "p": {
+    "A_better": 0.91,
+    "equivalent": 0.04,
+    "B_better": 0.05
+   }
+  },
+  {
+   "type": "AccountDelete",
+   "choice": "A_better",
+   "confidence": 0.89,
+   "p": {
+    "equivalent": 0.01,
+    "B_better": 0.06,
+    "A_better": 0.93
+   }
+  },
+  {
+   "type": "AccountSet",
+   "choice": "A_better",
+   "confidence": 0.77,
+   "p": {
+    "B_better": 0.14,
+    "A_better": 0.84,
+    "equivalent": 0.02
+   }
+  },
+  {
+   "type": "Batch",
+   "choice": "A_better",
+   "confidence": 0.94,
+   "p": {
+    "B_better": 0.03,
+    "A_better": 0.96,
+    "equivalent": 0.01
+   }
+  },
+  {
+   "type": "CheckCancel",
+   "choice": "A_better",
+   "confidence": 0.91,
+   "p": {
+    "equivalent": 0.01,
+    "B_better": 0.05,
+    "A_better": 0.94
+   }
+  },
+  {
+   "type": "CheckCash",
+   "choice": "A_better",
+   "confidence": 0.83,
+   "p": {
+    "A_better": 0.88,
+    "B_better": 0.09,
+    "equivalent": 0.03
+   }
+  },
+  {
+   "type": "CheckCreate",
+   "choice": "A_better",
+   "confidence": 0.88,
+   "p": {
+    "A_better": 0.92,
+    "B_better": 0.07,
+    "equivalent": 0.01
+   }
+  },
+  {
+   "type": "Clawback",
+   "choice": "A_better",
+   "confidence": 1.0,
+   "p": {
+    "A_better": 1.0,
+    "equivalent": 0.0,
+    "B_better": 0.0
+   }
+  },
+  {
+   "type": "CredentialAccept",
+   "choice": "A_better",
+   "confidence": 0.86,
+   "p": {
+    "A_better": 0.91,
+    "B_better": 0.07,
+    "equivalent": 0.02
+   }
+  },
+  {
+   "type": "CredentialCreate",
+   "choice": "A_better",
+   "confidence": 0.89,
+   "p": {
+    "A_better": 0.92,
+    "B_better": 0.06,
+    "equivalent": 0.02
+   }
+  },
+  {
+   "type": "CredentialDelete",
+   "choice": "A_better",
+   "confidence": 0.78,
+   "p": {
+    "B_better": 0.11,
+    "equivalent": 0.03,
+    "A_better": 0.86
+   }
+  },
+  {
+   "type": "DIDDelete",
+   "choice": "A_better",
+   "confidence": 0.92,
+   "p": {
+    "B_better": 0.04,
+    "equivalent": 0.01,
+    "A_better": 0.95
+   }
+  },
+  {
+   "type": "DIDSet",
+   "choice": "A_better",
+   "confidence": 0.94,
+   "p": {
+    "A_better": 0.96,
+    "B_better": 0.03,
+    "equivalent": 0.01
+   }
+  },
+  {
+   "type": "DelegateSet",
+   "choice": "A_better",
+   "confidence": 0.81,
+   "p": {
+    "equivalent": 0.03,
+    "B_better": 0.1,
+    "A_better": 0.87
+   }
+  },
+  {
+   "type": "DepositPreauth",
+   "choice": "A_better",
+   "confidence": 0.85,
+   "p": {
+    "equivalent": 0.03,
+    "A_better": 0.9,
+    "B_better": 0.07
+   }
+  },
+  {
+   "type": "EscrowCancel",
+   "choice": "A_better",
+   "confidence": 0.92,
+   "p": {
+    "A_better": 0.94,
+    "B_better": 0.05,
+    "equivalent": 0.01
+   }
+  },
+  {
+   "type": "EscrowCreate",
+   "choice": "A_better",
+   "confidence": 0.96,
+   "p": {
+    "B_better": 0.02,
+    "A_better": 0.98,
+    "equivalent": 0.0
+   }
+  },
+  {
+   "type": "EscrowFinish",
+   "choice": "A_better",
+   "confidence": 0.89,
+   "p": {
+    "A_better": 0.93,
+    "B_better": 0.06,
+    "equivalent": 0.01
+   }
+  },
+  {
+   "type": "MPTokenAuthorize",
+   "choice": "A_better",
+   "confidence": 0.96,
+   "p": {
+    "equivalent": 0.01,
+    "A_better": 0.97,
+    "B_better": 0.02
+   }
+  },
+  {
+   "type": "MPTokenIssuanceCreate",
+   "choice": "A_better",
+   "confidence": 0.77,
+   "p": {
+    "A_better": 0.85,
+    "equivalent": 0.03,
+    "B_better": 0.12
+   }
+  },
+  {
+   "type": "MPTokenIssuanceDestroy",
+   "choice": "A_better",
+   "confidence": 0.92,
+   "p": {
+    "equivalent": 0.01,
+    "A_better": 0.95,
+    "B_better": 0.04
+   }
+  },
+  {
+   "type": "MPTokenIssuanceSet",
+   "choice": "A_better",
+   "confidence": 0.74,
+   "p": {
+    "equivalent": 0.02,
+    "B_better": 0.15,
+    "A_better": 0.83
+   }
+  },
+  {
+   "type": "NFTokenAcceptOffer",
+   "choice": "A_better",
+   "confidence": 0.96,
+   "p": {
+    "B_better": 0.02,
+    "equivalent": 0.0,
+    "A_better": 0.98
+   }
+  },
+  {
+   "type": "NFTokenBurn",
+   "choice": "A_better",
+   "confidence": 0.87,
+   "p": {
+    "A_better": 0.91,
+    "equivalent": 0.02,
+    "B_better": 0.07
+   }
+  },
+  {
+   "type": "NFTokenCancelOffer",
+   "choice": "A_better",
+   "confidence": 0.94,
+   "p": {
+    "A_better": 0.96,
+    "equivalent": 0.01,
+    "B_better": 0.03
+   }
+  },
+  {
+   "type": "NFTokenCreateOffer",
+   "choice": "A_better",
+   "confidence": 0.85,
+   "p": {
+    "A_better": 0.89,
+    "B_better": 0.09,
+    "equivalent": 0.02
+   }
+  },
+  {
+   "type": "NFTokenMint",
+   "choice": "A_better",
+   "confidence": 0.7,
+   "p": {
+    "equivalent": 0.04,
+    "A_better": 0.8,
+    "B_better": 0.16
+   }
+  },
+  {
+   "type": "NFTokenModify",
+   "choice": "A_better",
+   "confidence": 0.8,
+   "p": {
+    "B_better": 0.1,
+    "equivalent": 0.04,
+    "A_better": 0.86
+   }
+  },
+  {
+   "type": "OfferCancel",
+   "choice": "A_better",
+   "confidence": 0.89,
+   "p": {
+    "B_better": 0.05,
+    "A_better": 0.93,
+    "equivalent": 0.02
+   }
+  },
+  {
+   "type": "OfferCreate",
+   "choice": "A_better",
+   "confidence": 0.62,
+   "p": {
+    "A_better": 0.75,
+    "equivalent": 0.04,
+    "B_better": 0.21
+   }
+  },
+  {
+   "type": "OracleDelete",
+   "choice": "A_better",
+   "confidence": 0.94,
+   "p": {
+    "A_better": 0.96,
+    "equivalent": 0.01,
+    "B_better": 0.03
+   }
+  },
+  {
+   "type": "OracleSet",
+   "choice": "A_better",
+   "confidence": 0.94,
+   "p": {
+    "B_better": 0.03,
+    "A_better": 0.96,
+    "equivalent": 0.01
+   }
+  },
+  {
+   "type": "PaymentChannelClaim",
+   "choice": "A_better",
+   "confidence": 0.81,
+   "p": {
+    "A_better": 0.87,
+    "equivalent": 0.03,
+    "B_better": 0.1
+   }
+  },
+  {
+   "type": "PaymentChannelCreate",
+   "choice": "A_better",
+   "confidence": 0.89,
+   "p": {
+    "equivalent": 0.02,
+    "A_better": 0.92,
+    "B_better": 0.06
+   }
+  },
+  {
+   "type": "PaymentChannelFund",
+   "choice": "A_better",
+   "confidence": 0.97,
+   "p": {
+    "B_better": 0.02,
+    "equivalent": 0.0,
+    "A_better": 0.98
+   }
+  },
+  {
+   "type": "PermissionedDomainDelete",
+   "choice": "A_better",
+   "confidence": 0.88,
+   "p": {
+    "B_better": 0.07,
+    "A_better": 0.92,
+    "equivalent": 0.01
+   }
+  },
+  {
+   "type": "PermissionedDomainSet",
+   "choice": "A_better",
+   "confidence": 0.93,
+   "p": {
+    "B_better": 0.04,
+    "A_better": 0.95,
+    "equivalent": 0.01
+   }
+  },
+  {
+   "type": "SetRegularKey",
+   "choice": "A_better",
+   "confidence": 0.9,
+   "p": {
+    "equivalent": 0.01,
+    "A_better": 0.94,
+    "B_better": 0.05
+   }
+  },
+  {
+   "type": "SignerListSet",
+   "choice": "A_better",
+   "confidence": 0.82,
+   "p": {
+    "A_better": 0.88,
+    "equivalent": 0.02,
+    "B_better": 0.1
+   }
+  },
+  {
+   "type": "TicketCreate",
+   "choice": "A_better",
+   "confidence": 0.96,
+   "p": {
+    "equivalent": 0.0,
+    "B_better": 0.02,
+    "A_better": 0.98
+   }
+  },
+  {
+   "type": "TrustSet",
+   "choice": "A_better",
+   "confidence": 0.61,
+   "p": {
+    "B_better": 0.19,
+    "equivalent": 0.07,
+    "A_better": 0.74
+   }
+  },
+  {
+   "type": "XChainAccountCreateCommit",
+   "choice": "A_better",
+   "confidence": 0.91,
+   "p": {
+    "B_better": 0.05,
+    "equivalent": 0.02,
+    "A_better": 0.93
+   }
+  },
+  {
+   "type": "XChainAddAccountCreateAttestation",
+   "choice": "A_better",
+   "confidence": 0.9,
+   "p": {
+    "B_better": 0.06,
+    "A_better": 0.93,
+    "equivalent": 0.01
+   }
+  },
+  {
+   "type": "XChainAddClaimAttestation",
+   "choice": "A_better",
+   "confidence": 0.73,
+   "p": {
+    "equivalent": 0.04,
+    "A_better": 0.82,
+    "B_better": 0.14
+   }
+  },
+  {
+   "type": "XChainClaim",
+   "choice": "A_better",
+   "confidence": 0.75,
+   "p": {
+    "A_better": 0.83,
+    "B_better": 0.13,
+    "equivalent": 0.04
+   }
+  },
+  {
+   "type": "XChainCommit",
+   "choice": "A_better",
+   "confidence": 0.77,
+   "p": {
+    "B_better": 0.11,
+    "equivalent": 0.04,
+    "A_better": 0.85
+   }
+  },
+  {
+   "type": "XChainCreateBridge",
+   "choice": "A_better",
+   "confidence": 0.83,
+   "p": {
+    "A_better": 0.89,
+    "B_better": 0.08,
+    "equivalent": 0.03
+   }
+  },
+  {
+   "type": "XChainCreateClaimID",
+   "choice": "A_better",
+   "confidence": 0.89,
+   "p": {
+    "A_better": 0.93,
+    "equivalent": 0.02,
+    "B_better": 0.05
+   }
+  },
+  {
+   "type": "XChainModifyBridge",
+   "choice": "A_better",
+   "confidence": 0.84,
+   "p": {
+    "B_better": 0.08,
+    "equivalent": 0.02,
+    "A_better": 0.9
+   }
+  }
+ ],
+ "E6_duplicate_sentinels": [
+  {
+   "ws": "ErrMissingTxSignatureOrSigningPubKey",
+   "ws_msg": "transaction must include either TxSignature or SigningPubKey",
+   "match": "ErrMissingTxSignatureOrSigningPubKey",
+   "confidence": 0.91,
+   "same_name_exists": true
+  },
+  {
+   "ws": "ErrMissingLastLedgerSequenceInTransaction",
+   "ws_msg": "missing LastLedgerSequence in transaction",
+   "match": "ErrMissingLastLedgerSequenceInTransaction",
+   "confidence": 0.88,
+   "same_name_exists": true
+  },
+  {
+   "ws": "ErrMissingWallet",
+   "ws_msg": "wallet must be provided when submitting an unsigned transaction",
+   "match": "ErrMissingWallet",
+   "confidence": 0.75,
+   "same_name_exists": true
+  },
+  {
+   "ws": "ErrTransactionNotFound",
+   "ws_msg": "transaction not found",
+   "match": "ErrTransactionNotFound",
+   "confidence": 0.96,
+   "same_name_exists": true
+  },
+  {
+   "ws": "ErrMissingAccountInTransaction",
+   "ws_msg": "missing Account in transaction",
+   "match": "ErrMissingAccountInTransaction",
+   "confidence": 0.87,
+   "same_name_exists": true
+  },
+  {
+   "ws": "ErrTransactionTypeMissing",
+   "ws_msg": "transaction type is missing in transaction",
+   "match": "ErrTransactionTypeMissing",
+   "confidence": 0.88,
+   "same_name_exists": true
+  },
+  {
+   "ws": "ErrInvalidFulfillmentLength",
+   "ws_msg": "invalid fulfillment length",
+   "match": "ErrInvalidFulfillmentLength",
+   "confidence": 0.92,
+   "same_name_exists": true
+  },
+  {
+   "ws": "ErrRawTransactionsFieldIsNotAnArray",
+   "ws_msg": "field RawTransactions must be an array",
+   "match": "ErrRawTransactionsFieldIsNotAnArray",
+   "confidence": 0.84,
+   "same_name_exists": true
+  },
+  {
+   "ws": "ErrRawTransactionFieldIsNotAnObject",
+   "ws_msg": "field RawTransaction must be an object",
+   "match": "ErrRawTransactionFieldIsNotAnObject",
+   "confidence": 0.87,
+   "same_name_exists": true
+  },
+  {
+   "ws": "ErrSigningPubKeyFieldMustBeEmpty",
+   "ws_msg": "field SigningPubKey must be empty",
+   "match": "ErrSigningPubKeyFieldMustBeEmpty",
+   "confidence": 0.77,
+   "same_name_exists": true
+  },
+  {
+   "ws": "ErrTxnSignatureFieldMustBeEmpty",
+   "ws_msg": "field TxnSignature must be empty",
+   "match": "ErrTxnSignatureFieldMustBeEmpty",
+   "confidence": 0.99,
+   "same_name_exists": true
+  },
+  {
+   "ws": "ErrSignersFieldMustBeEmpty",
+   "ws_msg": "field Signers must be empty",
+   "match": "ErrSignersFieldMustBeEmpty",
+   "confidence": 0.92,
+   "same_name_exists": true
+  },
+  {
+   "ws": "ErrAccountFieldIsNotAString",
+   "ws_msg": "field Account must be a string",
+   "match": "ErrAccountFieldIsNotAString",
+   "confidence": 0.96,
+   "same_name_exists": true
+  },
+  {
+   "ws": "ErrRawTransactionsFieldMissing",
+   "ws_msg": "RawTransactions field missing from Batch transaction",
+   "match": "ErrRawTransactionsFieldMissing",
+   "confidence": 0.97,
+   "same_name_exists": true
+  },
+  {
+   "ws": "ErrRawTransactionFieldMissing",
+   "ws_msg": "RawTransaction field missing from wrapper",
+   "match": "ErrRawTransactionFieldMissing",
+   "confidence": 0.95,
+   "same_name_exists": true
+  },
+  {
+   "ws": "ErrFeeFieldMissing",
+   "ws_msg": "fee field missing after calculation",
+   "match": "ErrFeeFieldMissing",
+   "confidence": 0.96,
+   "same_name_exists": true
+  },
+  {
+   "ws": "ErrIncorrectID",
+   "ws_msg": "incorrect id",
+   "match": "none",
+   "confidence": 0.93,
+   "same_name_exists": false
+  },
+  {
+   "ws": "ErrNotConnectedToServer",
+   "ws_msg": "not connected to server",
+   "match": "none",
+   "confidence": 0.99,
+   "same_name_exists": false
+  },
+  {
+   "ws": "ErrRequestTimedOut",
+   "ws_msg": "request timed out",
+   "match": "none",
+   "confidence": 1.0,
+   "same_name_exists": false
+  },
+  {
+   "ws": "ErrSignerDataIsEmpty",
+   "ws_msg": "signer data is empty",
+   "match": "ErrSignerDataIsEmpty",
+   "confidence": 0.85,
+   "same_name_exists": true
+  },
+  {
+   "ws": "ErrCannotFundWalletWithoutClassicAddress",
+   "ws_msg": "cannot fund a wallet without a classic address",
+   "match": "ErrCannotFundWalletWithoutClassicAddress",
+   "confidence": 0.86,
+   "same_name_exists": true
+  },
+  {
+   "ws": "ErrCouldNotGetBaseFeeXrp",
+   "ws_msg": "get fee xrp: could not get BaseFeeXrp from ServerInfo",
+   "match": "ErrCouldNotGetBaseFeeXrp",
+   "confidence": 0.86,
+   "same_name_exists": true
+  },
+  {
+   "ws": "ErrCouldNotFetchOwnerReserve",
+   "ws_msg": "could not fetch Owner Reserve",
+   "match": "ErrCouldNotFetchOwnerReserve",
+   "confidence": 0.8,
+   "same_name_exists": true
+  },
+  {
+   "ws": "ErrAccountCannotBeDeleted",
+   "ws_msg": "account cannot be deleted; there are Escrows, PayChannels, RippleStates, or Checks associated with the account",
+   "match": "ErrAccountCannotBeDeleted",
+   "confidence": 0.89,
+   "same_name_exists": true
+  },
+  {
+   "ws": "ErrAmountAndDeliverMaxMustBeIdentical",
+   "ws_msg": "payment transaction: Amount and DeliverMax fields must be identical when both are provided",
+   "match": "ErrAmountAndDeliverMaxMustBeIdentical",
+   "confidence": 0.86,
+   "same_name_exists": true
+  },
+  {
+   "ws": "ErrNotConnected",
+   "ws_msg": "connection is not connected",
+   "match": "none",
+   "confidence": 0.99,
+   "same_name_exists": false
+  }
+ ],
+ "usage": {
+  "requests": 223,
+  "input_tokens": 282886
+ }
+}

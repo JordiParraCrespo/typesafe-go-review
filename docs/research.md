@@ -433,6 +433,113 @@ case expecting `ErrX`, or one that exercises the condition that returns it?"
 12. **Pin and log.** Put the versioned `model` from each response into the
     cache key so a model bump invalidates only what it should.
 
+## 11. Trying the ideas at package scale
+
+Built `cmd/slicer` (Go, `go/ast`): it walks a package and emits one slice
+per transaction struct with its fields, the source of `Validate`, `Flatten`
+and `TxType`, its test functions, the sentinels `Validate` returns, and the
+package's `errors.go` sentinels. `experiments/run_ideas.py` then runs six
+experiments over all 56 transaction types. Whole run: 223 requests, 282,886
+input tokens (about 1.2 cents), 17 seconds with 8 workers. Raw results are in
+`experiments/results-ideas-transaction-package.json`.
+
+### E1. AST-generated per-field validation Nouls, all 56 types
+
+208 struct fields, one Noul each: "does `Validate` validate field X?".
+31 fields came back below 0.3. Every one I spot-checked is genuinely absent
+from its `Validate` body:
+
+| Type | Fields never validated |
+|---|---|
+| CheckCreate | DestinationTag, Expiration, InvoiceID |
+| EscrowFinish | Condition, Fulfillment |
+| NFTokenCreateOffer | NFTokenID, Amount, Expiration |
+| OracleSet | LastUpdatedTime, URI, AssetClass |
+| PaymentChannelCreate | SettleDelay, CancelAfter, DestinationTag |
+| PaymentChannelClaim | Balance, Amount |
+| TrustSet | QualityIn, QualityOut |
+| Payment, AccountDelete, EscrowCreate, XChainClaim | DestinationTag |
+| MPTokenAuthorize | MPTokenIssuanceID |
+| MPTokenIssuanceCreate | AssetScale |
+| NFTokenMint | NFTokenTaxon |
+| NFTokenModify | NFTokenID |
+| AMMClawback / AMMDeposit / CredentialCreate / XChainCommit | Asset2 / TradingFee / Expiration / OtherChainDestination |
+
+Only 3 of 208 answers disagreed with a naive "field name appears in the
+body" check, and those were the indirect cases (validated through a
+flattened map by string key). `DestinationTag` as `*uint32` is a false
+positive by design; the rule should skip fields whose type admits every
+value, which the AST knows.
+
+### E2. Convention mining: how is `TransactionType` set in `Flatten`?
+
+Asked across all 56 `Flatten` bodies in batches of 7. The model said
+"constant" for 27, my regex ground truth said 31, and the 4 disagreements
+turned out to be **my ground truth being too coarse**. The package actually
+has six variants:
+
+| Variant | Files |
+|---|---|
+| `flattened["TransactionType"] = "Literal"` | 25 |
+| `x.TxType().String()` (three map variable names) | 24 |
+| `<Const>Tx.String()` | 4 |
+| `tx.TransactionType.String()` | 1 |
+| `x.TxType()` without `.String()` | 1 |
+| no assignment; relies on `BaseTx.Flatten()` | 14 |
+
+Mining found the inconsistency I would have mis-catalogued. The right rule
+is "do not set it at all; `BaseTx.Flatten` already does", which makes 42
+files redundant and 1 wrong-typed.
+
+### E3. Error-path test coverage, semantic vs grep
+
+126 sentinels returned by `Validate` methods that have a `Test*_Validate`.
+Grep for the sentinel name in the test file misses 46 of them; the model says
+all 46 are covered by cases that exercise the condition. Verified on a
+sample. The model reports **3 real gaps**, all confirmed by reading the tests:
+
+- `MPTokenAuthorize`: no case for `ErrInvalidAccount`.
+- `MPTokenIssuanceCreate`: no case for `ErrInvalidTransferFee` or
+  `ErrInvalidMPTokenMetadata` (every case uses fee 314 and hex metadata).
+
+### E4. Paraphrase self-consistency
+
+E1 re-asked with two other phrasings: 189 of 208 answers unanimous, 19
+split. The splits cluster on `AccountSet` and `DIDSet`, exactly the types
+that validate through `ValidateOptionalField(flatten, "Name", ...)` by
+string key rather than touching the field directly. The phrasing that
+carried explicit `criteria` agreed with E1; the bare phrasing did not. So:
+always give Nouls `criteria`, and treat a split as "indirect check, show a
+human" rather than as a finding.
+
+### E5. Anchor-relative Choice against `Payment.Validate`
+
+All 55 others lost to Payment. Swapping A and B for six of them flipped the
+answer with it (so no position bias), and Payment-vs-Payment answered
+"equivalent" at 0.96. The comparison is consistent, but a fixed anchor gives
+no gradient when one function dominates. Use it for **before/after of the
+same function in a PR** ("is the new Validate at least as complete as the
+old?"), not for ranking siblings.
+
+### E6. Duplicate sentinels, websocket against rpc
+
+26 websocket sentinels, a Choice over the 23 rpc names plus "none". All 22
+that share a name were matched to it (confidence 0.75 to 0.99) and the 4
+websocket-only errors (`ErrNotConnected`, `ErrRequestTimedOut`,
+`ErrIncorrectID`, `ErrNotConnectedToServer`) were correctly answered "none"
+at 0.93 or higher. That is a ready-made "extract to `xrpl/common`" list.
+
+### What this changes in the plan
+
+1. The slicer is the real discovery stage; keep it and grow it.
+2. Rules TX-06, TEST-06 and ERR-01 become AST-generated Noul sets; the
+   Score rubric versions are retired.
+3. Convention mining becomes `gorev mine`, run before writing any rule.
+4. Every Noul carries `criteria`; a paraphrase pair is the default and a
+   split routes to the human list.
+5. Relative Choice is used only for same-unit before/after in diff mode.
+6. Type-aware skipping: fields whose type admits every value are not asked.
+
 ## 9. Suggested next steps
 
 1. Scaffold the Go module (`cmd/gorev`, `internal/{scan,rules,static,typesafe,score,report}`).
