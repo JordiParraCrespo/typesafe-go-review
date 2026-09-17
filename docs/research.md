@@ -540,6 +540,97 @@ at 0.93 or higher. That is a ready-made "extract to `xrpl/common`" list.
 5. Relative Choice is used only for same-unit before/after in diff mode.
 6. Type-aware skipping: fields whose type admits every value are not asked.
 
+## 12. After pulling current `main` (2026-09-17, `e3771a7`)
+
+The earlier analysis ran on a January checkout, 470 commits behind. The
+current tree changes two things.
+
+### 12.1 The repo now has a written rulebook
+
+`CLAUDE.md` and `AGENTS.md` (identical) describe layout, test organisation
+and lint. `.agents/skills/` carries Peersyst's `agent-skills` set, pinned in
+`skills-lock.json`: `go-design` (22 rules), `go-errors` (7), `go-data` (22),
+`go-concurrency` (20), `go-performance` (28), plus `xrpl-standards` with 81
+XLS spec references. Every rule file has the same shape: title, `Impact:
+CRITICAL|HIGH|MEDIUM|LOW`, an Incorrect block, a Correct block, a "why". The
+`.claude/skills/code-review` skill is an LLM reviewer that fans out one
+subagent per package, cites findings as `go-<skill>/<rule-file>`, and emits
+JSON with `blocker|concern|nit` severity, capped at 15 findings per reviewer.
+
+Consequences for the tool:
+
+- **Rules are no longer ours to invent.** Each `rules/*.md` is already a
+  rubric: Impact gives the weight, the Incorrect/Correct pair gives the
+  Noul `criteria`, the title gives the instruction. The tool should parse
+  them and generate questions, and only add the repo-specific conventions
+  from section 5 (Validate shape, flag constants, test naming) that the
+  generic skills do not cover.
+- **The output contract exists.** Use the code-review skill's JSON schema
+  (`file`, `line`, `severity`, `source`, `message`, `suggestion`) so findings
+  slot into the existing `/code-review` and `/multi-review` flows. The tool
+  becomes a cheap, exhaustive, deterministic pre-pass; the LLM reviewers
+  spend their 15-finding budget on what it cannot see.
+- **Lint got much stronger.** golangci-lint v2.11.3 with `errorlint`,
+  `testifylint`, `modernize`, `nilerr`, `exhaustive`, `bodyclose`, `gofumpt`,
+  and `run.tests: true`. Rules ERR-04, LANG-01 and part of TEST-04 from the
+  catalogue are now linted and drop out of the tool's scope.
+- Go is `1.25.13`; `golang/mock` is still the mock generator.
+
+### 12.2 Re-running the six experiments on current code
+
+71 transaction types (15 new Loan* and Vault* types), 221 sentinels, 289
+requests, 451k tokens (about 1.9 cents).
+
+**Per-field validation (E1).** 273 fields, 32 unchecked. Since January the
+project fixed EscrowFinish (Condition, Fulfillment), NFTokenCreateOffer
+(NFTokenID, Amount), NFTokenModify (NFTokenID), MPTokenAuthorize
+(MPTokenIssuanceID) and OracleSet's timestamp, which is independent evidence
+the January findings were real. Still open: Payment and CheckCreate
+`InvoiceID`, CheckCreate `Expiration`, TrustSet `QualityIn`/`QualityOut`,
+PaymentChannelCreate `SettleDelay`/`CancelAfter`, PaymentChannelClaim
+`Balance`/`Amount`, OracleSet `URI`/`AssetClass`, and in the new code
+LoanSet `CounterpartySignature`/`PaymentTotal` and VaultCreate
+`WithdrawalPolicy`. Eight `DestinationTag` hits are the known
+type-admits-everything false positive.
+
+**Convention mining (E2).** `TransactionType` in `Flatten` is now set in
+seven ways; the new types mostly use `x.TxType().String()` (32 files), the
+25 literals are unchanged. The convention drifted further, not less.
+
+**Error-path test coverage (E3).** 243 sentinels, 32 covered only
+semantically, **19 gaps**, verified by reading the tests:
+
+| Type | Uncovered sentinels |
+|---|---|
+| LoanSet | 9 of 17 (every interest-rate and fee sentinel); the test has 8 failure cases |
+| LoanBrokerSet | 5 (LoanBrokerID, DebtMaximum x2, CoverRateLiquidation, CoverRatesMismatch) |
+| LoanBrokerCoverClawback | 2 (amount type, amount negative) |
+| LoanBrokerCoverWithdraw | ErrInvalidDestination |
+| Clawback, MPTokenAuthorize | ErrInvalidAccount (21 and 3 cases, none with a bad Account) |
+
+The new Loan* code is where the gaps concentrate, which is what a
+pre-merge check would have caught.
+
+**Paraphrase (E4).** 257 unanimous, 16 split, same AccountSet/DIDSet
+pattern. **Anchor (E5).** Payment still dominates all 70. **Duplicate
+sentinels (E6).** 56 websocket sentinels now, 49 matched to an rpc twin,
+including two cross-name matches the model found that a name comparison
+would miss: `ErrAddressFieldIsNotAString` ↔ `ErrAccountFieldIsNotAString`
+and `ErrNetworkIDOverrideMismatch` ↔ `ErrNetworkIDFieldMismatch`.
+
+### 12.3 What this means for the plan
+
+1. Parse `.agents/skills/*/rules/*.md` into rules; keep section 5 only for
+   repo-specific conventions.
+2. Emit the code-review JSON schema and cite `go-<skill>/<rule>` so the tool
+   plugs into `/code-review` as a pre-pass.
+3. The two AST-generated Noul sets (per-field validation, per-sentinel test
+   coverage) are the highest-value rules: they found 32 and 19 real gaps on
+   today's main, and the project's own fixes since January confirm the
+   earlier ones were right.
+4. The `InvoiceID` issue in `docs/issue-payment-invoiceid.md` still applies
+   on current main; extend it to the LoanSet test gaps.
+
 ## 9. Suggested next steps
 
 1. Scaffold the Go module (`cmd/gorev`, `internal/{scan,rules,static,typesafe,score,report}`).
