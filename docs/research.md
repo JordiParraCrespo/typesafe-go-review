@@ -739,6 +739,94 @@ more, each against the hand-verified per-field ground truth from sections
 6. For location, send numbered lines and ask for the line id.
 7. Do all ranking, aggregation and thresholds in code from atomic answers.
 
+## 15. Validating against rippled itself: spec conformance without trusting the model's memory
+
+The question: xrpl-go implements what rippled does, rippled changes every
+release, and any model's knowledge of XRPL is frozen at its training date.
+So the model must never be the source of truth about the protocol. The
+answer is to make rippled's current source the state and ask only
+comparison questions. Two layers, both tested today against rippled
+`develop`.
+
+### 15.1 Deterministic layer: field lists
+
+`include/xrpl/protocol/detail/transactions.macro` in rippled lists every
+transaction with its fields and `SoeRequired` / `SoeOptional` / `SoeDefault`.
+It is a macro file, parsed with one regex, no model involved. Diffed against
+the Go structs from `cmd/slicer` (name present, pointer or `omitempty` means
+optional):
+
+| Drift found | Detail |
+|---|---|
+| Transactions in rippled develop with no Go type | ConfidentialMPTClawback, ConfidentialMPTConvert, ConfidentialMPTConvertBack, ConfidentialMPTMergeInbox, ConfidentialMPTSend, SponsorshipSet, SponsorshipTransfer (plus the pseudo-transactions EnableAmendment, SetFee, UNLModify, LedgerStateFix, which clients do not build) |
+| Fields in rippled with no Go field | EscrowCreate `Bytecode`, `Data`; EscrowFinish `Gas`; VaultCreate `VaultKind`, `SubscriptionDate`, `RedemptionDate`; VaultDelete `MemoData`; MPTokenIssuanceSet `IssuerEncryptionKey`, `AuditorEncryptionKey`; LoanBrokerCoverWithdraw and VaultWithdraw `CredentialIDs` |
+| Required/optional disagreement | AMMClawback `Asset2` (required in rippled, optional in Go) and `Amount` (optional in rippled, required in Go); AMMWithdraw `LPTokenIn`; SignerListSet `SignerEntries`; TrustSet `LimitAmount`; XChainAccountCreateCommit `SignatureReward` |
+| Go-only | Payment `DeliverMax` (API-level alias, expected); XChainModifyBridge `Flags` |
+
+Some of these are amendments not yet on mainnet, which is exactly the point:
+this is the list a maintainer needs each time rippled cuts a release, and it
+comes from a file diff, not from anyone's memory.
+
+### 15.2 TypeSafe layer: preflight rejections
+
+Each rippled transactor has a `preflight()` whose `return tem*` lines are
+the client-side rejections: the conditions a transaction fails before
+touching ledger state. I extracted each `if ... return temXXX` snippet from
+`Payment.cpp`, `CheckCreate.cpp` and `LoanSet.cpp` (43 checks), put the
+snippet and the Go `Validate` in the state, and asked two questions per
+check: a Noul "does the Go code reject the same input condition?" and a
+Choice "which Go sentinel corresponds?" over the sentinels the method
+returns plus `helper_error` and `none`. One request per transaction,
+21k tokens total. Every answer was then checked against the Go source.
+
+**Payment** (23 rippled checks): Go enforces the amount validity checks (via
+`IsAmount`), the destination requirement, `DomainID` zero-check, and the
+"DeliverMin requires tfPartialPayment" rule (0.83). It does **not** enforce
+any of the XRP-to-XRP rules: `SendMax` forbidden (temBAD_SEND_XRP_MAX),
+`Paths` forbidden (temBAD_SEND_XRP_PATHS), partial payment forbidden,
+limit-quality and no-direct flags forbidden, nor self-payment without paths
+(temREDUNDANT), nor unknown flag bits (temINVALID_FLAG). All answered `none`
+at 0.64 to 0.91 and all confirmed absent from `payment.go`. Amendment-gated
+checks (`featureMPTokensV1`, `featureSponsor`) correctly came back `none`
+too, because a client cannot see amendment state; those need a rule that
+skips `ctx.rules.enabled` conditions.
+
+**CheckCreate** (4 checks): `SendMax` amount validity enforced (0.80).
+Check-to-self (temREDUNDANT) and `Expiration == 0` (temBAD_EXPIRATION) not
+enforced; confirmed. The expiration gap is the same field the per-field
+experiment flagged.
+
+**LoanSet** (16 checks): all seven `validNumericRange` fee and rate checks
+map to their Go sentinels at 0.96 to 0.99, `Data` length maps to
+`ErrLoanSetDataInvalid` at 0.99, `PaymentInterval` to its sentinel at
+0.95. Not enforced: `PaymentTotal <= 0` and the `CounterpartySignature`
+requirement, which are exactly the two LoanSet fields the per-field
+experiment found unvalidated. Two independent methods, same answer.
+
+### 15.3 What "mathematically" can mean here
+
+Nothing about the protocol is asked of the model. The field list is a set
+difference. The preflight cross-check is, per rippled rejection, one
+equivalence question over two pieces of code that are both in the state,
+with a confidence attached. The model contributes only "is this Go check
+the same predicate as this C++ check", which does not depend on knowing
+what XRPL is. When rippled changes, the state changes and the answers
+follow; nothing stale is involved.
+
+The rule set this becomes:
+
+1. `gorev spec fields --rippled <tag>`: parse `transactions.macro` at a pinned
+   rippled tag, diff against the Go structs, fail on missing required fields.
+2. `gorev spec preflight --rippled <tag>`: per transaction, extract
+   `return tem*` checks, ask enforcement per check, skip conditions that
+   reference `ctx.rules.enabled`, `ctx.view` or ledger state, report each
+   `none` with the rippled line and tem code.
+3. Pin the rippled tag in config next to the model version; bump both
+   deliberately.
+4. Same pattern works for the XLS markdown in `.agents/skills/xrpl-standards`
+   when a spec has no rippled implementation yet: split the spec into its
+   MUST sentences and ask per sentence.
+
 ## 9. Suggested next steps
 
 1. Scaffold the Go module (`cmd/gorev`, `internal/{scan,rules,static,typesafe,score,report}`).

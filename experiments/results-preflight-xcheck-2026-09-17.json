@@ -1,0 +1,309 @@
+{
+ "Payment": [
+  {
+   "tem": "temDISABLED",
+   "cond": "if (!ctx.rules.enabled(featureMPTokensV1) && isDstMPT)",
+   "enforced": 0.06,
+   "go_sentinel": "none",
+   "conf": 0.89
+  },
+  {
+   "tem": "temDISABLED",
+   "cond": "if (!ctx.rules.enabled(featureSponsor))",
+   "enforced": 0.05,
+   "go_sentinel": "none",
+   "conf": 0.93
+  },
+  {
+   "tem": "temINVALID_FLAG",
+   "cond": "if (tx.isFlag(tfNoRippleDirect) || tx.isFlag(tfPartialPayment) || tx.isFlag(tfLimitQuality))",
+   "enforced": 0.16,
+   "go_sentinel": "none",
+   "conf": 0.75
+  },
+  {
+   "tem": "temINVALID",
+   "cond": "if (tx.isFieldPresent(sfSendMax) || tx.isFieldPresent(sfPaths))",
+   "enforced": 0.18,
+   "go_sentinel": "none",
+   "conf": 0.39
+  },
+  {
+   "tem": "temBAD_AMOUNT",
+   "cond": "if (!dstAmount.native())",
+   "enforced": 0.42,
+   "go_sentinel": "helper_error",
+   "conf": 0.63
+  },
+  {
+   "tem": "temMALFORMED",
+   "cond": "if (!mpTokensV2 && isDstMPT && ctx.tx.isFieldPresent(sfPaths))",
+   "enforced": 0.12,
+   "go_sentinel": "none",
+   "conf": 0.46
+  },
+  {
+   "tem": "temMALFORMED",
+   "cond": "ctx.rules.enabled(fixCleanup3_2_0) && domainID && *domainID == beast::kZero)",
+   "enforced": 0.61,
+   "go_sentinel": "ErrInvalidDomainID",
+   "conf": 0.9
+  },
+  {
+   "tem": "temMALFORMED",
+   "cond": "<< deliverMin.value_or(STAmount{}).getFullText();",
+   "enforced": 0.12,
+   "go_sentinel": "none",
+   "conf": 0.78
+  },
+  {
+   "tem": "temBAD_AMOUNT",
+   "cond": "if (!isLegalNet(dstAmount) || !isLegalNet(maxSourceAmount))",
+   "enforced": 0.61,
+   "go_sentinel": "helper_error",
+   "conf": 0.72
+  },
+  {
+   "tem": "temDST_NEEDED",
+   "cond": "<< \"Payment destination account not specified.\";",
+   "enforced": 0.68,
+   "go_sentinel": "ErrInvalidDestination",
+   "conf": 0.7
+  },
+  {
+   "tem": "temBAD_AMOUNT",
+   "cond": "<< maxSourceAmount.getFullText();",
+   "enforced": 0.71,
+   "go_sentinel": "helper_error",
+   "conf": 0.7
+  },
+  {
+   "tem": "temBAD_AMOUNT",
+   "cond": "JLOG(j.trace()) << \"Malformed transaction: bad dst amount: \" << dstAmount.getFullText();",
+   "enforced": 0.6,
+   "go_sentinel": "helper_error",
+   "conf": 0.72
+  },
+  {
+   "tem": "temBAD_CURRENCY",
+   "cond": "JLOG(j.trace()) << \"Malformed transaction: Bad currency.\";",
+   "enforced": 0.29,
+   "go_sentinel": "none",
+   "conf": 0.47
+  },
+  {
+   "tem": "temREDUNDANT",
+   "cond": "<< \" to self without path for \" << to_string(dstAsset);",
+   "enforced": 0.08,
+   "go_sentinel": "none",
+   "conf": 0.85
+  },
+  {
+   "tem": "temBAD_SEND_XRP_MAX",
+   "cond": "<< \"SendMax specified for XRP to XRP.\";",
+   "enforced": 0.19,
+   "go_sentinel": "none",
+   "conf": 0.73
+  },
+  {
+   "tem": "temBAD_SEND_XRP_PATHS",
+   "cond": "<< \"Paths specified for XRP to XRP or MPT to MPT.\";",
+   "enforced": 0.14,
+   "go_sentinel": "none",
+   "conf": 0.64
+  },
+  {
+   "tem": "temBAD_SEND_XRP_PARTIAL",
+   "cond": "<< \"Partial payment specified for XRP to XRP.\";",
+   "enforced": 0.4,
+   "go_sentinel": "none",
+   "conf": 0.54
+  },
+  {
+   "tem": "temBAD_SEND_XRP_LIMIT",
+   "cond": "<< \"Limit quality specified for XRP to XRP or MPT to MPT.\";",
+   "enforced": 0.11,
+   "go_sentinel": "none",
+   "conf": 0.91
+  },
+  {
+   "tem": "temBAD_SEND_XRP_NO_DIRECT",
+   "cond": "<< \"No ripple direct specified for XRP to XRP or MPT to MPT.\";",
+   "enforced": 0.11,
+   "go_sentinel": "none",
+   "conf": 0.85
+  },
+  {
+   "tem": "temBAD_AMOUNT",
+   "cond": "<< jss::DeliverMin.cStr() << \".\";",
+   "enforced": 0.4,
+   "go_sentinel": "helper_error",
+   "conf": 0.43
+  },
+  {
+   "tem": "temBAD_AMOUNT",
+   "cond": "<< \" amount. \" << dMin.getFullText();",
+   "enforced": 0.83,
+   "go_sentinel": "helper_error",
+   "conf": 0.87
+  },
+  {
+   "tem": "temBAD_AMOUNT",
+   "cond": "<< jss::DeliverMin.cStr() << \". \" << dMin.getFullText();",
+   "enforced": 0.14,
+   "go_sentinel": "helper_error",
+   "conf": 0.47
+  },
+  {
+   "tem": "temBAD_AMOUNT",
+   "cond": "<< jss::DeliverMin.cStr() << \". \" << dMin.getFullText();",
+   "enforced": 0.14,
+   "go_sentinel": "helper_error",
+   "conf": 0.58
+  }
+ ],
+ "CheckCreate": [
+  {
+   "tem": "temREDUNDANT",
+   "cond": "JLOG(ctx.j.warn()) << \"Malformed transaction: Check to self.\";",
+   "enforced": 0.07,
+   "go_sentinel": "none",
+   "conf": 0.86
+  },
+  {
+   "tem": "temBAD_AMOUNT",
+   "cond": "<< sendMax.getFullText();",
+   "enforced": 0.8,
+   "go_sentinel": "helper_error",
+   "conf": 0.92
+  },
+  {
+   "tem": "temBAD_CURRENCY",
+   "cond": "JLOG(ctx.j.warn()) << \"Malformed transaction: Bad currency.\";",
+   "enforced": 0.48,
+   "go_sentinel": "none",
+   "conf": 0.36
+  },
+  {
+   "tem": "temBAD_EXPIRATION",
+   "cond": "JLOG(ctx.j.warn()) << \"Malformed transaction: bad expiration\";",
+   "enforced": 0.15,
+   "go_sentinel": "none",
+   "conf": 0.75
+  }
+ ],
+ "LoanSet": [
+  {
+   "tem": "temINVALID_FLAG",
+   "cond": "JLOG(ctx.j.debug()) << \"LoanSet: reserve sponsorship is not allowed.\";",
+   "enforced": 0.06,
+   "go_sentinel": "none",
+   "conf": 0.97
+  },
+  {
+   "tem": "temBAD_SIGNER",
+   "cond": "<< \"no Counterparty for inner LoanSet transaction.\";",
+   "enforced": 0.06,
+   "go_sentinel": "none",
+   "conf": 0.78
+  },
+  {
+   "tem": "temBAD_SIGNER",
+   "cond": "JLOG(ctx.j.warn()) << \"LoanSet transaction must have a CounterpartySignature.\";",
+   "enforced": 0.05,
+   "go_sentinel": "none",
+   "conf": 0.94
+  },
+  {
+   "tem": "temINVALID",
+   "cond": "data && !data->empty() && !validDataLength(tx[~sfData], kMaxDataPayloadLength))",
+   "enforced": 0.93,
+   "go_sentinel": "ErrLoanSetDataInvalid",
+   "conf": 0.99
+  },
+  {
+   "tem": "temINVALID",
+   "cond": "if (!validNumericMinimum(tx[~*field]))",
+   "enforced": 0.42,
+   "go_sentinel": "none",
+   "conf": 0.32
+  },
+  {
+   "tem": "temINVALID",
+   "cond": "if (p <= 0)",
+   "enforced": 0.35,
+   "go_sentinel": "none",
+   "conf": 0.53
+  },
+  {
+   "tem": "temINVALID",
+   "cond": "if (!validNumericRange(tx[~sfLoanOriginationFee], p))",
+   "enforced": 0.43,
+   "go_sentinel": "ErrLoanSetLoanOriginationFeeInvalid",
+   "conf": 0.78
+  },
+  {
+   "tem": "temINVALID",
+   "cond": "if (!validNumericRange(tx[~sfInterestRate], kMaxInterestRate))",
+   "enforced": 0.89,
+   "go_sentinel": "ErrLoanSetInterestRateInvalid",
+   "conf": 0.97
+  },
+  {
+   "tem": "temINVALID",
+   "cond": "if (!validNumericRange(tx[~sfOverpaymentFee], kMaxOverpaymentFee))",
+   "enforced": 0.88,
+   "go_sentinel": "ErrLoanSetOverpaymentFeeInvalid",
+   "conf": 0.97
+  },
+  {
+   "tem": "temINVALID",
+   "cond": "if (!validNumericRange(tx[~sfLateInterestRate], kMaxLateInterestRate))",
+   "enforced": 0.89,
+   "go_sentinel": "ErrLoanSetLateInterestRateInvalid",
+   "conf": 0.96
+  },
+  {
+   "tem": "temINVALID",
+   "cond": "if (!validNumericRange(tx[~sfCloseInterestRate], kMaxCloseInterestRate))",
+   "enforced": 0.88,
+   "go_sentinel": "ErrLoanSetCloseInterestRateInvalid",
+   "conf": 0.97
+  },
+  {
+   "tem": "temINVALID",
+   "cond": "if (!validNumericRange(tx[~sfOverpaymentInterestRate], kMaxOverpaymentInterestRate))",
+   "enforced": 0.89,
+   "go_sentinel": "ErrLoanSetOverpaymentInterestRateInvalid",
+   "conf": 0.96
+  },
+  {
+   "tem": "temINVALID",
+   "cond": "if (auto const paymentTotal = tx[~sfPaymentTotal]; paymentTotal && *paymentTotal <= 0)",
+   "enforced": 0.13,
+   "go_sentinel": "none",
+   "conf": 0.65
+  },
+  {
+   "tem": "temINVALID",
+   "cond": "if (!validNumericMinimum(paymentInterval, LoanSet::kMinPaymentInterval))",
+   "enforced": 0.64,
+   "go_sentinel": "ErrLoanSetPaymentIntervalInvalid",
+   "conf": 0.95
+  },
+  {
+   "tem": "temINVALID",
+   "cond": "{",
+   "enforced": 0.46,
+   "go_sentinel": "ErrLoanSetGracePeriodInvalid",
+   "conf": 0.94
+  },
+  {
+   "tem": "temINVALID",
+   "cond": "if (auto const brokerID = ctx.tx[~sfLoanBrokerID]; brokerID && *brokerID == beast::kZero)",
+   "enforced": 0.5,
+   "go_sentinel": "ErrLoanSetLoanBrokerIDInvalid",
+   "conf": 0.48
+  }
+ ]
+}
