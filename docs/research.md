@@ -99,6 +99,57 @@ verdicts (f1 2.63, f2 0.03, f3 2.91 on error handling; magic-number noul 0.07 /
   the model correctly did not flag it, so named-constant detection works from
   source alone.
 
+## 3b. Granularity experiment: slices and atomic questions
+
+Same function, same two rubrics, four ways of framing the state and questions.
+
+| Framing | validation_completeness | error_handling | input tokens |
+|---|---|---|---|
+| A. whole `payment.go` (300 lines) | 1.96, conf 0.52 | 2.76, conf 0.76 | 2,800 |
+| B. function slice only | 2.69, conf 0.69 | 2.59, conf 0.59 | 980 |
+| C. slice + sibling slices (struct field list, flag consts) | 2.24, conf 0.61 | 2.66, conf 0.66 | 1,253 |
+| D. slice + one Noul per struct field ("does it validate `X`?") | see below | n/a | 1,118 |
+
+Row D returned, per field: Amount 0.99, CredentialIDs 0.98, DeliverMax 0.99,
+DeliverMin 0.99, Destination 0.99, Paths 0.98, SendMax 0.99, DomainID 0.98,
+**DestinationTag 0.05, InvoiceID 0.04**. That is correct: the real
+`Payment.Validate` never checks those two fields. The rubric in row B "felt"
+this as a 2.69 with 0.69 confidence; the atomic questions state it as ten
+near-certain facts.
+
+Conclusions, which change the design:
+
+1. **Never send whole files.** Confidence drops and tokens triple. The unit is
+   the smallest slice that contains the evidence for the question: a function,
+   a `const` block, a `var ( Err... )` block, a struct definition, a test table.
+2. **Prefer atomic Nouls to graded Scores wherever the rule decomposes.**
+   "Validates every field" is really N questions "validates field i", and the
+   list of fields comes from the AST for free. Score/(levels-1) becomes a plain
+   ratio: checked fields / total fields, with a named finding for each miss.
+   Scores stay for the genuinely graded things (doc comment quality, whether an
+   error type matches its siblings).
+3. **Adding context slices does not help by itself** (row C scored lower than
+   B). Add a sibling slice only when a question references it explicitly, as
+   the per-field Nouls did with `struct_fields`.
+4. Atomic questions also fix the reporting problem: a finding can now say
+   "InvoiceID is not validated; add `IsHash256`-style check" at a line, which a
+   2.69 never could.
+
+## 3c. Slicing model
+
+| Slice kind | Produced from | Questions it receives |
+|---|---|---|
+| `func` / `method` | `*ast.FuncDecl` | error handling, helper usage, per-field Nouls (fields from the receiver struct), magic numbers |
+| `struct` | `*ast.TypeSpec` with struct type | per-field doc comment, tag policy, pointer-for-optional, BaseTx first |
+| `const block` | `*ast.GenDecl` (CONST) | flag naming, typing, doc per const |
+| `errors block` | `*ast.GenDecl` (VAR) in `errors.go` | naming, message style, grouping, duplicates vs sibling package |
+| `test func` | `*ast.FuncDecl` named `Test*` | table shape, subtest names, require vs assert, ErrorIs |
+| `file` | only for layout rules | one type per file, sibling test exists (static, no model) |
+
+A request carries one primary slice plus only the sibling slices that a
+question names by path. Questions are generated per slice from the rule's
+template plus AST facts (field names, constant names, sibling method names).
+
 ## 4. Reference tools and what to borrow
 
 ### alibaba/open-code-review (Apache-2.0)
