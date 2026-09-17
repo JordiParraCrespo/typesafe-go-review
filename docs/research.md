@@ -631,6 +631,83 @@ and `ErrNetworkIDOverrideMismatch` ↔ `ErrNetworkIDFieldMismatch`.
 4. The `InvoiceID` issue in `docs/issue-payment-invoiceid.md` still applies
    on current main; extend it to the LoanSet test gaps.
 
+## 13. Second round of ideas, tested on current main
+
+`experiments/run_ideas2.py`: 268 requests, 235k tokens (about 1 cent).
+Raw results in `experiments/results-ideas2-main-2026-09-17.json`.
+
+### F1. The repo's rule files as questions
+
+Parsed four `.agents/skills/*/rules/*.md` files (title, Impact, Incorrect
+block, Correct block, why) into one Noul each, with the Incorrect example as
+the `true` criterion and the Correct example as `false`.
+
+- **error-panicking** on 20 real `Validate` methods plus 3 mutated copies
+  that `panic(err)`: 23/23 correct, the mutants at 0.88 to 0.90, the real
+  ones at or below 0.3. Zero-effort rule, perfect result.
+- **function-receiver-types** on all 71 types: no violations reported and
+  none exist (revive already enforces this). The one "truth" hit was my
+  regex misparsing `func (Payment) TxType()`; the model was right at 0.18.
+- **error-wrapping-context** on the 46 functions that use `fmt.Errorf`:
+  7 flagged at 0.62 to 0.77, all of which use `%w` correctly. Reading the
+  rule file explains it: its Incorrect block shows two anti-patterns, a bare
+  `return nil, err` "with no context" and `errors.New` losing the cause.
+  Every flagged function has bare `return err` lines, which this codebase
+  does everywhere and `errorlint` does not flag. The model was hedging
+  between the rule as written and the code as practised.
+- **Lesson:** generic rule files parse cleanly into questions, but a rule
+  whose Incorrect block bundles several anti-patterns must be split into one
+  Noul per anti-pattern, and each must be mined against the repo first
+  (section 10, idea 3) to learn whether the repo actually follows it. A rule
+  the codebase violates in 100% of functions is a policy question, not a
+  finding.
+
+### F2. Mutation-based calibration
+
+Ten real `Validate` methods, each with up to four mechanical mutations, each
+variant scored on the two Score rubrics from section 3 plus per-field Nouls.
+Mean deltas against the original:
+
+| Mutation | error rubric (0..3) | validation rubric (0..3) | fields-checked count |
+|---|---|---|---|
+| `panic(err)` instead of return | −1.2 to −2.2 | ~0 | unchanged |
+| swallow `BaseTx.Validate` error | −0.7 to −1.4 | ~0 | unchanged |
+| inline `errors.New` for a sentinel | −0.45 to −1.3 | ~0 | unchanged |
+| delete one `if` check block | −0.05 to −0.7 | −0.3 to −0.6 | drops by 1 to 2 in 8 of 10 |
+
+Read: the rubrics are orthogonal (each mutation moves only its own axis),
+the error rubric ranks panic > swallow > inline error, which matches the
+Impact levels in the rule files, and the per-field Noul count is the
+sharpest detector of a dropped check. Two cases where the count did not drop
+(CheckCash, Clawback) were mutations that removed a non-field check, so the
+answer was right. This table is the seed of the `go test` calibration suite:
+assert each mutation moves its axis by at least the observed minimum.
+
+### F3. Before/after on real git history
+
+For the six `Validate` methods that changed between the January commit and
+today, a Choice "which version follows the conventions more completely",
+asked in both orders. All six: the new version wins in both orders, at
+confidence 0.67 to 1.0. EscrowFinish, NFTokenCreateOffer, NFTokenModify,
+MPTokenAuthorize, AccountSet and Clawback all improved, which matches the
+fixes noted in section 12. This is the diff-mode gate: a PR whose new
+version loses to its old version in both orders is a regression.
+
+### F4. Flatten completeness
+
+Same AST-generated pattern as E1 but on `Flatten`: "does the function write
+field X into the map?" for all 273 fields. No misses from the model and none
+from the static check. A clean negative: zero false positives at scale on a
+question where the answer is always yes.
+
+### What to keep from this round
+
+1. Rule-file parsing works for single-pattern rules; split multi-pattern
+   Incorrect blocks and mine each against the repo before use.
+2. The mutation table becomes the calibration suite.
+3. Before/after Choice in both orders is the PR regression gate.
+4. Flatten completeness is a cheap always-on rule with no noise.
+
 ## 9. Suggested next steps
 
 1. Scaffold the Go module (`cmd/gorev`, `internal/{scan,rules,static,typesafe,score,report}`).

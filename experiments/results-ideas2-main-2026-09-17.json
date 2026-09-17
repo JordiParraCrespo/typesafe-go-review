@@ -1,0 +1,1820 @@
+{
+ "F1a_wrap_with_w": [
+  {
+   "file": "xrpl/multisign.go",
+   "func": "signersFromTx",
+   "noul": 0.16,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/multisign.go",
+   "func": "validateSignerSignature",
+   "noul": 0.65,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/multisign.go",
+   "func": "signerFields",
+   "noul": 0.29,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/ledger-entry-types/oracle.go",
+   "func": "UnmarshalJSON",
+   "noul": 0.48,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/hash/ledger.go",
+   "func": "Vault",
+   "noul": 0.08,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/hash/ledger.go",
+   "func": "LoanBroker",
+   "noul": 0.09,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/hash/ledger.go",
+   "func": "Loan",
+   "noul": 0.1,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/hash/ledger.go",
+   "func": "PaymentChannel",
+   "noul": 0.06,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/hash/ledger.go",
+   "func": "MPTID",
+   "noul": 0.05,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/rpc/helpers.go",
+   "func": "checkForError",
+   "noul": 0.75,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/transaction/batch.go",
+   "func": "Validate",
+   "noul": 0.62,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/transaction/validations_xrpl_objects.go",
+   "func": "IsIssuedCurrency",
+   "noul": 0.29,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/transaction/signer_list_set.go",
+   "func": "Validate",
+   "noul": 0.39,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/transaction/types/mpt_amount.go",
+   "func": "UnmarshalJSON",
+   "noul": 0.16,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/internal/client/transaction.go",
+   "func": "InspectSignedBatchInners",
+   "noul": 0.66,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/internal/client/transaction.go",
+   "func": "invalidSignedForm",
+   "noul": 0.06,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/internal/client/finality.go",
+   "func": "ValidatePollInterval",
+   "noul": 0.1,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/internal/client/finality.go",
+   "func": "ValidateMaxRetries",
+   "noul": 0.1,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/internal/client/finality.go",
+   "func": "ValidatePreliminaryResult",
+   "noul": 0.1,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/internal/client/address.go",
+   "func": "collectAddressChange",
+   "noul": 0.12,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/internal/client/fee.go",
+   "func": "NetworkFeeDrops",
+   "noul": 0.15,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/internal/client/fee.go",
+   "func": "ParseFeeXRP",
+   "noul": 0.31,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/internal/client/network.go",
+   "func": "ResolveNetworkIdentity",
+   "noul": 0.14,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/internal/client/network.go",
+   "func": "NetworkIDRequired",
+   "noul": 0.1,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/internal/client/network.go",
+   "func": "parseRippledVersion",
+   "noul": 0.19,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/testutil/flatten.go",
+   "func": "CompareFlattenAndExpected",
+   "noul": 0.15,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/testutil/serializer.go",
+   "func": "Deserialize",
+   "noul": 0.72,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/testutil/integration/faucet.go",
+   "func": "fundWalletWithGenesis",
+   "noul": 0.77,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/queries/server/server_definitions.go",
+   "func": "UnmarshalJSON",
+   "noul": 0.12,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/queries/server/server_definitions.go",
+   "func": "UnmarshalJSON",
+   "noul": 0.12,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/queries/server/server_definitions.go",
+   "func": "Validate",
+   "noul": 0.1,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/queries/server/server_definitions.go",
+   "func": "UnmarshalJSON",
+   "noul": 0.09,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/queries/server/server_definitions.go",
+   "func": "ValidateForRequest",
+   "noul": 0.28,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/queries/server/server_definitions.go",
+   "func": "Validate",
+   "noul": 0.33,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/queries/server/server_definitions.go",
+   "func": "validateFormatSection",
+   "noul": 0.05,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/queries/server/server_definitions.go",
+   "func": "UnmarshalJSON",
+   "noul": 0.2,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/queries/transactions/simulate.go",
+   "func": "validatedTransaction",
+   "noul": 0.46,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/queries/transactions/simulate.go",
+   "func": "Validate",
+   "noul": 0.23,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/queries/transactions/simulate.go",
+   "func": "ValidateForRequest",
+   "noul": 0.35,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/queries/transactions/simulate.go",
+   "func": "UnmarshalJSON",
+   "noul": 0.28,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/queries/transactions/simulate.go",
+   "func": "validateUnsignedSimulateTx",
+   "noul": 0.23,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/queries/transactions/simulate.go",
+   "func": "validateUnsignedSimulateSigners",
+   "noul": 0.09,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/queries/transactions/simulate.go",
+   "func": "validateUnsignedSimulateBatchSigners",
+   "noul": 0.14,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/queries/transactions/simulate.go",
+   "func": "decodeSimulateString",
+   "noul": 0.12,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/queries/common/ledger.go",
+   "func": "UnmarshalLedgerSpecifier",
+   "noul": 0.66,
+   "truth_antipattern": false
+  },
+  {
+   "file": "xrpl/queries/ledger/ledger_entry.go",
+   "func": "Validate",
+   "noul": 0.19,
+   "truth_antipattern": false
+  }
+ ],
+ "F1b_receiver_consistency": [
+  {
+   "type": "AMMBid",
+   "noul": 0.21,
+   "receiver_names": [
+    "",
+    "a"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "AMMClawback",
+   "noul": 0.14,
+   "receiver_names": [
+    "a"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "AMMCreate",
+   "noul": 0.28,
+   "receiver_names": [
+    "",
+    "a"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "AMMDelete",
+   "noul": 0.22,
+   "receiver_names": [
+    "",
+    "a"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "AMMDeposit",
+   "noul": 0.14,
+   "receiver_names": [
+    "",
+    "a"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "AMMVote",
+   "noul": 0.25,
+   "receiver_names": [
+    "",
+    "a"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "AMMWithdraw",
+   "noul": 0.18,
+   "receiver_names": [
+    "",
+    "a"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "AccountDelete",
+   "noul": 0.23,
+   "receiver_names": [
+    "",
+    "s"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "AccountSet",
+   "noul": 0.12,
+   "receiver_names": [
+    "",
+    "s"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "Batch",
+   "noul": 0.14,
+   "receiver_names": [
+    "",
+    "b"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "CheckCancel",
+   "noul": 0.11,
+   "receiver_names": [
+    "",
+    "c"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "CheckCash",
+   "noul": 0.09,
+   "receiver_names": [
+    "",
+    "c"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "CheckCreate",
+   "noul": 0.1,
+   "receiver_names": [
+    "",
+    "c"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "Clawback",
+   "noul": 0.08,
+   "receiver_names": [
+    "",
+    "c"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "CredentialAccept",
+   "noul": 0.11,
+   "receiver_names": [
+    "",
+    "c"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "CredentialCreate",
+   "noul": 0.08,
+   "receiver_names": [
+    "",
+    "c"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "CredentialDelete",
+   "noul": 0.08,
+   "receiver_names": [
+    "",
+    "c"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "DIDDelete",
+   "noul": 0.19,
+   "receiver_names": [
+    "tx"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "DIDSet",
+   "noul": 0.17,
+   "receiver_names": [
+    "tx"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "DelegateSet",
+   "noul": 0.17,
+   "receiver_names": [
+    "",
+    "d"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "DepositPreauth",
+   "noul": 0.17,
+   "receiver_names": [
+    "",
+    "d"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "EscrowCancel",
+   "noul": 0.14,
+   "receiver_names": [
+    "",
+    "e"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "EscrowCreate",
+   "noul": 0.17,
+   "receiver_names": [
+    "",
+    "e"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "EscrowFinish",
+   "noul": 0.12,
+   "receiver_names": [
+    "",
+    "e"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "LoanBrokerCoverClawback",
+   "noul": 0.13,
+   "receiver_names": [
+    "tx"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "LoanBrokerCoverDeposit",
+   "noul": 0.19,
+   "receiver_names": [
+    "tx"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "LoanBrokerCoverWithdraw",
+   "noul": 0.16,
+   "receiver_names": [
+    "tx"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "LoanBrokerDelete",
+   "noul": 0.18,
+   "receiver_names": [
+    "tx"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "LoanBrokerSet",
+   "noul": 0.16,
+   "receiver_names": [
+    "tx"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "LoanDelete",
+   "noul": 0.19,
+   "receiver_names": [
+    "tx"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "LoanManage",
+   "noul": 0.14,
+   "receiver_names": [
+    "tx"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "LoanPay",
+   "noul": 0.13,
+   "receiver_names": [
+    "tx"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "LoanSet",
+   "noul": 0.16,
+   "receiver_names": [
+    "tx"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "MPTokenAuthorize",
+   "noul": 0.16,
+   "receiver_names": [
+    "",
+    "m"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "MPTokenIssuanceCreate",
+   "noul": 0.15,
+   "receiver_names": [
+    "",
+    "m"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "MPTokenIssuanceDestroy",
+   "noul": 0.2,
+   "receiver_names": [
+    "",
+    "m"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "MPTokenIssuanceSet",
+   "noul": 0.14,
+   "receiver_names": [
+    "",
+    "m"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "NFTokenAcceptOffer",
+   "noul": 0.2,
+   "receiver_names": [
+    "",
+    "n"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "NFTokenBurn",
+   "noul": 0.22,
+   "receiver_names": [
+    "",
+    "n"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "NFTokenCancelOffer",
+   "noul": 0.17,
+   "receiver_names": [
+    "",
+    "n"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "NFTokenCreateOffer",
+   "noul": 0.22,
+   "receiver_names": [
+    "",
+    "n"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "NFTokenMint",
+   "noul": 0.17,
+   "receiver_names": [
+    "",
+    "n"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "NFTokenModify",
+   "noul": 0.23,
+   "receiver_names": [
+    "",
+    "n"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "OfferCancel",
+   "noul": 0.18,
+   "receiver_names": [
+    "",
+    "o"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "OfferCreate",
+   "noul": 0.16,
+   "receiver_names": [
+    "",
+    "o"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "OracleDelete",
+   "noul": 0.14,
+   "receiver_names": [
+    "tx"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "OracleSet",
+   "noul": 0.13,
+   "receiver_names": [
+    "tx"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "Payment",
+   "noul": 0.18,
+   "receiver_names": [
+    "Paymen",
+    "p"
+   ],
+   "truth_antipattern": true
+  },
+  {
+   "type": "PaymentChannelClaim",
+   "noul": 0.16,
+   "receiver_names": [
+    "",
+    "p"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "PaymentChannelCreate",
+   "noul": 0.15,
+   "receiver_names": [
+    "",
+    "p"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "PaymentChannelFund",
+   "noul": 0.16,
+   "receiver_names": [
+    "",
+    "p"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "PermissionedDomainDelete",
+   "noul": 0.11,
+   "receiver_names": [
+    "p"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "PermissionedDomainSet",
+   "noul": 0.1,
+   "receiver_names": [
+    "p"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "SetRegularKey",
+   "noul": 0.19,
+   "receiver_names": [
+    "",
+    "s"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "SignerListSet",
+   "noul": 0.15,
+   "receiver_names": [
+    "",
+    "s"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "TicketCreate",
+   "noul": 0.16,
+   "receiver_names": [
+    "",
+    "t"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "TrustSet",
+   "noul": 0.14,
+   "receiver_names": [
+    "",
+    "t"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "VaultClawback",
+   "noul": 0.17,
+   "receiver_names": [
+    "tx"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "VaultCreate",
+   "noul": 0.17,
+   "receiver_names": [
+    "tx"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "VaultDelete",
+   "noul": 0.26,
+   "receiver_names": [
+    "tx"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "VaultDeposit",
+   "noul": 0.15,
+   "receiver_names": [
+    "tx"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "VaultSet",
+   "noul": 0.14,
+   "receiver_names": [
+    "tx"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "VaultWithdraw",
+   "noul": 0.17,
+   "receiver_names": [
+    "tx"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "XChainAccountCreateCommit",
+   "noul": 0.22,
+   "receiver_names": [
+    "x"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "XChainAddAccountCreateAttestation",
+   "noul": 0.16,
+   "receiver_names": [
+    "x"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "XChainAddClaimAttestation",
+   "noul": 0.19,
+   "receiver_names": [
+    "x"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "XChainClaim",
+   "noul": 0.2,
+   "receiver_names": [
+    "x"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "XChainCommit",
+   "noul": 0.2,
+   "receiver_names": [
+    "x"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "XChainCreateBridge",
+   "noul": 0.26,
+   "receiver_names": [
+    "x"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "XChainCreateClaimID",
+   "noul": 0.22,
+   "receiver_names": [
+    "x"
+   ],
+   "truth_antipattern": false
+  },
+  {
+   "type": "XChainModifyBridge",
+   "noul": 0.13,
+   "receiver_names": [
+    "x"
+   ],
+   "truth_antipattern": false
+  }
+ ],
+ "F1c_panic": [
+  {
+   "type": "AMMBid",
+   "noul": 0.03,
+   "truth_antipattern": false
+  },
+  {
+   "type": "AMMClawback",
+   "noul": 0.03,
+   "truth_antipattern": false
+  },
+  {
+   "type": "AMMCreate",
+   "noul": 0.03,
+   "truth_antipattern": false
+  },
+  {
+   "type": "AMMDelete",
+   "noul": 0.02,
+   "truth_antipattern": false
+  },
+  {
+   "type": "AMMDeposit",
+   "noul": 0.03,
+   "truth_antipattern": false
+  },
+  {
+   "type": "AMMVote",
+   "noul": 0.02,
+   "truth_antipattern": false
+  },
+  {
+   "type": "AMMWithdraw",
+   "noul": 0.03,
+   "truth_antipattern": false
+  },
+  {
+   "type": "AccountDelete",
+   "noul": 0.03,
+   "truth_antipattern": false
+  },
+  {
+   "type": "AccountSet",
+   "noul": 0.03,
+   "truth_antipattern": false
+  },
+  {
+   "type": "Batch",
+   "noul": 0.02,
+   "truth_antipattern": false
+  },
+  {
+   "type": "CheckCancel",
+   "noul": 0.02,
+   "truth_antipattern": false
+  },
+  {
+   "type": "CheckCash",
+   "noul": 0.03,
+   "truth_antipattern": false
+  },
+  {
+   "type": "CheckCreate",
+   "noul": 0.02,
+   "truth_antipattern": false
+  },
+  {
+   "type": "Clawback",
+   "noul": 0.03,
+   "truth_antipattern": false
+  },
+  {
+   "type": "CredentialAccept",
+   "noul": 0.02,
+   "truth_antipattern": false
+  },
+  {
+   "type": "CredentialCreate",
+   "noul": 0.03,
+   "truth_antipattern": false
+  },
+  {
+   "type": "CredentialDelete",
+   "noul": 0.03,
+   "truth_antipattern": false
+  },
+  {
+   "type": "DIDDelete",
+   "noul": 0.02,
+   "truth_antipattern": false
+  },
+  {
+   "type": "DIDSet",
+   "noul": 0.02,
+   "truth_antipattern": false
+  },
+  {
+   "type": "DelegateSet",
+   "noul": 0.03,
+   "truth_antipattern": false
+  },
+  {
+   "type": "AMMBid+panic",
+   "noul": 0.9,
+   "truth_antipattern": true
+  },
+  {
+   "type": "AMMClawback+panic",
+   "noul": 0.88,
+   "truth_antipattern": true
+  },
+  {
+   "type": "AMMCreate+panic",
+   "noul": 0.9,
+   "truth_antipattern": true
+  }
+ ],
+ "F2_mutation_calibration": [
+  {
+   "type": "AMMCreate",
+   "variants": {
+    "original": {
+     "err": 2.59,
+     "err_conf": 0.59,
+     "val": 1.88,
+     "fields_checked": 3,
+     "n_fields": 3
+    },
+    "drop_one_check": {
+     "err": 2.43,
+     "err_conf": 0.43,
+     "val": 1.46,
+     "fields_checked": 2,
+     "n_fields": 3
+    },
+    "inline_error": {
+     "err": 1.26,
+     "err_conf": 0.73,
+     "val": 1.83,
+     "fields_checked": 3,
+     "n_fields": 3
+    },
+    "panic_on_err": {
+     "err": 0.36,
+     "err_conf": 0.64,
+     "val": 1.84,
+     "fields_checked": 3,
+     "n_fields": 3
+    },
+    "swallow_error": {
+     "err": 1.32,
+     "err_conf": 0.0,
+     "val": 1.95,
+     "fields_checked": 3,
+     "n_fields": 3
+    }
+   }
+  },
+  {
+   "type": "CheckCash",
+   "variants": {
+    "original": {
+     "err": 2.4,
+     "err_conf": 0.4,
+     "val": 1.74,
+     "fields_checked": 3,
+     "n_fields": 3
+    },
+    "drop_one_check": {
+     "err": 2.35,
+     "err_conf": 0.35,
+     "val": 1.64,
+     "fields_checked": 3,
+     "n_fields": 3
+    },
+    "inline_error": {
+     "err": 1.95,
+     "err_conf": 0.93,
+     "val": 1.78,
+     "fields_checked": 3,
+     "n_fields": 3
+    },
+    "panic_on_err": {
+     "err": 0.63,
+     "err_conf": 0.37,
+     "val": 1.79,
+     "fields_checked": 3,
+     "n_fields": 3
+    }
+   }
+  },
+  {
+   "type": "Clawback",
+   "variants": {
+    "original": {
+     "err": 2.65,
+     "err_conf": 0.65,
+     "val": 2.22,
+     "fields_checked": 2,
+     "n_fields": 2
+    },
+    "drop_one_check": {
+     "err": 2.6,
+     "err_conf": 0.6,
+     "val": 2.24,
+     "fields_checked": 2,
+     "n_fields": 2
+    },
+    "inline_error": {
+     "err": 2.03,
+     "err_conf": 0.94,
+     "val": 2.18,
+     "fields_checked": 2,
+     "n_fields": 2
+    },
+    "panic_on_err": {
+     "err": 1.1,
+     "err_conf": 0.07,
+     "val": 2.22,
+     "fields_checked": 2,
+     "n_fields": 2
+    },
+    "swallow_error": {
+     "err": 1.98,
+     "err_conf": 0.34,
+     "val": 2.07,
+     "fields_checked": 2,
+     "n_fields": 2
+    }
+   }
+  },
+  {
+   "type": "CredentialCreate",
+   "variants": {
+    "original": {
+     "err": 2.63,
+     "err_conf": 0.63,
+     "val": 1.96,
+     "fields_checked": 3,
+     "n_fields": 4
+    },
+    "drop_one_check": {
+     "err": 2.69,
+     "err_conf": 0.69,
+     "val": 1.36,
+     "fields_checked": 2,
+     "n_fields": 4
+    },
+    "inline_error": {
+     "err": 1.95,
+     "err_conf": 0.93,
+     "val": 1.99,
+     "fields_checked": 3,
+     "n_fields": 4
+    },
+    "panic_on_err": {
+     "err": 0.48,
+     "err_conf": 0.52,
+     "val": 1.95,
+     "fields_checked": 3,
+     "n_fields": 4
+    },
+    "swallow_error": {
+     "err": 1.35,
+     "err_conf": 0.0,
+     "val": 1.9,
+     "fields_checked": 3,
+     "n_fields": 4
+    }
+   }
+  },
+  {
+   "type": "EscrowCreate",
+   "variants": {
+    "original": {
+     "err": 2.6,
+     "err_conf": 0.6,
+     "val": 1.65,
+     "fields_checked": 5,
+     "n_fields": 6
+    },
+    "drop_one_check": {
+     "err": 2.49,
+     "err_conf": 0.49,
+     "val": 1.17,
+     "fields_checked": 3,
+     "n_fields": 6
+    },
+    "inline_error": {
+     "err": 2.0,
+     "err_conf": 0.96,
+     "val": 1.75,
+     "fields_checked": 5,
+     "n_fields": 6
+    },
+    "panic_on_err": {
+     "err": 1.24,
+     "err_conf": 0.14,
+     "val": 1.76,
+     "fields_checked": 5,
+     "n_fields": 6
+    }
+   }
+  },
+  {
+   "type": "NFTokenMint",
+   "variants": {
+    "original": {
+     "err": 2.59,
+     "err_conf": 0.59,
+     "val": 1.94,
+     "fields_checked": 6,
+     "n_fields": 7
+    },
+    "drop_one_check": {
+     "err": 2.25,
+     "err_conf": 0.54,
+     "val": 1.54,
+     "fields_checked": 5,
+     "n_fields": 7
+    },
+    "inline_error": {
+     "err": 2.03,
+     "err_conf": 0.92,
+     "val": 2.07,
+     "fields_checked": 6,
+     "n_fields": 7
+    },
+    "panic_on_err": {
+     "err": 1.27,
+     "err_conf": 0.18,
+     "val": 1.97,
+     "fields_checked": 6,
+     "n_fields": 7
+    }
+   }
+  },
+  {
+   "type": "OfferCreate",
+   "variants": {
+    "original": {
+     "err": 2.55,
+     "err_conf": 0.55,
+     "val": 1.96,
+     "fields_checked": 4,
+     "n_fields": 5
+    },
+    "drop_one_check": {
+     "err": 2.45,
+     "err_conf": 0.45,
+     "val": 1.34,
+     "fields_checked": 3,
+     "n_fields": 5
+    },
+    "inline_error": {
+     "err": 1.94,
+     "err_conf": 0.91,
+     "val": 1.89,
+     "fields_checked": 4,
+     "n_fields": 5
+    },
+    "panic_on_err": {
+     "err": 0.51,
+     "err_conf": 0.49,
+     "val": 1.7,
+     "fields_checked": 3,
+     "n_fields": 5
+    },
+    "swallow_error": {
+     "err": 1.4,
+     "err_conf": 0.0,
+     "val": 1.63,
+     "fields_checked": 3,
+     "n_fields": 5
+    }
+   }
+  },
+  {
+   "type": "Payment",
+   "variants": {
+    "original": {
+     "err": 2.54,
+     "err_conf": 0.54,
+     "val": 2.19,
+     "fields_checked": 8,
+     "n_fields": 10
+    },
+    "drop_one_check": {
+     "err": 1.87,
+     "err_conf": 0.51,
+     "val": 1.84,
+     "fields_checked": 7,
+     "n_fields": 10
+    },
+    "inline_error": {
+     "err": 1.96,
+     "err_conf": 0.92,
+     "val": 2.1,
+     "fields_checked": 8,
+     "n_fields": 10
+    },
+    "panic_on_err": {
+     "err": 0.73,
+     "err_conf": 0.27,
+     "val": 2.23,
+     "fields_checked": 8,
+     "n_fields": 10
+    },
+    "swallow_error": {
+     "err": 1.82,
+     "err_conf": 0.45,
+     "val": 2.18,
+     "fields_checked": 8,
+     "n_fields": 10
+    }
+   }
+  },
+  {
+   "type": "TrustSet",
+   "variants": {
+    "original": {
+     "err": 2.29,
+     "err_conf": 0.46,
+     "val": 1.01,
+     "fields_checked": 1,
+     "n_fields": 3
+    },
+    "drop_one_check": {
+     "err": 1.65,
+     "err_conf": 0.34,
+     "val": 1.09,
+     "fields_checked": 1,
+     "n_fields": 3
+    },
+    "inline_error": {
+     "err": 1.11,
+     "err_conf": 0.89,
+     "val": 1.01,
+     "fields_checked": 1,
+     "n_fields": 3
+    },
+    "panic_on_err": {
+     "err": 0.33,
+     "err_conf": 0.67,
+     "val": 0.97,
+     "fields_checked": 1,
+     "n_fields": 3
+    },
+    "swallow_error": {
+     "err": 0.89,
+     "err_conf": 0.11,
+     "val": 1.03,
+     "fields_checked": 1,
+     "n_fields": 3
+    }
+   }
+  },
+  {
+   "type": "VaultCreate",
+   "variants": {
+    "original": {
+     "err": 2.76,
+     "err_conf": 0.76,
+     "val": 2.61,
+     "fields_checked": 6,
+     "n_fields": 7
+    },
+    "drop_one_check": {
+     "err": 2.85,
+     "err_conf": 0.85,
+     "val": 2.3,
+     "fields_checked": 5,
+     "n_fields": 7
+    },
+    "inline_error": {
+     "err": 2.05,
+     "err_conf": 0.93,
+     "val": 2.65,
+     "fields_checked": 6,
+     "n_fields": 7
+    },
+    "panic_on_err": {
+     "err": 1.52,
+     "err_conf": 0.41,
+     "val": 2.67,
+     "fields_checked": 6,
+     "n_fields": 7
+    }
+   }
+  }
+ ],
+ "F3_before_after": [
+  {
+   "type": "EscrowFinish",
+   "old_first": [
+    "B_better",
+    0.95
+   ],
+   "new_first": [
+    "A_better",
+    0.96
+   ],
+   "new_wins_both_orders": true
+  },
+  {
+   "type": "NFTokenCreateOffer",
+   "old_first": [
+    "B_better",
+    0.91
+   ],
+   "new_first": [
+    "A_better",
+    0.81
+   ],
+   "new_wins_both_orders": true
+  },
+  {
+   "type": "NFTokenModify",
+   "old_first": [
+    "B_better",
+    0.84
+   ],
+   "new_first": [
+    "A_better",
+    0.9
+   ],
+   "new_wins_both_orders": true
+  },
+  {
+   "type": "MPTokenAuthorize",
+   "old_first": [
+    "B_better",
+    0.9
+   ],
+   "new_first": [
+    "A_better",
+    0.88
+   ],
+   "new_wins_both_orders": true
+  },
+  {
+   "type": "OracleSet",
+   "skipped": "no change"
+  },
+  {
+   "type": "Payment",
+   "skipped": "no change"
+  },
+  {
+   "type": "AccountSet",
+   "old_first": [
+    "B_better",
+    0.67
+   ],
+   "new_first": [
+    "A_better",
+    0.9
+   ],
+   "new_wins_both_orders": true
+  },
+  {
+   "type": "Clawback",
+   "old_first": [
+    "B_better",
+    0.94
+   ],
+   "new_first": [
+    "A_better",
+    1.0
+   ],
+   "new_wins_both_orders": true
+  }
+ ],
+ "F4_flatten_completeness": [
+  {
+   "type": "AMMBid",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "AMMClawback",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "AMMCreate",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "AMMDelete",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "AMMDeposit",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "AMMVote",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "AMMWithdraw",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "AccountDelete",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "AccountSet",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "Batch",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "CheckCancel",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "CheckCash",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "CheckCreate",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "Clawback",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "CredentialAccept",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "CredentialCreate",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "CredentialDelete",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "DIDSet",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "DelegateSet",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "DepositPreauth",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "EscrowCancel",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "EscrowCreate",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "EscrowFinish",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "LoanBrokerCoverClawback",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "LoanBrokerCoverDeposit",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "LoanBrokerCoverWithdraw",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "LoanBrokerDelete",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "LoanBrokerSet",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "LoanDelete",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "LoanManage",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "LoanPay",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "LoanSet",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "MPTokenAuthorize",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "MPTokenIssuanceCreate",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "MPTokenIssuanceDestroy",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "MPTokenIssuanceSet",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "NFTokenAcceptOffer",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "NFTokenBurn",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "NFTokenCancelOffer",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "NFTokenCreateOffer",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "NFTokenMint",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "NFTokenModify",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "OfferCancel",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "OfferCreate",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "OracleDelete",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "OracleSet",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "Payment",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "PaymentChannelClaim",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "PaymentChannelCreate",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "PaymentChannelFund",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "PermissionedDomainDelete",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "PermissionedDomainSet",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "SetRegularKey",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "SignerListSet",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "TicketCreate",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "TrustSet",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "VaultClawback",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "VaultCreate",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "VaultDelete",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "VaultDeposit",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "VaultSet",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "VaultWithdraw",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "XChainAccountCreateCommit",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "XChainAddAccountCreateAttestation",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "XChainAddClaimAttestation",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "XChainClaim",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "XChainCommit",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "XChainCreateBridge",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "XChainCreateClaimID",
+   "missing": [],
+   "static_missing": []
+  },
+  {
+   "type": "XChainModifyBridge",
+   "missing": [],
+   "static_missing": []
+  }
+ ],
+ "usage": {
+  "requests": 268,
+  "input_tokens": 235169
+ }
+}
