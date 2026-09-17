@@ -1,0 +1,19 @@
+func (p *Payment) Validate() (bool, error) {
+	_, err := p.BaseTx.Validate()
+	if err != nil {
+		panic(err)
+	}
+	if ok, _ := IsAmount(p.Amount, "Amount", true); !ok {
+		return false, errors.New("bad amount")
+	}
+	if p.Destination.String() == "" {
+		return false, fmt.Errorf("destination is empty")
+	}
+	if p.Paths != nil {
+		IsPaths(p.Paths)
+	}
+	if p.DeliverMin != nil && p.Flags&131072 == 0 {
+		return false, errors.New("DeliverMin needs partial payment flag")
+	}
+	return true, nil
+}

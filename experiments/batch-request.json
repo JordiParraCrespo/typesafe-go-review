@@ -1,0 +1,55 @@
+{
+  "state": {
+    "conventions": "Validate() returns (bool,error); return package-level sentinel ErrXxx errors; never panic; flags via named tf* constants; exported methods have doc comments.",
+    "functions": {
+      "f1": "}\n\n// Validate validates the Payment struct and make sure all the fields are correct.\nfunc (p *Payment) Validate() (bool, error) {\n\t// Validate the base transaction\n\t_, err := p.BaseTx.Validate()\n\tif err != nil {\n\t\treturn false, err\n\t}\n\n\t// Check if the field Amount is valid\n\tif ok, err := IsAmount(p.Amount, \"Amount\", true); !ok {\n\t\treturn false, err\n\t}\n\n\t// Check if Destination is a valid xrpl address\n\tif !addresscodec.IsValidAddress(p.Destination.String()) {\n\t\treturn false, ErrInvalidDestination\n\t}\n\n\t// Check if the field Paths is valid\n\tif p.Paths != nil {\n\t\tif ok, err := IsPaths(p.Paths); !ok {\n\t\t\treturn false, err\n\t\t}\n\t}\n\n\t// Check if the field SendMax is valid\n\tif ok, err := IsAmount(p.SendMax, \"SendMax\", false); !ok {\n\t\treturn false, err\n\t}\n\n\t// Check if the field DeliverMax is valid\n\tif ok, err := IsAmount(p.DeliverMax, \"DeliverMax\", false); !ok {\n\t\treturn false, err\n\t}\n\n\t// Check if the field DeliverMin is valid\n\tif ok, err := IsAmount(p.DeliverMin, \"DeliverMin\", false); !ok {\n\t\treturn false, err\n\t}\n\n\t// Check if the field CredentialIDs is valid\n\tif p.CredentialIDs != nil && !p.CredentialIDs.IsValid() {\n\t\treturn false, ErrInvalidCredentialIDs\n\t}\n\n\t// Check partial payment fields\n\tif ok, err := checkPartialPayment(p); !ok {\n\t\treturn false, err\n\t}\n\n\tif p.DomainID != nil {\n\t\tif ok := IsDomainID(*p.DomainID); !ok {\n\t\t\treturn false, ErrInvalidDomainID\n\t\t}\n\t}\n\n\treturn true, nil\n}",
+      "f2": "func (p *Payment) Validate() (bool, error) {\n\t_, err := p.BaseTx.Validate()\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tif ok, _ := IsAmount(p.Amount, \"Amount\", true); !ok {\n\t\treturn false, errors.New(\"bad amount\")\n\t}\n\tif p.Destination.String() == \"\" {\n\t\treturn false, fmt.Errorf(\"destination is empty\")\n\t}\n\tif p.Paths != nil {\n\t\tIsPaths(p.Paths)\n\t}\n\tif p.DeliverMin != nil && p.Flags&131072 == 0 {\n\t\treturn false, errors.New(\"DeliverMin needs partial payment flag\")\n\t}\n\treturn true, nil\n}",
+      "f3": "func checkPartialPayment(tx *Payment) (bool, error) {\n\tif tx.DeliverMin == nil {\n\t\treturn true, nil\n\t}\n\n\tif tx.Flags == 0 {\n\t\treturn false, ErrPartialPaymentFlagRequired\n\t}\n\n\tif !types.IsFlagEnabled(tx.Flags, tfPartialPayment) {\n\t\treturn false, ErrPartialPaymentFlagRequired\n\t}\n\n\treturn true, nil\n\n}"
+    }
+  },
+  "model": "jev-latest",
+  "questions": {
+    "f1_errors": {
+      "type": "score",
+      "instructions": "Rate function `functions.f1` on error handling per `conventions`.",
+      "criteria": [
+        "Errors are ignored, swallowed, or the function panics on recoverable errors",
+        "Errors are returned but with ad hoc inline error strings and some checks are missing",
+        "Errors are consistently checked and returned; mostly uses sentinel Err* variables with minor deviations",
+        "Every error path checked and returned, only package-level sentinel Err* variables"
+      ]
+    },
+    "f2_errors": {
+      "type": "score",
+      "instructions": "Rate function `functions.f2` on error handling per `conventions`.",
+      "criteria": [
+        "Errors are ignored, swallowed, or the function panics on recoverable errors",
+        "Errors are returned but with ad hoc inline error strings and some checks are missing",
+        "Errors are consistently checked and returned; mostly uses sentinel Err* variables with minor deviations",
+        "Every error path checked and returned, only package-level sentinel Err* variables"
+      ]
+    },
+    "f3_errors": {
+      "type": "score",
+      "instructions": "Rate function `functions.f3` on error handling per `conventions`.",
+      "criteria": [
+        "Errors are ignored, swallowed, or the function panics on recoverable errors",
+        "Errors are returned but with ad hoc inline error strings and some checks are missing",
+        "Errors are consistently checked and returned; mostly uses sentinel Err* variables with minor deviations",
+        "Every error path checked and returned, only package-level sentinel Err* variables"
+      ]
+    },
+    "f1_magic": {
+      "type": "noul",
+      "instructions": "Does `functions.f1` compare flags against raw numeric literals?"
+    },
+    "f2_magic": {
+      "type": "noul",
+      "instructions": "Does `functions.f2` compare flags against raw numeric literals?"
+    },
+    "f3_magic": {
+      "type": "noul",
+      "instructions": "Does `functions.f3` compare flags against raw numeric literals?"
+    }
+  }
+}
