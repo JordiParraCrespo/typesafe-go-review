@@ -739,6 +739,256 @@ more, each against the hand-verified per-field ground truth from sections
 6. For location, send numbered lines and ask for the line id.
 7. Do all ranking, aggregation and thresholds in code from atomic answers.
 
+### 14.1 Each technique in full
+
+The table above is the summary. Below is what actually changed in the request
+for each one, and why it moved the number.
+
+#### 1. Shrink the unit of code
+
+The same question over progressively less code.
+
+| State | Confidence | Tokens |
+|---|---|---|
+| Whole 300-line file | 0.52 | 2,800 |
+| One function | 0.69 | 980 |
+
+Confidence measures how concentrated the answer distribution is. Every line
+in the state that is irrelevant to the question is one more candidate
+explanation, so the distribution spreads. Less material, sharper peak, a
+third of the cost.
+
+#### 2. One question per item, not one graded question
+
+Before, one Score:
+
+```json
+"completeness": {
+  "type": "score",
+  "instructions": "How completely does this method validate the struct's fields?",
+  "criteria": ["Most fields unchecked", "..."]
+}
+→ 2.69 of 3, confidence 0.69
+```
+
+After, one Noul per field:
+
+```json
+"checks_Amount":    { "type": "noul", "instructions": "Does the function validate `Amount`?" },
+"checks_InvoiceID": { "type": "noul", "instructions": "Does the function validate `InvoiceID`?" }
+→ 0.99, 0.04 — every answer at 0.98 or above
+```
+
+A graded question over ten items makes the model average ten internal
+judgements and report one blurred number. Asking the ten gives ten sharp
+answers, the averaging becomes your arithmetic with weights you control, and
+you learn *which* field is wrong.
+
+#### 3. Offer the real options instead of yes or no
+
+The answer space becomes the project's own helper list plus "not validated".
+
+```json
+{
+  "type": "choice",
+  "instructions": "Which helper validates the struct field `Amount`?",
+  "criteria": {
+    "IsAmount": null,
+    "IsPaths": null,
+    "addresscodec.IsValidAddress": null,
+    "typecheck.IsHex": null,
+    "IsValid()": null,
+    "explicit comparison (==, !=, len)": null,
+    "not validated": null
+  }
+}
+```
+
+| | |
+|---|---|
+| Agreement with the verified yes/no answers | 262 of 273 |
+| Typical confidence | 0.94 to 1.00 |
+
+Real Payment answers: `Amount` → `IsAmount` (1.00), `Destination` →
+`addresscodec.IsValidAddress` (1.00), `CredentialIDs` → `IsValid()` (1.00),
+`Paths` → `IsPaths` (1.00), `InvoiceID` → "not validated" (0.98).
+
+Three gains at no extra cost, since the option list comes from the AST. You
+still get the yes/no, because "not validated" is an option. The finding names
+the mechanism, so it reads as "InvoiceID is unchecked, while the other hash
+fields here use `typecheck.IsHex` with a length check". And the answer can
+now contradict itself: an amount helper chosen for an address field tells you
+that answer is unreliable, which a bare Noul can never reveal.
+
+#### 4. Describe the answer space in words and examples
+
+Two places. First, rubric levels: the model matches the code against each
+level independently, without seeing its neighbours or their numbers, so each
+level must stand alone. TypeSafe's own docs measure the extreme:
+
+```
+criteria: ["0", "1", "2"]
+  → a cosmetic bug scores 0.57 at confidence 0.35
+criteria: ["Cosmetic; no impact", "Broken, workaround exists", "Blocking; no workaround"]
+  → the same bug scores 0.00 at confidence 1.00
+```
+
+We went one step further and gave each described level a line of code:
+
+```json
+"criteria": [
+  { "description": "Errors ignored, or the function panics",
+    "example": "if err != nil { panic(err) }" },
+  { "description": "Errors returned as ad hoc inline strings",
+    "example": "return false, errors.New(\"bad amount\")" },
+  { "description": "Package sentinels, minor deviations",
+    "example": "return false, ErrInvalidAmount" }
+]
+```
+
+| | Plain strings | With examples |
+|---|---|---|
+| Mean confidence | 0.63 | 0.70 |
+| Gap, clean code vs inlined error | 0.69 | 0.82 |
+
+Second, Noul `criteria`, which is where a codebase's quirks get encoded.
+`AccountSet` validates through `ValidateOptionalField(flatten, "Domain",
+typecheck.IsString)`, so the field name appears only as a map key:
+
+```
+bare question                                              → 0.40 (wrongly leaning no)
+same question, criteria spelling out that a check through
+a helper or a map key counts as validation                 → 0.94 (correct)
+```
+
+Same code, same truth, opposite answer.
+
+#### 5. Put every rule in one request
+
+Packing does not improve answers. The experiment existed to prove it does not
+degrade them, since questions sharing a request could in principle interfere.
+Forty unrelated questions were added alongside the working per-field ones:
+
+| | |
+|---|---|
+| Answers that flipped | 0 |
+| Largest movement in any answer | 0.07 |
+
+The run then restructures from 355 requests (71 types x 5 rule sets) to 71,
+with unchanged latency because questions are evaluated in parallel. TypeSafe's
+docs go further and recommend asking speculative questions you may not need.
+This property is what makes ten questions per field affordable at all.
+
+#### 6. In a pull request, ask about the change
+
+```json
+// before: the result
+"state": { "function": "<code after the edit>" },
+"questions": { "q": { "type": "noul",
+  "instructions": "Is a validation check missing from this function?" }}
+→ detected, 0.71 to 0.79
+
+// after: the change
+"state": { "diff": "@@ -18,6 +18,3 @@\n-  if ok, err := IsAmount(a.Amount2, \"Amount2\", true); !ok {\n-    return false, err\n-  }\n   if a.TradingFee > AmmMaxTradingFee {" },
+"questions": { "q": { "type": "noul",
+  "instructions": "Does this change remove or weaken a validation check?" }}
+→ detected, 0.93 to 0.97
+```
+
+Tested on 21 functions, each with one check mechanically deleted. Both
+framings detect all 21; only one is confident. In the diff the deleted line
+is physically present with a minus in front of it, so the judgement compares
+two visible things. In the other, the model must reconstruct what a correct
+implementation should have contained. Spot-the-difference beats
+what-is-missing-from-this-picture.
+
+Only applicable in diff mode. A full scan has no diff, which is why the
+per-field questions carry the field list in the state: that list is the
+reference the deleted line provides here.
+
+#### 7. Number the lines and ask which one
+
+A finding without a line number cannot become an inline comment. Searching
+for the field name fails on indirect checks and on repeated names. So the
+line id becomes the answer:
+
+```json
+"state": { "lines": {
+  "1":  "func (p *Payment) Validate() (bool, error) {",
+  "7":  "  if ok, err := IsAmount(p.Amount, \"Amount\", true); !ok {",
+  "12": "  if !addresscodec.IsValidAddress(p.Destination.String()) {"
+}},
+"questions": { "L_Amount": {
+  "type": "choice",
+  "instructions": "Which line id contains the check that validates `Amount`?",
+  "criteria": { "1": null, "7": null, "12": null }
+}}
+→ "7", confidence 1.00
+```
+
+71 of 71 correct, mostly at 0.99 or above. The line number is a choice from a
+closed set, so it cannot name a line that does not exist, and the confidence
+reports uncertainty. Alibaba's reviewer needed a separate positioning module
+for exactly this problem; typed output removes the need.
+
+#### 8. Summarising the code before sending it (dropped)
+
+Sending extracted facts (field list, calls, conditions) instead of source
+agreed with the source-based answers on only 56 of 70 types. Every
+disagreement was an indirect check the extractor had dropped. The summary is
+a lossy model of the code written by us, and its gaps become the model's
+gaps. Slice the source down; never pre-digest it.
+
+#### 9. Asking it to rank everything at once (dropped)
+
+```json
+"state": { "validate_methods": { "Payment": "<code>", … 71 entries … } },
+"questions": { "least": {
+  "type": "choice",
+  "instructions": "Which entry validates the smallest share of its fields?",
+  "criteria": { … 71 type names … } }}
+→ "OfferCancel", confidence 0.46     // OfferCancel validates every field
+   truth: TrustSet, 1 field of 3
+```
+
+State was 248,000 tokens. A companion question for the most complete method
+answered at 0.23, near random over 71 options. The failure is structural:
+answering means computing 71 ratios and sorting them inside one typed answer
+with nowhere to hold intermediate results, and the low confidence was honest.
+The correct version is four lines of Go over answers we already had:
+
+```go
+ratio := float64(checked) / float64(total)   // TrustSet: 1/3 = 0.33
+sort.Slice(types, func(i, j int) bool {
+    return ratio[types[i]] < ratio[types[j]]
+})
+```
+
+#### 10. Screening cheaply before asking in detail (situational)
+
+One coarse "is any field unvalidated" per function, per-field questions only
+on the hits: 15 correct alarms, 3 false, 2 missed findings, 53 of 70 requests
+skipped. Two real findings out of seventeen for a 75% request cut is a bad
+trade at these prices. Off by default.
+
+#### 11. Asking the same thing twice, worded differently
+
+257 of 273 answers unanimous across three phrasings, 16 split. The splits
+clustered entirely on the two types that validate through a map by string
+key. Disagreement between phrasings is therefore not a finding, it is a
+detector for code doing something the question did not anticipate, and the
+right response is to show a human.
+
+### 14.2 The rule underneath
+
+Every technique that worked either moved work from the model into code, or
+converted a question about recall into a comparison between two things both
+present in the state. Every technique that failed asked the model to hold
+many things at once, or to trust something not in front of it. That single
+rule predicts these results better than anything specific to code review, and
+it is the same rule that makes the rippled comparison in section 15
+trustworthy.
+
 ## 15. Validating against rippled itself: spec conformance without trusting the model's memory
 
 The question: xrpl-go implements what rippled does, rippled changes every
