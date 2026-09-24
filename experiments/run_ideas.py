@@ -58,7 +58,7 @@ results["E2_convention_mining_flatten"] = [r for b in pmap(e2, batches) for r in
 
 # ---------- E3: error-path test coverage, semantic vs grep ----------
 def e3(s):
-    errs = s["sentinels_returned"]; t = s["tests"].get(f"Test{s['type']}_Validate", "")
+    errs = s["sentinels_returned"]; t = "\n\n".join(s["tests"].values())   # all Test<Type>_* functions, not only _Validate
     if not errs or not t: return None
     qs = {f"covers_{e}": {"type": "noul", "instructions": f"Does `test` contain a case whose expected error is `{e}`, or that exercises the input condition that makes `function` return it?"} for e in errs}
     a = ask({"function": s["methods"]["Validate"], "test": t}, qs)

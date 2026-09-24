@@ -1181,6 +1181,164 @@ for the common ones, as `IsAccountNotFound` already does for one token.
   amendment changes for a client SDK: fields, client-side rejections, and
   result codes.
 
+## 17. Second pull (2026-09-24, `3fe5ea4`): verification and new uses
+
+### 17.1 What changed upstream, verified
+
+141 new commits. Two of them fix issues filed from this research:
+
+- **Invoice IDs** (`d2a1938`, fix #433): `Payment.Validate` and
+  `CheckCreate.Validate` now reject a malformed `InvoiceID` through a new
+  `IsHex256` helper, with a new `ErrInvalidInvoiceID` sentinel and tests. This
+  addresses fork issue #6, and the re-run no longer flags either field.
+- **TransactionType in Flatten** (`f70e8e8`, fix #434): the 25 string
+  literals are gone; 78 of 79 assignments now use `x.TxType().String()` and
+  the last is `BaseTx` itself. This addresses fork issue #9.
+
+The re-run on the new code (78 transaction types, 320 fields, 319 requests,
+559k tokens):
+
+| Check | Before | Now | Note |
+|---|---|---|---|
+| Fields never validated | 32 | 29 | 2 real fixes (`InvoiceID` x2). OfferCreate `OfferSequence` also dropped out, but its code did not change: the score drifted from under 0.3 to 0.34. Borderline answers flip between runs. |
+| Error paths without a test | 19 | 25 flagged, 19 confirmed | See 17.2. |
+| websocket sentinels with an rpc twin | 49 of 56 | 65 of 71 | |
+
+### 17.2 Verifying the test-coverage check myself
+
+Hand-checking the first re-run exposed three defects, two in my tooling and
+one in my own verification:
+
+1. **The slicer counted `fmt.Errorf` as a sentinel** because the name starts
+   with "Err". Fixed: sentinels must match `Err[A-Z]…`.
+2. **Tests were matched to types by exact prefix `Test<Type>_`.** The repo
+   has `TestAMMCreateValidate` (no underscore), and since the new CLAUDE.md
+   guidance it splits tests into focused functions such as
+   `TestSponsorshipSet_MaxFee`. Fixed: every test function is assigned to the
+   longest type name it starts with, and the coverage question now sees all of
+   a type's tests, not only `_Validate`.
+3. **My own manual check was wrong once.** I "confirmed" VaultCreate's new
+   vault-kind and date rules as untested after grepping `vault_create_test.go`.
+   They are tested, in `vault_closed_test.go`. The model got this right on the
+   corrected run. Hand verification needs the same scope as the model.
+
+The corrected run flags 25 sentinels. Checked against every test file in the
+package:
+
+| Verdict | Count | Items |
+|---|---|---|
+| Real gap | 19 | LoanSet 9 rate/fee sentinels; LoanBrokerSet 5; LoanBrokerCoverClawback 2 (amount type, negative); AMMClawback 2 (Holder, Amount issuer: the type has no `Validate` test at all); LoanBrokerCoverWithdraw `ErrInvalidDestination` |
+| Covered in a shared test file | 5 | `confidential_mpt_preflight_test.go`, `withdrawal_credentials_test.go`, `account_identity_test.go` test several types at once |
+| Unclear | 1 | Clawback `ErrInvalidAccount` (X-address cases may trigger it) |
+
+The remaining false alarms have one cause: cross-type test files. The fix
+(used in 17.3) is to also include any test function that builds the type as a
+composite literal, which the AST can find.
+
+### 17.3 New uses, each with its own answer key
+
+`experiments/run_ideas4.py`, 292 requests, 809k tokens (about 3.4 cents).
+
+**H1. Spec traceability matrix.** The repo's XLS references contain, for 35
+transactions, a numbered "Data Verification" list: the failure conditions a
+client can check without the ledger, kept separate from ledger-state
+failures. That is an answer key written by the protocol authors. For each of
+138 conditions across the 28 types that exist in Go, two questions: is it
+enforced by `Validate`, and is it exercised by a test.
+
+| | Count |
+|---|---|
+| Conditions | 138 |
+| Judged not enforced | 39 |
+| Judged not tested | 63 |
+| Spec transactions with no Go type yet | 7 (three ConfidentialMPT key/mirror/recover, TokenPreauth, three TransactionProposal) |
+
+Hand-checked on LoanSet's 16 conditions: 14 correct, 1 correctly uncertain
+(0.51 on `GracePeriod`, which Go checks against `PaymentInterval` but not
+against the 60-second minimum), 1 wrong (it said `LoanBrokerID is zero` is
+enforced at 0.67; Go uses `IsHex256`, which accepts the all-zero hash). It
+also surfaced **new real gaps**: `typecheck.IsXRPLNumber` accepts `-5`, `0`
+and `-0.1`, so `PrincipalRequested <= 0`, negative `LoanServiceFee` /
+`LatePaymentFee` / `ClosePaymentFee`, and a negative or oversized
+`LoanOriginationFee` all pass client-side validation although XLS-66 lists
+them as `temINVALID`.
+
+One flaw to fix: conditions inherit meaning from their heading. Payment's
+three conditions come from XLS-68's "Reserve Sponsorship Failures" section
+and only apply to sponsored payments; the parser dropped the heading path.
+Include the heading path in the condition text.
+
+**H2. Test label vs expected error.** For `fail - …` table cases, does the
+expected error match what the case name describes? Scored with mutants that
+swap in another sentinel from the same `Validate`.
+
+| | |
+|---|---|
+| Mutants caught | 129 of 150 (86%) |
+| Originals flagged | 8 of 150, none actually mislabelled; a few names are vague ("fail - invalid flags" expecting `ErrTransferFeeRequiresCanTransfer`) |
+
+Use: a pull-request gate that catches a pasted wrong sentinel. It found no
+real mislabels in this codebase.
+
+**H3. Doc comment vs code.** Does an exported function's comment describe
+what it does? Mutants swap in another function's comment with the name
+corrected, so only the meaning is wrong.
+
+| | |
+|---|---|
+| Mutants caught | 59 of 63 (94%) |
+| Originals flagged | 3 of 63, all false alarms on inspection |
+
+Use: a pull-request gate for comments left stale by an edit.
+
+**H4. Change triage.** Classify each commit's diff as feat, fix, refactor,
+docs, test, chore or ci, judged from the diff alone, and compare with the
+commit's own prefix.
+
+| | |
+|---|---|
+| Exact match with the prefix | 70 of 108 (65%) |
+| "Changes behaviour or not" | 97 of 108 (90%) |
+
+Disagreements concentrate on fix versus feat, where people disagree too. Use
+it only as a coarse router that decides which rule sets to run, not to police
+commit messages.
+
+**H5. Changelog entry vs its diff.** CLAUDE.md requires `[Unreleased]`
+entries to describe the net effect of the change. For each commit that adds a
+changelog entry: does the entry describe the diff? Scored by swapping entries
+between commits.
+
+| | |
+|---|---|
+| True pairs accepted | 37 of 41 |
+| Swapped pairs rejected | 36 of 41 |
+
+All four rejected true pairs were my extraction: three commits only reworded
+existing entries (a `docs:` and a `test:` commit among them), and one diff was
+63 files, truncated before the relevant part. The model was right that those
+entries do not describe those diffs. Compare removed and added lines so
+rewordings are not treated as new entries.
+
+### 17.4 What to take from this round
+
+- **H1 is the strongest new idea.** It turns the spec's own failure list into
+  a checklist with two columns, enforced and tested, and found gaps nobody
+  had filed. It is the natural next step after the rippled preflight
+  cross-check in section 15, and it works for amendments rippled has not
+  shipped yet.
+- **Mutation scoring is how to trust a new question.** H2 and H3 both catch
+  nearly all planted errors and raise few false alarms, which is exactly what
+  a pull-request gate needs, even though this clean codebase gave them little
+  to find.
+- **Verification needs the same scope as the model.** Every false alarm this
+  round came from state that was too narrow (one test file, a truncated diff,
+  a condition without its heading), and my one wrong manual check had the
+  same cause.
+- **Answers near a threshold drift.** One field moved from 0.29 to 0.34
+  between runs with no code change. Report a band around the threshold
+  as "uncertain" instead of flipping a finding on and off.
+
 ## 9. Suggested next steps
 
 1. Scaffold the Go module (`cmd/gorev`, `internal/{scan,rules,static,typesafe,score,report}`).

@@ -1,0 +1,1565 @@
+[
+ {
+  "type": "AMMBid",
+  "errors": {
+   "ErrAMMAtLeastOneAssetMustBeNonXRP": {
+    "noul": 0.95,
+    "grep": false
+   }
+  }
+ },
+ {
+  "type": "AMMClawback",
+  "errors": {
+   "ErrInvalidHolder": {
+    "noul": 0.07,
+    "grep": false
+   },
+   "ErrInvalidAssetIssuer": {
+    "noul": 0.98,
+    "grep": true
+   },
+   "ErrInvalidAmountIssuer": {
+    "noul": 0.06,
+    "grep": false
+   }
+  }
+ },
+ {
+  "type": "AMMCreate",
+  "errors": {
+   "ErrAMMTradingFeeTooHigh": {
+    "noul": 0.95,
+    "grep": false
+   }
+  }
+ },
+ {
+  "type": "AMMDeposit",
+  "errors": {
+   "ErrAMMMustSetAmountWithAmount2": {
+    "noul": 0.93,
+    "grep": false
+   },
+   "ErrAMMMustSetAmountWithEPrice": {
+    "noul": 0.95,
+    "grep": false
+   },
+   "ErrAMMAtLeastOneAssetMustBeSet": {
+    "noul": 0.92,
+    "grep": false
+   }
+  }
+ },
+ {
+  "type": "AMMVote",
+  "errors": {
+   "ErrAMMTradingFeeTooHigh": {
+    "noul": 0.94,
+    "grep": false
+   }
+  }
+ },
+ {
+  "type": "AMMWithdraw",
+  "errors": {
+   "ErrAMMMustSetAmountWithAmount2": {
+    "noul": 0.94,
+    "grep": false
+   },
+   "ErrAMMMustSetAmountWithEPrice": {
+    "noul": 0.95,
+    "grep": false
+   }
+  }
+ },
+ {
+  "type": "AccountDelete",
+  "errors": {
+   "ErrInvalidCredentialIDs": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidDestinationAddress": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "AccountSet",
+  "errors": {
+   "ErrAccountSetInvalidClearFlag": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrAccountSetInvalidSetFlag": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrAccountSetMutuallyExclusiveFlags": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrAccountSetInvalidTransferRate": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrAccountSetInvalidTickSize": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "Batch",
+  "errors": {
+   "ErrBatchRawTransactionsCount": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "CheckCancel",
+  "errors": {
+   "ErrInvalidCheckID": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "CheckCash",
+  "errors": {
+   "ErrInvalidCheckID": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrAmountOrDeliverMinNotProvided": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrMutuallyExclusiveAmountDeliverMin": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "CheckCreate",
+  "errors": {
+   "ErrInvalidDestination": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidInvoiceID": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "Clawback",
+  "errors": {
+   "ErrClawbackMissingAmount": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidAccount": {
+    "noul": 0.16,
+    "grep": false
+   },
+   "ErrDuplicateXAddressTag": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrClawbackInvalidAmount": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrClawbackHolderNotAllowed": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrClawbackSameAccount": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrClawbackMPTIssuerMismatch": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrClawbackMissingHolder": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrClawbackInvalidHolder": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrClawbackHolderTagNotAllowed": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrClawbackSameHolder": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "ConfidentialMPTClawback",
+  "errors": {
+   "ErrConfidentialClawbackInvalidHolder": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrConfidentialClawbackSelfClawback": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrConfidentialClawbackHolderTagNotAllowed": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrConfidentialClawbackInvalidAmount": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrConfidentialClawbackBadProof": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "ConfidentialMPTConvert",
+  "errors": {
+   "ErrConfidentialMPTInvalidAmount": {
+    "noul": 0.05,
+    "grep": false
+   },
+   "ErrConfidentialConvertKeyProofMismatch": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrConfidentialConvertInvalidEncryptionKey": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrConfidentialConvertInvalidProofLength": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrConfidentialConvertInvalidBlindingFactor": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrConfidentialConvertInvalidCiphertext": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "ConfidentialMPTConvertBack",
+  "errors": {
+   "ErrConfidentialConvertBackInvalidAmount": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrConfidentialConvertBackInvalidBlindingFactor": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrConfidentialConvertBackInvalidCiphertext": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrConfidentialConvertBackInvalidCommitment": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrConfidentialConvertBackInvalidProof": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "ConfidentialMPTSend",
+  "errors": {
+   "ErrConfidentialSendInvalidDestination": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrConfidentialSendSelfSend": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrDuplicateXAddressTag": {
+    "noul": 0.98,
+    "grep": true
+   },
+   "ErrConfidentialSendDestinationIsIssuer": {
+    "noul": 0.06,
+    "grep": false
+   },
+   "ErrConfidentialSendInvalidCiphertext": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrConfidentialSendInvalidCommitment": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrConfidentialSendInvalidProof": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidCredentialIDs": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "CredentialAccept",
+  "errors": {
+   "ErrInvalidIssuer": {
+    "noul": 0.94,
+    "grep": false
+   },
+   "ErrInvalidCredentialType": {
+    "noul": 0.94,
+    "grep": false
+   }
+  }
+ },
+ {
+  "type": "CredentialCreate",
+  "errors": {
+   "ErrInvalidSubject": {
+    "noul": 0.93,
+    "grep": false
+   },
+   "ErrInvalidCredentialType": {
+    "noul": 0.94,
+    "grep": false
+   },
+   "ErrInvalidCredentialURI": {
+    "noul": 0.93,
+    "grep": false
+   }
+  }
+ },
+ {
+  "type": "CredentialDelete",
+  "errors": {
+   "ErrInvalidCredentialType": {
+    "noul": 0.92,
+    "grep": false
+   },
+   "ErrInvalidSubject": {
+    "noul": 0.92,
+    "grep": false
+   },
+   "ErrInvalidIssuer": {
+    "noul": 0.93,
+    "grep": false
+   }
+  }
+ },
+ {
+  "type": "DIDSet",
+  "errors": {
+   "ErrDIDSetMustSetEitherDataOrDIDDocumentOrURI": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "DelegateSet",
+  "errors": {
+   "ErrInvalidDestination": {
+    "noul": 0.87,
+    "grep": false
+   },
+   "ErrDelegateSetAuthorizeAccountConflict": {
+    "noul": 0.93,
+    "grep": false
+   },
+   "ErrDelegateSetPermissionMalformed": {
+    "noul": 0.86,
+    "grep": false
+   },
+   "ErrDelegateSetPermissionsMaxLength": {
+    "noul": 0.83,
+    "grep": false
+   },
+   "ErrDelegateSetEmptyPermissionValue": {
+    "noul": 0.89,
+    "grep": false
+   },
+   "ErrDelegateSetNonDelegatableTransaction": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrDelegateSetDuplicatePermissions": {
+    "noul": 0.94,
+    "grep": false
+   }
+  }
+ },
+ {
+  "type": "DepositPreauth",
+  "errors": {
+   "ErrDepositPreauthMustSetOnlyOneField": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrDepositPreauthAuthorizeCannotBeSender": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrDepositPreauthUnauthorizeCannotBeSender": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrDepositPreauthInvalidAuthorize": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrDepositPreauthInvalidUnauthorize": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrDepositPreauthInvalidAuthorizeCredentials": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrDepositPreauthInvalidUnauthorizeCredentials": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "EscrowCancel",
+  "errors": {
+   "ErrEscrowCancelMissingOwner": {
+    "noul": 0.92,
+    "grep": false
+   },
+   "ErrEscrowCancelMissingOfferSequence": {
+    "noul": 0.95,
+    "grep": false
+   }
+  }
+ },
+ {
+  "type": "EscrowCreate",
+  "errors": {
+   "ErrEscrowCreateZeroAmount": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrEscrowCreateInvalidDestinationAddress": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrEscrowCreateNoConditionOrFinishAfterSet": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrEscrowCreateInvalidCondition": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "EscrowFinish",
+  "errors": {
+   "ErrEscrowFinishMissingOwner": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrEscrowFinishMissingOfferSequence": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrEscrowFinishInvalidCondition": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrEscrowFinishInvalidFulfillment": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidCredentialIDs": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "LoanBrokerCoverClawback",
+  "errors": {
+   "ErrLoanBrokerCoverClawbackLoanBrokerIDInvalid": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrLoanBrokerCoverClawbackAmountInvalidType": {
+    "noul": 0.04,
+    "grep": false
+   },
+   "ErrLoanBrokerCoverClawbackAmountNegative": {
+    "noul": 0.04,
+    "grep": false
+   },
+   "ErrLoanBrokerCoverClawbackLoanBrokerIDOrAmountRequired": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "LoanBrokerCoverDeposit",
+  "errors": {
+   "ErrLoanBrokerCoverDepositLoanBrokerIDRequired": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrLoanBrokerCoverDepositLoanBrokerIDInvalid": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrLoanBrokerCoverDepositAmountRequired": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "LoanBrokerCoverWithdraw",
+  "errors": {
+   "ErrLoanBrokerCoverWithdrawLoanBrokerIDRequired": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrLoanBrokerCoverWithdrawLoanBrokerIDInvalid": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrLoanBrokerCoverWithdrawAmountRequired": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidDestination": {
+    "noul": 0.05,
+    "grep": false
+   },
+   "ErrInvalidCredentialIDs": {
+    "noul": 0.03,
+    "grep": false
+   }
+  }
+ },
+ {
+  "type": "LoanBrokerDelete",
+  "errors": {
+   "ErrLoanBrokerDeleteLoanBrokerIDRequired": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrLoanBrokerDeleteLoanBrokerIDInvalid": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "LoanBrokerSet",
+  "errors": {
+   "ErrLoanBrokerSetVaultIDRequired": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrLoanBrokerSetVaultIDInvalid": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrLoanBrokerSetLoanBrokerIDInvalid": {
+    "noul": 0.03,
+    "grep": false
+   },
+   "ErrLoanBrokerSetDataInvalid": {
+    "noul": 0.98,
+    "grep": true
+   },
+   "ErrLoanBrokerSetManagementFeeRateInvalid": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrLoanBrokerSetDebtMaximumInvalid": {
+    "noul": 0.04,
+    "grep": false
+   },
+   "ErrLoanBrokerSetDebtMaximumNegative": {
+    "noul": 0.04,
+    "grep": false
+   },
+   "ErrLoanBrokerSetCoverRateMinimumInvalid": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrLoanBrokerSetCoverRateLiquidationInvalid": {
+    "noul": 0.04,
+    "grep": false
+   },
+   "ErrLoanBrokerSetCoverRatesMismatch": {
+    "noul": 0.04,
+    "grep": false
+   }
+  }
+ },
+ {
+  "type": "LoanDelete",
+  "errors": {
+   "ErrLoanDeleteLoanIDRequired": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrLoanDeleteLoanIDInvalid": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "LoanManage",
+  "errors": {
+   "ErrLoanManageLoanIDRequired": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrLoanManageLoanIDInvalid": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrLoanManageFlagsConflict": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "LoanPay",
+  "errors": {
+   "ErrLoanPayLoanIDRequired": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrLoanPayLoanIDInvalid": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrLoanPayAmountRequired": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrLoanPayMutuallyExclusiveFlags": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "LoanSet",
+  "errors": {
+   "ErrLoanSetLoanBrokerIDRequired": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrLoanSetLoanBrokerIDInvalid": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrLoanSetPrincipalRequestedRequired": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrLoanSetPrincipalRequestedInvalid": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrLoanSetDataInvalid": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidAccount": {
+    "noul": 0.96,
+    "grep": true
+   },
+   "ErrLoanSetOverpaymentFeeInvalid": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrLoanSetInterestRateInvalid": {
+    "noul": 0.04,
+    "grep": false
+   },
+   "ErrLoanSetLateInterestRateInvalid": {
+    "noul": 0.03,
+    "grep": false
+   },
+   "ErrLoanSetCloseInterestRateInvalid": {
+    "noul": 0.03,
+    "grep": false
+   },
+   "ErrLoanSetOverpaymentInterestRateInvalid": {
+    "noul": 0.03,
+    "grep": false
+   },
+   "ErrLoanSetPaymentIntervalInvalid": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrLoanSetGracePeriodInvalid": {
+    "noul": 0.04,
+    "grep": false
+   },
+   "ErrLoanSetLoanOriginationFeeInvalid": {
+    "noul": 0.04,
+    "grep": false
+   },
+   "ErrLoanSetLoanServiceFeeInvalid": {
+    "noul": 0.03,
+    "grep": false
+   },
+   "ErrLoanSetLatePaymentFeeInvalid": {
+    "noul": 0.03,
+    "grep": false
+   },
+   "ErrLoanSetClosePaymentFeeInvalid": {
+    "noul": 0.03,
+    "grep": false
+   }
+  }
+ },
+ {
+  "type": "MPTokenAuthorize",
+  "errors": {
+   "ErrInvalidMPTokenIssuanceIDAuthorize": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidAccount": {
+    "noul": 0.07,
+    "grep": false
+   },
+   "ErrHolderAccountConflict": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "MPTokenIssuanceCreate",
+  "errors": {
+   "ErrInvalidTransferFee": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrTransferFeeRequiresCanTransfer": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrMPTIssuanceCreateTransferFeeWithConfidentialBalance": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrMPTIssuanceCreateMaximumAmountInvalid": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidMPTokenMetadata": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrMPTIssuanceCreateDomainIDInvalid": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrMPTIssuanceCreateDomainIDRequiresRequireAuth": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrMPTIssuanceCreateImmutableFlagsZero": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrMPTIssuanceCreateInvalidImmutableFlags": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "MPTokenIssuanceDestroy",
+  "errors": {
+   "ErrInvalidMPTokenIssuanceIDDestroy": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "MPTokenIssuanceSet",
+  "errors": {
+   "ErrInvalidMPTokenIssuanceIDSet": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidAccount": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrHolderAccountConflict": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrMPTIssuanceSetInvalidFlags": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrMPTokenIssuanceSetFlags": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrMPTIssuanceSetEmpty": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrMPTIssuanceSetKeyConflict": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrMPTIssuanceSetHolderMutuallyExclusive": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrMPTIssuanceSetFlagsMutuallyExclusive": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrMPTIssuanceSetImmutableFlagsZero": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrMPTIssuanceSetInvalidImmutableFlags": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidTransferFee": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrMPTIssuanceSetTransferFeeWithConfidentialBalance": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidMPTokenMetadata": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrMPTIssuanceSetDomainIDInvalid": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrMPTIssuanceSetAuditorRequiresIssuerKey": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrMPTIssuanceSetInvalidEncryptionKey": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "NFTokenAcceptOffer",
+  "errors": {
+   "ErrNFTokenBrokerFeeZero": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrMissingBothOffers": {
+    "noul": 1.0,
+    "grep": true
+   },
+   "ErrMissingOffer": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "NFTokenBurn",
+  "errors": {
+   "ErrInvalidOwner": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidNFTokenID": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "NFTokenCancelOffer",
+  "errors": {
+   "ErrEmptyNFTokenOffers": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "NFTokenCreateOffer",
+  "errors": {
+   "ErrInvalidNFTokenID": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidTokenValue": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrOwnerAccountConflict": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrDestinationAccountConflict": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidOwner": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidDestination": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrOwnerPresentForSellOffer": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrOwnerNotPresentForBuyOffer": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "NFTokenMint",
+  "errors": {
+   "ErrInvalidTransferFee": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrIssuerAccountConflict": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidIssuer": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidURI": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrTransferFeeRequiresTransferableFlag": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrAmountRequiredWithExpirationOrDestination": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidDestination": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "NFTokenModify",
+  "errors": {
+   "ErrInvalidNFTokenID": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrOwnerAccountConflict": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidOwner": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidURI": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "OfferCreate",
+  "errors": {
+   "ErrTfHybridCannotBeSetWithoutDomainID": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidDomainID": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "OracleSet",
+  "errors": {
+   "ErrOracleProviderLength": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrOraclePriceDataSeriesItems": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "Payment",
+  "errors": {
+   "ErrInvalidDestination": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidInvoiceID": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidCredentialIDs": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidDomainID": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "PaymentChannelClaim",
+  "errors": {
+   "ErrInvalidChannel": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidSignature": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidHexPublicKey": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidCredentialIDs": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "PaymentChannelCreate",
+  "errors": {
+   "ErrInvalidDestination": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidHexPublicKey": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "PaymentChannelFund",
+  "errors": {
+   "ErrInvalidExpiration": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "PermissionedDomainDelete",
+  "errors": {
+   "ErrMissingDomainID": {
+    "noul": 0.72,
+    "grep": false
+   }
+  }
+ },
+ {
+  "type": "SetRegularKey",
+  "errors": {
+   "ErrRegularKeyMatchesAccount": {
+    "noul": 0.94,
+    "grep": false
+   },
+   "ErrInvalidRegularKey": {
+    "noul": 0.9,
+    "grep": false
+   }
+  }
+ },
+ {
+  "type": "SignerListSet",
+  "errors": {
+   "ErrInvalidQuorumAndEntries": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidSignerEntries": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidWalletLocator": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidAccount": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrSignerAccountMatchesAccount": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrDuplicateSignerAccount": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidSignerWeight": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrSignerQuorumGreaterThanSumOfSignerWeights": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "SponsorshipSet",
+  "errors": {
+   "ErrInvalidTransactionType": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrSponsorshipSetCounterpartyConflict": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidSponsee": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidCounterpartySponsor": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidFlags": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrSponsorshipSetDeleteConflict": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrSponsorshipSetCounterpartyCannotModify": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrSponsorshipSetEmptyUpdate": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrSponsorshipSetFeeAmountDelta": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrSponsorshipSetMaxFee": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrSponsorshipSetRemainingOwnerCountDelta": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "SponsorshipTransfer",
+  "errors": {
+   "ErrInvalidTransactionType": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidFlags": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrSponsorshipTransferObjectID": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrSponsorshipTransferSponsorNotAllowed": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidSponsee": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrSponsorshipTransferSponsorRequired": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrSponsorshipTransferReserveRequired": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrSponsorshipTransferSponseeNotAllowed": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrSponsorshipTransferSignatureRequired": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "TicketCreate",
+  "errors": {
+   "ErrTicketCreateInvalidTicketCount": {
+    "noul": 0.94,
+    "grep": false
+   }
+  }
+ },
+ {
+  "type": "TrustSet",
+  "errors": {
+   "ErrTrustSetMissingLimitAmount": {
+    "noul": 0.93,
+    "grep": false
+   }
+  }
+ },
+ {
+  "type": "VaultClawback",
+  "errors": {
+   "ErrVaultClawbackVaultIDRequired": {
+    "noul": 0.98,
+    "grep": true
+   },
+   "ErrVaultClawbackVaultIDInvalid": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrVaultClawbackHolderRequired": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrVaultClawbackHolderInvalid": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrVaultClawbackAmountInvalidType": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "VaultCreate",
+  "errors": {
+   "ErrVaultCreateAssetRequired": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrVaultCreateDataInvalid": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrVaultCreateAssetsMaximumInvalid": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrVaultCreateMPTokenMetadataInvalid": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrVaultCreateScaleInvalid": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrVaultCreateScaleRequiresIOU": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrVaultCreateDomainIDRequiresPrivateFlag": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrVaultCreateDomainIDInvalid": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrVaultCreateDatesRequireClosedKind": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrVaultCreateDatesRequired": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrVaultCreateInvestmentPeriodInvalid": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrVaultCreateKindInvalid": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "VaultDelete",
+  "errors": {
+   "ErrVaultDeleteVaultIDRequired": {
+    "noul": 0.98,
+    "grep": true
+   },
+   "ErrVaultDeleteVaultIDInvalid": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrVaultDeleteMemoDataInvalid": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "VaultDeposit",
+  "errors": {
+   "ErrVaultDepositVaultIDRequired": {
+    "noul": 0.98,
+    "grep": true
+   },
+   "ErrVaultDepositVaultIDInvalid": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrVaultDepositAmountRequired": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "VaultSet",
+  "errors": {
+   "ErrVaultSetVaultIDRequired": {
+    "noul": 0.98,
+    "grep": true
+   },
+   "ErrVaultSetVaultIDInvalid": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrVaultSetDataInvalid": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrVaultSetAssetsMaximumInvalid": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrVaultSetDomainIDInvalid": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "VaultWithdraw",
+  "errors": {
+   "ErrVaultWithdrawVaultIDRequired": {
+    "noul": 0.97,
+    "grep": true
+   },
+   "ErrVaultWithdrawVaultIDInvalid": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrVaultWithdrawAmountRequired": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidDestination": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidCredentialIDs": {
+    "noul": 0.03,
+    "grep": false
+   }
+  }
+ },
+ {
+  "type": "XChainAccountCreateCommit",
+  "errors": {
+   "ErrInvalidAccount": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "XChainAddAccountCreateAttestation",
+  "errors": {
+   "ErrInvalidAttestationRewardAccount": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidAttestationSignerAccount": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidDestination": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidOtherChainSource": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidPublicKey": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidSignature": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidWasLockingChainSend": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidXChainAccountCreateCount": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "XChainAddClaimAttestation",
+  "errors": {
+   "ErrInvalidAttestationRewardAccount": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidAttestationSignerAccount": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidDestination": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidOtherChainSource": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidPublicKey": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidSignature": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidWasLockingChainSend": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrInvalidXChainClaimID": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "XChainClaim",
+  "errors": {
+   "ErrInvalidDestinationAddress": {
+    "noul": 0.99,
+    "grep": true
+   },
+   "ErrMissingXChainClaimID": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "XChainCommit",
+  "errors": {
+   "ErrInvalidXChainClaimID": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "XChainCreateClaimID",
+  "errors": {
+   "ErrInvalidAccount": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ },
+ {
+  "type": "XChainModifyBridge",
+  "errors": {
+   "ErrInvalidFlags": {
+    "noul": 0.99,
+    "grep": true
+   }
+  }
+ }
+]

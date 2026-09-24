@@ -156,7 +156,7 @@ func main() {
 				sl.Methods[fd.Name.Name] = text(fd)
 				if fd.Name.Name == "Validate" {
 					ast.Inspect(fd.Body, func(n ast.Node) bool {
-						if id, ok := n.(*ast.Ident); ok && strings.HasPrefix(id.Name, "Err") {
+						if id, ok := n.(*ast.Ident); ok && isSentinelName(id.Name) {
 							sl.Sentinel = appendUnique(sl.Sentinel, id.Name)
 						}
 						return true
@@ -177,10 +177,17 @@ func main() {
 				if !ok || !strings.HasPrefix(fd.Name.Name, "Test") {
 					continue
 				}
-				for ty, sl := range byType {
-					if strings.HasPrefix(fd.Name.Name, "Test"+ty+"_") || fd.Name.Name == "Test"+ty {
-						sl.Tests[fd.Name.Name] = text(fd)
+				// Assign the test to the longest type name it starts with, so
+				// TestAMMCreateValidate (no underscore) still maps to AMMCreate
+				// and TestPaymentChannelCreate_X never maps to Payment.
+				best := ""
+				for ty := range byType {
+					if strings.HasPrefix(fd.Name.Name, "Test"+ty) && len(ty) > len(best) {
+						best = ty
 					}
+				}
+				if best != "" {
+					byType[best].Tests[fd.Name.Name] = text(fd)
 				}
 			}
 		}
@@ -204,6 +211,12 @@ func embeds(st *ast.StructType, name string) bool {
 		}
 	}
 	return false
+}
+
+// isSentinelName reports whether name looks like a package sentinel error
+// (ErrXxx). It excludes fmt.Errorf and similar identifiers.
+func isSentinelName(name string) bool {
+	return len(name) > 3 && strings.HasPrefix(name, "Err") && name[3] >= 'A' && name[3] <= 'Z'
 }
 
 func appendUnique(s []string, v string) []string {

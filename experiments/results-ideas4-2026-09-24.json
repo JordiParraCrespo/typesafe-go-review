@@ -1,0 +1,5457 @@
+{
+ "H1_spec_traceability": [
+  {
+   "type": "VaultSet",
+   "spec": "defi/xls-0065.md",
+   "rows": [
+    {
+     "cond": "The `VaultID` field is zero. (`temMALFORMED`)",
+     "enforced": 0.89,
+     "tested": 0.86
+    },
+    {
+     "cond": "The `Data` field, if provided, is empty or exceeds 256 bytes. (`temMALFORMED`)",
+     "enforced": 0.78,
+     "tested": 0.83
+    },
+    {
+     "cond": "The `AssetsMaximum` field, if provided, is negative. (`temMALFORMED`)",
+     "enforced": 0.57,
+     "tested": 0.13
+    },
+    {
+     "cond": "None of `Data`, `AssetsMaximum`, or `DomainID` are provided (nothing to update). (`temMALFORMED`)",
+     "enforced": 0.11,
+     "tested": 0.11
+    }
+   ]
+  },
+  {
+   "type": "VaultDelete",
+   "spec": "defi/xls-0065.md",
+   "rows": [
+    {
+     "cond": "The `VaultID` field is zero. (`temMALFORMED`)",
+     "enforced": 0.87,
+     "tested": 0.88
+    },
+    {
+     "cond": "- `SingleAssetVault`: The `MemoData` field is present. (`temDISABLED`)",
+     "enforced": 0.18,
+     "tested": 0.59
+    },
+    {
+     "cond": "- `LendingProtocolV1_1`: The `MemoData` field is present and is empty or longer than 256 bytes. (`temMALFORMED`)",
+     "enforced": 0.8,
+     "tested": 0.9
+    }
+   ]
+  },
+  {
+   "type": "VaultDeposit",
+   "spec": "defi/xls-0065.md",
+   "rows": [
+    {
+     "cond": "The `VaultID` field is zero. (`temMALFORMED`)",
+     "enforced": 0.86,
+     "tested": 0.89
+    },
+    {
+     "cond": "The `Amount` field is zero or negative. (`temBAD_AMOUNT`)",
+     "enforced": 0.82,
+     "tested": 0.1
+    }
+   ]
+  },
+  {
+   "type": "VaultWithdraw",
+   "spec": "defi/xls-0065.md",
+   "rows": [
+    {
+     "cond": "The `VaultID` field is zero. (`temMALFORMED`)",
+     "enforced": 0.88,
+     "tested": 0.87
+    },
+    {
+     "cond": "The `Amount` field is zero or negative. (`temBAD_AMOUNT`)",
+     "enforced": 0.82,
+     "tested": 0.07
+    },
+    {
+     "cond": "The `Destination` field, if provided, is zero. (`temMALFORMED`)",
+     "enforced": 0.49,
+     "tested": 0.26
+    }
+   ]
+  },
+  {
+   "type": "LoanBrokerSet",
+   "spec": "defi/xls-0066.md",
+   "rows": [
+    {
+     "cond": "`VaultID` is zero. (`temINVALID`)",
+     "enforced": 0.79,
+     "tested": 0.75
+    },
+    {
+     "cond": "`Data` field is present, non-empty, and exceeds 256 bytes. (`temINVALID`)",
+     "enforced": 0.84,
+     "tested": 0.86
+    },
+    {
+     "cond": "`ManagementFeeRate` is outside valid range (0 to 10000). (`temINVALID`)",
+     "enforced": 0.65,
+     "tested": 0.96
+    },
+    {
+     "cond": "`CoverRateMinimum` is outside valid range (0 to 100000). (`temINVALID`)",
+     "enforced": 0.73,
+     "tested": 0.95
+    },
+    {
+     "cond": "`CoverRateLiquidation` is outside valid range (0 to 100000). (`temINVALID`)",
+     "enforced": 0.85,
+     "tested": 0.1
+    },
+    {
+     "cond": "`DebtMaximum` is negative or exceeds maximum allowed value. (`temINVALID`)",
+     "enforced": 0.57,
+     "tested": 0.05
+    },
+    {
+     "cond": "One of `CoverRateMinimum` and `CoverRateLiquidation` is zero, and the other one is not. (Either both are zero, or both are non-zero) (`temINVALID`)",
+     "enforced": 0.98,
+     "tested": 0.12
+    },
+    {
+     "cond": "`LoanBrokerID` is specified and is zero. (`temINVALID`)",
+     "enforced": 0.65,
+     "tested": 0.05
+    },
+    {
+     "cond": "`LoanBrokerID` is specified and the submitter is attempting to modify fixed fields (`ManagementFeeRate`, `CoverRateMinimum`, `CoverRateLiquidation`). (`temINVALID`)",
+     "enforced": 0.15,
+     "tested": 0.07
+    }
+   ]
+  },
+  {
+   "type": "LoanBrokerDelete",
+   "spec": "defi/xls-0066.md",
+   "rows": [
+    {
+     "cond": "`LoanBrokerID` is zero. (`temINVALID`)",
+     "enforced": 0.82,
+     "tested": 0.85
+    }
+   ]
+  },
+  {
+   "type": "LoanBrokerCoverDeposit",
+   "spec": "defi/xls-0066.md",
+   "rows": [
+    {
+     "cond": "`LoanBrokerID` is zero. (`temINVALID`)",
+     "enforced": 0.81,
+     "tested": 0.8
+    },
+    {
+     "cond": "`Amount <= 0`. (`temBAD_AMOUNT`)",
+     "enforced": 0.79,
+     "tested": 0.13
+    },
+    {
+     "cond": "`Amount` is not a legal net amount. (`temBAD_AMOUNT`)",
+     "enforced": 0.86,
+     "tested": 0.06
+    }
+   ]
+  },
+  {
+   "type": "LoanBrokerCoverWithdraw",
+   "spec": "defi/xls-0066.md",
+   "rows": [
+    {
+     "cond": "`LoanBrokerID` is zero. (`temINVALID`)",
+     "enforced": 0.8,
+     "tested": 0.73
+    },
+    {
+     "cond": "`Amount <= 0` or is not a legal net amount. (`temBAD_AMOUNT`)",
+     "enforced": 0.9,
+     "tested": 0.09
+    },
+    {
+     "cond": "`Destination` is specified and is zero. (`temMALFORMED`)",
+     "enforced": 0.65,
+     "tested": 0.08
+    }
+   ]
+  },
+  {
+   "type": "LoanBrokerCoverClawback",
+   "spec": "defi/xls-0066.md",
+   "rows": [
+    {
+     "cond": "Neither `LoanBrokerID` nor `Amount` are specified. (`temINVALID`)",
+     "enforced": 0.97,
+     "tested": 0.95
+    },
+    {
+     "cond": "`LoanBrokerID` is specified and is zero. (`temINVALID`)",
+     "enforced": 0.73,
+     "tested": 0.68
+    },
+    {
+     "cond": "`Amount` is specified and `Amount < 0`. (`temBAD_AMOUNT`)",
+     "enforced": 0.97,
+     "tested": 0.05
+    },
+    {
+     "cond": "`Amount` specifies an XRP amount. (`temBAD_AMOUNT`)",
+     "enforced": 0.6,
+     "tested": 0.11
+    },
+    {
+     "cond": "`Amount` is specified and is not a legal net amount. (`temBAD_AMOUNT`)",
+     "enforced": 0.72,
+     "tested": 0.06
+    },
+    {
+     "cond": "`LoanBrokerID` is not specified and `Amount` specifies an MPT. (`temINVALID`)",
+     "enforced": 0.28,
+     "tested": 0.09
+    },
+    {
+     "cond": "`LoanBrokerID` is not specified, `Amount` specifies an IOU, and `Amount.issuer` is the submitter `Account` or zero. (`temINVALID`)",
+     "enforced": 0.32,
+     "tested": 0.15
+    }
+   ]
+  },
+  {
+   "type": "LoanSet",
+   "spec": "defi/xls-0066.md",
+   "rows": [
+    {
+     "cond": "`LoanBrokerID` is specified and is zero. (`temINVALID`)",
+     "enforced": 0.67,
+     "tested": 0.16
+    },
+    {
+     "cond": "`CounterpartySignature` is not present and the transaction is not part of a `Batch` inner transaction. (`temBAD_SIGNER`)",
+     "enforced": 0.27,
+     "tested": 0.06
+    },
+    {
+     "cond": "The transaction is a `Batch` inner transaction and the `Counterparty` field is not specified. (`temBAD_SIGNER`)",
+     "enforced": 0.11,
+     "tested": 0.03
+    },
+    {
+     "cond": "`CounterpartySignature` contains an invalid signing key. (`temBAD_SIGNER`)",
+     "enforced": 0.11,
+     "tested": 0.03
+    },
+    {
+     "cond": "`Data` field is present, non-empty, and exceeds 256 bytes. (`temINVALID`)",
+     "enforced": 0.85,
+     "tested": 0.87
+    },
+    {
+     "cond": "`LoanServiceFee`, `LatePaymentFee`, or `ClosePaymentFee` is negative. (`temINVALID`)",
+     "enforced": 0.49,
+     "tested": 0.04
+    },
+    {
+     "cond": "`PrincipalRequested <= 0`. (`temINVALID`)",
+     "enforced": 0.23,
+     "tested": 0.12
+    },
+    {
+     "cond": "`LoanOriginationFee` is negative or exceeds `PrincipalRequested`. (`temINVALID`)",
+     "enforced": 0.13,
+     "tested": 0.05
+    },
+    {
+     "cond": "`InterestRate` exceeds maximum allowed value. (`temINVALID`)",
+     "enforced": 0.97,
+     "tested": 0.07
+    },
+    {
+     "cond": "`OverpaymentFee` exceeds maximum allowed value. (`temINVALID`)",
+     "enforced": 0.98,
+     "tested": 0.92
+    },
+    {
+     "cond": "`LateInterestRate` exceeds maximum allowed value. (`temINVALID`)",
+     "enforced": 0.97,
+     "tested": 0.04
+    },
+    {
+     "cond": "`CloseInterestRate` exceeds maximum allowed value. (`temINVALID`)",
+     "enforced": 0.98,
+     "tested": 0.05
+    },
+    {
+     "cond": "`OverpaymentInterestRate` exceeds maximum allowed value. (`temINVALID`)",
+     "enforced": 0.98,
+     "tested": 0.08
+    },
+    {
+     "cond": "`PaymentTotal <= 0`. (`temINVALID`)",
+     "enforced": 0.09,
+     "tested": 0.05
+    },
+    {
+     "cond": "`PaymentInterval` is less than `60` seconds. (`temINVALID`)",
+     "enforced": 0.87,
+     "tested": 0.96
+    },
+    {
+     "cond": "`GracePeriod` is less than `60` seconds or greater than the `PaymentInterval`. (`temINVALID`)",
+     "enforced": 0.51,
+     "tested": 0.18
+    }
+   ]
+  },
+  {
+   "type": "LoanDelete",
+   "spec": "defi/xls-0066.md",
+   "rows": [
+    {
+     "cond": "`LoanID` is zero. (`temINVALID`)",
+     "enforced": 0.82,
+     "tested": 0.81
+    }
+   ]
+  },
+  {
+   "type": "LoanManage",
+   "spec": "defi/xls-0066.md",
+   "rows": [
+    {
+     "cond": "`LoanID` is zero. (`temINVALID`)",
+     "enforced": 0.9,
+     "tested": 0.76
+    },
+    {
+     "cond": "More than one of `tfLoanDefault`, `tfLoanImpair`, or `tfLoanUnimpair` flags are set (flags are mutually exclusive). (`temINVALID_FLAG`)",
+     "enforced": 0.29,
+     "tested": 0.67
+    }
+   ]
+  },
+  {
+   "type": "LoanPay",
+   "spec": "defi/xls-0066.md",
+   "rows": [
+    {
+     "cond": "`LoanID` is zero. (`temINVALID`)",
+     "enforced": 0.87,
+     "tested": 0.79
+    },
+    {
+     "cond": "`Amount <= 0`. (`temBAD_AMOUNT`)",
+     "enforced": 0.88,
+     "tested": 0.09
+    },
+    {
+     "cond": "More than one of `tfLoanLatePayment`, `tfLoanFullPayment`, or `tfLoanOverpayment` flags are set (flags are mutually exclusive). (`temINVALID_FLAG`)",
+     "enforced": 0.97,
+     "tested": 0.94
+    }
+   ]
+  },
+  {
+   "type": "EscrowCreate",
+   "spec": "payments/xls-0100.md",
+   "rows": [
+    {
+     "cond": "The combination of `FinishAfter`, `Condition`, `CancelAfter`, and `Bytecode` is not one of the allowed combinations in the table above \u2014 e.g., none of `FinishAfter`/`Condition`/`Bytecode` is present (`temMALFORMED`).",
+     "enforced": 0.63,
+     "tested": 0.59
+    },
+    {
+     "cond": "`Bytecode` is included but `CancelAfter` is not (`temBAD_EXPIRATION`).",
+     "enforced": 0.35,
+     "tested": 0.05
+    },
+    {
+     "cond": "`Data` is included but `Bytecode` is not (`temMALFORMED`).",
+     "enforced": 0.06,
+     "tested": 0.03
+    },
+    {
+     "cond": "`Data` exceeds the maximum allowed size (`temMALFORMED`).",
+     "enforced": 0.18,
+     "tested": 0.03
+    },
+    {
+     "cond": "`Bytecode` is empty, or exceeds `BytecodeSizeLimit` (`temMALFORMED`).",
+     "enforced": 0.08,
+     "tested": 0.03
+    },
+    {
+     "cond": "`Bytecode` is not valid WASM, or does not export an `escrow_finish` function with the required signature (`temINVALID_BYTECODE`).",
+     "enforced": 0.06,
+     "tested": 0.03
+    },
+    {
+     "cond": "Smart Escrows are temporarily disabled by fee voting \u2014 i.e., `GasLimit` or `BytecodeSizeLimit` has been voted to `0` (`temTEMP_DISABLED`).",
+     "enforced": 0.14,
+     "tested": 0.03
+    }
+   ]
+  },
+  {
+   "type": "MPTokenIssuanceSet",
+   "spec": "tokens/xls-0099.md",
+   "rows": [
+    {
+     "cond": "`IssuerEncryptionKey`, `AuditorEncryptionKey`, or `tfMPTSetCanHoldConfidentialBalance` is present but the `ConfidentialTransfer` amendment is not enabled. (`temDISABLED`)",
+     "enforced": 0.15,
+     "tested": 0.14
+    },
+    {
+     "cond": "`IssuerEncryptionKey` is present but is not exactly 33 bytes or is not a well-formed compressed secp256k1 point. (`temMALFORMED`)",
+     "enforced": 0.95,
+     "tested": 0.78
+    },
+    {
+     "cond": "`AuditorEncryptionKey` is present but is not exactly 33 bytes or is not a well-formed compressed secp256k1 point. (`temMALFORMED`)",
+     "enforced": 0.95,
+     "tested": 0.38
+    },
+    {
+     "cond": "`Holder` is present together with `IssuerEncryptionKey` or `AuditorEncryptionKey`. (`temMALFORMED`)",
+     "enforced": 0.97,
+     "tested": 0.94
+    }
+   ]
+  },
+  {
+   "type": "ConfidentialMPTConvert",
+   "spec": "tokens/xls-0096.md",
+   "rows": [
+    {
+     "cond": "The `ConfidentialTransfer` feature is not enabled on the ledger. (`temDISABLED`)",
+     "enforced": 0.25,
+     "tested": 0.06
+    },
+    {
+     "cond": "`Account` is the Issuer. (`temMALFORMED`)",
+     "enforced": 0.48,
+     "tested": 0.07
+    },
+    {
+     "cond": "`HolderEncryptionKey` is present but `ZKProof` is missing. (`temMALFORMED`)",
+     "enforced": 0.98,
+     "tested": 0.95
+    },
+    {
+     "cond": "`HolderEncryptionKey` is absent but `ZKProof` is present. (`temMALFORMED`)",
+     "enforced": 0.97,
+     "tested": 0.91
+    },
+    {
+     "cond": "The length of `HolderEncryptionKey` is not exactly 33 bytes. (`temMALFORMED`)",
+     "enforced": 0.82,
+     "tested": 0.78
+    },
+    {
+     "cond": "The length of `ZKProof` is not exactly 64 bytes. (`temMALFORMED`)",
+     "enforced": 0.86,
+     "tested": 0.77
+    },
+    {
+     "cond": "Any provided ciphertext (`Holder`, `Issuer`, or `Auditor`) has an invalid length or represents an invalid elliptic curve point. (`temBAD_CIPHERTEXT`)",
+     "enforced": 0.94,
+     "tested": 0.91
+    },
+    {
+     "cond": "`MPTAmount` exceeds the maximum allowable MPT amount. (`temBAD_AMOUNT`)",
+     "enforced": 0.85,
+     "tested": 0.06
+    }
+   ]
+  },
+  {
+   "type": "ConfidentialMPTSend",
+   "spec": "tokens/xls-0096.md",
+   "rows": [
+    {
+     "cond": "The `ConfidentialTransfer` feature is not enabled on the ledger. (`temDISABLED`)",
+     "enforced": 0.2,
+     "tested": 0.05
+    },
+    {
+     "cond": "The sender is the issuer of the MPT. (`temMALFORMED`)",
+     "enforced": 0.6,
+     "tested": 0.08
+    },
+    {
+     "cond": "The destination is the issuer of the MPT. (`temMALFORMED`)",
+     "enforced": 0.96,
+     "tested": 0.09
+    },
+    {
+     "cond": "The sender and destination accounts are the same. (`temMALFORMED`)",
+     "enforced": 0.96,
+     "tested": 0.91
+    },
+    {
+     "cond": "The `ZKProof` is not exactly 946 bytes. (`temMALFORMED`)",
+     "enforced": 0.69,
+     "tested": 0.75
+    },
+    {
+     "cond": "The `BalanceCommitment` or `AmountCommitment` is not a valid 33-byte compressed elliptic curve point. (`temMALFORMED`)",
+     "enforced": 0.89,
+     "tested": 0.62
+    },
+    {
+     "cond": "Any required encrypted amount (`SenderEncryptedAmount`, `DestinationEncryptedAmount`, or `IssuerEncryptedAmount`) has an invalid length or represents an invalid elliptic curve point. (`temBAD_CIPHERTEXT`)",
+     "enforced": 0.94,
+     "tested": 0.83
+    },
+    {
+     "cond": "The `AuditorEncryptedAmount` (if present) has an invalid length or represents an invalid elliptic curve point. (`temBAD_CIPHERTEXT`)",
+     "enforced": 0.93,
+     "tested": 0.34
+    }
+   ]
+  },
+  {
+   "type": "ConfidentialMPTMergeInbox",
+   "spec": "tokens/xls-0096.md",
+   "rows": [
+    {
+     "cond": "The `ConfidentialTransfer` feature is not enabled. (`temDISABLED`)",
+     "enforced": 0.33,
+     "tested": 0.1
+    },
+    {
+     "cond": "The account submitting the transaction is the **Issuer**. (`temMALFORMED`)",
+     "enforced": 0.61,
+     "tested": 0.1
+    }
+   ]
+  },
+  {
+   "type": "ConfidentialMPTConvertBack",
+   "spec": "tokens/xls-0096.md",
+   "rows": [
+    {
+     "cond": "The `ConfidentialTransfer` feature is not enabled. (`temDISABLED`)",
+     "enforced": 0.22,
+     "tested": 0.09
+    },
+    {
+     "cond": "The account submitting the transaction is the Issuer. (`temMALFORMED`)",
+     "enforced": 0.47,
+     "tested": 0.07
+    },
+    {
+     "cond": "Ciphertext lengths or formats are invalid. (`temBAD_CIPHERTEXT`)",
+     "enforced": 0.95,
+     "tested": 0.94
+    },
+    {
+     "cond": "`MPTAmount` is zero or greater than the maximum allowable supply. (`temBAD_AMOUNT`)",
+     "enforced": 0.63,
+     "tested": 0.89
+    },
+    {
+     "cond": "The `BalanceCommitment` is not a valid 33-byte compressed elliptic curve point. (`temMALFORMED`)",
+     "enforced": 0.9,
+     "tested": 0.77
+    },
+    {
+     "cond": "The `ZKProof` is not exactly 816 bytes. (`temMALFORMED`)",
+     "enforced": 0.77,
+     "tested": 0.73
+    }
+   ]
+  },
+  {
+   "type": "ConfidentialMPTClawback",
+   "spec": "tokens/xls-0096.md",
+   "rows": [
+    {
+     "cond": "The `ConfidentialTransfer` feature is not enabled. (`temDISABLED`)",
+     "enforced": 0.19,
+     "tested": 0.08
+    },
+    {
+     "cond": "The `Account` is not the issuer of the `MPTokenIssuanceID`. (`temMALFORMED`)",
+     "enforced": 0.83,
+     "tested": 0.08
+    },
+    {
+     "cond": "The `Account` is attempting to claw back from itself (`Account` == `Holder`). (`temMALFORMED`)",
+     "enforced": 0.97,
+     "tested": 0.97
+    },
+    {
+     "cond": "The `ZKProof` is not exactly 64 bytes. (`temMALFORMED`)",
+     "enforced": 0.77,
+     "tested": 0.86
+    },
+    {
+     "cond": "`MPTAmount` is zero or exceeds the maximum limits. (`temBAD_AMOUNT`)",
+     "enforced": 0.91,
+     "tested": 0.94
+    }
+   ]
+  },
+  {
+   "type": "MPTokenIssuanceCreate",
+   "spec": "tokens/xls-0090.md",
+   "rows": [
+    {
+     "cond": "`DomainID` is present but either `SingleAssetVault` or `PermissionedDomains` is disabled. (`temDISABLED`)",
+     "enforced": 0.42,
+     "tested": 0.13
+    },
+    {
+     "cond": "`DomainID` is zero. (`temMALFORMED`)",
+     "enforced": 0.93,
+     "tested": 0.95
+    },
+    {
+     "cond": "`DomainID` is present but `tfMPTRequireAuth` is not set. (`temMALFORMED`)",
+     "enforced": 0.98,
+     "tested": 0.97
+    }
+   ]
+  },
+  {
+   "type": "TrustSet",
+   "spec": "tokens/xls-0087.md",
+   "rows": [
+    {
+     "cond": "Both `CredentialIDs` and `DomainID` are included (`temMALFORMED`)",
+     "enforced": 0.08,
+     "tested": 0.05
+    }
+   ]
+  },
+  {
+   "type": "MPTokenAuthorize",
+   "spec": "tokens/xls-0087.md",
+   "rows": [
+    {
+     "cond": "Both `CredentialIDs` and `DomainID` are included (`temMALFORMED`)",
+     "enforced": 0.17,
+     "tested": 0.04
+    }
+   ]
+  },
+  {
+   "type": "SignerListSet",
+   "spec": "accounts/xls-0049.md",
+   "rows": [
+    {
+     "cond": "`TransactionTypeBitmask` is present but is not an array, contains elements that are not valid transaction type identifiers, or decodes to a malformed bitmask (implementation-defined `tem`-class error code).",
+     "enforced": 0.29,
+     "tested": 0.1
+    }
+   ]
+  },
+  {
+   "type": "SponsorshipSet",
+   "spec": "accounts/xls-0068.md",
+   "rows": [
+    {
+     "cond": "Both `CounterpartySponsor` and `Sponsee` are specified (`temMALFORMED`)",
+     "enforced": 0.96,
+     "tested": 0.94
+    },
+    {
+     "cond": "Neither `CounterpartySponsor` nor `Sponsee` is specified (`temMALFORMED`)",
+     "enforced": 0.96,
+     "tested": 0.61
+    },
+    {
+     "cond": "Both `tfSponsorshipSetRequireSignForFee` and `tfSponsorshipClearRequireSignForFee` are enabled (`temINVALID_FLAG`)",
+     "enforced": 0.97,
+     "tested": 0.96
+    },
+    {
+     "cond": "Both `tfSponsorshipSetRequireSignForReserve` and `tfSponsorshipClearRequireSignForReserve` are enabled (`temINVALID_FLAG`)",
+     "enforced": 0.96,
+     "tested": 0.95
+    },
+    {
+     "cond": "`CounterpartySponsor` is specified (which means that the `Sponsee` is submitting the transaction) and `tfDeleteObject` is not enabled, as only the counterparty sponsor can create/update the `Sponsorship` object (`temMALFORMED`)",
+     "enforced": 0.94,
+     "tested": 0.77
+    },
+    {
+     "cond": "`MaxFee` is not denominated in XRP, or is negative (`temBAD_AMOUNT`)",
+     "enforced": 0.37,
+     "tested": 0.16
+    },
+    {
+     "cond": "`FeeAmountDelta` is not denominated in XRP, or is zero (`temBAD_AMOUNT`)",
+     "enforced": 0.52,
+     "tested": 0.61
+    },
+    {
+     "cond": "`CounterpartySponsor == Sponsee` (attempting to create self-sponsorship) (`temMALFORMED`)",
+     "enforced": 0.4,
+     "tested": 0.9
+    },
+    {
+     "cond": "`RemainingOwnerCountDelta` is zero (`temINVALID`)",
+     "enforced": 0.97,
+     "tested": 0.94
+    },
+    {
+     "cond": "No modification is requested at all \u2014 none of `FeeAmountDelta`, `MaxFee`, or `RemainingOwnerCountDelta` is present, and no `SponsorshipSet`-specific flags are set (`temREDUNDANT`). \"No flags set\" here refers only to the flags defined in [section 3.7.2](#372-flags); universal flags such as `tfFullyCanonicalSig` are ignored for this check.",
+     "enforced": 0.95,
+     "tested": 0.9
+    },
+    {
+     "cond": "If `tfDeleteObject` is enabled:",
+     "enforced": 0.77,
+     "tested": 0.9
+    },
+    {
+     "cond": "`FeeAmountDelta` is specified (`temMALFORMED`)",
+     "enforced": 0.8,
+     "tested": 0.68
+    },
+    {
+     "cond": "`MaxFee` is specified (`temMALFORMED`)",
+     "enforced": 0.52,
+     "tested": 0.44
+    },
+    {
+     "cond": "`RemainingOwnerCountDelta` is specified (`temMALFORMED`)",
+     "enforced": 0.45,
+     "tested": 0.57
+    },
+    {
+     "cond": "`tfSponsorshipSetRequireSignForFee` is enabled (`temINVALID_FLAG`)",
+     "enforced": 0.97,
+     "tested": 0.78
+    },
+    {
+     "cond": "`tfSponsorshipSetRequireSignForReserve` is enabled (`temINVALID_FLAG`)",
+     "enforced": 0.97,
+     "tested": 0.67
+    },
+    {
+     "cond": "`tfSponsorshipClearRequireSignForFee` is enabled (`temINVALID_FLAG`)",
+     "enforced": 0.97,
+     "tested": 0.67
+    },
+    {
+     "cond": "`tfSponsorshipClearRequireSignForReserve` is enabled (`temINVALID_FLAG`)",
+     "enforced": 0.96,
+     "tested": 0.54
+    }
+   ]
+  },
+  {
+   "type": "SponsorshipTransfer",
+   "spec": "accounts/xls-0068.md",
+   "rows": [
+    {
+     "cond": "Exactly one flag must be set (`temINVALID_FLAG`)",
+     "enforced": 0.47,
+     "tested": 0.64
+    },
+    {
+     "cond": "The set of fields included in the transaction does not match the expected set for the specified flag. The exact error code depends on which field is misused: `Sponsor` present without `spfSponsorReserve` on the Create/Reassign path, or `SponsorFlags` present on the End path (`temINVALID_FLAG`); `Sponsee` present on the Create/Reassign path, `Sponsor` present on the End path, or `Sponsee` equal to `tx.Account` on the End path (`temMALFORMED`)",
+     "enforced": 0.76,
+     "tested": 0.88
+    },
+    {
+     "cond": "(Create path) The `Sponsor` field or the `SponsorFlags` field is missing (`temMALFORMED`)",
+     "enforced": 0.76,
+     "tested": 0.89
+    },
+    {
+     "cond": "(Create path) The `SponsorFlags` field does not include the `spfSponsorReserve` flag (`temINVALID_FLAG`)",
+     "enforced": 0.97,
+     "tested": 0.93
+    },
+    {
+     "cond": "(Create path) `ObjectID` is not specified (account-level) and `SponsorSignature` is not included (`temMALFORMED`) \u2014 account-level creation always requires a co-signature; object-level creation may instead rely on a pre-funded `Sponsorship` object.",
+     "enforced": 0.97,
+     "tested": 0.91
+    },
+    {
+     "cond": "(Reassign path) The `Sponsor` field or the `SponsorFlags` field is missing (`temMALFORMED`)",
+     "enforced": 0.78,
+     "tested": 0.78
+    },
+    {
+     "cond": "(Reassign path) The `SponsorFlags` field does not include the `spfSponsorReserve` flag (`temINVALID_FLAG`)",
+     "enforced": 0.93,
+     "tested": 0.93
+    },
+    {
+     "cond": "(Reassign path) `ObjectID` is not specified (account-level) and `SponsorSignature` is not included (`temMALFORMED`)",
+     "enforced": 0.84,
+     "tested": 0.83
+    }
+   ]
+  },
+  {
+   "type": "Payment",
+   "spec": "accounts/xls-0068.md",
+   "rows": [
+    {
+     "cond": "`tfNoRippleDirect`, `tfPartialPayment`, or `tfLimitQuality` are enabled (`temINVALID_FLAG`)",
+     "enforced": 0.42,
+     "tested": 0.54
+    },
+    {
+     "cond": "`Amount` specifies a non-XRP currency (`temBAD_AMOUNT`)",
+     "enforced": 0.67,
+     "tested": 0.39
+    },
+    {
+     "cond": "`SendMax` or `Paths` is included (`temINVALID`)",
+     "enforced": 0.27,
+     "tested": 0.91
+    }
+   ]
+  },
+  {
+   "type": "Batch",
+   "spec": "accounts/xls-0068.md",
+   "rows": [
+    {
+     "cond": "The outer `Batch` transaction includes `SponsorFlags.spfSponsorReserve` (`temINVALID_FLAG`).",
+     "enforced": 0.66,
+     "tested": 0.53
+    },
+    {
+     "cond": "An inner transaction's `SponsorSignature.TxnSignature` is populated (`temBAD_SIGNATURE`).",
+     "enforced": 0.63,
+     "tested": 0.2
+    },
+    {
+     "cond": "An inner transaction's `SponsorSignature.Signers` is populated (`temBAD_SIGNER`).",
+     "enforced": 0.65,
+     "tested": 0.54
+    },
+    {
+     "cond": "An inner transaction's `SponsorSignature.SigningPubKey` is non-empty (`temBAD_REGKEY`).",
+     "enforced": 0.61,
+     "tested": 0.9
+    },
+    {
+     "cond": "An inner transaction has `SponsorFlags.spfSponsorFee` enabled (`temINVALID_FLAG`).",
+     "enforced": 0.63,
+     "tested": 0.92
+    },
+    {
+     "cond": "The outer transaction's `BatchSigners` array does not exactly match the set of sponsors required by the inner transactions (`temBAD_SIGNER`).",
+     "enforced": 0.21,
+     "tested": 0.19
+    }
+   ]
+  }
+ ],
+ "H1_missing_go_types": [
+  "ConfidentialMPTHolderKeyUpdate",
+  "ConfidentialMPTMirrorUpdate",
+  "ConfidentialMPTRecoverBalance",
+  "TokenPreauth",
+  "TransactionProposalCancel",
+  "TransactionProposalCreate",
+  "TransactionProposalSign"
+ ],
+ "H2_test_labels": [
+  {
+   "key": "m43",
+   "mutant": true,
+   "match": 0.17,
+   "type": "LoanBrokerCoverClawback",
+   "name": "fail - both LoanBrokerID and Amount missing",
+   "err": "ErrLoanBrokerCoverClawbackAmountInvalidType"
+  },
+  {
+   "key": "m143",
+   "mutant": true,
+   "match": 0.07,
+   "type": "ConfidentialMPTConvertBack",
+   "name": "fail - wrong length AuditorEncryptedAmount",
+   "err": "ErrConfidentialConvertBackInvalidBlindingFactor"
+  },
+  {
+   "key": "o72",
+   "mutant": false,
+   "match": 0.95,
+   "type": "MPTokenIssuanceSet",
+   "name": "fail - holder same as account",
+   "err": "ErrHolderAccountConflict"
+  },
+  {
+   "key": "o21",
+   "mutant": false,
+   "match": 0.93,
+   "type": "DepositPreauth",
+   "name": "fail - base transaction missing account",
+   "err": "ErrInvalidAccount"
+  },
+  {
+   "key": "m115",
+   "mutant": true,
+   "match": 0.23,
+   "type": "AccountSet",
+   "name": "fail - Invalid AccountSet with high SetFlag",
+   "err": "ErrAccountSetInvalidTickSize"
+  },
+  {
+   "key": "o137",
+   "mutant": false,
+   "match": 0.47,
+   "type": "OfferCreate",
+   "name": "fail - invalid TakerPays",
+   "err": "ErrInvalidTokenFields"
+  },
+  {
+   "key": "o149",
+   "mutant": false,
+   "match": 0.96,
+   "type": "EscrowFinish",
+   "name": "fail - invalid CredentialIDs",
+   "err": "ErrInvalidCredentialIDs"
+  },
+  {
+   "key": "o73",
+   "mutant": false,
+   "match": 0.93,
+   "type": "Payment",
+   "name": "fail - invalid Partial Payment with another Flag than PartialPayment",
+   "err": "ErrPartialPaymentFlagRequired"
+  },
+  {
+   "key": "o62",
+   "mutant": false,
+   "match": 0.94,
+   "type": "PaymentChannelCreate",
+   "name": "fail - Empty destination address",
+   "err": "ErrInvalidDestination"
+  },
+  {
+   "key": "o131",
+   "mutant": false,
+   "match": 0.88,
+   "type": "NFTokenCreateOffer",
+   "name": "fail - invalid BaseTx, missing account",
+   "err": "ErrInvalidAccount"
+  },
+  {
+   "key": "o44",
+   "mutant": false,
+   "match": 0.97,
+   "type": "EscrowCreate",
+   "name": "fail - zero IOU amount",
+   "err": "ErrEscrowCreateZeroAmount"
+  },
+  {
+   "key": "o136",
+   "mutant": false,
+   "match": 0.93,
+   "type": "LoanDelete",
+   "name": "fail - LoanID invalid length",
+   "err": "ErrLoanDeleteLoanIDInvalid"
+  },
+  {
+   "key": "m12",
+   "mutant": true,
+   "match": 0.44,
+   "type": "XChainCreateClaimID",
+   "name": "fail - missing signature reward",
+   "err": "ErrInvalidAccount"
+  },
+  {
+   "key": "m130",
+   "mutant": true,
+   "match": 0.07,
+   "type": "VaultSet",
+   "name": "fail - base tx invalid",
+   "err": "ErrVaultSetDomainIDInvalid"
+  },
+  {
+   "key": "o145",
+   "mutant": false,
+   "match": 0.93,
+   "type": "ConfidentialMPTClawback",
+   "name": "fail - empty MPTokenIssuanceID",
+   "err": "ErrConfidentialMPTInvalidIssuanceID"
+  },
+  {
+   "key": "o135",
+   "mutant": false,
+   "match": 0.84,
+   "type": "Payment",
+   "name": "fail - sponsored account creation with no ripple direct",
+   "err": "ErrSponsorCreatedAccountInvalidFlags"
+  },
+  {
+   "key": "m40",
+   "mutant": true,
+   "match": 0.05,
+   "type": "Payment",
+   "name": "fail - invalid DeliverMax Value",
+   "err": "ErrInvalidInvoiceID"
+  },
+  {
+   "key": "o146",
+   "mutant": false,
+   "match": 0.92,
+   "type": "DepositPreauth",
+   "name": "fail - invalid AuthorizeCredentials",
+   "err": "ErrDepositPreauthInvalidAuthorizeCredentials"
+  },
+  {
+   "key": "m146",
+   "mutant": true,
+   "match": 0.12,
+   "type": "DepositPreauth",
+   "name": "fail - invalid AuthorizeCredentials",
+   "err": "ErrDepositPreauthInvalidUnauthorize"
+  },
+  {
+   "key": "m21",
+   "mutant": true,
+   "match": 0.06,
+   "type": "DepositPreauth",
+   "name": "fail - base transaction missing account",
+   "err": "ErrDepositPreauthInvalidAuthorizeCredentials"
+  },
+  {
+   "key": "o90",
+   "mutant": false,
+   "match": 0.21,
+   "type": "MPTokenIssuanceCreate",
+   "name": "fail - invalid flags",
+   "err": "ErrTransferFeeRequiresCanTransfer"
+  },
+  {
+   "key": "o2",
+   "mutant": false,
+   "match": 0.63,
+   "type": "MPTokenIssuanceSet",
+   "name": "fail - invalid holder address",
+   "err": "ErrInvalidAccount"
+  },
+  {
+   "key": "m52",
+   "mutant": true,
+   "match": 0.81,
+   "type": "SignerListSet",
+   "name": "fail - malformed X-address signer entry",
+   "err": "ErrInvalidWalletLocator"
+  },
+  {
+   "key": "m111",
+   "mutant": true,
+   "match": 0.27,
+   "type": "ConfidentialMPTConvertBack",
+   "name": "fail - empty BalanceCommitment",
+   "err": "ErrConfidentialConvertBackInvalidCiphertext"
+  },
+  {
+   "key": "o69",
+   "mutant": false,
+   "match": 0.88,
+   "type": "MPTokenIssuanceCreate",
+   "name": "fail - TransferFee exceeds MaxTransferFee",
+   "err": "ErrInvalidTransferFee"
+  },
+  {
+   "key": "o9",
+   "mutant": false,
+   "match": 0.93,
+   "type": "LoanSet",
+   "name": "fail - LoanBrokerID required",
+   "err": "ErrLoanSetLoanBrokerIDRequired"
+  },
+  {
+   "key": "m83",
+   "mutant": true,
+   "match": 0.2,
+   "type": "LoanBrokerCoverClawback",
+   "name": "fail - base tx invalid",
+   "err": "ErrLoanBrokerCoverClawbackLoanBrokerIDInvalid"
+  },
+  {
+   "key": "m0",
+   "mutant": true,
+   "match": 0.32,
+   "type": "LoanBrokerDelete",
+   "name": "fail - base tx invalid",
+   "err": "ErrLoanBrokerDeleteLoanBrokerIDInvalid"
+  },
+  {
+   "key": "m26",
+   "mutant": true,
+   "match": 0.13,
+   "type": "Payment",
+   "name": "fail - sponsored account creation with explicitly empty Paths",
+   "err": "ErrInvalidDestination"
+  },
+  {
+   "key": "m60",
+   "mutant": true,
+   "match": 0.06,
+   "type": "EscrowCreate",
+   "name": "fail - odd-length Condition",
+   "err": "ErrEscrowCreateZeroAmount"
+  },
+  {
+   "key": "m69",
+   "mutant": true,
+   "match": 0.1,
+   "type": "MPTokenIssuanceCreate",
+   "name": "fail - TransferFee exceeds MaxTransferFee",
+   "err": "ErrTransferFeeRequiresCanTransfer"
+  },
+  {
+   "key": "m62",
+   "mutant": true,
+   "match": 0.07,
+   "type": "PaymentChannelCreate",
+   "name": "fail - Empty destination address",
+   "err": "ErrInvalidHexPublicKey"
+  },
+  {
+   "key": "o144",
+   "mutant": false,
+   "match": 0.96,
+   "type": "VaultCreate",
+   "name": "fail - Asset required",
+   "err": "ErrVaultCreateAssetRequired"
+  },
+  {
+   "key": "m108",
+   "mutant": true,
+   "match": 0.31,
+   "type": "ConfidentialMPTClawback",
+   "name": "fail - invalid Holder address",
+   "err": "ErrConfidentialClawbackHolderTagNotAllowed"
+  },
+  {
+   "key": "o125",
+   "mutant": false,
+   "match": 0.69,
+   "type": "Clawback",
+   "name": "fail - Holder with issued currency",
+   "err": "ErrClawbackHolderNotAllowed"
+  },
+  {
+   "key": "o85",
+   "mutant": false,
+   "match": 0.93,
+   "type": "ConfidentialMPTConvertBack",
+   "name": "fail - zero MPTAmount",
+   "err": "ErrConfidentialConvertBackInvalidAmount"
+  },
+  {
+   "key": "o83",
+   "mutant": false,
+   "match": 0.79,
+   "type": "LoanBrokerCoverClawback",
+   "name": "fail - base tx invalid",
+   "err": "ErrInvalidAccount"
+  },
+  {
+   "key": "m34",
+   "mutant": true,
+   "match": 0.3,
+   "type": "MPTokenIssuanceSet",
+   "name": "fail - conflicting lock/unlock flags",
+   "err": "ErrInvalidMPTokenIssuanceIDSet"
+  },
+  {
+   "key": "m65",
+   "mutant": true,
+   "match": 0.06,
+   "type": "XChainAddAccountCreateAttestation",
+   "name": "fail - invalid signature",
+   "err": "ErrInvalidXChainAccountCreateCount"
+  },
+  {
+   "key": "o112",
+   "mutant": false,
+   "match": 0.95,
+   "type": "DepositPreauth",
+   "name": "fail - invalid authorize",
+   "err": "ErrDepositPreauthInvalidAuthorize"
+  },
+  {
+   "key": "o18",
+   "mutant": false,
+   "match": 0.78,
+   "type": "CheckCreate",
+   "name": "fail - short InvoiceID",
+   "err": "ErrInvalidInvoiceID"
+  },
+  {
+   "key": "o123",
+   "mutant": false,
+   "match": 0.93,
+   "type": "SignerListSet",
+   "name": "fail - invalid SignerListSet with zero signer weight",
+   "err": "ErrInvalidSignerWeight"
+  },
+  {
+   "key": "o139",
+   "mutant": false,
+   "match": 0.94,
+   "type": "LoanManage",
+   "name": "fail - TfLoanImpair and TfLoanUnimpair both set",
+   "err": "ErrLoanManageFlagsConflict"
+  },
+  {
+   "key": "m99",
+   "mutant": true,
+   "match": 0.08,
+   "type": "VaultClawback",
+   "name": "fail - invalid MPT amount with non-hex issuance ID",
+   "err": "ErrVaultClawbackHolderInvalid"
+  },
+  {
+   "key": "o116",
+   "mutant": false,
+   "match": 0.93,
+   "type": "XChainAddClaimAttestation",
+   "name": "fail - invalid other chain source",
+   "err": "ErrInvalidOtherChainSource"
+  },
+  {
+   "key": "o99",
+   "mutant": false,
+   "match": 0.9,
+   "type": "VaultClawback",
+   "name": "fail - invalid MPT amount with non-hex issuance ID",
+   "err": "ErrInvalidMPTIssuanceID"
+  },
+  {
+   "key": "m123",
+   "mutant": true,
+   "match": 0.19,
+   "type": "SignerListSet",
+   "name": "fail - invalid SignerListSet with zero signer weight",
+   "err": "ErrInvalidSignerEntries"
+  },
+  {
+   "key": "m78",
+   "mutant": true,
+   "match": 0.07,
+   "type": "NFTokenBurn",
+   "name": "fail - Invalid NFTokenBurn with short hex NFTokenID",
+   "err": "ErrInvalidOwner"
+  },
+  {
+   "key": "o68",
+   "mutant": false,
+   "match": 0.97,
+   "type": "SignerListSet",
+   "name": "fail - invalid SignerListSet with invalid WalletLocator",
+   "err": "ErrInvalidWalletLocator"
+  },
+  {
+   "key": "m42",
+   "mutant": true,
+   "match": 0.08,
+   "type": "ConfidentialMPTConvertBack",
+   "name": "fail - wrong length BalanceCommitment",
+   "err": "ErrConfidentialConvertBackInvalidBlindingFactor"
+  },
+  {
+   "key": "o11",
+   "mutant": false,
+   "match": 0.73,
+   "type": "XChainCommit",
+   "name": "fail - missing xchain bridge",
+   "err": "ErrInvalidIssuingChainDoorAddress"
+  },
+  {
+   "key": "m25",
+   "mutant": true,
+   "match": 0.09,
+   "type": "NFTokenCreateOffer",
+   "name": "fail - sell offer issued amount cannot be zero",
+   "err": "ErrInvalidOwner"
+  },
+  {
+   "key": "o45",
+   "mutant": false,
+   "match": 0.96,
+   "type": "Payment",
+   "name": "fail - invalid CredentialIDs",
+   "err": "ErrInvalidCredentialIDs"
+  },
+  {
+   "key": "o70",
+   "mutant": false,
+   "match": 0.87,
+   "type": "OracleSet",
+   "name": "fail - price data series items",
+   "err": "ErrOraclePriceDataSeriesItems"
+  },
+  {
+   "key": "o26",
+   "mutant": false,
+   "match": 0.92,
+   "type": "Payment",
+   "name": "fail - sponsored account creation with explicitly empty Paths",
+   "err": "ErrEmptyPath"
+  },
+  {
+   "key": "o66",
+   "mutant": false,
+   "match": 0.82,
+   "type": "XChainModifyBridge",
+   "name": "fail - invalid xchain bridge",
+   "err": "ErrInvalidIssuingChainDoorAddress"
+  },
+  {
+   "key": "o109",
+   "mutant": false,
+   "match": 0.33,
+   "type": "XChainAccountCreateCommit",
+   "name": "fail - invalid signature reward",
+   "err": "ErrInvalidTokenFields"
+  },
+  {
+   "key": "o111",
+   "mutant": false,
+   "match": 0.89,
+   "type": "ConfidentialMPTConvertBack",
+   "name": "fail - empty BalanceCommitment",
+   "err": "ErrConfidentialConvertBackInvalidCommitment"
+  },
+  {
+   "key": "o39",
+   "mutant": false,
+   "match": 0.93,
+   "type": "ConfidentialMPTClawback",
+   "name": "fail - empty ZKProof",
+   "err": "ErrConfidentialClawbackBadProof"
+  },
+  {
+   "key": "o87",
+   "mutant": false,
+   "match": 0.89,
+   "type": "OracleSet",
+   "name": "fail - price data series item asset price and scale",
+   "err": "ErrPriceDataAssetPriceAndScale"
+  },
+  {
+   "key": "m70",
+   "mutant": true,
+   "match": 0.76,
+   "type": "OracleSet",
+   "name": "fail - price data series items",
+   "err": "ErrOracleProviderLength"
+  },
+  {
+   "key": "m36",
+   "mutant": true,
+   "match": 0.07,
+   "type": "NFTokenMint",
+   "name": "fail - invalid Amount with empty values",
+   "err": "ErrInvalidURI"
+  },
+  {
+   "key": "m55",
+   "mutant": true,
+   "match": 0.06,
+   "type": "NFTokenAcceptOffer",
+   "name": "fail - invalid NFTokenBrokerFee as issued amount",
+   "err": "ErrMissingBothOffers"
+  },
+  {
+   "key": "m37",
+   "mutant": true,
+   "match": 0.07,
+   "type": "ConfidentialMPTConvertBack",
+   "name": "fail - empty ZKProof",
+   "err": "ErrConfidentialConvertBackInvalidBlindingFactor"
+  },
+  {
+   "key": "m116",
+   "mutant": true,
+   "match": 0.15,
+   "type": "XChainAddClaimAttestation",
+   "name": "fail - invalid other chain source",
+   "err": "ErrInvalidXChainClaimID"
+  },
+  {
+   "key": "o147",
+   "mutant": false,
+   "match": 0.95,
+   "type": "MPTokenIssuanceCreate",
+   "name": "fail - non-zero TransferFee with confidential balances",
+   "err": "ErrMPTIssuanceCreateTransferFeeWithConfidentialBalance"
+  },
+  {
+   "key": "o61",
+   "mutant": false,
+   "match": 0.83,
+   "type": "ConfidentialMPTConvert",
+   "name": "fail - invalid AuditorEncryptedAmount",
+   "err": "ErrConfidentialConvertInvalidCiphertext"
+  },
+  {
+   "key": "o4",
+   "mutant": false,
+   "match": 0.89,
+   "type": "Payment",
+   "name": "fail - sponsored account creation with missing sponsor flags",
+   "err": "ErrSponsorFieldsMissing"
+  },
+  {
+   "key": "m137",
+   "mutant": true,
+   "match": 0.05,
+   "type": "OfferCreate",
+   "name": "fail - invalid TakerPays",
+   "err": "ErrInvalidDomainID"
+  },
+  {
+   "key": "m64",
+   "mutant": true,
+   "match": 0.35,
+   "type": "VaultCreate",
+   "name": "fail - zero DomainID",
+   "err": "ErrVaultCreateDataInvalid"
+  },
+  {
+   "key": "m35",
+   "mutant": true,
+   "match": 0.09,
+   "type": "ConfidentialMPTClawback",
+   "name": "fail - short ZKProof",
+   "err": "ErrConfidentialClawbackInvalidAmount"
+  },
+  {
+   "key": "m127",
+   "mutant": true,
+   "match": 0.07,
+   "type": "Payment",
+   "name": "fail - sponsored account creation with SendMax",
+   "err": "ErrInvalidInvoiceID"
+  },
+  {
+   "key": "m109",
+   "mutant": true,
+   "match": 0.08,
+   "type": "XChainAccountCreateCommit",
+   "name": "fail - invalid signature reward",
+   "err": "ErrInvalidAccount"
+  },
+  {
+   "key": "o25",
+   "mutant": false,
+   "match": 0.64,
+   "type": "NFTokenCreateOffer",
+   "name": "fail - sell offer issued amount cannot be zero",
+   "err": "ErrInvalidTokenValue"
+  },
+  {
+   "key": "m87",
+   "mutant": true,
+   "match": 0.15,
+   "type": "OracleSet",
+   "name": "fail - price data series item asset price and scale",
+   "err": "ErrOracleProviderLength"
+  },
+  {
+   "key": "o130",
+   "mutant": false,
+   "match": 0.43,
+   "type": "VaultSet",
+   "name": "fail - base tx invalid",
+   "err": "ErrInvalidAccount"
+  },
+  {
+   "key": "m106",
+   "mutant": true,
+   "match": 0.1,
+   "type": "VaultSet",
+   "name": "fail - Data too large (> 256 bytes)",
+   "err": "ErrVaultSetDomainIDInvalid"
+  },
+  {
+   "key": "m82",
+   "mutant": true,
+   "match": 0.08,
+   "type": "Payment",
+   "name": "fail - non-hex InvoiceID",
+   "err": "ErrInvalidDestination"
+  },
+  {
+   "key": "m77",
+   "mutant": true,
+   "match": 0.15,
+   "type": "EscrowCreate",
+   "name": "fail - zero XRP amount",
+   "err": "ErrEscrowCreateInvalidCondition"
+  },
+  {
+   "key": "o41",
+   "mutant": false,
+   "match": 0.93,
+   "type": "NFTokenModify",
+   "name": "fail - invalid NFTokenID (non-hex)",
+   "err": "ErrInvalidNFTokenID"
+  },
+  {
+   "key": "o30",
+   "mutant": false,
+   "match": 0.87,
+   "type": "SignerListSet",
+   "name": "fail - invalid SignerListSet with no SignerEntries and quorum > 0",
+   "err": "ErrInvalidSignerEntries"
+  },
+  {
+   "key": "m45",
+   "mutant": true,
+   "match": 0.07,
+   "type": "Payment",
+   "name": "fail - invalid CredentialIDs",
+   "err": "ErrInvalidDestination"
+  },
+  {
+   "key": "m128",
+   "mutant": true,
+   "match": 0.05,
+   "type": "Payment",
+   "name": "fail - sponsored account creation with Paths",
+   "err": "ErrInvalidInvoiceID"
+  },
+  {
+   "key": "o104",
+   "mutant": false,
+   "match": 0.95,
+   "type": "NFTokenMint",
+   "name": "fail - issuer invalid address",
+   "err": "ErrInvalidIssuer"
+  },
+  {
+   "key": "m71",
+   "mutant": true,
+   "match": 0.11,
+   "type": "VaultCreate",
+   "name": "fail - Data too large (> 256 bytes)",
+   "err": "ErrVaultCreateScaleRequiresIOU"
+  },
+  {
+   "key": "o23",
+   "mutant": false,
+   "match": 0.67,
+   "type": "LoanBrokerCoverWithdraw",
+   "name": "fail - base tx invalid",
+   "err": "ErrInvalidAccount"
+  },
+  {
+   "key": "m119",
+   "mutant": true,
+   "match": 0.06,
+   "type": "VaultCreate",
+   "name": "fail - Scale requires IOU asset",
+   "err": "ErrVaultCreateDomainIDRequiresPrivateFlag"
+  },
+  {
+   "key": "o16",
+   "mutant": false,
+   "match": 0.94,
+   "type": "MPTokenAuthorize",
+   "name": "fail - empty MPTokenIssuanceID",
+   "err": "ErrInvalidMPTokenIssuanceIDAuthorize"
+  },
+  {
+   "key": "o132",
+   "mutant": false,
+   "match": 0.83,
+   "type": "Clawback",
+   "name": "fail - issued currency self-targeting with equivalent tagless X-address",
+   "err": "ErrClawbackSameAccount"
+  },
+  {
+   "key": "m136",
+   "mutant": true,
+   "match": 0.59,
+   "type": "LoanDelete",
+   "name": "fail - LoanID invalid length",
+   "err": "ErrLoanDeleteLoanIDRequired"
+  },
+  {
+   "key": "o122",
+   "mutant": false,
+   "match": 0.75,
+   "type": "Payment",
+   "name": "fail - invalid BaseTx Payment, missing TransactionType",
+   "err": "ErrInvalidTransactionType"
+  },
+  {
+   "key": "m104",
+   "mutant": true,
+   "match": 0.1,
+   "type": "NFTokenMint",
+   "name": "fail - issuer invalid address",
+   "err": "ErrIssuerAccountConflict"
+  },
+  {
+   "key": "m57",
+   "mutant": true,
+   "match": 0.08,
+   "type": "MPTokenIssuanceSet",
+   "name": "fail - DomainID invalid hex",
+   "err": "ErrMPTIssuanceSetInvalidFlags"
+  },
+  {
+   "key": "m135",
+   "mutant": true,
+   "match": 0.06,
+   "type": "Payment",
+   "name": "fail - sponsored account creation with no ripple direct",
+   "err": "ErrInvalidDomainID"
+  },
+  {
+   "key": "o60",
+   "mutant": false,
+   "match": 0.93,
+   "type": "EscrowCreate",
+   "name": "fail - odd-length Condition",
+   "err": "ErrEscrowCreateInvalidCondition"
+  },
+  {
+   "key": "m32",
+   "mutant": true,
+   "match": 0.08,
+   "type": "VaultClawback",
+   "name": "fail - invalid IOU amount with missing issuer",
+   "err": "ErrVaultClawbackVaultIDInvalid"
+  },
+  {
+   "key": "o29",
+   "mutant": false,
+   "match": 0.61,
+   "type": "ConfidentialMPTConvert",
+   "name": "fail - wrong length AuditorEncryptedAmount",
+   "err": "ErrConfidentialConvertInvalidCiphertext"
+  },
+  {
+   "key": "o3",
+   "mutant": false,
+   "match": 0.62,
+   "type": "VaultDelete",
+   "name": "fail - base tx invalid",
+   "err": "ErrInvalidAccount"
+  },
+  {
+   "key": "m19",
+   "mutant": true,
+   "match": 0.06,
+   "type": "DIDSet",
+   "name": "fail - missing account",
+   "err": "ErrDIDSetMustSetEitherDataOrDIDDocumentOrURI"
+  },
+  {
+   "key": "o81",
+   "mutant": false,
+   "match": 0.94,
+   "type": "MPTokenIssuanceCreate",
+   "name": "fail - zero MaximumAmount",
+   "err": "ErrMPTIssuanceCreateMaximumAmountInvalid"
+  },
+  {
+   "key": "o76",
+   "mutant": false,
+   "match": 0.75,
+   "type": "NFTokenCreateOffer",
+   "name": "fail - sell offer MPT amount cannot be zero",
+   "err": "ErrInvalidTokenValue"
+  },
+  {
+   "key": "m67",
+   "mutant": true,
+   "match": 0.06,
+   "type": "EscrowFinish",
+   "name": "fail - odd-length Fulfillment",
+   "err": "ErrEscrowFinishMissingOwner"
+  },
+  {
+   "key": "m75",
+   "mutant": true,
+   "match": 0.89,
+   "type": "NFTokenModify",
+   "name": "fail - account and owner are the same",
+   "err": "ErrInvalidOwner"
+  },
+  {
+   "key": "m8",
+   "mutant": true,
+   "match": 0.09,
+   "type": "VaultSet",
+   "name": "fail - DomainID invalid (too short)",
+   "err": "ErrVaultSetVaultIDInvalid"
+  },
+  {
+   "key": "o38",
+   "mutant": false,
+   "match": 0.95,
+   "type": "ConfidentialMPTConvert",
+   "name": "fail - encryption key is not on curve",
+   "err": "ErrConfidentialConvertInvalidEncryptionKey"
+  },
+  {
+   "key": "o35",
+   "mutant": false,
+   "match": 0.86,
+   "type": "ConfidentialMPTClawback",
+   "name": "fail - short ZKProof",
+   "err": "ErrConfidentialClawbackBadProof"
+  },
+  {
+   "key": "o40",
+   "mutant": false,
+   "match": 0.58,
+   "type": "Payment",
+   "name": "fail - invalid DeliverMax Value",
+   "err": "ErrInvalidTokenValue"
+  },
+  {
+   "key": "o88",
+   "mutant": false,
+   "match": 0.87,
+   "type": "ConfidentialMPTConvert",
+   "name": "fail - proof without key",
+   "err": "ErrConfidentialConvertKeyProofMismatch"
+  },
+  {
+   "key": "o148",
+   "mutant": false,
+   "match": 0.97,
+   "type": "LoanBrokerCoverWithdraw",
+   "name": "fail - Amount required",
+   "err": "ErrLoanBrokerCoverWithdrawAmountRequired"
+  },
+  {
+   "key": "m105",
+   "mutant": true,
+   "match": 0.57,
+   "type": "LoanBrokerCoverClawback",
+   "name": "fail - LoanBrokerID empty string and Amount missing",
+   "err": "ErrLoanBrokerCoverClawbackLoanBrokerIDInvalid"
+  },
+  {
+   "key": "o33",
+   "mutant": false,
+   "match": 0.94,
+   "type": "NFTokenModify",
+   "name": "fail - invalid NFTokenID (short)",
+   "err": "ErrInvalidNFTokenID"
+  },
+  {
+   "key": "m101",
+   "mutant": true,
+   "match": 0.54,
+   "type": "ConfidentialMPTConvert",
+   "name": "fail - invalid proof hex",
+   "err": "ErrConfidentialConvertKeyProofMismatch"
+  },
+  {
+   "key": "m97",
+   "mutant": true,
+   "match": 0.07,
+   "type": "Payment",
+   "name": "fail - long InvoiceID",
+   "err": "ErrInvalidDestination"
+  },
+  {
+   "key": "m23",
+   "mutant": true,
+   "match": 0.2,
+   "type": "LoanBrokerCoverWithdraw",
+   "name": "fail - base tx invalid",
+   "err": "ErrLoanBrokerCoverWithdrawLoanBrokerIDRequired"
+  },
+  {
+   "key": "o34",
+   "mutant": false,
+   "match": 0.91,
+   "type": "MPTokenIssuanceSet",
+   "name": "fail - conflicting lock/unlock flags",
+   "err": "ErrMPTokenIssuanceSetFlags"
+  },
+  {
+   "key": "o46",
+   "mutant": false,
+   "match": 0.97,
+   "type": "LoanBrokerDelete",
+   "name": "fail - LoanBrokerID required",
+   "err": "ErrLoanBrokerDeleteLoanBrokerIDRequired"
+  },
+  {
+   "key": "m10",
+   "mutant": true,
+   "match": 0.92,
+   "type": "OfferCreate",
+   "name": "fail - hybrid flag without DomainID",
+   "err": "ErrInvalidDomainID"
+  },
+  {
+   "key": "m138",
+   "mutant": true,
+   "match": 0.08,
+   "type": "NFTokenBurn",
+   "name": "fail - Invalid NFTokenBurn with invalid NFTokenID",
+   "err": "ErrInvalidOwner"
+  },
+  {
+   "key": "m27",
+   "mutant": true,
+   "match": 0.59,
+   "type": "LoanManage",
+   "name": "fail - LoanID invalid",
+   "err": "ErrLoanManageLoanIDRequired"
+  },
+  {
+   "key": "m49",
+   "mutant": true,
+   "match": 0.12,
+   "type": "SignerListSet",
+   "name": "fail - invalid SignerListSet with SignerQuorum 0 but a SignerEntries not empty",
+   "err": "ErrInvalidWalletLocator"
+  },
+  {
+   "key": "o141",
+   "mutant": false,
+   "match": 0.96,
+   "type": "NFTokenCreateOffer",
+   "name": "fail - missing Amount",
+   "err": "ErrMissingField"
+  },
+  {
+   "key": "o24",
+   "mutant": false,
+   "match": 0.42,
+   "type": "LoanManage",
+   "name": "fail - base tx invalid",
+   "err": "ErrInvalidAccount"
+  },
+  {
+   "key": "o32",
+   "mutant": false,
+   "match": 0.4,
+   "type": "VaultClawback",
+   "name": "fail - invalid IOU amount with missing issuer",
+   "err": "ErrInvalidTokenFields"
+  },
+  {
+   "key": "m18",
+   "mutant": true,
+   "match": 0.05,
+   "type": "CheckCreate",
+   "name": "fail - short InvoiceID",
+   "err": "ErrInvalidDestination"
+  },
+  {
+   "key": "o117",
+   "mutant": false,
+   "match": 0.96,
+   "type": "CheckCreate",
+   "name": "fail - Missing SendMax amount",
+   "err": "ErrMissingField"
+  },
+  {
+   "key": "o102",
+   "mutant": false,
+   "match": 0.92,
+   "type": "OracleSet",
+   "name": "fail - price data series item scale",
+   "err": "ErrPriceDataScale"
+  },
+  {
+   "key": "m125",
+   "mutant": true,
+   "match": 0.68,
+   "type": "Clawback",
+   "name": "fail - Holder with issued currency",
+   "err": "ErrClawbackSameHolder"
+  },
+  {
+   "key": "o118",
+   "mutant": false,
+   "match": 0.75,
+   "type": "Clawback",
+   "name": "fail - MPT self-targeting with equivalent tagless X-address",
+   "err": "ErrClawbackSameHolder"
+  },
+  {
+   "key": "m98",
+   "mutant": true,
+   "match": 0.06,
+   "type": "EscrowFinish",
+   "name": "fail - odd-length Condition",
+   "err": "ErrEscrowFinishMissingOfferSequence"
+  },
+  {
+   "key": "m14",
+   "mutant": true,
+   "match": 0.06,
+   "type": "Clawback",
+   "name": "fail - negative issued currency Amount",
+   "err": "ErrClawbackMPTIssuerMismatch"
+  },
+  {
+   "key": "o10",
+   "mutant": false,
+   "match": 0.97,
+   "type": "OfferCreate",
+   "name": "fail - hybrid flag without DomainID",
+   "err": "ErrTfHybridCannotBeSetWithoutDomainID"
+  },
+  {
+   "key": "o103",
+   "mutant": false,
+   "match": 0.93,
+   "type": "CheckCancel",
+   "name": "fail - missing Account in BaseTx",
+   "err": "ErrInvalidAccount"
+  },
+  {
+   "key": "m103",
+   "mutant": true,
+   "match": 0.06,
+   "type": "CheckCancel",
+   "name": "fail - missing Account in BaseTx",
+   "err": "ErrInvalidCheckID"
+  },
+  {
+   "key": "m149",
+   "mutant": true,
+   "match": 0.09,
+   "type": "EscrowFinish",
+   "name": "fail - invalid CredentialIDs",
+   "err": "ErrEscrowFinishInvalidCondition"
+  },
+  {
+   "key": "m102",
+   "mutant": true,
+   "match": 0.8,
+   "type": "OracleSet",
+   "name": "fail - price data series item scale",
+   "err": "ErrOraclePriceDataSeriesItems"
+  },
+  {
+   "key": "m1",
+   "mutant": true,
+   "match": 0.13,
+   "type": "ConfidentialMPTConvertBack",
+   "name": "fail - wrong length HolderEncryptedAmount",
+   "err": "ErrConfidentialConvertBackInvalidProof"
+  },
+  {
+   "key": "o93",
+   "mutant": false,
+   "match": 0.83,
+   "type": "EscrowFinish",
+   "name": "fail - missing TransactionType",
+   "err": "ErrInvalidTransactionType"
+  },
+  {
+   "key": "o82",
+   "mutant": false,
+   "match": 0.86,
+   "type": "Payment",
+   "name": "fail - non-hex InvoiceID",
+   "err": "ErrInvalidInvoiceID"
+  },
+  {
+   "key": "m58",
+   "mutant": true,
+   "match": 0.07,
+   "type": "CheckCash",
+   "name": "fail - CheckCash BaseTx without Account",
+   "err": "ErrInvalidCheckID"
+  },
+  {
+   "key": "m114",
+   "mutant": true,
+   "match": 0.27,
+   "type": "XChainAddAccountCreateAttestation",
+   "name": "fail - invalid attestation reward account",
+   "err": "ErrInvalidOtherChainSource"
+  },
+  {
+   "key": "o138",
+   "mutant": false,
+   "match": 0.96,
+   "type": "NFTokenBurn",
+   "name": "fail - Invalid NFTokenBurn with invalid NFTokenID",
+   "err": "ErrInvalidNFTokenID"
+  },
+  {
+   "key": "m13",
+   "mutant": true,
+   "match": 0.93,
+   "type": "AccountSet",
+   "name": "fail - Invalid AccountSet with SetFlag equal to ClearFlag",
+   "err": "ErrAccountSetInvalidSetFlag"
+  },
+  {
+   "key": "m72",
+   "mutant": true,
+   "match": 0.18,
+   "type": "MPTokenIssuanceSet",
+   "name": "fail - holder same as account",
+   "err": "ErrMPTokenIssuanceSetFlags"
+  },
+  {
+   "key": "o121",
+   "mutant": false,
+   "match": 0.68,
+   "type": "ConfidentialMPTConvertBack",
+   "name": "fail - empty HolderEncryptedAmount",
+   "err": "ErrConfidentialConvertBackInvalidCiphertext"
+  },
+  {
+   "key": "o12",
+   "mutant": false,
+   "match": 0.86,
+   "type": "XChainCreateClaimID",
+   "name": "fail - missing signature reward",
+   "err": "ErrMissingField"
+  },
+  {
+   "key": "o22",
+   "mutant": false,
+   "match": 0.92,
+   "type": "Clawback",
+   "name": "fail - invalid MPT Amount",
+   "err": "ErrClawbackInvalidAmount"
+  },
+  {
+   "key": "o110",
+   "mutant": false,
+   "match": 0.83,
+   "type": "VaultCreate",
+   "name": "fail - Data odd-length hex",
+   "err": "ErrVaultCreateDataInvalid"
+  },
+  {
+   "key": "m90",
+   "mutant": true,
+   "match": 0.16,
+   "type": "MPTokenIssuanceCreate",
+   "name": "fail - invalid flags",
+   "err": "ErrMPTIssuanceCreateTransferFeeWithConfidentialBalance"
+  },
+  {
+   "key": "o91",
+   "mutant": false,
+   "match": 0.94,
+   "type": "MPTokenAuthorize",
+   "name": "fail - holder account conflict",
+   "err": "ErrHolderAccountConflict"
+  },
+  {
+   "key": "o97",
+   "mutant": false,
+   "match": 0.85,
+   "type": "Payment",
+   "name": "fail - long InvoiceID",
+   "err": "ErrInvalidInvoiceID"
+  },
+  {
+   "key": "o53",
+   "mutant": false,
+   "match": 0.88,
+   "type": "Payment",
+   "name": "fail - sponsored account creation with issued Amount",
+   "err": "ErrSponsorCreatedAccountRequiresXRP"
+  },
+  {
+   "key": "o143",
+   "mutant": false,
+   "match": 0.72,
+   "type": "ConfidentialMPTConvertBack",
+   "name": "fail - wrong length AuditorEncryptedAmount",
+   "err": "ErrConfidentialConvertBackInvalidCiphertext"
+  },
+  {
+   "key": "o31",
+   "mutant": false,
+   "match": 0.91,
+   "type": "NFTokenCancelOffer",
+   "name": "fail - Invalid NFTokenCancelOffer BaseTx - Missing TransactionType",
+   "err": "ErrInvalidTransactionType"
+  },
+  {
+   "key": "m92",
+   "mutant": true,
+   "match": 0.9,
+   "type": "NFTokenCreateOffer",
+   "name": "fail - destination and account are equal",
+   "err": "ErrInvalidDestination"
+  },
+  {
+   "key": "o89",
+   "mutant": false,
+   "match": 0.85,
+   "type": "ConfidentialMPTClawback",
+   "name": "fail - Holder is the X-address of Account",
+   "err": "ErrConfidentialClawbackSelfClawback"
+  },
+  {
+   "key": "m7",
+   "mutant": true,
+   "match": 0.08,
+   "type": "VaultClawback",
+   "name": "fail - VaultID required",
+   "err": "ErrVaultClawbackAmountInvalidType"
+  },
+  {
+   "key": "o71",
+   "mutant": false,
+   "match": 0.86,
+   "type": "VaultCreate",
+   "name": "fail - Data too large (> 256 bytes)",
+   "err": "ErrVaultCreateDataInvalid"
+  },
+  {
+   "key": "m74",
+   "mutant": true,
+   "match": 0.92,
+   "type": "Clawback",
+   "name": "fail - missing Holder with MPT",
+   "err": "ErrClawbackInvalidHolder"
+  },
+  {
+   "key": "m113",
+   "mutant": true,
+   "match": 0.92,
+   "type": "NFTokenAcceptOffer",
+   "name": "fail - Invalid with Broker Fee but missing Offers",
+   "err": "ErrMissingOffer"
+  },
+  {
+   "key": "m51",
+   "mutant": true,
+   "match": 0.1,
+   "type": "XChainAddAccountCreateAttestation",
+   "name": "fail - invalid amount",
+   "err": "ErrInvalidDestination"
+  },
+  {
+   "key": "m134",
+   "mutant": true,
+   "match": 0.17,
+   "type": "Payment",
+   "name": "fail - missing Amount",
+   "err": "ErrInvalidCredentialIDs"
+  },
+  {
+   "key": "o113",
+   "mutant": false,
+   "match": 0.69,
+   "type": "NFTokenAcceptOffer",
+   "name": "fail - Invalid with Broker Fee but missing Offers",
+   "err": "ErrMissingBothOffers"
+  },
+  {
+   "key": "m91",
+   "mutant": true,
+   "match": 0.25,
+   "type": "MPTokenAuthorize",
+   "name": "fail - holder account conflict",
+   "err": "ErrInvalidMPTokenIssuanceIDAuthorize"
+  },
+  {
+   "key": "o95",
+   "mutant": false,
+   "match": 0.59,
+   "type": "Payment",
+   "name": "fail - sponsored account creation with zero SendMax",
+   "err": "ErrSponsorCreatedAccountInvalidFields"
+  },
+  {
+   "key": "o96",
+   "mutant": false,
+   "match": 0.74,
+   "type": "NFTokenModify",
+   "name": "fail - invalid base transaction",
+   "err": "ErrInvalidAccount"
+  },
+  {
+   "key": "m61",
+   "mutant": true,
+   "match": 0.24,
+   "type": "ConfidentialMPTConvert",
+   "name": "fail - invalid AuditorEncryptedAmount",
+   "err": "ErrConfidentialConvertInvalidProofLength"
+  },
+  {
+   "key": "m80",
+   "mutant": true,
+   "match": 0.26,
+   "type": "AccountSet",
+   "name": "fail - Invalid AccountSet with high TickSize",
+   "err": "ErrAccountSetInvalidSetFlag"
+  },
+  {
+   "key": "m56",
+   "mutant": true,
+   "match": 0.13,
+   "type": "NFTokenMint",
+   "name": "fail - transfer fee exceeds max",
+   "err": "ErrTransferFeeRequiresTransferableFlag"
+  },
+  {
+   "key": "o134",
+   "mutant": false,
+   "match": 0.95,
+   "type": "Payment",
+   "name": "fail - missing Amount",
+   "err": "ErrMissingField"
+  },
+  {
+   "key": "m17",
+   "mutant": true,
+   "match": 0.2,
+   "type": "SignerListSet",
+   "name": "fail - invalid SignerListSet with duplicate signer account using X-address",
+   "err": "ErrInvalidAccount"
+  },
+  {
+   "key": "m29",
+   "mutant": true,
+   "match": 0.19,
+   "type": "ConfidentialMPTConvert",
+   "name": "fail - wrong length AuditorEncryptedAmount",
+   "err": "ErrConfidentialConvertInvalidEncryptionKey"
+  },
+  {
+   "key": "o48",
+   "mutant": false,
+   "match": 0.9,
+   "type": "NFTokenBurn",
+   "name": "fail - Invalid BaseTx, missing Account",
+   "err": "ErrInvalidAccount"
+  },
+  {
+   "key": "o84",
+   "mutant": false,
+   "match": 0.96,
+   "type": "EscrowFinish",
+   "name": "fail - missing OfferSequence",
+   "err": "ErrEscrowFinishMissingOfferSequence"
+  },
+  {
+   "key": "o42",
+   "mutant": false,
+   "match": 0.87,
+   "type": "ConfidentialMPTConvertBack",
+   "name": "fail - wrong length BalanceCommitment",
+   "err": "ErrConfidentialConvertBackInvalidCommitment"
+  },
+  {
+   "key": "m88",
+   "mutant": true,
+   "match": 0.45,
+   "type": "ConfidentialMPTConvert",
+   "name": "fail - proof without key",
+   "err": "ErrConfidentialConvertInvalidEncryptionKey"
+  },
+  {
+   "key": "o28",
+   "mutant": false,
+   "match": 0.57,
+   "type": "XChainAddAccountCreateAttestation",
+   "name": "fail - invalid x chain bridge",
+   "err": "ErrInvalidIssuingChainDoorAddress"
+  },
+  {
+   "key": "o80",
+   "mutant": false,
+   "match": 0.94,
+   "type": "AccountSet",
+   "name": "fail - Invalid AccountSet with high TickSize",
+   "err": "ErrAccountSetInvalidTickSize"
+  },
+  {
+   "key": "o115",
+   "mutant": false,
+   "match": 0.95,
+   "type": "AccountSet",
+   "name": "fail - Invalid AccountSet with high SetFlag",
+   "err": "ErrAccountSetInvalidSetFlag"
+  },
+  {
+   "key": "m68",
+   "mutant": true,
+   "match": 0.07,
+   "type": "SignerListSet",
+   "name": "fail - invalid SignerListSet with invalid WalletLocator",
+   "err": "ErrSignerAccountMatchesAccount"
+  },
+  {
+   "key": "m47",
+   "mutant": true,
+   "match": 0.06,
+   "type": "Payment",
+   "name": "fail - invalid Partial Payment without Flag",
+   "err": "ErrInvalidDomainID"
+  },
+  {
+   "key": "o15",
+   "mutant": false,
+   "match": 0.44,
+   "type": "ConfidentialMPTConvert",
+   "name": "fail - empty HolderEncryptedAmount",
+   "err": "ErrConfidentialConvertInvalidCiphertext"
+  },
+  {
+   "key": "m31",
+   "mutant": true,
+   "match": 0.07,
+   "type": "NFTokenCancelOffer",
+   "name": "fail - Invalid NFTokenCancelOffer BaseTx - Missing TransactionType",
+   "err": "ErrEmptyNFTokenOffers"
+  },
+  {
+   "key": "m38",
+   "mutant": true,
+   "match": 0.08,
+   "type": "ConfidentialMPTConvert",
+   "name": "fail - encryption key is not on curve",
+   "err": "ErrConfidentialMPTInvalidAmount"
+  },
+  {
+   "key": "m53",
+   "mutant": true,
+   "match": 0.1,
+   "type": "Payment",
+   "name": "fail - sponsored account creation with issued Amount",
+   "err": "ErrInvalidCredentialIDs"
+  },
+  {
+   "key": "m124",
+   "mutant": true,
+   "match": 0.13,
+   "type": "PaymentChannelClaim",
+   "name": "fail - invalid PublicKey",
+   "err": "ErrInvalidSignature"
+  },
+  {
+   "key": "m41",
+   "mutant": true,
+   "match": 0.06,
+   "type": "NFTokenModify",
+   "name": "fail - invalid NFTokenID (non-hex)",
+   "err": "ErrOwnerAccountConflict"
+  },
+  {
+   "key": "o6",
+   "mutant": false,
+   "match": 0.86,
+   "type": "Payment",
+   "name": "fail - invalid Paths, both Issuer and currency set to XRP",
+   "err": "ErrInvalidPathStepCombination"
+  },
+  {
+   "key": "o54",
+   "mutant": false,
+   "match": 0.88,
+   "type": "Clawback",
+   "name": "fail - issued currency self-targeting",
+   "err": "ErrClawbackSameAccount"
+  },
+  {
+   "key": "o13",
+   "mutant": false,
+   "match": 0.94,
+   "type": "AccountSet",
+   "name": "fail - Invalid AccountSet with SetFlag equal to ClearFlag",
+   "err": "ErrAccountSetMutuallyExclusiveFlags"
+  },
+  {
+   "key": "o100",
+   "mutant": false,
+   "match": 0.96,
+   "type": "Clawback",
+   "name": "fail - missing Amount",
+   "err": "ErrClawbackMissingAmount"
+  },
+  {
+   "key": "m147",
+   "mutant": true,
+   "match": 0.11,
+   "type": "MPTokenIssuanceCreate",
+   "name": "fail - non-zero TransferFee with confidential balances",
+   "err": "ErrMPTIssuanceCreateMaximumAmountInvalid"
+  },
+  {
+   "key": "m2",
+   "mutant": true,
+   "match": 0.18,
+   "type": "MPTokenIssuanceSet",
+   "name": "fail - invalid holder address",
+   "err": "ErrHolderAccountConflict"
+  },
+  {
+   "key": "m96",
+   "mutant": true,
+   "match": 0.07,
+   "type": "NFTokenModify",
+   "name": "fail - invalid base transaction",
+   "err": "ErrInvalidNFTokenID"
+  },
+  {
+   "key": "m110",
+   "mutant": true,
+   "match": 0.07,
+   "type": "VaultCreate",
+   "name": "fail - Data odd-length hex",
+   "err": "ErrVaultCreateDatesRequireClosedKind"
+  },
+  {
+   "key": "o106",
+   "mutant": false,
+   "match": 0.86,
+   "type": "VaultSet",
+   "name": "fail - Data too large (> 256 bytes)",
+   "err": "ErrVaultSetDataInvalid"
+  },
+  {
+   "key": "m107",
+   "mutant": true,
+   "match": 0.1,
+   "type": "NFTokenCreateOffer",
+   "name": "fail - invalid destination address",
+   "err": "ErrInvalidTokenValue"
+  },
+  {
+   "key": "m122",
+   "mutant": true,
+   "match": 0.06,
+   "type": "Payment",
+   "name": "fail - invalid BaseTx Payment, missing TransactionType",
+   "err": "ErrInvalidCredentialIDs"
+  },
+  {
+   "key": "o47",
+   "mutant": false,
+   "match": 0.96,
+   "type": "Payment",
+   "name": "fail - invalid Partial Payment without Flag",
+   "err": "ErrPartialPaymentFlagRequired"
+  },
+  {
+   "key": "m6",
+   "mutant": true,
+   "match": 0.05,
+   "type": "Payment",
+   "name": "fail - invalid Paths, both Issuer and currency set to XRP",
+   "err": "ErrInvalidInvoiceID"
+  },
+  {
+   "key": "m63",
+   "mutant": true,
+   "match": 0.38,
+   "type": "MPTokenIssuanceSet",
+   "name": "fail - TransferFee exceeds maximum",
+   "err": "ErrInvalidMPTokenMetadata"
+  },
+  {
+   "key": "m9",
+   "mutant": true,
+   "match": 0.08,
+   "type": "LoanSet",
+   "name": "fail - LoanBrokerID required",
+   "err": "ErrLoanSetPrincipalRequestedInvalid"
+  },
+  {
+   "key": "o27",
+   "mutant": false,
+   "match": 0.94,
+   "type": "LoanManage",
+   "name": "fail - LoanID invalid",
+   "err": "ErrLoanManageLoanIDInvalid"
+  },
+  {
+   "key": "o75",
+   "mutant": false,
+   "match": 0.93,
+   "type": "NFTokenModify",
+   "name": "fail - account and owner are the same",
+   "err": "ErrOwnerAccountConflict"
+  },
+  {
+   "key": "m44",
+   "mutant": true,
+   "match": 0.07,
+   "type": "EscrowCreate",
+   "name": "fail - zero IOU amount",
+   "err": "ErrEscrowCreateNoConditionOrFinishAfterSet"
+  },
+  {
+   "key": "o67",
+   "mutant": false,
+   "match": 0.96,
+   "type": "EscrowFinish",
+   "name": "fail - odd-length Fulfillment",
+   "err": "ErrEscrowFinishInvalidFulfillment"
+  },
+  {
+   "key": "o56",
+   "mutant": false,
+   "match": 0.82,
+   "type": "NFTokenMint",
+   "name": "fail - transfer fee exceeds max",
+   "err": "ErrInvalidTransferFee"
+  },
+  {
+   "key": "m129",
+   "mutant": true,
+   "match": 0.08,
+   "type": "MPTokenIssuanceSet",
+   "name": "fail - holder mutually exclusive with MPTokenMetadata",
+   "err": "ErrMPTIssuanceSetTransferFeeWithConfidentialBalance"
+  },
+  {
+   "key": "o59",
+   "mutant": false,
+   "match": 0.95,
+   "type": "VaultClawback",
+   "name": "fail - VaultID invalid",
+   "err": "ErrVaultClawbackVaultIDInvalid"
+  },
+  {
+   "key": "m94",
+   "mutant": true,
+   "match": 0.1,
+   "type": "ConfidentialMPTConvert",
+   "name": "fail - wrong length HolderEncryptedAmount",
+   "err": "ErrConfidentialConvertKeyProofMismatch"
+  },
+  {
+   "key": "m59",
+   "mutant": true,
+   "match": 0.06,
+   "type": "VaultClawback",
+   "name": "fail - VaultID invalid",
+   "err": "ErrVaultClawbackAmountInvalidType"
+  },
+  {
+   "key": "m46",
+   "mutant": true,
+   "match": 0.95,
+   "type": "LoanBrokerDelete",
+   "name": "fail - LoanBrokerID required",
+   "err": "ErrLoanBrokerDeleteLoanBrokerIDInvalid"
+  },
+  {
+   "key": "m139",
+   "mutant": true,
+   "match": 0.07,
+   "type": "LoanManage",
+   "name": "fail - TfLoanImpair and TfLoanUnimpair both set",
+   "err": "ErrLoanManageLoanIDRequired"
+  },
+  {
+   "key": "o51",
+   "mutant": false,
+   "match": 0.23,
+   "type": "XChainAddAccountCreateAttestation",
+   "name": "fail - invalid amount",
+   "err": "ErrInvalidTokenFields"
+  },
+  {
+   "key": "m81",
+   "mutant": true,
+   "match": 0.07,
+   "type": "MPTokenIssuanceCreate",
+   "name": "fail - zero MaximumAmount",
+   "err": "ErrMPTIssuanceCreateTransferFeeWithConfidentialBalance"
+  },
+  {
+   "key": "o52",
+   "mutant": false,
+   "match": 0.64,
+   "type": "SignerListSet",
+   "name": "fail - malformed X-address signer entry",
+   "err": "ErrInvalidAccount"
+  },
+  {
+   "key": "o17",
+   "mutant": false,
+   "match": 0.94,
+   "type": "SignerListSet",
+   "name": "fail - invalid SignerListSet with duplicate signer account using X-address",
+   "err": "ErrDuplicateSignerAccount"
+  },
+  {
+   "key": "o129",
+   "mutant": false,
+   "match": 0.96,
+   "type": "MPTokenIssuanceSet",
+   "name": "fail - holder mutually exclusive with MPTokenMetadata",
+   "err": "ErrMPTIssuanceSetHolderMutuallyExclusive"
+  },
+  {
+   "key": "m66",
+   "mutant": true,
+   "match": 0.18,
+   "type": "XChainModifyBridge",
+   "name": "fail - invalid xchain bridge",
+   "err": "ErrInvalidFlags"
+  },
+  {
+   "key": "m39",
+   "mutant": true,
+   "match": 0.11,
+   "type": "ConfidentialMPTClawback",
+   "name": "fail - empty ZKProof",
+   "err": "ErrConfidentialClawbackInvalidHolder"
+  },
+  {
+   "key": "o74",
+   "mutant": false,
+   "match": 0.95,
+   "type": "Clawback",
+   "name": "fail - missing Holder with MPT",
+   "err": "ErrClawbackMissingHolder"
+  },
+  {
+   "key": "m54",
+   "mutant": true,
+   "match": 0.48,
+   "type": "Clawback",
+   "name": "fail - issued currency self-targeting",
+   "err": "ErrClawbackInvalidHolder"
+  },
+  {
+   "key": "o1",
+   "mutant": false,
+   "match": 0.56,
+   "type": "ConfidentialMPTConvertBack",
+   "name": "fail - wrong length HolderEncryptedAmount",
+   "err": "ErrConfidentialConvertBackInvalidCiphertext"
+  },
+  {
+   "key": "m121",
+   "mutant": true,
+   "match": 0.08,
+   "type": "ConfidentialMPTConvertBack",
+   "name": "fail - empty HolderEncryptedAmount",
+   "err": "ErrConfidentialConvertBackInvalidBlindingFactor"
+  },
+  {
+   "key": "o101",
+   "mutant": false,
+   "match": 0.79,
+   "type": "ConfidentialMPTConvert",
+   "name": "fail - invalid proof hex",
+   "err": "ErrConfidentialConvertInvalidProofLength"
+  },
+  {
+   "key": "m24",
+   "mutant": true,
+   "match": 0.1,
+   "type": "LoanManage",
+   "name": "fail - base tx invalid",
+   "err": "ErrLoanManageLoanIDInvalid"
+  },
+  {
+   "key": "o92",
+   "mutant": false,
+   "match": 0.94,
+   "type": "NFTokenCreateOffer",
+   "name": "fail - destination and account are equal",
+   "err": "ErrDestinationAccountConflict"
+  },
+  {
+   "key": "m144",
+   "mutant": true,
+   "match": 0.42,
+   "type": "VaultCreate",
+   "name": "fail - Asset required",
+   "err": "ErrVaultCreateDataInvalid"
+  },
+  {
+   "key": "m33",
+   "mutant": true,
+   "match": 0.07,
+   "type": "NFTokenModify",
+   "name": "fail - invalid NFTokenID (short)",
+   "err": "ErrOwnerAccountConflict"
+  },
+  {
+   "key": "o86",
+   "mutant": false,
+   "match": 0.74,
+   "type": "XChainCreateClaimID",
+   "name": "fail - invalid xchain bridge",
+   "err": "ErrInvalidIssuingChainDoorAddress"
+  },
+  {
+   "key": "m28",
+   "mutant": true,
+   "match": 0.14,
+   "type": "XChainAddAccountCreateAttestation",
+   "name": "fail - invalid x chain bridge",
+   "err": "ErrInvalidXChainAccountCreateCount"
+  },
+  {
+   "key": "o8",
+   "mutant": false,
+   "match": 0.93,
+   "type": "VaultSet",
+   "name": "fail - DomainID invalid (too short)",
+   "err": "ErrVaultSetDomainIDInvalid"
+  },
+  {
+   "key": "o126",
+   "mutant": false,
+   "match": 0.91,
+   "type": "DepositPreauth",
+   "name": "fail - invalid UnauthorizeCredentials",
+   "err": "ErrDepositPreauthInvalidUnauthorizeCredentials"
+  },
+  {
+   "key": "m86",
+   "mutant": true,
+   "match": 0.2,
+   "type": "XChainCreateClaimID",
+   "name": "fail - invalid xchain bridge",
+   "err": "ErrInvalidAccount"
+  },
+  {
+   "key": "o94",
+   "mutant": false,
+   "match": 0.69,
+   "type": "ConfidentialMPTConvert",
+   "name": "fail - wrong length HolderEncryptedAmount",
+   "err": "ErrConfidentialConvertInvalidCiphertext"
+  },
+  {
+   "key": "o108",
+   "mutant": false,
+   "match": 0.96,
+   "type": "ConfidentialMPTClawback",
+   "name": "fail - invalid Holder address",
+   "err": "ErrConfidentialClawbackInvalidHolder"
+  },
+  {
+   "key": "m20",
+   "mutant": true,
+   "match": 0.06,
+   "type": "NFTokenCreateOffer",
+   "name": "fail - buy offer XRP amount cannot be zero",
+   "err": "ErrOwnerPresentForSellOffer"
+  },
+  {
+   "key": "o58",
+   "mutant": false,
+   "match": 0.9,
+   "type": "CheckCash",
+   "name": "fail - CheckCash BaseTx without Account",
+   "err": "ErrInvalidAccount"
+  },
+  {
+   "key": "m126",
+   "mutant": true,
+   "match": 0.22,
+   "type": "DepositPreauth",
+   "name": "fail - invalid UnauthorizeCredentials",
+   "err": "ErrDepositPreauthInvalidAuthorize"
+  },
+  {
+   "key": "m133",
+   "mutant": true,
+   "match": 0.06,
+   "type": "NFTokenCreateOffer",
+   "name": "fail - buy offer MPT amount cannot be zero",
+   "err": "ErrInvalidNFTokenID"
+  },
+  {
+   "key": "o107",
+   "mutant": false,
+   "match": 0.9,
+   "type": "NFTokenCreateOffer",
+   "name": "fail - invalid destination address",
+   "err": "ErrInvalidDestination"
+  },
+  {
+   "key": "m15",
+   "mutant": true,
+   "match": 0.59,
+   "type": "ConfidentialMPTConvert",
+   "name": "fail - empty HolderEncryptedAmount",
+   "err": "ErrConfidentialMPTInvalidAmount"
+  },
+  {
+   "key": "m22",
+   "mutant": true,
+   "match": 0.08,
+   "type": "Clawback",
+   "name": "fail - invalid MPT Amount",
+   "err": "ErrInvalidAccount"
+  },
+  {
+   "key": "m76",
+   "mutant": true,
+   "match": 0.06,
+   "type": "NFTokenCreateOffer",
+   "name": "fail - sell offer MPT amount cannot be zero",
+   "err": "ErrDestinationAccountConflict"
+  },
+  {
+   "key": "m142",
+   "mutant": true,
+   "match": 0.32,
+   "type": "MPTokenIssuanceSet",
+   "name": "fail - invalid issuer encryption key",
+   "err": "ErrMPTIssuanceSetAuditorRequiresIssuerKey"
+  },
+  {
+   "key": "o49",
+   "mutant": false,
+   "match": 0.88,
+   "type": "SignerListSet",
+   "name": "fail - invalid SignerListSet with SignerQuorum 0 but a SignerEntries not empty",
+   "err": "ErrInvalidQuorumAndEntries"
+  },
+  {
+   "key": "m112",
+   "mutant": true,
+   "match": 0.46,
+   "type": "DepositPreauth",
+   "name": "fail - invalid authorize",
+   "err": "ErrDepositPreauthUnauthorizeCannotBeSender"
+  },
+  {
+   "key": "o14",
+   "mutant": false,
+   "match": 0.83,
+   "type": "Clawback",
+   "name": "fail - negative issued currency Amount",
+   "err": "ErrClawbackInvalidAmount"
+  },
+  {
+   "key": "o78",
+   "mutant": false,
+   "match": 0.82,
+   "type": "NFTokenBurn",
+   "name": "fail - Invalid NFTokenBurn with short hex NFTokenID",
+   "err": "ErrInvalidNFTokenID"
+  },
+  {
+   "key": "m16",
+   "mutant": true,
+   "match": 0.11,
+   "type": "MPTokenAuthorize",
+   "name": "fail - empty MPTokenIssuanceID",
+   "err": "ErrInvalidAccount"
+  },
+  {
+   "key": "m30",
+   "mutant": true,
+   "match": 0.11,
+   "type": "SignerListSet",
+   "name": "fail - invalid SignerListSet with no SignerEntries and quorum > 0",
+   "err": "ErrInvalidWalletLocator"
+  },
+  {
+   "key": "o105",
+   "mutant": false,
+   "match": 0.94,
+   "type": "LoanBrokerCoverClawback",
+   "name": "fail - LoanBrokerID empty string and Amount missing",
+   "err": "ErrLoanBrokerCoverClawbackLoanBrokerIDOrAmountRequired"
+  },
+  {
+   "key": "m95",
+   "mutant": true,
+   "match": 0.08,
+   "type": "Payment",
+   "name": "fail - sponsored account creation with zero SendMax",
+   "err": "ErrInvalidCredentialIDs"
+  },
+  {
+   "key": "o7",
+   "mutant": false,
+   "match": 0.96,
+   "type": "VaultClawback",
+   "name": "fail - VaultID required",
+   "err": "ErrVaultClawbackVaultIDRequired"
+  },
+  {
+   "key": "o63",
+   "mutant": false,
+   "match": 0.95,
+   "type": "MPTokenIssuanceSet",
+   "name": "fail - TransferFee exceeds maximum",
+   "err": "ErrInvalidTransferFee"
+  },
+  {
+   "key": "o140",
+   "mutant": false,
+   "match": 0.89,
+   "type": "XChainClaim",
+   "name": "fail - invalid amount",
+   "err": "ErrMissingField"
+  },
+  {
+   "key": "o120",
+   "mutant": false,
+   "match": 0.86,
+   "type": "MPTokenIssuanceSet",
+   "name": "fail - no operation specified (no-op)",
+   "err": "ErrMPTIssuanceSetEmpty"
+  },
+  {
+   "key": "m93",
+   "mutant": true,
+   "match": 0.11,
+   "type": "EscrowFinish",
+   "name": "fail - missing TransactionType",
+   "err": "ErrEscrowFinishInvalidFulfillment"
+  },
+  {
+   "key": "o124",
+   "mutant": false,
+   "match": 0.95,
+   "type": "PaymentChannelClaim",
+   "name": "fail - invalid PublicKey",
+   "err": "ErrInvalidHexPublicKey"
+  },
+  {
+   "key": "m11",
+   "mutant": true,
+   "match": 0.17,
+   "type": "XChainCommit",
+   "name": "fail - missing xchain bridge",
+   "err": "ErrInvalidXChainClaimID"
+  },
+  {
+   "key": "o142",
+   "mutant": false,
+   "match": 0.92,
+   "type": "MPTokenIssuanceSet",
+   "name": "fail - invalid issuer encryption key",
+   "err": "ErrMPTIssuanceSetInvalidEncryptionKey"
+  },
+  {
+   "key": "m85",
+   "mutant": true,
+   "match": 0.18,
+   "type": "ConfidentialMPTConvertBack",
+   "name": "fail - zero MPTAmount",
+   "err": "ErrConfidentialConvertBackInvalidCommitment"
+  },
+  {
+   "key": "m4",
+   "mutant": true,
+   "match": 0.23,
+   "type": "Payment",
+   "name": "fail - sponsored account creation with missing sponsor flags",
+   "err": "ErrInvalidCredentialIDs"
+  },
+  {
+   "key": "o5",
+   "mutant": false,
+   "match": 0.75,
+   "type": "XChainAddClaimAttestation",
+   "name": "fail - invalid xchain bridge",
+   "err": "ErrInvalidIssuingChainDoorAddress"
+  },
+  {
+   "key": "m131",
+   "mutant": true,
+   "match": 0.52,
+   "type": "NFTokenCreateOffer",
+   "name": "fail - invalid BaseTx, missing account",
+   "err": "ErrInvalidOwner"
+  },
+  {
+   "key": "m140",
+   "mutant": true,
+   "match": 0.37,
+   "type": "XChainClaim",
+   "name": "fail - invalid amount",
+   "err": "ErrMissingXChainClaimID"
+  },
+  {
+   "key": "o133",
+   "mutant": false,
+   "match": 0.57,
+   "type": "NFTokenCreateOffer",
+   "name": "fail - buy offer MPT amount cannot be zero",
+   "err": "ErrInvalidTokenValue"
+  },
+  {
+   "key": "m48",
+   "mutant": true,
+   "match": 0.08,
+   "type": "NFTokenBurn",
+   "name": "fail - Invalid BaseTx, missing Account",
+   "err": "ErrInvalidNFTokenID"
+  },
+  {
+   "key": "o98",
+   "mutant": false,
+   "match": 0.93,
+   "type": "EscrowFinish",
+   "name": "fail - odd-length Condition",
+   "err": "ErrEscrowFinishInvalidCondition"
+  },
+  {
+   "key": "m118",
+   "mutant": true,
+   "match": 0.07,
+   "type": "Clawback",
+   "name": "fail - MPT self-targeting with equivalent tagless X-address",
+   "err": "ErrClawbackMissingAmount"
+  },
+  {
+   "key": "m3",
+   "mutant": true,
+   "match": 0.17,
+   "type": "VaultDelete",
+   "name": "fail - base tx invalid",
+   "err": "ErrVaultDeleteVaultIDRequired"
+  },
+  {
+   "key": "o36",
+   "mutant": false,
+   "match": 0.5,
+   "type": "NFTokenMint",
+   "name": "fail - invalid Amount with empty values",
+   "err": "ErrInvalidTokenFields"
+  },
+  {
+   "key": "o50",
+   "mutant": false,
+   "match": 0.5,
+   "type": "LoanBrokerSet",
+   "name": "fail - base tx invalid",
+   "err": "ErrInvalidAccount"
+  },
+  {
+   "key": "o57",
+   "mutant": false,
+   "match": 0.95,
+   "type": "MPTokenIssuanceSet",
+   "name": "fail - DomainID invalid hex",
+   "err": "ErrMPTIssuanceSetDomainIDInvalid"
+  },
+  {
+   "key": "m73",
+   "mutant": true,
+   "match": 0.06,
+   "type": "Payment",
+   "name": "fail - invalid Partial Payment with another Flag than PartialPayment",
+   "err": "ErrInvalidInvoiceID"
+  },
+  {
+   "key": "m145",
+   "mutant": true,
+   "match": 0.07,
+   "type": "ConfidentialMPTClawback",
+   "name": "fail - empty MPTokenIssuanceID",
+   "err": "ErrConfidentialClawbackSelfClawback"
+  },
+  {
+   "key": "o128",
+   "mutant": false,
+   "match": 0.8,
+   "type": "Payment",
+   "name": "fail - sponsored account creation with Paths",
+   "err": "ErrSponsorCreatedAccountInvalidFields"
+  },
+  {
+   "key": "o65",
+   "mutant": false,
+   "match": 0.96,
+   "type": "XChainAddAccountCreateAttestation",
+   "name": "fail - invalid signature",
+   "err": "ErrInvalidSignature"
+  },
+  {
+   "key": "m5",
+   "mutant": true,
+   "match": 0.14,
+   "type": "XChainAddClaimAttestation",
+   "name": "fail - invalid xchain bridge",
+   "err": "ErrInvalidSignature"
+  },
+  {
+   "key": "o19",
+   "mutant": false,
+   "match": 0.93,
+   "type": "DIDSet",
+   "name": "fail - missing account",
+   "err": "ErrInvalidAccount"
+  },
+  {
+   "key": "o119",
+   "mutant": false,
+   "match": 0.94,
+   "type": "VaultCreate",
+   "name": "fail - Scale requires IOU asset",
+   "err": "ErrVaultCreateScaleRequiresIOU"
+  },
+  {
+   "key": "o64",
+   "mutant": false,
+   "match": 0.88,
+   "type": "VaultCreate",
+   "name": "fail - zero DomainID",
+   "err": "ErrVaultCreateDomainIDInvalid"
+  },
+  {
+   "key": "m148",
+   "mutant": true,
+   "match": 0.08,
+   "type": "LoanBrokerCoverWithdraw",
+   "name": "fail - Amount required",
+   "err": "ErrInvalidCredentialIDs"
+  },
+  {
+   "key": "o20",
+   "mutant": false,
+   "match": 0.54,
+   "type": "NFTokenCreateOffer",
+   "name": "fail - buy offer XRP amount cannot be zero",
+   "err": "ErrInvalidTokenValue"
+  },
+  {
+   "key": "m132",
+   "mutant": true,
+   "match": 0.85,
+   "type": "Clawback",
+   "name": "fail - issued currency self-targeting with equivalent tagless X-address",
+   "err": "ErrClawbackSameHolder"
+  },
+  {
+   "key": "o43",
+   "mutant": false,
+   "match": 0.89,
+   "type": "LoanBrokerCoverClawback",
+   "name": "fail - both LoanBrokerID and Amount missing",
+   "err": "ErrLoanBrokerCoverClawbackLoanBrokerIDOrAmountRequired"
+  },
+  {
+   "key": "m84",
+   "mutant": true,
+   "match": 0.2,
+   "type": "EscrowFinish",
+   "name": "fail - missing OfferSequence",
+   "err": "ErrEscrowFinishInvalidCondition"
+  },
+  {
+   "key": "m141",
+   "mutant": true,
+   "match": 0.5,
+   "type": "NFTokenCreateOffer",
+   "name": "fail - missing Amount",
+   "err": "ErrOwnerNotPresentForBuyOffer"
+  },
+  {
+   "key": "m117",
+   "mutant": true,
+   "match": 0.18,
+   "type": "CheckCreate",
+   "name": "fail - Missing SendMax amount",
+   "err": "ErrInvalidDestination"
+  },
+  {
+   "key": "o77",
+   "mutant": false,
+   "match": 0.97,
+   "type": "EscrowCreate",
+   "name": "fail - zero XRP amount",
+   "err": "ErrEscrowCreateZeroAmount"
+  },
+  {
+   "key": "o79",
+   "mutant": false,
+   "match": 0.94,
+   "type": "NFTokenAcceptOffer",
+   "name": "fail - Invalid BaseTx, missing Account",
+   "err": "ErrInvalidAccount"
+  },
+  {
+   "key": "o114",
+   "mutant": false,
+   "match": 0.97,
+   "type": "XChainAddAccountCreateAttestation",
+   "name": "fail - invalid attestation reward account",
+   "err": "ErrInvalidAttestationRewardAccount"
+  },
+  {
+   "key": "o55",
+   "mutant": false,
+   "match": 0.77,
+   "type": "NFTokenAcceptOffer",
+   "name": "fail - invalid NFTokenBrokerFee as issued amount",
+   "err": "ErrNFTokenBrokerFeeZero"
+  },
+  {
+   "key": "o127",
+   "mutant": false,
+   "match": 0.81,
+   "type": "Payment",
+   "name": "fail - sponsored account creation with SendMax",
+   "err": "ErrSponsorCreatedAccountInvalidFields"
+  },
+  {
+   "key": "m79",
+   "mutant": true,
+   "match": 0.09,
+   "type": "NFTokenAcceptOffer",
+   "name": "fail - Invalid BaseTx, missing Account",
+   "err": "ErrMissingBothOffers"
+  },
+  {
+   "key": "m89",
+   "mutant": true,
+   "match": 0.8,
+   "type": "ConfidentialMPTClawback",
+   "name": "fail - Holder is the X-address of Account",
+   "err": "ErrConfidentialClawbackInvalidHolder"
+  },
+  {
+   "key": "m120",
+   "mutant": true,
+   "match": 0.56,
+   "type": "MPTokenIssuanceSet",
+   "name": "fail - no operation specified (no-op)",
+   "err": "ErrMPTIssuanceSetInvalidFlags"
+  },
+  {
+   "key": "m50",
+   "mutant": true,
+   "match": 0.4,
+   "type": "LoanBrokerSet",
+   "name": "fail - base tx invalid",
+   "err": "ErrLoanBrokerSetDataInvalid"
+  },
+  {
+   "key": "o37",
+   "mutant": false,
+   "match": 0.95,
+   "type": "ConfidentialMPTConvertBack",
+   "name": "fail - empty ZKProof",
+   "err": "ErrConfidentialConvertBackInvalidProof"
+  },
+  {
+   "key": "o0",
+   "mutant": false,
+   "match": 0.61,
+   "type": "LoanBrokerDelete",
+   "name": "fail - base tx invalid",
+   "err": "ErrInvalidAccount"
+  },
+  {
+   "key": "m100",
+   "mutant": true,
+   "match": 0.06,
+   "type": "Clawback",
+   "name": "fail - missing Amount",
+   "err": "ErrClawbackHolderTagNotAllowed"
+  }
+ ],
+ "H3_doc_comments": [
+  {
+   "key": "o48",
+   "mutant": false,
+   "accurate": 0.9,
+   "file": "validations_xrpl_objects.go",
+   "name": "ValidateHexMetadata",
+   "doc": "ValidateHexMetadata validates input is non-empty hex string of up to a certain length. Returns true if the input is a valid non-empty hex string up to the specified length."
+  },
+  {
+   "key": "o39",
+   "mutant": false,
+   "accurate": 0.6,
+   "file": "validations_xrpl_objects.go",
+   "name": "IsMemo",
+   "doc": "IsMemo checks if the given object is a valid Memo object."
+  },
+  {
+   "key": "m17",
+   "mutant": true,
+   "accurate": 0.03,
+   "file": "validations_xrpl_objects.go",
+   "name": "IsMPTokenIssuer",
+   "doc": "IsMPTokenIssuer implements the error interface for ErrTransactionInvalidField"
+  },
+  {
+   "key": "m37",
+   "mutant": true,
+   "accurate": 0.02,
+   "file": "validations_confidential_objects.go",
+   "name": "IsValidBlindingFactor",
+   "doc": "IsValidBlindingFactor clears the disallow incoming check flag."
+  },
+  {
+   "key": "o16",
+   "mutant": false,
+   "accurate": 0.95,
+   "file": "validations_xrpl_objects.go",
+   "name": "IsTokenAmount",
+   "doc": "IsTokenAmount checks if the given amount is a token amount (IssuedCurrencyAmount or MPTCurrencyAmount). Returns true if the amount is either an IssuedCurrencyAmount or MPTCurrencyAmount."
+  },
+  {
+   "key": "o56",
+   "mutant": false,
+   "accurate": 0.9,
+   "file": "account_set.go",
+   "name": "ClearAsfDepositAuth",
+   "doc": "ClearAsfDepositAuth clears the deposit authorization flag."
+  },
+  {
+   "key": "m13",
+   "mutant": true,
+   "accurate": 0.03,
+   "file": "flat_tx.go",
+   "name": "NormalizeFlags",
+   "doc": "NormalizeFlags returns the AsNFTokenMintMetadata."
+  },
+  {
+   "key": "o59",
+   "mutant": false,
+   "accurate": 0.9,
+   "file": "validations_xrpl_objects.go",
+   "name": "IsLedgerEntryID",
+   "doc": "IsLedgerEntryID checks if the input is a valid ledger entry id. A valid ledger entry id is a 256-bit value encoded as hexadecimal."
+  },
+  {
+   "key": "o17",
+   "mutant": false,
+   "accurate": 0.85,
+   "file": "validations_xrpl_objects.go",
+   "name": "IsMPTokenIssuer",
+   "doc": "IsMPTokenIssuer reports whether address is the issuer encoded in the trailing AccountID of issuanceID.  A malformed issuanceID or address also reports false, so a caller that rejects on a true result must check IsMPTIssuanceID first. Without that, a malformed ID reads as \"not the issuer\" and slips through the rejection."
+  },
+  {
+   "key": "m28",
+   "mutant": true,
+   "accurate": 0.03,
+   "file": "account_set.go",
+   "name": "ClearAsfRequireAuth",
+   "doc": "ClearAsfRequireAuth implements the error interface for ErrAMMTradingFeeToHigh"
+  },
+  {
+   "key": "m21",
+   "mutant": true,
+   "accurate": 0.11,
+   "file": "account_set.go",
+   "name": "ClearAsfDefaultRipple",
+   "doc": "ClearAsfDefaultRipple clears the require authorization flag."
+  },
+  {
+   "key": "m44",
+   "mutant": true,
+   "accurate": 0.02,
+   "file": "account_set.go",
+   "name": "ClearAsfDisallowIncomingCheck",
+   "doc": "ClearAsfDisallowIncomingCheck reports whether id is exactly 64 hexadecimal characters other than zero. It does not check ledger existence or permissions."
+  },
+  {
+   "key": "m11",
+   "mutant": true,
+   "accurate": 0.02,
+   "file": "metadata_builder.go",
+   "name": "AsTxObjMeta",
+   "doc": "AsTxObjMeta validates raw sponsorship fields and returns an independent typed sponsor signature, or nil when absent. It accepts flattened and binary-decoded maps without changing them, including pre-funded transactions before autofill. It preserves absent versus empty SigningPubKey values and checks only sponsorship structure and context, not full transaction validity, cryptographic signatures, ledger authorization, or sponsorship balances. On error it returns no signature."
+  },
+  {
+   "key": "o37",
+   "mutant": false,
+   "accurate": 0.91,
+   "file": "validations_confidential_objects.go",
+   "name": "IsValidBlindingFactor",
+   "doc": "IsValidBlindingFactor reports whether bf is a 32-byte blinding factor encoded as 64 hexadecimal characters."
+  },
+  {
+   "key": "o2",
+   "mutant": false,
+   "accurate": 0.87,
+   "file": "validations_confidential_objects.go",
+   "name": "IsValidConvertBackProof",
+   "doc": "IsValidConvertBackProof reports whether proof is an 816-byte confidential convert back proof bundle encoded as 1632 hexadecimal characters."
+  },
+  {
+   "key": "m20",
+   "mutant": true,
+   "accurate": 0.06,
+   "file": "metadata_builder.go",
+   "name": "AsNFTokenMintMetadata",
+   "doc": "AsNFTokenMintMetadata reports whether id is exactly 64 hexadecimal characters. Zero is accepted. Ledger existence is not checked."
+  },
+  {
+   "key": "o40",
+   "mutant": false,
+   "accurate": 0.92,
+   "file": "validations_xrpl_objects.go",
+   "name": "IsHex256",
+   "doc": "IsHex256 checks if the input is a 256-bit value encoded as hexadecimal."
+  },
+  {
+   "key": "m14",
+   "mutant": true,
+   "accurate": 0.18,
+   "file": "account_set.go",
+   "name": "ClearAsfDisallowIncomingPayChan",
+   "doc": "ClearAsfDisallowIncomingPayChan clears the default ripple flag."
+  },
+  {
+   "key": "o44",
+   "mutant": false,
+   "accurate": 0.91,
+   "file": "account_set.go",
+   "name": "ClearAsfDisallowIncomingCheck",
+   "doc": "ClearAsfDisallowIncomingCheck clears the disallow incoming check flag."
+  },
+  {
+   "key": "m9",
+   "mutant": true,
+   "accurate": 0.06,
+   "file": "validations_xrpl_objects.go",
+   "name": "IsPaths",
+   "doc": "IsPaths checks if the given amount is a token amount (IssuedCurrencyAmount or MPTCurrencyAmount). Returns true if the amount is either an IssuedCurrencyAmount or MPTCurrencyAmount."
+  },
+  {
+   "key": "m15",
+   "mutant": true,
+   "accurate": 0.04,
+   "file": "flat_tx.go",
+   "name": "Sequence",
+   "doc": "Sequence returns ErrTransactionTypeMissing when the flattened transaction has no TransactionType set, or when TransactionType is present with a non-string value."
+  },
+  {
+   "key": "m34",
+   "mutant": true,
+   "accurate": 0.01,
+   "file": "account_set.go",
+   "name": "ClearAsfAllowTrustLineLocking",
+   "doc": "ClearAsfAllowTrustLineLocking reports whether proof is a 64-byte Schnorr proof of knowledge encoded as 128 hexadecimal characters."
+  },
+  {
+   "key": "m18",
+   "mutant": true,
+   "accurate": 0.04,
+   "file": "sponsor.go",
+   "name": "InspectSponsorFields",
+   "doc": "InspectSponsorFields returns the PaymentMetadata."
+  },
+  {
+   "key": "o47",
+   "mutant": false,
+   "accurate": 0.94,
+   "file": "account_set.go",
+   "name": "ClearAsfDisallowIncomingTrustLine",
+   "doc": "ClearAsfDisallowIncomingTrustLine clears the disallow incoming trust line flag."
+  },
+  {
+   "key": "m49",
+   "mutant": true,
+   "accurate": 0.09,
+   "file": "metadata_builder.go",
+   "name": "AsNFTokenCreateOfferMetadata",
+   "doc": "AsNFTokenCreateOfferMetadata clears the deposit authorization flag."
+  },
+  {
+   "key": "m41",
+   "mutant": true,
+   "accurate": 0.82,
+   "file": "validations_confidential_objects.go",
+   "name": "IsValidSchnorrProof",
+   "doc": "IsValidSchnorrProof validates input is non-empty hex string of up to a certain length. Returns true if the input is a valid non-empty hex string up to the specified length."
+  },
+  {
+   "key": "o21",
+   "mutant": false,
+   "accurate": 0.9,
+   "file": "account_set.go",
+   "name": "ClearAsfDefaultRipple",
+   "doc": "ClearAsfDefaultRipple clears the default ripple flag."
+  },
+  {
+   "key": "m51",
+   "mutant": true,
+   "accurate": 0.02,
+   "file": "validations_xrpl_objects.go",
+   "name": "IsNonZeroDomainID",
+   "doc": "IsNonZeroDomainID clears the authorized NFToken minter flag."
+  },
+  {
+   "key": "m8",
+   "mutant": true,
+   "accurate": 0.02,
+   "file": "account_set.go",
+   "name": "ClearAsfAccountTxnID",
+   "doc": "ClearAsfAccountTxnID returns the sequence number of the flattened transaction."
+  },
+  {
+   "key": "o14",
+   "mutant": false,
+   "accurate": 0.93,
+   "file": "account_set.go",
+   "name": "ClearAsfDisallowIncomingPayChan",
+   "doc": "ClearAsfDisallowIncomingPayChan clears the disallow incoming payment channel flag."
+  },
+  {
+   "key": "o45",
+   "mutant": false,
+   "accurate": 0.86,
+   "file": "validations_xrpl_objects.go",
+   "name": "IsMPTCurrency",
+   "doc": "IsMPTCurrency checks if the given object is a valid MPTCurrencyAmount object."
+  },
+  {
+   "key": "o28",
+   "mutant": false,
+   "accurate": 0.95,
+   "file": "account_set.go",
+   "name": "ClearAsfRequireAuth",
+   "doc": "ClearAsfRequireAuth clears the require authorization flag."
+  },
+  {
+   "key": "m7",
+   "mutant": true,
+   "accurate": 0.01,
+   "file": "errors.go",
+   "name": "Error",
+   "doc": "Error clears the disallow incoming payment channel flag."
+  },
+  {
+   "key": "m4",
+   "mutant": true,
+   "accurate": 0.85,
+   "file": "metadata_builder.go",
+   "name": "AsNFTokenCancelOfferMetadata",
+   "doc": "AsNFTokenCancelOfferMetadata returns the base TxObjMeta metadata."
+  },
+  {
+   "key": "m3",
+   "mutant": true,
+   "accurate": 0.21,
+   "file": "validations_confidential_objects.go",
+   "name": "IsValidClawbackProof",
+   "doc": "IsValidClawbackProof reports whether s is a 33-byte Pedersen commitment encoded as 66 hexadecimal characters and lying on the secp256k1 curve."
+  },
+  {
+   "key": "o11",
+   "mutant": false,
+   "accurate": 0.94,
+   "file": "metadata_builder.go",
+   "name": "AsTxObjMeta",
+   "doc": "AsTxObjMeta returns the base TxObjMeta metadata."
+  },
+  {
+   "key": "m52",
+   "mutant": true,
+   "accurate": 0.02,
+   "file": "account_set.go",
+   "name": "ClearAsfDisableMaster",
+   "doc": "ClearAsfDisableMaster checks if the input is a valid ledger entry id. A valid ledger entry id is a 256-bit value encoded as hexadecimal."
+  },
+  {
+   "key": "o57",
+   "mutant": false,
+   "accurate": 0.94,
+   "file": "errors.go",
+   "name": "Error",
+   "doc": "Error implements the error interface for ErrMissingField"
+  },
+  {
+   "key": "m16",
+   "mutant": true,
+   "accurate": 0.8,
+   "file": "validations_xrpl_objects.go",
+   "name": "IsTokenAmount",
+   "doc": "IsTokenAmount checks if the given object is a valid IssuedCurrency object."
+  },
+  {
+   "key": "m40",
+   "mutant": true,
+   "accurate": 0.01,
+   "file": "validations_xrpl_objects.go",
+   "name": "IsHex256",
+   "doc": "IsHex256 clears the disallow incoming trust line flag."
+  },
+  {
+   "key": "m58",
+   "mutant": true,
+   "accurate": 0.02,
+   "file": "account_set.go",
+   "name": "ClearAsfAuthorizedNFTokenMinter",
+   "doc": "ClearAsfAuthorizedNFTokenMinter reports whether proof is an 816-byte confidential convert back proof bundle encoded as 1632 hexadecimal characters."
+  },
+  {
+   "key": "m35",
+   "mutant": true,
+   "accurate": 0.01,
+   "file": "errors.go",
+   "name": "Error",
+   "doc": "Error clears the disallow incoming NFToken offer flag."
+  },
+  {
+   "key": "o38",
+   "mutant": false,
+   "accurate": 0.84,
+   "file": "clawback.go",
+   "name": "UnmarshalJSON",
+   "doc": "UnmarshalJSON implements custom JSON unmarshalling for Clawback currency amounts."
+  },
+  {
+   "key": "o42",
+   "mutant": false,
+   "accurate": 0.97,
+   "file": "account_set.go",
+   "name": "ClearAsfDisallowIncomingNFTokenOffer",
+   "doc": "ClearAsfDisallowIncomingNFTokenOffer clears the disallow incoming NFToken offer flag."
+  },
+  {
+   "key": "o15",
+   "mutant": false,
+   "accurate": 0.86,
+   "file": "flat_tx.go",
+   "name": "Sequence",
+   "doc": "Sequence returns the sequence number of the flattened transaction."
+  },
+  {
+   "key": "o6",
+   "mutant": false,
+   "accurate": 0.96,
+   "file": "account_set.go",
+   "name": "ClearAsfAllowTrustLineClawback",
+   "doc": "ClearAsfAllowTrustLineClawback clears the allow trust line clawback flag."
+  },
+  {
+   "key": "o24",
+   "mutant": false,
+   "accurate": 0.95,
+   "file": "errors.go",
+   "name": "Error",
+   "doc": "Error implements the error interface for ErrTransactionInvalidField"
+  },
+  {
+   "key": "o34",
+   "mutant": false,
+   "accurate": 0.97,
+   "file": "account_set.go",
+   "name": "ClearAsfAllowTrustLineLocking",
+   "doc": "ClearAsfAllowTrustLineLocking clears the allow trust line locking flag."
+  },
+  {
+   "key": "m50",
+   "mutant": true,
+   "accurate": 0.07,
+   "file": "validations_confidential_objects.go",
+   "name": "IsValidCiphertext",
+   "doc": "IsValidCiphertext implements the error interface for ErrMissingField"
+  },
+  {
+   "key": "m55",
+   "mutant": true,
+   "accurate": 0.03,
+   "file": "metadata_builder.go",
+   "name": "AsNFTokenAcceptOfferMetadata",
+   "doc": "AsNFTokenAcceptOfferMetadata checks if the given hex string is a valid 24-byte MPT issuance ID (48 hex chars)."
+  },
+  {
+   "key": "m62",
+   "mutant": true,
+   "accurate": 0.02,
+   "file": "validations_xrpl_objects.go",
+   "name": "IsMPTIssuanceID",
+   "doc": "IsMPTIssuanceID clears the allow trust line clawback flag."
+  },
+  {
+   "key": "o30",
+   "mutant": false,
+   "accurate": 0.37,
+   "file": "validations_confidential_objects.go",
+   "name": "IsValidCompressedEncryptionKey",
+   "doc": "IsValidCompressedEncryptionKey reports whether key is a 33-byte compressed secp256k1 point encoded as 66 hexadecimal characters and lying on the secp256k1 curve. A key that is well formed but off the curve is rejected. Used for HolderEncryptionKey, IssuerEncryptionKey, and AuditorEncryptionKey per XLS-96."
+  },
+  {
+   "key": "o5",
+   "mutant": false,
+   "accurate": 0.89,
+   "file": "metadata_builder.go",
+   "name": "AsMPTokenIssuanceCreateMetadata",
+   "doc": "AsMPTokenIssuanceCreateMetadata returns the MPTokenIssuanceCreateMetadata."
+  },
+  {
+   "key": "o26",
+   "mutant": false,
+   "accurate": 0.89,
+   "file": "account_set.go",
+   "name": "ClearAsfDisallowXRP",
+   "doc": "ClearAsfDisallowXRP clears the disallow XRP flag."
+  },
+  {
+   "key": "m38",
+   "mutant": true,
+   "accurate": 0.42,
+   "file": "clawback.go",
+   "name": "UnmarshalJSON",
+   "doc": "UnmarshalJSON checks if the given object is a valid MPTCurrencyAmount object."
+  },
+  {
+   "key": "o60",
+   "mutant": false,
+   "accurate": 0.83,
+   "file": "validations_xrpl_objects.go",
+   "name": "IsSigner",
+   "doc": "IsSigner checks if the given object is a valid Signer object."
+  },
+  {
+   "key": "o58",
+   "mutant": false,
+   "accurate": 0.94,
+   "file": "account_set.go",
+   "name": "ClearAsfAuthorizedNFTokenMinter",
+   "doc": "ClearAsfAuthorizedNFTokenMinter clears the authorized NFToken minter flag."
+  },
+  {
+   "key": "m32",
+   "mutant": true,
+   "accurate": 0.01,
+   "file": "account_set.go",
+   "name": "ClearAsfGlobalFreeze",
+   "doc": "ClearAsfGlobalFreeze checks if the given object is a valid Memo object."
+  },
+  {
+   "key": "o12",
+   "mutant": false,
+   "accurate": 0.96,
+   "file": "escrow_create.go",
+   "name": "UnmarshalJSON",
+   "doc": "UnmarshalJSON implements custom JSON unmarshalling for EscrowCreate."
+  },
+  {
+   "key": "m31",
+   "mutant": true,
+   "accurate": 0.02,
+   "file": "account_set.go",
+   "name": "ClearAsfNoFreeze",
+   "doc": "ClearAsfNoFreeze implements custom JSON unmarshalling for Clawback currency amounts."
+  },
+  {
+   "key": "m29",
+   "mutant": true,
+   "accurate": 0.03,
+   "file": "validations_commons.go",
+   "name": "ValidateOptionalField",
+   "doc": "ValidateOptionalField checks if the given object is a valid Asset object."
+  },
+  {
+   "key": "m33",
+   "mutant": true,
+   "accurate": 0.02,
+   "file": "errors.go",
+   "name": "Error",
+   "doc": "Error checks if the input is a 256-bit value encoded as hexadecimal."
+  },
+  {
+   "key": "m1",
+   "mutant": true,
+   "accurate": 0.04,
+   "file": "tx_type.go",
+   "name": "IsPseudoTransactionType",
+   "doc": "IsPseudoTransactionType clears the account transaction ID flag."
+  },
+  {
+   "key": "o20",
+   "mutant": false,
+   "accurate": 0.78,
+   "file": "metadata_builder.go",
+   "name": "AsNFTokenMintMetadata",
+   "doc": "AsNFTokenMintMetadata returns the AsNFTokenMintMetadata."
+  },
+  {
+   "key": "m30",
+   "mutant": true,
+   "accurate": 0.13,
+   "file": "validations_confidential_objects.go",
+   "name": "IsValidCompressedEncryptionKey",
+   "doc": "IsValidCompressedEncryptionKey reports whether bf is a 32-byte blinding factor encoded as 64 hexadecimal characters."
+  },
+  {
+   "key": "m2",
+   "mutant": true,
+   "accurate": 0.05,
+   "file": "validations_confidential_objects.go",
+   "name": "IsValidConvertBackProof",
+   "doc": "IsValidConvertBackProof checks if the given slice of slices of maps is a valid Paths."
+  },
+  {
+   "key": "m45",
+   "mutant": true,
+   "accurate": 0.02,
+   "file": "validations_xrpl_objects.go",
+   "name": "IsMPTCurrency",
+   "doc": "IsMPTCurrency clears the disable master key flag."
+  },
+  {
+   "key": "o19",
+   "mutant": false,
+   "accurate": 0.81,
+   "file": "results.go",
+   "name": "String",
+   "doc": "String returns the string representation of the result"
+  },
+  {
+   "key": "m53",
+   "mutant": true,
+   "accurate": 0.02,
+   "file": "validations_confidential_objects.go",
+   "name": "IsValidSendProof",
+   "doc": "IsValidSendProof checks if the given object is a valid Signer object."
+  },
+  {
+   "key": "o31",
+   "mutant": false,
+   "accurate": 0.42,
+   "file": "account_set.go",
+   "name": "ClearAsfNoFreeze",
+   "doc": "ClearAsfNoFreeze clears the no freeze flag."
+  },
+  {
+   "key": "m24",
+   "mutant": true,
+   "accurate": 0.01,
+   "file": "errors.go",
+   "name": "Error",
+   "doc": "Error clears the no freeze flag."
+  },
+  {
+   "key": "m6",
+   "mutant": true,
+   "accurate": 0.02,
+   "file": "account_set.go",
+   "name": "ClearAsfAllowTrustLineClawback",
+   "doc": "ClearAsfAllowTrustLineClawback defaults a missing Flags field to uint32(0). When Flags is present it is coerced to a uint32 from any integer or whole-number floating point representation (including json.Number), provided the exact value fits in the [0, 4294967295] range. ErrInvalidFlagsValue is returned otherwise.  TODO: Add support for converting named boolean flag maps (e.g. {\"tfPartialPayment\": true}) into a numeric bitmask for transactions that carry tf flags (AccountSet, AMMClawback, AMMDeposit, AMMWithdraw, Batch, LoanManage, LoanPay, LoanSet, MPTokenAuthorize, MPTokenIssuanceCreate, MPTokenIssuanceSet, NFTokenCreateOffer, NFTokenMint, OfferCreate, Payment, PaymentChannelClaim, TrustSet, VaultCreate, XChainModifyBridge)."
+  },
+  {
+   "key": "o4",
+   "mutant": false,
+   "accurate": 0.92,
+   "file": "metadata_builder.go",
+   "name": "AsNFTokenCancelOfferMetadata",
+   "doc": "AsNFTokenCancelOfferMetadata returns the NFTokenCancelOfferMetadata."
+  },
+  {
+   "key": "o43",
+   "mutant": false,
+   "accurate": 0.94,
+   "file": "errors.go",
+   "name": "Error",
+   "doc": "Error implements the error interface for ErrOraclePriceDataSeriesItems."
+  },
+  {
+   "key": "o33",
+   "mutant": false,
+   "accurate": 0.92,
+   "file": "errors.go",
+   "name": "Error",
+   "doc": "Error implements the error interface for ErrOracleProviderLength"
+  },
+  {
+   "key": "o46",
+   "mutant": false,
+   "accurate": 0.86,
+   "file": "balance_changes.go",
+   "name": "GetBalanceChanges",
+   "doc": "GetBalanceChanges returns the balance changes for each account based on transaction metadata. Affected AccountRoot and RippleState nodes whose Balance did not change are skipped. This includes nodes that do not surface a Balance field at all, net-zero deltas, and newly-created entries with Balance=0."
+  },
+  {
+   "key": "o18",
+   "mutant": false,
+   "accurate": 0.74,
+   "file": "sponsor.go",
+   "name": "InspectSponsorFields",
+   "doc": "InspectSponsorFields validates raw sponsorship fields and returns an independent typed sponsor signature, or nil when absent. It accepts flattened and binary-decoded maps without changing them, including pre-funded transactions before autofill. It preserves absent versus empty SigningPubKey values and checks only sponsorship structure and context, not full transaction validity, cryptographic signatures, ledger authorization, or sponsorship balances. On error it returns no signature."
+  },
+  {
+   "key": "o22",
+   "mutant": false,
+   "accurate": 0.84,
+   "file": "flat_tx.go",
+   "name": "RequireTransactionType",
+   "doc": "RequireTransactionType returns ErrTransactionTypeMissing when the flattened transaction has no TransactionType set, or when TransactionType is present with a non-string value."
+  },
+  {
+   "key": "m43",
+   "mutant": true,
+   "accurate": 0.01,
+   "file": "errors.go",
+   "name": "Error",
+   "doc": "Error reports whether s is a 66-byte EC-ElGamal ciphertext: two concatenated compressed secp256k1 points encoded as 132 hexadecimal characters. XLS-96 rejects ciphertexts that are well formed but do not lie on the curve."
+  },
+  {
+   "key": "m10",
+   "mutant": true,
+   "accurate": 0.03,
+   "file": "validations_confidential_objects.go",
+   "name": "IsValidCommitment",
+   "doc": "IsValidCommitment reports whether address is the issuer encoded in the trailing AccountID of issuanceID.  A malformed issuanceID or address also reports false, so a caller that rejects on a true result must check IsMPTIssuanceID first. Without that, a malformed ID reads as \"not the issuer\" and slips through the rejection."
+  },
+  {
+   "key": "o32",
+   "mutant": false,
+   "accurate": 0.72,
+   "file": "account_set.go",
+   "name": "ClearAsfGlobalFreeze",
+   "doc": "ClearAsfGlobalFreeze clears the global freeze flag."
+  },
+  {
+   "key": "m23",
+   "mutant": true,
+   "accurate": 0.04,
+   "file": "validations_xrpl_objects.go",
+   "name": "IsIssuedCurrency",
+   "doc": "IsIssuedCurrency reports whether key is a 33-byte compressed secp256k1 point encoded as 66 hexadecimal characters and lying on the secp256k1 curve. A key that is well formed but off the curve is rejected. Used for HolderEncryptionKey, IssuerEncryptionKey, and AuditorEncryptionKey per XLS-96."
+  },
+  {
+   "key": "m39",
+   "mutant": true,
+   "accurate": 0.02,
+   "file": "validations_xrpl_objects.go",
+   "name": "IsMemo",
+   "doc": "IsMemo returns the balance changes for each account based on transaction metadata. Affected AccountRoot and RippleState nodes whose Balance did not change are skipped. This includes nodes that do not surface a Balance field at all, net-zero deltas, and newly-created entries with Balance=0."
+  },
+  {
+   "key": "m59",
+   "mutant": true,
+   "accurate": 0.07,
+   "file": "validations_xrpl_objects.go",
+   "name": "IsLedgerEntryID",
+   "doc": "IsLedgerEntryID reports whether proof is a 64-byte compact Clawback sigma proof encoded as 128 hexadecimal characters."
+  },
+  {
+   "key": "m48",
+   "mutant": true,
+   "accurate": 0.04,
+   "file": "validations_xrpl_objects.go",
+   "name": "ValidateHexMetadata",
+   "doc": "ValidateHexMetadata returns the NFTokenAcceptOfferMetadata."
+  },
+  {
+   "key": "o53",
+   "mutant": false,
+   "accurate": 0.83,
+   "file": "validations_confidential_objects.go",
+   "name": "IsValidSendProof",
+   "doc": "IsValidSendProof reports whether proof is a 946-byte confidential send proof bundle encoded as 1892 hexadecimal characters."
+  },
+  {
+   "key": "o54",
+   "mutant": false,
+   "accurate": 0.78,
+   "file": "validations_xrpl_objects.go",
+   "name": "IsAmount",
+   "doc": "IsAmount checks if the given object is a valid Amount object. It is a string for an XRP amount, a map for an IssuedCurrency amount, or an MPT amount."
+  },
+  {
+   "key": "o9",
+   "mutant": false,
+   "accurate": 0.89,
+   "file": "validations_xrpl_objects.go",
+   "name": "IsPaths",
+   "doc": "IsPaths checks if the given slice of slices of maps is a valid Paths."
+  },
+  {
+   "key": "o35",
+   "mutant": false,
+   "accurate": 0.84,
+   "file": "errors.go",
+   "name": "Error",
+   "doc": "Error implements the error interface for ErrAMMTradingFeeToHigh"
+  },
+  {
+   "key": "m60",
+   "mutant": true,
+   "accurate": 0.33,
+   "file": "validations_xrpl_objects.go",
+   "name": "IsSigner",
+   "doc": "IsSigner returns the NFTokenCancelOfferMetadata."
+  },
+  {
+   "key": "m0",
+   "mutant": true,
+   "accurate": 0.03,
+   "file": "account_set.go",
+   "name": "ClearAsfRequireDest",
+   "doc": "ClearAsfRequireDest implements the error interface for ErrTicketCreateInvalidTicketCount."
+  },
+  {
+   "key": "o8",
+   "mutant": false,
+   "accurate": 0.94,
+   "file": "account_set.go",
+   "name": "ClearAsfAccountTxnID",
+   "doc": "ClearAsfAccountTxnID clears the account transaction ID flag."
+  },
+  {
+   "key": "o50",
+   "mutant": false,
+   "accurate": 0.85,
+   "file": "validations_confidential_objects.go",
+   "name": "IsValidCiphertext",
+   "doc": "IsValidCiphertext reports whether s is a 66-byte EC-ElGamal ciphertext: two concatenated compressed secp256k1 points encoded as 132 hexadecimal characters. XLS-96 rejects ciphertexts that are well formed but do not lie on the curve."
+  },
+  {
+   "key": "o29",
+   "mutant": false,
+   "accurate": 0.89,
+   "file": "validations_commons.go",
+   "name": "ValidateOptionalField",
+   "doc": "ValidateOptionalField validates an optional field in the transaction map."
+  },
+  {
+   "key": "m54",
+   "mutant": true,
+   "accurate": 0.49,
+   "file": "validations_xrpl_objects.go",
+   "name": "IsAmount",
+   "doc": "IsAmount checks if the given pathstep is valid."
+  },
+  {
+   "key": "m36",
+   "mutant": true,
+   "accurate": 0.04,
+   "file": "validations_xrpl_objects.go",
+   "name": "IsAsset",
+   "doc": "IsAsset implements the error interface for ErrOraclePriceDataSeriesItems."
+  },
+  {
+   "key": "o52",
+   "mutant": false,
+   "accurate": 0.89,
+   "file": "account_set.go",
+   "name": "ClearAsfDisableMaster",
+   "doc": "ClearAsfDisableMaster clears the disable master key flag."
+  },
+  {
+   "key": "m5",
+   "mutant": true,
+   "accurate": 0.15,
+   "file": "metadata_builder.go",
+   "name": "AsMPTokenIssuanceCreateMetadata",
+   "doc": "AsMPTokenIssuanceCreateMetadata implements custom JSON unmarshalling for EscrowCreate."
+  },
+  {
+   "key": "o7",
+   "mutant": false,
+   "accurate": 0.96,
+   "file": "errors.go",
+   "name": "Error",
+   "doc": "Error implements the error interface for ErrTicketCreateInvalidTicketCount."
+  },
+  {
+   "key": "o27",
+   "mutant": false,
+   "accurate": 0.75,
+   "file": "validations_xrpl_objects.go",
+   "name": "IsDomainID",
+   "doc": "IsDomainID reports whether id is exactly 64 hexadecimal characters. Zero is accepted. Ledger existence is not checked."
+  },
+  {
+   "key": "o10",
+   "mutant": false,
+   "accurate": 0.44,
+   "file": "validations_confidential_objects.go",
+   "name": "IsValidCommitment",
+   "doc": "IsValidCommitment reports whether s is a 33-byte Pedersen commitment encoded as 66 hexadecimal characters and lying on the secp256k1 curve."
+  },
+  {
+   "key": "m27",
+   "mutant": true,
+   "accurate": 0.01,
+   "file": "validations_xrpl_objects.go",
+   "name": "IsDomainID",
+   "doc": "IsDomainID clears the allow trust line locking flag."
+  },
+  {
+   "key": "o0",
+   "mutant": false,
+   "accurate": 0.95,
+   "file": "account_set.go",
+   "name": "ClearAsfRequireDest",
+   "doc": "ClearAsfRequireDest clears the require destination tag flag."
+  },
+  {
+   "key": "o13",
+   "mutant": false,
+   "accurate": 0.7,
+   "file": "flat_tx.go",
+   "name": "NormalizeFlags",
+   "doc": "NormalizeFlags defaults a missing Flags field to uint32(0). When Flags is present it is coerced to a uint32 from any integer or whole-number floating point representation (including json.Number), provided the exact value fits in the [0, 4294967295] range. ErrInvalidFlagsValue is returned otherwise.  TODO: Add support for converting named boolean flag maps (e.g. {\"tfPartialPayment\": true}) into a numeric bitmask for transactions that carry tf flags (AccountSet, AMMClawback, AMMDeposit, AMMWithdraw, Batch, LoanManage, LoanPay, LoanSet, MPTokenAuthorize, MPTokenIssuanceCreate, MPTokenIssuanceSet, NFTokenCreateOffer, NFTokenMint, OfferCreate, Payment, PaymentChannelClaim, TrustSet, VaultCreate, XChainModifyBridge)."
+  },
+  {
+   "key": "m25",
+   "mutant": true,
+   "accurate": 0.04,
+   "file": "metadata_builder.go",
+   "name": "AsPaymentMetadata",
+   "doc": "AsPaymentMetadata clears the global freeze flag."
+  },
+  {
+   "key": "m46",
+   "mutant": true,
+   "accurate": 0.04,
+   "file": "balance_changes.go",
+   "name": "GetBalanceChanges",
+   "doc": "GetBalanceChanges reports whether proof is a 946-byte confidential send proof bundle encoded as 1892 hexadecimal characters."
+  },
+  {
+   "key": "o25",
+   "mutant": false,
+   "accurate": 0.89,
+   "file": "metadata_builder.go",
+   "name": "AsPaymentMetadata",
+   "doc": "AsPaymentMetadata returns the PaymentMetadata."
+  },
+  {
+   "key": "m12",
+   "mutant": true,
+   "accurate": 0.03,
+   "file": "escrow_create.go",
+   "name": "UnmarshalJSON",
+   "doc": "UnmarshalJSON returns the string representation of the result"
+  },
+  {
+   "key": "o41",
+   "mutant": false,
+   "accurate": 0.89,
+   "file": "validations_confidential_objects.go",
+   "name": "IsValidSchnorrProof",
+   "doc": "IsValidSchnorrProof reports whether proof is a 64-byte Schnorr proof of knowledge encoded as 128 hexadecimal characters."
+  },
+  {
+   "key": "o23",
+   "mutant": false,
+   "accurate": 0.83,
+   "file": "validations_xrpl_objects.go",
+   "name": "IsIssuedCurrency",
+   "doc": "IsIssuedCurrency checks if the given object is a valid IssuedCurrency object."
+  },
+  {
+   "key": "o51",
+   "mutant": false,
+   "accurate": 0.87,
+   "file": "validations_xrpl_objects.go",
+   "name": "IsNonZeroDomainID",
+   "doc": "IsNonZeroDomainID reports whether id is exactly 64 hexadecimal characters other than zero. It does not check ledger existence or permissions."
+  },
+  {
+   "key": "o49",
+   "mutant": false,
+   "accurate": 0.93,
+   "file": "metadata_builder.go",
+   "name": "AsNFTokenCreateOfferMetadata",
+   "doc": "AsNFTokenCreateOfferMetadata returns the NFTokenCreateOfferMetadata."
+  },
+  {
+   "key": "o55",
+   "mutant": false,
+   "accurate": 0.9,
+   "file": "metadata_builder.go",
+   "name": "AsNFTokenAcceptOfferMetadata",
+   "doc": "AsNFTokenAcceptOfferMetadata returns the NFTokenAcceptOfferMetadata."
+  },
+  {
+   "key": "o1",
+   "mutant": false,
+   "accurate": 0.94,
+   "file": "tx_type.go",
+   "name": "IsPseudoTransactionType",
+   "doc": "IsPseudoTransactionType reports whether txType is generated by XRPL consensus instead of being submitted by an account."
+  },
+  {
+   "key": "m57",
+   "mutant": true,
+   "accurate": 0.02,
+   "file": "errors.go",
+   "name": "Error",
+   "doc": "Error reports whether txType is generated by XRPL consensus instead of being submitted by an account."
+  },
+  {
+   "key": "m61",
+   "mutant": true,
+   "accurate": 0.02,
+   "file": "validations_xrpl_objects.go",
+   "name": "IsPath",
+   "doc": "IsPath returns the MPTokenIssuanceCreateMetadata."
+  },
+  {
+   "key": "m22",
+   "mutant": true,
+   "accurate": 0.66,
+   "file": "flat_tx.go",
+   "name": "RequireTransactionType",
+   "doc": "RequireTransactionType validates an optional field in the transaction map."
+  },
+  {
+   "key": "m56",
+   "mutant": true,
+   "accurate": 0.43,
+   "file": "account_set.go",
+   "name": "ClearAsfDepositAuth",
+   "doc": "ClearAsfDepositAuth clears the require destination tag flag."
+  },
+  {
+   "key": "o36",
+   "mutant": false,
+   "accurate": 0.9,
+   "file": "validations_xrpl_objects.go",
+   "name": "IsAsset",
+   "doc": "IsAsset checks if the given object is a valid Asset object."
+  },
+  {
+   "key": "m47",
+   "mutant": true,
+   "accurate": 0.02,
+   "file": "account_set.go",
+   "name": "ClearAsfDisallowIncomingTrustLine",
+   "doc": "ClearAsfDisallowIncomingTrustLine checks if the given object is a valid Amount object. It is a string for an XRP amount, a map for an IssuedCurrency amount, or an MPT amount."
+  },
+  {
+   "key": "o62",
+   "mutant": false,
+   "accurate": 0.92,
+   "file": "validations_xrpl_objects.go",
+   "name": "IsMPTIssuanceID",
+   "doc": "IsMPTIssuanceID checks if the given hex string is a valid 24-byte MPT issuance ID (48 hex chars)."
+  },
+  {
+   "key": "o3",
+   "mutant": false,
+   "accurate": 0.84,
+   "file": "validations_confidential_objects.go",
+   "name": "IsValidClawbackProof",
+   "doc": "IsValidClawbackProof reports whether proof is a 64-byte compact Clawback sigma proof encoded as 128 hexadecimal characters."
+  },
+  {
+   "key": "o61",
+   "mutant": false,
+   "accurate": 0.65,
+   "file": "validations_xrpl_objects.go",
+   "name": "IsPath",
+   "doc": "IsPath checks if the given pathstep is valid."
+  },
+  {
+   "key": "m26",
+   "mutant": true,
+   "accurate": 0.05,
+   "file": "account_set.go",
+   "name": "ClearAsfDisallowXRP",
+   "doc": "ClearAsfDisallowXRP implements the error interface for ErrOracleProviderLength"
+  },
+  {
+   "key": "m19",
+   "mutant": true,
+   "accurate": 0.02,
+   "file": "results.go",
+   "name": "String",
+   "doc": "String clears the disallow XRP flag."
+  },
+  {
+   "key": "m42",
+   "mutant": true,
+   "accurate": 0.04,
+   "file": "account_set.go",
+   "name": "ClearAsfDisallowIncomingNFTokenOffer",
+   "doc": "ClearAsfDisallowIncomingNFTokenOffer returns the NFTokenCreateOfferMetadata."
+  }
+ ],
+ "H4_triage": [
+  {
+   "sha": "3fe5ea46",
+   "label": "docs",
+   "subject": "docs: refresh READMEs, SDK guides, and docs site navigation (#436)",
+   "pred": "docs",
+   "conf": 0.97
+  },
+  {
+   "sha": "cbf7489a",
+   "label": "refactor",
+   "subject": "refactor(examples): make examples self-contained and improve runtime correctness (#432)",
+   "pred": "refactor",
+   "conf": 0.27
+  },
+  {
+   "sha": "d2a19384",
+   "label": "fix",
+   "subject": "fix: validate payment and check invoice IDs (#433)",
+   "pred": "fix",
+   "conf": 0.6
+  },
+  {
+   "sha": "f70e8e8f",
+   "label": "fix",
+   "subject": "fix(transaction): standardize flattened transaction types (#434)",
+   "pred": "refactor",
+   "conf": 0.72
+  },
+  {
+   "sha": "9b8d830b",
+   "label": "chore",
+   "subject": "chore(skills): sync XRPL-Standards references",
+   "pred": "docs",
+   "conf": 0.78
+  },
+  {
+   "sha": "8e4af055",
+   "label": "fix",
+   "subject": "fix: correct payment paths flattening for signing (#430)",
+   "pred": "fix",
+   "conf": 0.93
+  },
+  {
+   "sha": "4f49fe79",
+   "label": "chore",
+   "subject": "chore: confidential release v0.1.0",
+   "pred": "chore",
+   "conf": 1.0
+  },
+  {
+   "sha": "6e15fbb9",
+   "label": "fix",
+   "subject": "fix(ci): check confidential on shared wire-size changes",
+   "pred": "ci",
+   "conf": 1.0
+  },
+  {
+   "sha": "bd4a6cca",
+   "label": "fix",
+   "subject": "fix(ci): isolate PR edit runs and clarify module docs",
+   "pred": "ci",
+   "conf": 0.27
+  },
+  {
+   "sha": "3a803722",
+   "label": "docs",
+   "subject": "docs: document module split and prepare release notes",
+   "pred": "docs",
+   "conf": 0.98
+  },
+  {
+   "sha": "7eee5d14",
+   "label": "fix",
+   "subject": "fix(confidential): move batch integration test into module",
+   "pred": "refactor",
+   "conf": 0.44
+  },
+  {
+   "sha": "982c950f",
+   "label": "chore",
+   "subject": "chore: split confidential module",
+   "pred": "ci",
+   "conf": 0.9
+  },
+  {
+   "sha": "ac49ce79",
+   "label": "fix",
+   "subject": "fix(clients): check sponsorship before account deletion (#411)",
+   "pred": "feat",
+   "conf": 0.99
+  },
+  {
+   "sha": "1f76cf94",
+   "label": "feat",
+   "subject": "feat(xrpl): add an optional online sponsorship preflight helper (#415)",
+   "pred": "feat",
+   "conf": 1.0
+  },
+  {
+   "sha": "40d68172",
+   "label": "test",
+   "subject": "test(xrpl): detect partial mutation on decoder field errors",
+   "pred": "test",
+   "conf": 1.0
+  },
+  {
+   "sha": "a2a9e921",
+   "label": "refactor",
+   "subject": "refactor(xrpl): delegate simulate request validation to server",
+   "pred": "refactor",
+   "conf": 0.47
+  },
+  {
+   "sha": "fd4ae2bf",
+   "label": "fix",
+   "subject": "fix(confidential): normalize and copy TransactionOp payloads, test off-curve ciphertext arithmetic",
+   "pred": "fix",
+   "conf": 0.97
+  },
+  {
+   "sha": "9af507a6",
+   "label": "docs",
+   "subject": "docs(wallet): clarify sponsorship lookup and fee pools",
+   "pred": "docs",
+   "conf": 1.0
+  },
+  {
+   "sha": "4aacbcb1",
+   "label": "fix",
+   "subject": "fix(transaction): reject SponsorshipTransfer delegation grants",
+   "pred": "fix",
+   "conf": 0.77
+  },
+  {
+   "sha": "8b825439",
+   "label": "test",
+   "subject": "test(xrpl): cover decoder and simulate validation regressions",
+   "pred": "test",
+   "conf": 1.0
+  },
+  {
+   "sha": "216b093f",
+   "label": "fix",
+   "subject": "fix(transaction): consolidate credential ID validation",
+   "pred": "fix",
+   "conf": 0.81
+  },
+  {
+   "sha": "e7b8f684",
+   "label": "fix",
+   "subject": "fix(wallet): preserve payment amounts during sponsor signing",
+   "pred": "feat",
+   "conf": 0.91
+  },
+  {
+   "sha": "93c71e05",
+   "label": "docs",
+   "subject": "docs(transaction): list sponsorship transaction types",
+   "pred": "docs",
+   "conf": 1.0
+  },
+  {
+   "sha": "29f97657",
+   "label": "fix",
+   "subject": "fix: preserve fields in custom JSON decoders (#414)",
+   "pred": "refactor",
+   "conf": 0.97
+  },
+  {
+   "sha": "abfe0665",
+   "label": "feat",
+   "subject": "feat(queries): add sponsorship query support (#416)",
+   "pred": "refactor",
+   "conf": 0.95
+  },
+  {
+   "sha": "e6921377",
+   "label": "refactor",
+   "subject": "refactor: simplify sponsor checks and improve code grouping",
+   "pred": "feat",
+   "conf": 0.98
+  },
+  {
+   "sha": "a6b49bfd",
+   "label": "refactor",
+   "subject": "refactor(transaction): group sponsor signature parsers",
+   "pred": "refactor",
+   "conf": 0.94
+  },
+  {
+   "sha": "ec371d71",
+   "label": "refactor",
+   "subject": "refactor(transaction): simplify sponsor field inspection",
+   "pred": "fix",
+   "conf": 0.66
+  },
+  {
+   "sha": "82ffec6b",
+   "label": "docs",
+   "subject": "docs(examples): make sponsor signing example self-contained",
+   "pred": "feat",
+   "conf": 0.91
+  },
+  {
+   "sha": "db70e20c",
+   "label": "test",
+   "subject": "test(lending): name protocol limits and signing constants",
+   "pred": "test",
+   "conf": 0.95
+  },
+  {
+   "sha": "fe2b4a90",
+   "label": "test",
+   "subject": "test(vault): clarify deletion metadata round-trip checks",
+   "pred": "test",
+   "conf": 1.0
+  },
+  {
+   "sha": "8b38f33d",
+   "label": "test",
+   "subject": "test(vault): clarify lending integration scenarios",
+   "pred": "test",
+   "conf": 0.98
+  },
+  {
+   "sha": "742c1619",
+   "label": "feat",
+   "subject": "feat(lending): add LendingProtocolV1_1 support",
+   "pred": "feat",
+   "conf": 1.0
+  },
+  {
+   "sha": "927f196d",
+   "label": "feat",
+   "subject": "feat(transaction): add sponsorship transaction models",
+   "pred": "feat",
+   "conf": 1.0
+  },
+  {
+   "sha": "1c4a46cf",
+   "label": "feat",
+   "subject": "feat(wallet): add sponsor signing helpers",
+   "pred": "feat",
+   "conf": 1.0
+  },
+  {
+   "sha": "ba43d9a0",
+   "label": "fix",
+   "subject": "fix(confidential/builder): address BuildBatch review comments",
+   "pred": "refactor",
+   "conf": 0.91
+  },
+  {
+   "sha": "fddcb080",
+   "label": "feat",
+   "subject": "feat(confidential/builder): add ordered confidential Batch assembler",
+   "pred": "feat",
+   "conf": 1.0
+  },
+  {
+   "sha": "c38d914c",
+   "label": "feat",
+   "subject": "feat(confidential/builder): add GetSpendingBalance ledger reader (#410)",
+   "pred": "feat",
+   "conf": 1.0
+  },
+  {
+   "sha": "de58f2e0",
+   "label": "feat",
+   "subject": "feat(transaction): support sponsored account payments",
+   "pred": "feat",
+   "conf": 1.0
+  },
+  {
+   "sha": "8853d590",
+   "label": "feat",
+   "subject": "feat(transaction): add sponsored transaction fields (#401)",
+   "pred": "feat",
+   "conf": 1.0
+  },
+  {
+   "sha": "a1c87002",
+   "label": "fix",
+   "subject": "fix(binary-codec): support signed sponsorship fee deltas (#400)",
+   "pred": "feat",
+   "conf": 0.92
+  },
+  {
+   "sha": "a3974a1b",
+   "label": "fix",
+   "subject": "fix(transaction): reject invalid domain references",
+   "pred": "fix",
+   "conf": 0.97
+  },
+  {
+   "sha": "83b04d65",
+   "label": "feat",
+   "subject": "feat(ledger): expose pseudo-account links",
+   "pred": "feat",
+   "conf": 1.0
+  },
+  {
+   "sha": "860155bc",
+   "label": "fix",
+   "subject": "fix(transaction): reject odd-length vault metadata",
+   "pred": "fix",
+   "conf": 0.99
+  },
+  {
+   "sha": "3403bbbc",
+   "label": "fix",
+   "subject": "fix(transaction): compare equivalent account addresses",
+   "pred": "fix",
+   "conf": 0.4
+  },
+  {
+   "sha": "a7e8afa2",
+   "label": "feat",
+   "subject": "feat(vault): complete vault share response fields",
+   "pred": "feat",
+   "conf": 0.98
+  },
+  {
+   "sha": "a55d9d2a",
+   "label": "fix",
+   "subject": "fix(ledger): decode Check SendMax amounts",
+   "pred": "feat",
+   "conf": 0.56
+  },
+  {
+   "sha": "4b89d882",
+   "label": "feat",
+   "subject": "feat(ledger): add sponsorship ledger models",
+   "pred": "feat",
+   "conf": 1.0
+  },
+  {
+   "sha": "51185bb4",
+   "label": "feat",
+   "subject": "feat(binary-codec): add role-specific signing prefixes (#399)",
+   "pred": "feat",
+   "conf": 1.0
+  },
+  {
+   "sha": "8bd87ca7",
+   "label": "chore",
+   "subject": "chore(binary-codec): update definitions from rippled 3.4.0 (#398)",
+   "pred": "feat",
+   "conf": 0.69
+  },
+  {
+   "sha": "f9b040a2",
+   "label": "chore",
+   "subject": "chore: update vendored mpt-crypto to 1.0.5 (#396)",
+   "pred": "feat",
+   "conf": 0.57
+  },
+  {
+   "sha": "e4df8302",
+   "label": "docs",
+   "subject": "docs: update CHANGELOG",
+   "pred": "chore",
+   "conf": 0.72
+  },
+  {
+   "sha": "0b56e9ce",
+   "label": "test",
+   "subject": "test(confidential): add integration tests for XLS-96 (#384)",
+   "pred": "feat",
+   "conf": 0.9
+  },
+  {
+   "sha": "cc97fe13",
+   "label": "feat",
+   "subject": "feat(confidential): support tickets and delegates (#383)",
+   "pred": "feat",
+   "conf": 0.95
+  },
+  {
+   "sha": "6e118c2d",
+   "label": "fix",
+   "subject": "fix(confidential): bind builders to validated ledger (#382)",
+   "pred": "feat",
+   "conf": 0.77
+  },
+  {
+   "sha": "c6c40175",
+   "label": "fix",
+   "subject": "fix(confidential): normalize classic and X-addresses (#381)",
+   "pred": "feat",
+   "conf": 1.0
+  },
+  {
+   "sha": "1d81673e",
+   "label": "fix",
+   "subject": "fix(confidential): preflight builder and proof inputs (#378)",
+   "pred": "feat",
+   "conf": 0.78
+  },
+  {
+   "sha": "cba2e161",
+   "label": "fix",
+   "subject": "fix(transaction): validate confidential MPT models (#377)",
+   "pred": "fix",
+   "conf": 0.5
+  },
+  {
+   "sha": "150babf9",
+   "label": "feat",
+   "subject": "feat(xrpl): charge the confidential MPT base fee in autofill (#376)",
+   "pred": "feat",
+   "conf": 0.91
+  },
+  {
+   "sha": "75075e31",
+   "label": "fix",
+   "subject": "fix(binary-codec): align protocol wire definitions (#372)",
+   "pred": "chore",
+   "conf": 0.96
+  },
+  {
+   "sha": "2c32d027",
+   "label": "chore",
+   "subject": "chore(confidential): update vendored mpt-crypto to 1.0.4 (#380)",
+   "pred": "chore",
+   "conf": 1.0
+  },
+  {
+   "sha": "b898b176",
+   "label": "fix",
+   "subject": "fix(confidential): align rebased MPT integration",
+   "pred": "feat",
+   "conf": 0.98
+  },
+  {
+   "sha": "3ff68c1e",
+   "label": "fix",
+   "subject": "fix(confidential): restore bounded MPT decryption (#345)",
+   "pred": "feat",
+   "conf": 0.86
+  },
+  {
+   "sha": "a0a130b0",
+   "label": "chore",
+   "subject": "chore(confidential): update vendored mpt-crypto to 1.0.2 (#338)",
+   "pred": "ci",
+   "conf": 0.91
+  },
+  {
+   "sha": "ad0f9fda",
+   "label": "fix",
+   "subject": "fix: enforce exact ZKProof sizes in confidential MPT",
+   "pred": "fix",
+   "conf": 0.85
+  },
+  {
+   "sha": "e47bd77e",
+   "label": "refactor",
+   "subject": "refactor: strict proof size validation and rename remainder to balance",
+   "pred": "fix",
+   "conf": 0.94
+  },
+  {
+   "sha": "6e19343e",
+   "label": "test",
+   "subject": "test: match participants order",
+   "pred": "test",
+   "conf": 0.79
+  },
+  {
+   "sha": "aca77cc7",
+   "label": "chore",
+   "subject": "chore: update confidential mpt README",
+   "pred": "docs",
+   "conf": 0.97
+  },
+  {
+   "sha": "02c36da1",
+   "label": "refactor",
+   "subject": "refactor: align wrapper functions with mpt-crypto changes",
+   "pred": "refactor",
+   "conf": 0.47
+  },
+  {
+   "sha": "8a13dda6",
+   "label": "refactor",
+   "subject": "refactor: mpt_utility.h cgo functions",
+   "pred": "refactor",
+   "conf": 0.45
+  },
+  {
+   "sha": "08752261",
+   "label": "chore",
+   "subject": "chore(confidential): update vendored mpt-crypto to 0.3.0-rc1",
+   "pred": "chore",
+   "conf": 0.93
+  },
+  {
+   "sha": "ac75e79c",
+   "label": "docs",
+   "subject": "docs: add confidential transfers documentation",
+   "pred": "docs",
+   "conf": 1.0
+  },
+  {
+   "sha": "81002f14",
+   "label": "feat",
+   "subject": "feat(confidential): create tx builders",
+   "pred": "feat",
+   "conf": 1.0
+  },
+  {
+   "sha": "b2f7dc9c",
+   "label": "test",
+   "subject": "test(confidential): update proof tests for empty participants validation",
+   "pred": "test",
+   "conf": 1.0
+  },
+  {
+   "sha": "c8baf8cd",
+   "label": "fix",
+   "subject": "fix(confidential): reject empty participants slice in proof functions",
+   "pred": "fix",
+   "conf": 0.45
+  },
+  {
+   "sha": "a0e6e8f1",
+   "label": "refactor",
+   "subject": "refactor(confidential): rename HexParticipant and HexProofParams proof types",
+   "pred": "refactor",
+   "conf": 0.98
+  },
+  {
+   "sha": "e61e0790",
+   "label": "fix",
+   "subject": "fix(confidential): validate send proof length against expected size",
+   "pred": "fix",
+   "conf": 0.97
+  },
+  {
+   "sha": "0f11177a",
+   "label": "refactor",
+   "subject": "refactor(confidential): rename proof error sentinels to cover all validation failures",
+   "pred": "refactor",
+   "conf": 0.87
+  },
+  {
+   "sha": "696f47b6",
+   "label": "refactor",
+   "subject": "refactor(confidential): rename elgamal error sentinels to cover all validation failures",
+   "pred": "refactor",
+   "conf": 0.85
+  },
+  {
+   "sha": "56c51391",
+   "label": "fix",
+   "subject": "fix: use more restrictive cgo directive",
+   "pred": "test",
+   "conf": 0.85
+  },
+  {
+   "sha": "1e07d9d9",
+   "label": "ci",
+   "subject": "ci: use ubuntu-22.04 for mptcrypto to improve compatibility",
+   "pred": "chore",
+   "conf": 0.42
+  },
+  {
+   "sha": "e29fb4e7",
+   "label": "fix",
+   "subject": "fix: use more restrictive cgo directive",
+   "pred": "fix",
+   "conf": 0.41
+  },
+  {
+   "sha": "a351dfc0",
+   "label": "refactor",
+   "subject": "refactor(xrpl): remove MPTPlainAmount.UnmarshalJSON in favor of UnmarshalText",
+   "pred": "refactor",
+   "conf": 0.79
+  },
+  {
+   "sha": "7a0773ad",
+   "label": "refactor",
+   "subject": "refactor: remove unneeded flag setters",
+   "pred": "test",
+   "conf": 0.98
+  },
+  {
+   "sha": "6de8e577",
+   "label": "fix",
+   "subject": "fix(confidential): update README and simplify zeroHex helper",
+   "pred": "refactor",
+   "conf": 0.85
+  },
+  {
+   "sha": "f6f2e61e",
+   "label": "fix",
+   "subject": "fix(confidential): guard GetSendProofSize against negative input",
+   "pred": "fix",
+   "conf": 0.99
+  },
+  {
+   "sha": "4eff19c5",
+   "label": "refactor",
+   "subject": "refactor(confidential): rename package proofs -> proof",
+   "pred": "refactor",
+   "conf": 0.98
+  },
+  {
+   "sha": "8f51014e",
+   "label": "feat",
+   "subject": "feat(confidential): add commitment, proof, and context-hash hex-string API",
+   "pred": "feat",
+   "conf": 1.0
+  },
+  {
+   "sha": "8fb88d74",
+   "label": "feat",
+   "subject": "feat(confidential): add commitment, proof, and context-hash CGo bindings",
+   "pred": "feat",
+   "conf": 1.0
+  },
+  {
+   "sha": "9de05e72",
+   "label": "docs",
+   "subject": "docs: add ElGamal and hexutil changelog entries",
+   "pred": "docs",
+   "conf": 0.74
+  },
+  {
+   "sha": "e811ebc3",
+   "label": "feat",
+   "subject": "feat(confidential): add ElGamal encrypt/decrypt with hex-string API",
+   "pred": "feat",
+   "conf": 1.0
+  },
+  {
+   "sha": "726a0546",
+   "label": "test",
+   "subject": "test(confidential): use testify assertions in mptcrypto_test.go",
+   "pred": "test",
+   "conf": 0.99
+  },
+  {
+   "sha": "833f16e7",
+   "label": "feat",
+   "subject": "feat(confidential): add CGo setup with vendored mpt-crypto dependencies",
+   "pred": "chore",
+   "conf": 0.85
+  },
+  {
+   "sha": "0f76bbe0",
+   "label": "fix",
+   "subject": "fix(xrpl): correct ZKProof doc comment and add AuditorEncryptedAmount regression tests",
+   "pred": "test",
+   "conf": 0.26
+  },
+  {
+   "sha": "788ca3ef",
+   "label": "refactor",
+   "subject": "refactor(xrpl): strengthen XLS-96 confidential tx field validation",
+   "pred": "fix",
+   "conf": 0.76
+  },
+  {
+   "sha": "e8e9bf4d",
+   "label": "docs",
+   "subject": "docs: add XLS-96 confidential transaction types to changelog",
+   "pred": "docs",
+   "conf": 0.6
+  },
+  {
+   "sha": "205ae9f4",
+   "label": "docs",
+   "subject": "docs: add XLS-96 confidential transfer transaction changelog entries",
+   "pred": "docs",
+   "conf": 0.76
+  },
+  {
+   "sha": "a7763817",
+   "label": "docs",
+   "subject": "docs: add XLS-96 confidential transfer changelog entries for xrpl package",
+   "pred": "docs",
+   "conf": 0.71
+  },
+  {
+   "sha": "cf2fb51f",
+   "label": "feat",
+   "subject": "feat(xrpl): add ConfidentialMPTSend transaction type",
+   "pred": "feat",
+   "conf": 1.0
+  },
+  {
+   "sha": "30633684",
+   "label": "feat",
+   "subject": "feat(xrpl): add ConfidentialMPTMergeInbox transaction type",
+   "pred": "feat",
+   "conf": 1.0
+  },
+  {
+   "sha": "8bd4df31",
+   "label": "feat",
+   "subject": "feat(xrpl): add ConfidentialMPTConvertBack transaction type",
+   "pred": "feat",
+   "conf": 1.0
+  },
+  {
+   "sha": "5a6fd176",
+   "label": "feat",
+   "subject": "feat(xrpl): add ConfidentialMPTConvert transaction type",
+   "pred": "feat",
+   "conf": 1.0
+  },
+  {
+   "sha": "a8baed7b",
+   "label": "feat",
+   "subject": "feat(xrpl): add ConfidentialMPTClawback transaction type",
+   "pred": "feat",
+   "conf": 1.0
+  },
+  {
+   "sha": "1023b8a5",
+   "label": "fix",
+   "subject": "fix(xrpl): align XLS-96 MPTokenIssuanceSet with rippled spec",
+   "pred": "feat",
+   "conf": 1.0
+  },
+  {
+   "sha": "4e5037e2",
+   "label": "refactor",
+   "subject": "refactor(xrpl): rename XLS-96 confidential transfer fields to match updated spec",
+   "pred": "refactor",
+   "conf": 0.51
+  },
+  {
+   "sha": "7a796ccc",
+   "label": "feat",
+   "subject": "feat(xrpl): add XLS-96 confidential transfer fields to MPToken and MPTokenIssuance ledger entries",
+   "pred": "feat",
+   "conf": 1.0
+  },
+  {
+   "sha": "6f3007d4",
+   "label": "chore",
+   "subject": "chore: add XLS-96 confidential MPT definitions to unreleased changelog",
+   "pred": "docs",
+   "conf": 0.71
+  },
+  {
+   "sha": "16f92a08",
+   "label": "feat",
+   "subject": "feat(binary-codec): add XLS-96 confidential MPT field and transaction type definitions",
+   "pred": "feat",
+   "conf": 0.98
+  }
+ ],
+ "H5_changelog": [
+  {
+   "sha": "3fe5ea46",
+   "swapped": false,
+   "describes": 0.01
+  },
+  {
+   "sha": "3fe5ea46",
+   "swapped": true,
+   "describes": 0.01
+  },
+  {
+   "sha": "d2a19384",
+   "swapped": false,
+   "describes": 0.95
+  },
+  {
+   "sha": "d2a19384",
+   "swapped": true,
+   "describes": 0.11
+  },
+  {
+   "sha": "f70e8e8f",
+   "swapped": false,
+   "describes": 0.85
+  },
+  {
+   "sha": "f70e8e8f",
+   "swapped": true,
+   "describes": 0.34
+  },
+  {
+   "sha": "8e4af055",
+   "swapped": false,
+   "describes": 0.95
+  },
+  {
+   "sha": "8e4af055",
+   "swapped": true,
+   "describes": 0.08
+  },
+  {
+   "sha": "3a803722",
+   "swapped": false,
+   "describes": 0.16
+  },
+  {
+   "sha": "3a803722",
+   "swapped": true,
+   "describes": 0.02
+  },
+  {
+   "sha": "ac49ce79",
+   "swapped": false,
+   "describes": 0.9
+  },
+  {
+   "sha": "ac49ce79",
+   "swapped": true,
+   "describes": 0.07
+  },
+  {
+   "sha": "1f76cf94",
+   "swapped": false,
+   "describes": 0.84
+  },
+  {
+   "sha": "1f76cf94",
+   "swapped": true,
+   "describes": 0.04
+  },
+  {
+   "sha": "a2a9e921",
+   "swapped": false,
+   "describes": 0.91
+  },
+  {
+   "sha": "a2a9e921",
+   "swapped": true,
+   "describes": 0.04
+  },
+  {
+   "sha": "8b825439",
+   "swapped": false,
+   "describes": 0.72
+  },
+  {
+   "sha": "8b825439",
+   "swapped": true,
+   "describes": 0.04
+  },
+  {
+   "sha": "216b093f",
+   "swapped": false,
+   "describes": 0.84
+  },
+  {
+   "sha": "216b093f",
+   "swapped": true,
+   "describes": 0.03
+  },
+  {
+   "sha": "abfe0665",
+   "swapped": false,
+   "describes": 0.06
+  },
+  {
+   "sha": "abfe0665",
+   "swapped": true,
+   "describes": 0.07
+  },
+  {
+   "sha": "ec371d71",
+   "swapped": false,
+   "describes": 0.81
+  },
+  {
+   "sha": "ec371d71",
+   "swapped": true,
+   "describes": 0.04
+  },
+  {
+   "sha": "742c1619",
+   "swapped": false,
+   "describes": 0.61
+  },
+  {
+   "sha": "742c1619",
+   "swapped": true,
+   "describes": 0.1
+  },
+  {
+   "sha": "927f196d",
+   "swapped": false,
+   "describes": 0.89
+  },
+  {
+   "sha": "927f196d",
+   "swapped": true,
+   "describes": 0.6
+  },
+  {
+   "sha": "1c4a46cf",
+   "swapped": false,
+   "describes": 0.9
+  },
+  {
+   "sha": "1c4a46cf",
+   "swapped": true,
+   "describes": 0.02
+  },
+  {
+   "sha": "ba43d9a0",
+   "swapped": false,
+   "describes": 0.66
+  },
+  {
+   "sha": "ba43d9a0",
+   "swapped": true,
+   "describes": 0.46
+  },
+  {
+   "sha": "fddcb080",
+   "swapped": false,
+   "describes": 0.78
+  },
+  {
+   "sha": "fddcb080",
+   "swapped": true,
+   "describes": 0.04
+  },
+  {
+   "sha": "c38d914c",
+   "swapped": false,
+   "describes": 0.95
+  },
+  {
+   "sha": "c38d914c",
+   "swapped": true,
+   "describes": 0.04
+  },
+  {
+   "sha": "de58f2e0",
+   "swapped": false,
+   "describes": 0.94
+  },
+  {
+   "sha": "de58f2e0",
+   "swapped": true,
+   "describes": 0.38
+  },
+  {
+   "sha": "8853d590",
+   "swapped": false,
+   "describes": 0.81
+  },
+  {
+   "sha": "8853d590",
+   "swapped": true,
+   "describes": 0.03
+  },
+  {
+   "sha": "a1c87002",
+   "swapped": false,
+   "describes": 0.94
+  },
+  {
+   "sha": "a1c87002",
+   "swapped": true,
+   "describes": 0.04
+  },
+  {
+   "sha": "a3974a1b",
+   "swapped": false,
+   "describes": 0.89
+  },
+  {
+   "sha": "a3974a1b",
+   "swapped": true,
+   "describes": 0.02
+  },
+  {
+   "sha": "83b04d65",
+   "swapped": false,
+   "describes": 0.96
+  },
+  {
+   "sha": "83b04d65",
+   "swapped": true,
+   "describes": 0.06
+  },
+  {
+   "sha": "860155bc",
+   "swapped": false,
+   "describes": 0.95
+  },
+  {
+   "sha": "860155bc",
+   "swapped": true,
+   "describes": 0.05
+  },
+  {
+   "sha": "3403bbbc",
+   "swapped": false,
+   "describes": 0.9
+  },
+  {
+   "sha": "3403bbbc",
+   "swapped": true,
+   "describes": 0.03
+  },
+  {
+   "sha": "a7e8afa2",
+   "swapped": false,
+   "describes": 0.95
+  },
+  {
+   "sha": "a7e8afa2",
+   "swapped": true,
+   "describes": 0.07
+  },
+  {
+   "sha": "a55d9d2a",
+   "swapped": false,
+   "describes": 0.94
+  },
+  {
+   "sha": "a55d9d2a",
+   "swapped": true,
+   "describes": 0.15
+  },
+  {
+   "sha": "4b89d882",
+   "swapped": false,
+   "describes": 0.91
+  },
+  {
+   "sha": "4b89d882",
+   "swapped": true,
+   "describes": 0.25
+  },
+  {
+   "sha": "51185bb4",
+   "swapped": false,
+   "describes": 0.89
+  },
+  {
+   "sha": "51185bb4",
+   "swapped": true,
+   "describes": 0.25
+  },
+  {
+   "sha": "0b56e9ce",
+   "swapped": false,
+   "describes": 0.48
+  },
+  {
+   "sha": "0b56e9ce",
+   "swapped": true,
+   "describes": 0.05
+  },
+  {
+   "sha": "cc97fe13",
+   "swapped": false,
+   "describes": 0.88
+  },
+  {
+   "sha": "cc97fe13",
+   "swapped": true,
+   "describes": 0.28
+  },
+  {
+   "sha": "6e118c2d",
+   "swapped": false,
+   "describes": 0.67
+  },
+  {
+   "sha": "6e118c2d",
+   "swapped": true,
+   "describes": 0.73
+  },
+  {
+   "sha": "c6c40175",
+   "swapped": false,
+   "describes": 0.92
+  },
+  {
+   "sha": "c6c40175",
+   "swapped": true,
+   "describes": 0.05
+  },
+  {
+   "sha": "1d81673e",
+   "swapped": false,
+   "describes": 0.86
+  },
+  {
+   "sha": "1d81673e",
+   "swapped": true,
+   "describes": 0.82
+  },
+  {
+   "sha": "cba2e161",
+   "swapped": false,
+   "describes": 0.87
+  },
+  {
+   "sha": "cba2e161",
+   "swapped": true,
+   "describes": 0.46
+  },
+  {
+   "sha": "150babf9",
+   "swapped": false,
+   "describes": 0.85
+  },
+  {
+   "sha": "150babf9",
+   "swapped": true,
+   "describes": 0.29
+  },
+  {
+   "sha": "75075e31",
+   "swapped": false,
+   "describes": 0.87
+  },
+  {
+   "sha": "75075e31",
+   "swapped": true,
+   "describes": 0.47
+  },
+  {
+   "sha": "b898b176",
+   "swapped": false,
+   "describes": 0.69
+  },
+  {
+   "sha": "b898b176",
+   "swapped": true,
+   "describes": 0.44
+  },
+  {
+   "sha": "4eff19c5",
+   "swapped": false,
+   "describes": 0.7
+  },
+  {
+   "sha": "4eff19c5",
+   "swapped": true,
+   "describes": 0.55
+  },
+  {
+   "sha": "8f51014e",
+   "swapped": false,
+   "describes": 0.72
+  },
+  {
+   "sha": "8f51014e",
+   "swapped": true,
+   "describes": 0.53
+  },
+  {
+   "sha": "833f16e7",
+   "swapped": false,
+   "describes": 0.76
+  },
+  {
+   "sha": "833f16e7",
+   "swapped": true,
+   "describes": 0.02
+  }
+ ],
+ "usage": {
+  "requests": 292,
+  "input_tokens": 809468
+ }
+}
