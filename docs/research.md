@@ -584,8 +584,10 @@ requests, 451k tokens (about 1.9 cents).
 **Per-field validation (E1).** 273 fields, 32 unchecked. Since January the
 project fixed EscrowFinish (Condition, Fulfillment), NFTokenCreateOffer
 (NFTokenID, Amount), NFTokenModify (NFTokenID), MPTokenAuthorize
-(MPTokenIssuanceID) and OracleSet's timestamp, which is independent evidence
-the January findings were real. Still open: Payment and CheckCreate
+(MPTokenIssuanceID): six fields across four types, independent evidence the
+January findings were real. (OracleSet's `LastUpdatedTime` also disappeared
+from the list, but only because the field was renamed to `LastUpdateTime`,
+which is still unvalidated; it is not counted as a fix.) Still open: Payment and CheckCreate
 `InvoiceID`, CheckCreate `Expiration`, TrustSet `QualityIn`/`QualityOut`,
 PaymentChannelCreate `SettleDelay`/`CancelAfter`, PaymentChannelClaim
 `Balance`/`Amount`, OracleSet `URI`/`AssetClass`, and in the new code
@@ -717,13 +719,13 @@ more, each against the hand-verified per-field ground truth from sections
 | # | Technique | Result | Keep? |
 |---|---|---|---|
 | G1 | Send pre-parsed facts (field list, call list, conditions) instead of source | Agrees with the source-based answers on 56 of 70 types. Every disagreement is the facts version missing an indirect check (a method call on the field, a nested call my extractor dropped). | **No.** Send the source slice; our summary loses information the model reads fine. |
-| G2 | One Choice per field over the helper names plus "not validated", instead of a Noul | 262 of 273 agree with truth, and each answer names the helper (`IsAmount`, `addresscodec.IsValidAddress`, `IsValid()`) at confidence 0.94 to 1.0. | **Yes.** Same accuracy as the Noul and the fix hint comes for free. |
+| G2 | One Choice per field over the helper names plus "not validated", instead of a Noul | 261 to 262 of 273 agree with truth over two runs, and each answer names the helper (`IsAmount`, `addresscodec.IsValidAddress`, `IsValid()`). Median confidence 0.99; 73% at 0.9 or above. The low-confidence quarter are fields checked by helpers missing from the option list (see 14.1). | **Yes.** Same accuracy as the Noul and the fix hint comes for free. |
 | G3 | Pack many questions into one request | 18 types, 3 to 10 field questions alone vs the same plus 40 filler questions: 0 flips, worst delta 0.07, mean 0.01. | **Yes.** Fan-out is free; one request per slice carrying every rule. |
 | G4 | Score levels as `{description, example}` objects instead of plain strings | Confidence 0.70 vs 0.63; separation original/inline/panic 2.77/1.95/0.51 vs 2.50/1.81/0.48. | **Yes, small win.** Add a one-line code example to each level. |
-| G5 | Ask about the change: `diff` hunk, or `{before, after}`, vs the after-state alone | 21 removed checks: all three framings detect all 21, but diff and pair answer at 0.93 to 0.98 while after-only sits at 0.71 to 0.79. The hunk is also the smallest state. | **Yes.** In PR mode send the hunk and ask "does this change remove or weaken a check?". |
+| G5 | Ask about the change: `diff` hunk, or `{before, after}`, vs the after-state alone | 21 removed checks: all three framings detect all 21, but diff answers 0.85 to 0.97 (median 0.96) and pair 0.71 to 0.98 (median 0.98), while after-only sits at 0.65 to 0.82 (median 0.73). The hunk is also the smallest state. | **Yes.** In PR mode send the hunk and ask "does this change remove or weaken a check?". |
 | G6 | One Choice over all 71 Validate bodies: "which validates the smallest share of its fields?" | Wrong. Picked OfferCancel (fully validated) at 0.46; truth is TrustSet. "Most complete" picked Payment at 0.23. 248k-token state. | **No.** Rank in code from atomic answers; never ask the model to compare 71 things in one state. |
 | G7 | Numbered lines as state, Choice over line ids: "which line validates field X?" | 71 of 71 correct, confidence mostly 0.99 to 1.0. | **Yes.** Findings get an exact line without any positioning heuristics. |
-| G8 | Cheap screening Noul per function ("is any field never validated?") before per-field questions | 15 true positives, 3 false positives, 2 misses (CredentialCreate Expiration, VaultCreate WithdrawalPolicy), 50 true negatives. Would skip 53 of 70 per-field requests. | **Not by default.** Per-field is already cheap; the cascade trades 2 of 17 real findings for a 75% request cut. Keep as an opt-in for very large repos. |
+| G8 | Cheap screening Noul per function ("is any field never validated?") before per-field questions | 15 true positives, 3 false positives, 2 misses (CredentialCreate Expiration, VaultCreate WithdrawalPolicy), 50 true negatives. Would skip 52 of 70 per-field requests. | **Not by default.** Per-field is already cheap; the cascade trades 2 of 17 real findings for a 75% request cut. Keep as an opt-in for very large repos. |
 
 ### Consolidated asking rules
 
@@ -776,7 +778,7 @@ After, one Noul per field:
 ```json
 "checks_Amount":    { "type": "noul", "instructions": "Does the function validate `Amount`?" },
 "checks_InvoiceID": { "type": "noul", "instructions": "Does the function validate `InvoiceID`?" }
-→ 0.99, 0.04 — every answer at 0.98 or above
+→ 0.99, 0.04 — every answer within 0.05 of 0 or 1
 ```
 
 A graded question over ten items makes the model average ten internal
@@ -806,8 +808,17 @@ The answer space becomes the project's own helper list plus "not validated".
 
 | | |
 |---|---|
-| Agreement with the verified yes/no answers | 262 of 273 |
-| Typical confidence | 0.94 to 1.00 |
+| Agreement with the verified yes/no answers | 261 to 262 of 273 (two runs) |
+| Median confidence | 0.99 |
+| Answers at 0.9 or above | 73% |
+
+Every answer below 0.9 shares one cause: the field is checked by a helper not
+in the option list (`MPTokenIssuanceID` by `decodeMPTIssuanceID`,
+`LoanBrokerID` by `IsLedgerEntryID`, `AssetsMaximum` by
+`typecheck.IsXRPLNumber`). One top pick was a wrong "not validated", but at
+confidence 0.12, so it routes to a human. Build the option list by scanning
+the package for its own helpers; when the right answer is missing the
+confidence collapses rather than the model inventing one.
 
 Real Payment answers: `Amount` → `IsAmount` (1.00), `Destination` →
 `addresscodec.IsValidAddress` (1.00), `CredentialIDs` → `IsValid()` (1.00),
@@ -851,17 +862,24 @@ We went one step further and gave each described level a line of code:
 | Mean confidence | 0.63 | 0.70 |
 | Gap, clean code vs inlined error | 0.69 | 0.82 |
 
-Second, Noul `criteria`, which is where a codebase's quirks get encoded.
-`AccountSet` validates through `ValidateOptionalField(flatten, "Domain",
-typecheck.IsString)`, so the field name appears only as a map key:
+Second, yes/no wording, which decides what counts. `AccountSet` validates
+through `ValidateOptionalField(flatten, "Domain", typecheck.IsString)`, so the
+field name appears only as a map key. Three phrasings in the same request:
 
 ```
-bare question                                              → 0.40 (wrongly leaning no)
-same question, criteria spelling out that a check through
-a helper or a map key counts as validation                 → 0.94 (correct)
+"Is there any code path that checks the value of `Domain` before returning true?"
+    → 0.40 (wrongly leaning no)
+"Does the function validate `Domain` (with a helper call, an IsValid method,
+ or an explicit check on its value)?"
+    → 0.97
+"Would an invalid `Domain` be rejected by the function?"
+    criteria: true  = "Some check on this field can make the function return false"
+              false = "The field is never inspected"
+    → 0.94
 ```
 
-Same code, same truth, opposite answer.
+The phrasing about "checking a value" misreads the map lookup; the two that
+say what counts, in the instructions or through criteria, get it right.
 
 #### 5. Put every rule in one request
 
@@ -886,13 +904,13 @@ This property is what makes ten questions per field affordable at all.
 "state": { "function": "<code after the edit>" },
 "questions": { "q": { "type": "noul",
   "instructions": "Is a validation check missing from this function?" }}
-→ detected, 0.71 to 0.79
+→ detected, 0.65 to 0.82, median 0.73
 
 // after: the change
 "state": { "diff": "@@ -18,6 +18,3 @@\n-  if ok, err := IsAmount(a.Amount2, \"Amount2\", true); !ok {\n-    return false, err\n-  }\n   if a.TradingFee > AmmMaxTradingFee {" },
 "questions": { "q": { "type": "noul",
   "instructions": "Does this change remove or weaken a validation check?" }}
-→ detected, 0.93 to 0.97
+→ detected, 0.85 to 0.97, median 0.96
 ```
 
 Tested on 21 functions, each with one check mechanically deleted. Both
@@ -915,15 +933,16 @@ line id becomes the answer:
 ```json
 "state": { "lines": {
   "1":  "func (p *Payment) Validate() (bool, error) {",
-  "7":  "  if ok, err := IsAmount(p.Amount, \"Amount\", true); !ok {",
-  "12": "  if !addresscodec.IsValidAddress(p.Destination.String()) {"
+  "3":  "  _, err := p.BaseTx.Validate()",
+  "9":  "  if ok, err := IsAmount(p.Amount, \"Amount\", true); !ok {",
+  "14": "  if !addresscodec.IsValidAddress(p.Destination.String()) {"
 }},
 "questions": { "L_Amount": {
   "type": "choice",
   "instructions": "Which line id contains the check that validates `Amount`?",
-  "criteria": { "1": null, "7": null, "12": null }
+  "criteria": { "1": null, "3": null, "9": null, "14": null, … }
 }}
-→ "7", confidence 1.00
+→ "9", confidence 1.00
 ```
 
 71 of 71 correct, mostly at 0.99 or above. The line number is a choice from a
@@ -955,10 +974,13 @@ State was 248,000 tokens. A companion question for the most complete method
 answered at 0.23, near random over 71 options. The failure is structural:
 answering means computing 71 ratios and sorting them inside one typed answer
 with nowhere to hold intermediate results, and the low confidence was honest.
-The correct version is four lines of Go over answers we already had:
+The correct version is a few lines of Go over answers we already had:
 
 ```go
-ratio := float64(checked) / float64(total)   // TrustSet: 1/3 = 0.33
+ratio := map[string]float64{}
+for _, t := range types {
+    ratio[t] = float64(checked[t]) / float64(total[t])   // TrustSet: 1/3 = 0.33
+}
 sort.Slice(types, func(i, j int) bool {
     return ratio[types[i]] < ratio[types[j]]
 })
@@ -967,15 +989,16 @@ sort.Slice(types, func(i, j int) bool {
 #### 10. Screening cheaply before asking in detail (situational)
 
 One coarse "is any field unvalidated" per function, per-field questions only
-on the hits: 15 correct alarms, 3 false, 2 missed findings, 53 of 70 requests
+on the hits: 15 correct alarms, 3 false, 2 missed findings, 52 of 70 requests
 skipped. Two real findings out of seventeen for a 75% request cut is a bad
 trade at these prices. Off by default.
 
 #### 11. Asking the same thing twice, worded differently
 
-257 of 273 answers unanimous across three phrasings, 16 split. The splits
-clustered entirely on the two types that validate through a map by string
-key. Disagreement between phrasings is therefore not a finding, it is a
+257 of 273 answers unanimous across three phrasings, 16 split. Half of the
+splits (8) landed on the two types that validate through a map by string key,
+AccountSet and DIDSet; the rest fell on fields checked only under a
+condition. Disagreement between phrasings is therefore not a finding, it is a
 detector for code doing something the question did not anticipate, and the
 right response is to show a human.
 

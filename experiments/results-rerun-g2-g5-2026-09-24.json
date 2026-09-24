@@ -1,0 +1,1770 @@
+{
+ "G2_full": [
+  [
+   "AMMBid",
+   "Asset",
+   "IsAsset",
+   1.0
+  ],
+  [
+   "AMMBid",
+   "Asset2",
+   "IsAsset",
+   1.0
+  ],
+  [
+   "AMMBid",
+   "BidMin",
+   "IsAmount",
+   1.0
+  ],
+  [
+   "AMMBid",
+   "BidMax",
+   "IsAmount",
+   1.0
+  ],
+  [
+   "AMMBid",
+   "AuthAccounts",
+   "IsValid()",
+   0.28
+  ],
+  [
+   "AMMClawback",
+   "Holder",
+   "addresscodec.IsValidAddress",
+   1.0
+  ],
+  [
+   "AMMClawback",
+   "Asset",
+   "explicit comparison (==, !=, <, >, len)",
+   0.71
+  ],
+  [
+   "AMMClawback",
+   "Asset2",
+   "not validated",
+   0.97
+  ],
+  [
+   "AMMClawback",
+   "Amount",
+   "addresscodec.IsValidAddress",
+   0.9
+  ],
+  [
+   "AMMCreate",
+   "Amount",
+   "IsAmount",
+   1.0
+  ],
+  [
+   "AMMCreate",
+   "Amount2",
+   "IsAmount",
+   1.0
+  ],
+  [
+   "AMMCreate",
+   "TradingFee",
+   "explicit comparison (==, !=, <, >, len)",
+   0.98
+  ],
+  [
+   "AMMDelete",
+   "Asset",
+   "IsAsset",
+   1.0
+  ],
+  [
+   "AMMDelete",
+   "Asset2",
+   "IsAsset",
+   1.0
+  ],
+  [
+   "AMMDeposit",
+   "Asset",
+   "IsAsset",
+   1.0
+  ],
+  [
+   "AMMDeposit",
+   "Asset2",
+   "IsAsset",
+   1.0
+  ],
+  [
+   "AMMDeposit",
+   "Amount",
+   "IsAmount",
+   1.0
+  ],
+  [
+   "AMMDeposit",
+   "Amount2",
+   "IsAmount",
+   1.0
+  ],
+  [
+   "AMMDeposit",
+   "EPrice",
+   "IsAmount",
+   1.0
+  ],
+  [
+   "AMMDeposit",
+   "LPTokenOut",
+   "not validated",
+   0.48
+  ],
+  [
+   "AMMDeposit",
+   "TradingFee",
+   "not validated",
+   0.99
+  ],
+  [
+   "AMMVote",
+   "Asset",
+   "IsAsset",
+   1.0
+  ],
+  [
+   "AMMVote",
+   "Asset2",
+   "IsAsset",
+   1.0
+  ],
+  [
+   "AMMVote",
+   "TradingFee",
+   "explicit comparison (==, !=, <, >, len)",
+   0.99
+  ],
+  [
+   "AMMWithdraw",
+   "Asset",
+   "IsAsset",
+   1.0
+  ],
+  [
+   "AMMWithdraw",
+   "Asset2",
+   "IsAsset",
+   1.0
+  ],
+  [
+   "AMMWithdraw",
+   "Amount",
+   "IsAmount",
+   1.0
+  ],
+  [
+   "AMMWithdraw",
+   "Amount2",
+   "IsAmount",
+   1.0
+  ],
+  [
+   "AMMWithdraw",
+   "EPrice",
+   "IsAmount",
+   1.0
+  ],
+  [
+   "AMMWithdraw",
+   "LPTokenIn",
+   "IsIssuedCurrency",
+   1.0
+  ],
+  [
+   "AccountDelete",
+   "CredentialIDs",
+   "IsValid()",
+   1.0
+  ],
+  [
+   "AccountDelete",
+   "Destination",
+   "addresscodec.IsValidAddress",
+   1.0
+  ],
+  [
+   "AccountDelete",
+   "DestinationTag",
+   "not validated",
+   0.97
+  ],
+  [
+   "AccountSet",
+   "ClearFlag",
+   "typecheck.IsUint32",
+   0.66
+  ],
+  [
+   "AccountSet",
+   "Domain",
+   "typecheck.IsString",
+   0.49
+  ],
+  [
+   "AccountSet",
+   "EmailHash",
+   "typecheck.IsString",
+   0.66
+  ],
+  [
+   "AccountSet",
+   "MessageKey",
+   "typecheck.IsString",
+   0.57
+  ],
+  [
+   "AccountSet",
+   "NFTokenMinter",
+   "ValidateOptionalField",
+   0.5
+  ],
+  [
+   "AccountSet",
+   "SetFlag",
+   "typecheck.IsUint32",
+   0.66
+  ],
+  [
+   "AccountSet",
+   "TransferRate",
+   "typecheck.IsUint32",
+   0.54
+  ],
+  [
+   "AccountSet",
+   "TickSize",
+   "ValidateOptionalField",
+   0.88
+  ],
+  [
+   "AccountSet",
+   "WalletLocator",
+   "ValidateOptionalField",
+   0.52
+  ],
+  [
+   "AccountSet",
+   "WalletSize",
+   "typecheck.IsUint32",
+   0.57
+  ],
+  [
+   "Batch",
+   "RawTransactions",
+   "explicit comparison (==, !=, <, >, len)",
+   0.98
+  ],
+  [
+   "Batch",
+   "BatchSigners",
+   "IsValid()",
+   0.49
+  ],
+  [
+   "CheckCancel",
+   "CheckID",
+   "typecheck.IsHex",
+   0.99
+  ],
+  [
+   "CheckCash",
+   "CheckID",
+   "typecheck.IsHex",
+   0.99
+  ],
+  [
+   "CheckCash",
+   "Amount",
+   "IsAmount",
+   1.0
+  ],
+  [
+   "CheckCash",
+   "DeliverMin",
+   "IsAmount",
+   1.0
+  ],
+  [
+   "CheckCreate",
+   "Destination",
+   "addresscodec.IsValidAddress",
+   1.0
+  ],
+  [
+   "CheckCreate",
+   "SendMax",
+   "IsAmount",
+   1.0
+  ],
+  [
+   "CheckCreate",
+   "DestinationTag",
+   "not validated",
+   0.98
+  ],
+  [
+   "CheckCreate",
+   "Expiration",
+   "not validated",
+   0.97
+  ],
+  [
+   "CheckCreate",
+   "InvoiceID",
+   "not validated",
+   0.99
+  ],
+  [
+   "Clawback",
+   "Amount",
+   "IsIssuedCurrency",
+   0.84
+  ],
+  [
+   "Clawback",
+   "Holder",
+   "explicit comparison (==, !=, <, >, len)",
+   0.91
+  ],
+  [
+   "CredentialAccept",
+   "Issuer",
+   "addresscodec.IsValidAddress",
+   1.0
+  ],
+  [
+   "CredentialAccept",
+   "CredentialType",
+   "IsValid()",
+   1.0
+  ],
+  [
+   "CredentialCreate",
+   "Subject",
+   "addresscodec.IsValidAddress",
+   1.0
+  ],
+  [
+   "CredentialCreate",
+   "CredentialType",
+   "IsValid()",
+   1.0
+  ],
+  [
+   "CredentialCreate",
+   "Expiration",
+   "not validated",
+   0.98
+  ],
+  [
+   "CredentialCreate",
+   "URI",
+   "explicit comparison (==, !=, <, >, len)",
+   1.0
+  ],
+  [
+   "CredentialDelete",
+   "CredentialType",
+   "IsValid()",
+   1.0
+  ],
+  [
+   "CredentialDelete",
+   "Subject",
+   "addresscodec.IsValidAddress",
+   1.0
+  ],
+  [
+   "CredentialDelete",
+   "Issuer",
+   "addresscodec.IsValidAddress",
+   1.0
+  ],
+  [
+   "DIDSet",
+   "Data",
+   "explicit comparison (==, !=, <, >, len)",
+   0.76
+  ],
+  [
+   "DIDSet",
+   "DIDDocument",
+   "explicit comparison (==, !=, <, >, len)",
+   0.7
+  ],
+  [
+   "DIDSet",
+   "URI",
+   "not validated",
+   0.51
+  ],
+  [
+   "DelegateSet",
+   "Authorize",
+   "addresscodec.IsValidAddress",
+   1.0
+  ],
+  [
+   "DelegateSet",
+   "Permissions",
+   "IsValid()",
+   0.54
+  ],
+  [
+   "DepositPreauth",
+   "Authorize",
+   "addresscodec.IsValidAddress",
+   0.99
+  ],
+  [
+   "DepositPreauth",
+   "AuthorizeCredentials",
+   "IsValid()",
+   0.99
+  ],
+  [
+   "DepositPreauth",
+   "Unauthorize",
+   "addresscodec.IsValidAddress",
+   0.98
+  ],
+  [
+   "DepositPreauth",
+   "UnauthorizeCredentials",
+   "IsValid()",
+   0.97
+  ],
+  [
+   "EscrowCancel",
+   "Owner",
+   "addresscodec.IsValidAddress",
+   1.0
+  ],
+  [
+   "EscrowCancel",
+   "OfferSequence",
+   "explicit comparison (==, !=, <, >, len)",
+   0.98
+  ],
+  [
+   "EscrowCreate",
+   "Amount",
+   "IsAmount",
+   1.0
+  ],
+  [
+   "EscrowCreate",
+   "Destination",
+   "addresscodec.IsValidAddress",
+   1.0
+  ],
+  [
+   "EscrowCreate",
+   "CancelAfter",
+   "not validated",
+   0.56
+  ],
+  [
+   "EscrowCreate",
+   "FinishAfter",
+   "explicit comparison (==, !=, <, >, len)",
+   0.87
+  ],
+  [
+   "EscrowCreate",
+   "Condition",
+   "typecheck.IsHex",
+   0.96
+  ],
+  [
+   "EscrowCreate",
+   "DestinationTag",
+   "not validated",
+   0.98
+  ],
+  [
+   "EscrowFinish",
+   "CredentialIDs",
+   "IsValid()",
+   1.0
+  ],
+  [
+   "EscrowFinish",
+   "Owner",
+   "addresscodec.IsValidAddress",
+   1.0
+  ],
+  [
+   "EscrowFinish",
+   "OfferSequence",
+   "explicit comparison (==, !=, <, >, len)",
+   0.99
+  ],
+  [
+   "EscrowFinish",
+   "Condition",
+   "typecheck.IsHex",
+   0.99
+  ],
+  [
+   "EscrowFinish",
+   "Fulfillment",
+   "typecheck.IsHex",
+   0.98
+  ],
+  [
+   "LoanBrokerCoverClawback",
+   "LoanBrokerID",
+   "explicit comparison (==, !=, <, >, len)",
+   0.37
+  ],
+  [
+   "LoanBrokerCoverClawback",
+   "Amount",
+   "IsAmount",
+   0.79
+  ],
+  [
+   "LoanBrokerCoverDeposit",
+   "LoanBrokerID",
+   "explicit comparison (==, !=, <, >, len)",
+   0.39
+  ],
+  [
+   "LoanBrokerCoverDeposit",
+   "Amount",
+   "IsAmount",
+   1.0
+  ],
+  [
+   "LoanBrokerCoverWithdraw",
+   "LoanBrokerID",
+   "explicit comparison (==, !=, <, >, len)",
+   0.43
+  ],
+  [
+   "LoanBrokerCoverWithdraw",
+   "Amount",
+   "IsAmount",
+   1.0
+  ],
+  [
+   "LoanBrokerCoverWithdraw",
+   "Destination",
+   "addresscodec.IsValidAddress",
+   1.0
+  ],
+  [
+   "LoanBrokerCoverWithdraw",
+   "DestinationTag",
+   "not validated",
+   0.98
+  ],
+  [
+   "LoanBrokerDelete",
+   "LoanBrokerID",
+   "explicit comparison (==, !=, <, >, len)",
+   0.49
+  ],
+  [
+   "LoanBrokerSet",
+   "VaultID",
+   "explicit comparison (==, !=, <, >, len)",
+   0.54
+  ],
+  [
+   "LoanBrokerSet",
+   "LoanBrokerID",
+   "explicit comparison (==, !=, <, >, len)",
+   0.33
+  ],
+  [
+   "LoanBrokerSet",
+   "Data",
+   "typecheck.IsHex",
+   0.81
+  ],
+  [
+   "LoanBrokerSet",
+   "ManagementFeeRate",
+   "explicit comparison (==, !=, <, >, len)",
+   0.98
+  ],
+  [
+   "LoanBrokerSet",
+   "DebtMaximum",
+   "typecheck.IsString",
+   0.27
+  ],
+  [
+   "LoanBrokerSet",
+   "CoverRateMinimum",
+   "explicit comparison (==, !=, <, >, len)",
+   0.98
+  ],
+  [
+   "LoanBrokerSet",
+   "CoverRateLiquidation",
+   "explicit comparison (==, !=, <, >, len)",
+   0.98
+  ],
+  [
+   "LoanDelete",
+   "LoanID",
+   "explicit comparison (==, !=, <, >, len)",
+   0.58
+  ],
+  [
+   "LoanManage",
+   "LoanID",
+   "explicit comparison (==, !=, <, >, len)",
+   0.72
+  ],
+  [
+   "LoanPay",
+   "LoanID",
+   "explicit comparison (==, !=, <, >, len)",
+   0.61
+  ],
+  [
+   "LoanPay",
+   "Amount",
+   "IsAmount",
+   1.0
+  ],
+  [
+   "LoanSet",
+   "LoanBrokerID",
+   "explicit comparison (==, !=, <, >, len)",
+   0.39
+  ],
+  [
+   "LoanSet",
+   "PrincipalRequested",
+   "typecheck.IsString",
+   0.31
+  ],
+  [
+   "LoanSet",
+   "CounterpartySignature",
+   "not validated",
+   0.99
+  ],
+  [
+   "LoanSet",
+   "Counterparty",
+   "addresscodec.IsValidAddress",
+   1.0
+  ],
+  [
+   "LoanSet",
+   "Data",
+   "typecheck.IsHex",
+   0.88
+  ],
+  [
+   "LoanSet",
+   "LoanOriginationFee",
+   "IsAmount",
+   0.52
+  ],
+  [
+   "LoanSet",
+   "LoanServiceFee",
+   "IsAmount",
+   0.44
+  ],
+  [
+   "LoanSet",
+   "LatePaymentFee",
+   "IsAmount",
+   0.52
+  ],
+  [
+   "LoanSet",
+   "ClosePaymentFee",
+   "IsAmount",
+   0.52
+  ],
+  [
+   "LoanSet",
+   "OverpaymentFee",
+   "explicit comparison (==, !=, <, >, len)",
+   0.99
+  ],
+  [
+   "LoanSet",
+   "InterestRate",
+   "explicit comparison (==, !=, <, >, len)",
+   0.99
+  ],
+  [
+   "LoanSet",
+   "LateInterestRate",
+   "explicit comparison (==, !=, <, >, len)",
+   0.99
+  ],
+  [
+   "LoanSet",
+   "CloseInterestRate",
+   "explicit comparison (==, !=, <, >, len)",
+   0.99
+  ],
+  [
+   "LoanSet",
+   "OverpaymentInterestRate",
+   "explicit comparison (==, !=, <, >, len)",
+   0.98
+  ],
+  [
+   "LoanSet",
+   "PaymentTotal",
+   "not validated",
+   1.0
+  ],
+  [
+   "LoanSet",
+   "PaymentInterval",
+   "explicit comparison (==, !=, <, >, len)",
+   0.99
+  ],
+  [
+   "LoanSet",
+   "GracePeriod",
+   "explicit comparison (==, !=, <, >, len)",
+   0.95
+  ],
+  [
+   "MPTokenAuthorize",
+   "MPTokenIssuanceID",
+   "not validated",
+   0.12
+  ],
+  [
+   "MPTokenAuthorize",
+   "Holder",
+   "addresscodec.IsValidAddress",
+   1.0
+  ],
+  [
+   "MPTokenIssuanceCreate",
+   "AssetScale",
+   "not validated",
+   0.98
+  ],
+  [
+   "MPTokenIssuanceCreate",
+   "TransferFee",
+   "explicit comparison (==, !=, <, >, len)",
+   0.97
+  ],
+  [
+   "MPTokenIssuanceCreate",
+   "MaximumAmount",
+   "IsValid()",
+   0.97
+  ],
+  [
+   "MPTokenIssuanceCreate",
+   "MPTokenMetadata",
+   "typecheck.IsHex",
+   0.64
+  ],
+  [
+   "MPTokenIssuanceCreate",
+   "DomainID",
+   "IsDomainID",
+   1.0
+  ],
+  [
+   "MPTokenIssuanceCreate",
+   "ImmutableFlags",
+   "explicit comparison (==, !=, <, >, len)",
+   0.92
+  ],
+  [
+   "MPTokenIssuanceDestroy",
+   "MPTokenIssuanceID",
+   "typecheck.IsHex",
+   0.15
+  ],
+  [
+   "MPTokenIssuanceSet",
+   "MPTokenIssuanceID",
+   "typecheck.IsHex",
+   0.24
+  ],
+  [
+   "MPTokenIssuanceSet",
+   "Holder",
+   "addresscodec.IsValidAddress",
+   1.0
+  ],
+  [
+   "MPTokenIssuanceSet",
+   "DomainID",
+   "IsDomainID",
+   1.0
+  ],
+  [
+   "MPTokenIssuanceSet",
+   "MPTokenMetadata",
+   "typecheck.IsHex",
+   0.58
+  ],
+  [
+   "MPTokenIssuanceSet",
+   "TransferFee",
+   "explicit comparison (==, !=, <, >, len)",
+   0.98
+  ],
+  [
+   "MPTokenIssuanceSet",
+   "ImmutableFlags",
+   "explicit comparison (==, !=, <, >, len)",
+   0.83
+  ],
+  [
+   "NFTokenAcceptOffer",
+   "NFTokenSellOffer",
+   "explicit comparison (==, !=, <, >, len)",
+   0.96
+  ],
+  [
+   "NFTokenAcceptOffer",
+   "NFTokenBuyOffer",
+   "explicit comparison (==, !=, <, >, len)",
+   0.95
+  ],
+  [
+   "NFTokenAcceptOffer",
+   "NFTokenBrokerFee",
+   "explicit comparison (==, !=, <, >, len)",
+   0.8
+  ],
+  [
+   "NFTokenBurn",
+   "NFTokenID",
+   "typecheck.IsHex",
+   0.91
+  ],
+  [
+   "NFTokenBurn",
+   "Owner",
+   "addresscodec.IsValidAddress",
+   1.0
+  ],
+  [
+   "NFTokenCancelOffer",
+   "NFTokenOffers",
+   "explicit comparison (==, !=, <, >, len)",
+   0.99
+  ],
+  [
+   "NFTokenCreateOffer",
+   "Owner",
+   "addresscodec.IsValidAddress",
+   0.99
+  ],
+  [
+   "NFTokenCreateOffer",
+   "NFTokenID",
+   "typecheck.IsHex",
+   0.84
+  ],
+  [
+   "NFTokenCreateOffer",
+   "Amount",
+   "IsAmount",
+   1.0
+  ],
+  [
+   "NFTokenCreateOffer",
+   "Expiration",
+   "not validated",
+   0.99
+  ],
+  [
+   "NFTokenCreateOffer",
+   "Destination",
+   "addresscodec.IsValidAddress",
+   1.0
+  ],
+  [
+   "NFTokenMint",
+   "NFTokenTaxon",
+   "not validated",
+   0.98
+  ],
+  [
+   "NFTokenMint",
+   "Issuer",
+   "addresscodec.IsValidAddress",
+   0.99
+  ],
+  [
+   "NFTokenMint",
+   "TransferFee",
+   "explicit comparison (==, !=, <, >, len)",
+   0.86
+  ],
+  [
+   "NFTokenMint",
+   "URI",
+   "typecheck.IsHex",
+   1.0
+  ],
+  [
+   "NFTokenMint",
+   "Amount",
+   "IsAmount",
+   1.0
+  ],
+  [
+   "NFTokenMint",
+   "Expiration",
+   "not validated",
+   0.51
+  ],
+  [
+   "NFTokenMint",
+   "Destination",
+   "addresscodec.IsValidAddress",
+   1.0
+  ],
+  [
+   "NFTokenModify",
+   "Owner",
+   "addresscodec.IsValidAddress",
+   1.0
+  ],
+  [
+   "NFTokenModify",
+   "NFTokenID",
+   "typecheck.IsHex",
+   0.76
+  ],
+  [
+   "NFTokenModify",
+   "URI",
+   "typecheck.IsHex",
+   1.0
+  ],
+  [
+   "OfferCancel",
+   "OfferSequence",
+   "not validated",
+   0.79
+  ],
+  [
+   "OfferCreate",
+   "Expiration",
+   "not validated",
+   0.98
+  ],
+  [
+   "OfferCreate",
+   "OfferSequence",
+   "not validated",
+   0.85
+  ],
+  [
+   "OfferCreate",
+   "TakerGets",
+   "IsAmount",
+   1.0
+  ],
+  [
+   "OfferCreate",
+   "TakerPays",
+   "IsAmount",
+   1.0
+  ],
+  [
+   "OfferCreate",
+   "DomainID",
+   "IsDomainID",
+   1.0
+  ],
+  [
+   "OracleDelete",
+   "OracleDocumentID",
+   "not validated",
+   0.92
+  ],
+  [
+   "OracleSet",
+   "OracleDocumentID",
+   "not validated",
+   0.96
+  ],
+  [
+   "OracleSet",
+   "LastUpdateTime",
+   "not validated",
+   0.93
+  ],
+  [
+   "OracleSet",
+   "Provider",
+   "explicit comparison (==, !=, <, >, len)",
+   1.0
+  ],
+  [
+   "OracleSet",
+   "URI",
+   "not validated",
+   0.99
+  ],
+  [
+   "OracleSet",
+   "AssetClass",
+   "not validated",
+   0.97
+  ],
+  [
+   "OracleSet",
+   "PriceDataSeries",
+   "explicit comparison (==, !=, <, >, len)",
+   0.92
+  ],
+  [
+   "Payment",
+   "Amount",
+   "IsAmount",
+   1.0
+  ],
+  [
+   "Payment",
+   "CredentialIDs",
+   "IsValid()",
+   1.0
+  ],
+  [
+   "Payment",
+   "DeliverMax",
+   "IsAmount",
+   1.0
+  ],
+  [
+   "Payment",
+   "DeliverMin",
+   "IsAmount",
+   1.0
+  ],
+  [
+   "Payment",
+   "Destination",
+   "addresscodec.IsValidAddress",
+   1.0
+  ],
+  [
+   "Payment",
+   "DestinationTag",
+   "not validated",
+   0.95
+  ],
+  [
+   "Payment",
+   "InvoiceID",
+   "not validated",
+   0.98
+  ],
+  [
+   "Payment",
+   "Paths",
+   "IsPaths",
+   1.0
+  ],
+  [
+   "Payment",
+   "SendMax",
+   "IsAmount",
+   1.0
+  ],
+  [
+   "Payment",
+   "DomainID",
+   "IsDomainID",
+   1.0
+  ],
+  [
+   "PaymentChannelClaim",
+   "Channel",
+   "explicit comparison (==, !=, <, >, len)",
+   0.98
+  ],
+  [
+   "PaymentChannelClaim",
+   "CredentialIDs",
+   "IsValid()",
+   1.0
+  ],
+  [
+   "PaymentChannelClaim",
+   "Balance",
+   "not validated",
+   0.99
+  ],
+  [
+   "PaymentChannelClaim",
+   "Amount",
+   "not validated",
+   0.96
+  ],
+  [
+   "PaymentChannelClaim",
+   "Signature",
+   "typecheck.IsHex",
+   1.0
+  ],
+  [
+   "PaymentChannelClaim",
+   "PublicKey",
+   "typecheck.IsHex",
+   1.0
+  ],
+  [
+   "PaymentChannelCreate",
+   "Amount",
+   "not validated",
+   0.98
+  ],
+  [
+   "PaymentChannelCreate",
+   "Destination",
+   "addresscodec.IsValidAddress",
+   1.0
+  ],
+  [
+   "PaymentChannelCreate",
+   "SettleDelay",
+   "not validated",
+   0.99
+  ],
+  [
+   "PaymentChannelCreate",
+   "PublicKey",
+   "typecheck.IsHex",
+   1.0
+  ],
+  [
+   "PaymentChannelCreate",
+   "CancelAfter",
+   "not validated",
+   0.98
+  ],
+  [
+   "PaymentChannelCreate",
+   "DestinationTag",
+   "not validated",
+   0.99
+  ],
+  [
+   "PaymentChannelFund",
+   "Channel",
+   "not validated",
+   0.96
+  ],
+  [
+   "PaymentChannelFund",
+   "Amount",
+   "not validated",
+   0.9
+  ],
+  [
+   "PaymentChannelFund",
+   "Expiration",
+   "explicit comparison (==, !=, <, >, len)",
+   0.99
+  ],
+  [
+   "PermissionedDomainDelete",
+   "DomainID",
+   "explicit comparison (==, !=, <, >, len)",
+   0.94
+  ],
+  [
+   "PermissionedDomainSet",
+   "DomainID",
+   "not validated",
+   0.84
+  ],
+  [
+   "PermissionedDomainSet",
+   "AcceptedCredentials",
+   "IsValid()",
+   0.82
+  ],
+  [
+   "SetRegularKey",
+   "RegularKey",
+   "addresscodec.IsValidAddress",
+   1.0
+  ],
+  [
+   "SignerListSet",
+   "SignerQuorum",
+   "explicit comparison (==, !=, <, >, len)",
+   0.87
+  ],
+  [
+   "SignerListSet",
+   "SignerEntries",
+   "explicit comparison (==, !=, <, >, len)",
+   0.99
+  ],
+  [
+   "TicketCreate",
+   "TicketCount",
+   "explicit comparison (==, !=, <, >, len)",
+   1.0
+  ],
+  [
+   "TrustSet",
+   "LimitAmount",
+   "IsAmount",
+   1.0
+  ],
+  [
+   "TrustSet",
+   "QualityIn",
+   "not validated",
+   0.99
+  ],
+  [
+   "TrustSet",
+   "QualityOut",
+   "not validated",
+   0.99
+  ],
+  [
+   "VaultClawback",
+   "VaultID",
+   "explicit comparison (==, !=, <, >, len)",
+   0.61
+  ],
+  [
+   "VaultClawback",
+   "Holder",
+   "addresscodec.IsValidAddress",
+   1.0
+  ],
+  [
+   "VaultClawback",
+   "Amount",
+   "IsIssuedCurrency",
+   0.99
+  ],
+  [
+   "VaultCreate",
+   "Asset",
+   "IsAsset",
+   1.0
+  ],
+  [
+   "VaultCreate",
+   "Data",
+   "typecheck.IsHex",
+   0.74
+  ],
+  [
+   "VaultCreate",
+   "AssetsMaximum",
+   "typecheck.IsUint32",
+   0.29
+  ],
+  [
+   "VaultCreate",
+   "MPTokenMetadata",
+   "typecheck.IsHex",
+   0.58
+  ],
+  [
+   "VaultCreate",
+   "WithdrawalPolicy",
+   "not validated",
+   1.0
+  ],
+  [
+   "VaultCreate",
+   "DomainID",
+   "IsDomainID",
+   1.0
+  ],
+  [
+   "VaultCreate",
+   "Scale",
+   "explicit comparison (==, !=, <, >, len)",
+   0.99
+  ],
+  [
+   "VaultDelete",
+   "VaultID",
+   "explicit comparison (==, !=, <, >, len)",
+   0.54
+  ],
+  [
+   "VaultDeposit",
+   "VaultID",
+   "explicit comparison (==, !=, <, >, len)",
+   0.51
+  ],
+  [
+   "VaultDeposit",
+   "Amount",
+   "IsAmount",
+   1.0
+  ],
+  [
+   "VaultSet",
+   "VaultID",
+   "explicit comparison (==, !=, <, >, len)",
+   0.52
+  ],
+  [
+   "VaultSet",
+   "Data",
+   "typecheck.IsHex",
+   0.85
+  ],
+  [
+   "VaultSet",
+   "AssetsMaximum",
+   "typecheck.IsUint32",
+   0.39
+  ],
+  [
+   "VaultSet",
+   "DomainID",
+   "IsDomainID",
+   1.0
+  ],
+  [
+   "VaultWithdraw",
+   "VaultID",
+   "explicit comparison (==, !=, <, >, len)",
+   0.57
+  ],
+  [
+   "VaultWithdraw",
+   "Amount",
+   "IsAmount",
+   1.0
+  ],
+  [
+   "VaultWithdraw",
+   "Destination",
+   "addresscodec.IsValidAddress",
+   1.0
+  ],
+  [
+   "VaultWithdraw",
+   "DestinationTag",
+   "not validated",
+   0.97
+  ],
+  [
+   "XChainAccountCreateCommit",
+   "Amount",
+   "IsAmount",
+   1.0
+  ],
+  [
+   "XChainAccountCreateCommit",
+   "Destination",
+   "addresscodec.IsValidAddress",
+   1.0
+  ],
+  [
+   "XChainAccountCreateCommit",
+   "SignatureReward",
+   "IsAmount",
+   1.0
+  ],
+  [
+   "XChainAccountCreateCommit",
+   "XChainBridge",
+   "IsValid()",
+   0.9
+  ],
+  [
+   "XChainAddAccountCreateAttestation",
+   "Amount",
+   "IsAmount",
+   1.0
+  ],
+  [
+   "XChainAddAccountCreateAttestation",
+   "AttestationRewardAccount",
+   "addresscodec.IsValidAddress",
+   1.0
+  ],
+  [
+   "XChainAddAccountCreateAttestation",
+   "AttestationSignerAccount",
+   "addresscodec.IsValidAddress",
+   1.0
+  ],
+  [
+   "XChainAddAccountCreateAttestation",
+   "Destination",
+   "addresscodec.IsValidAddress",
+   1.0
+  ],
+  [
+   "XChainAddAccountCreateAttestation",
+   "OtherChainSource",
+   "addresscodec.IsValidAddress",
+   1.0
+  ],
+  [
+   "XChainAddAccountCreateAttestation",
+   "PublicKey",
+   "explicit comparison (==, !=, <, >, len)",
+   0.99
+  ],
+  [
+   "XChainAddAccountCreateAttestation",
+   "Signature",
+   "explicit comparison (==, !=, <, >, len)",
+   0.99
+  ],
+  [
+   "XChainAddAccountCreateAttestation",
+   "SignatureReward",
+   "IsAmount",
+   1.0
+  ],
+  [
+   "XChainAddAccountCreateAttestation",
+   "WasLockingChainSend",
+   "explicit comparison (==, !=, <, >, len)",
+   1.0
+  ],
+  [
+   "XChainAddAccountCreateAttestation",
+   "XChainAccountCreateCount",
+   "typecheck.IsUint32",
+   0.56
+  ],
+  [
+   "XChainAddAccountCreateAttestation",
+   "XChainBridge",
+   "IsValid()",
+   0.91
+  ],
+  [
+   "XChainAddClaimAttestation",
+   "Amount",
+   "IsAmount",
+   1.0
+  ],
+  [
+   "XChainAddClaimAttestation",
+   "AttestationRewardAccount",
+   "addresscodec.IsValidAddress",
+   1.0
+  ],
+  [
+   "XChainAddClaimAttestation",
+   "AttestationSignerAccount",
+   "addresscodec.IsValidAddress",
+   1.0
+  ],
+  [
+   "XChainAddClaimAttestation",
+   "Destination",
+   "addresscodec.IsValidAddress",
+   1.0
+  ],
+  [
+   "XChainAddClaimAttestation",
+   "OtherChainSource",
+   "addresscodec.IsValidAddress",
+   1.0
+  ],
+  [
+   "XChainAddClaimAttestation",
+   "PublicKey",
+   "explicit comparison (==, !=, <, >, len)",
+   0.99
+  ],
+  [
+   "XChainAddClaimAttestation",
+   "Signature",
+   "explicit comparison (==, !=, <, >, len)",
+   0.99
+  ],
+  [
+   "XChainAddClaimAttestation",
+   "WasLockingChainSend",
+   "explicit comparison (==, !=, <, >, len)",
+   1.0
+  ],
+  [
+   "XChainAddClaimAttestation",
+   "XChainBridge",
+   "IsValid()",
+   0.93
+  ],
+  [
+   "XChainAddClaimAttestation",
+   "XChainClaimID",
+   "typecheck.IsHex",
+   0.99
+  ],
+  [
+   "XChainClaim",
+   "Amount",
+   "IsAmount",
+   1.0
+  ],
+  [
+   "XChainClaim",
+   "Destination",
+   "addresscodec.IsValidAddress",
+   1.0
+  ],
+  [
+   "XChainClaim",
+   "DestinationTag",
+   "not validated",
+   0.96
+  ],
+  [
+   "XChainClaim",
+   "XChainBridge",
+   "IsValid()",
+   0.89
+  ],
+  [
+   "XChainClaim",
+   "XChainClaimID",
+   "typecheck.IsHex",
+   0.98
+  ],
+  [
+   "XChainCommit",
+   "Amount",
+   "IsAmount",
+   1.0
+  ],
+  [
+   "XChainCommit",
+   "OtherChainDestination",
+   "not validated",
+   0.93
+  ],
+  [
+   "XChainCommit",
+   "XChainBridge",
+   "IsValid()",
+   0.86
+  ],
+  [
+   "XChainCommit",
+   "XChainClaimID",
+   "typecheck.IsHex",
+   0.99
+  ],
+  [
+   "XChainCreateBridge",
+   "MinAccountCreateAmount",
+   "IsAmount",
+   1.0
+  ],
+  [
+   "XChainCreateBridge",
+   "SignatureReward",
+   "IsAmount",
+   1.0
+  ],
+  [
+   "XChainCreateBridge",
+   "XChainBridge",
+   "IsValid()",
+   0.81
+  ],
+  [
+   "XChainCreateClaimID",
+   "OtherChainSource",
+   "addresscodec.IsValidAddress",
+   1.0
+  ],
+  [
+   "XChainCreateClaimID",
+   "SignatureReward",
+   "IsAmount",
+   1.0
+  ],
+  [
+   "XChainCreateClaimID",
+   "XChainBridge",
+   "IsValid()",
+   0.81
+  ],
+  [
+   "XChainModifyBridge",
+   "Flags",
+   "explicit comparison (==, !=, <, >, len)",
+   0.43
+  ],
+  [
+   "XChainModifyBridge",
+   "MinAccountCreateAmount",
+   "IsAmount",
+   1.0
+  ],
+  [
+   "XChainModifyBridge",
+   "SignatureReward",
+   "IsAmount",
+   1.0
+  ],
+  [
+   "XChainModifyBridge",
+   "XChainBridge",
+   "IsValid()",
+   0.81
+  ]
+ ],
+ "G5_full": [
+  {
+   "type": "AMMBid",
+   "diff": 0.96,
+   "pair": 0.98,
+   "after": 0.75
+  },
+  {
+   "type": "AMMClawback",
+   "diff": 0.97,
+   "pair": 0.98,
+   "after": 0.71
+  },
+  {
+   "type": "AMMCreate",
+   "diff": 0.95,
+   "pair": 0.98,
+   "after": 0.73
+  },
+  {
+   "type": "AMMDelete",
+   "diff": 0.95,
+   "pair": 0.97,
+   "after": 0.77
+  },
+  {
+   "type": "AMMDeposit",
+   "diff": 0.95,
+   "pair": 0.94,
+   "after": 0.79
+  },
+  {
+   "type": "AMMVote",
+   "diff": 0.94,
+   "pair": 0.98,
+   "after": 0.73
+  },
+  {
+   "type": "AMMWithdraw",
+   "diff": 0.95,
+   "pair": 0.95,
+   "after": 0.8
+  },
+  {
+   "type": "AccountDelete",
+   "diff": 0.95,
+   "pair": 0.98,
+   "after": 0.71
+  },
+  {
+   "type": "AccountSet",
+   "diff": 0.85,
+   "pair": 0.71,
+   "after": 0.82
+  },
+  {
+   "type": "CheckCash",
+   "diff": 0.95,
+   "pair": 0.95,
+   "after": 0.75
+  },
+  {
+   "type": "CheckCreate",
+   "diff": 0.94,
+   "pair": 0.98,
+   "after": 0.74
+  },
+  {
+   "type": "Clawback",
+   "diff": 0.96,
+   "pair": 0.96,
+   "after": 0.65
+  },
+  {
+   "type": "CredentialAccept",
+   "diff": 0.97,
+   "pair": 0.98,
+   "after": 0.72
+  },
+  {
+   "type": "CredentialCreate",
+   "diff": 0.96,
+   "pair": 0.98,
+   "after": 0.71
+  },
+  {
+   "type": "CredentialDelete",
+   "diff": 0.97,
+   "pair": 0.98,
+   "after": 0.72
+  },
+  {
+   "type": "DelegateSet",
+   "diff": 0.95,
+   "pair": 0.97,
+   "after": 0.74
+  },
+  {
+   "type": "DepositPreauth",
+   "diff": 0.96,
+   "pair": 0.97,
+   "after": 0.73
+  },
+  {
+   "type": "EscrowCancel",
+   "diff": 0.96,
+   "pair": 0.98,
+   "after": 0.65
+  },
+  {
+   "type": "EscrowCreate",
+   "diff": 0.97,
+   "pair": 0.98,
+   "after": 0.72
+  },
+  {
+   "type": "EscrowFinish",
+   "diff": 0.96,
+   "pair": 0.97,
+   "after": 0.71
+  },
+  {
+   "type": "LoanBrokerCoverClawback",
+   "diff": 0.97,
+   "pair": 0.98,
+   "after": 0.66
+  }
+ ]
+}
